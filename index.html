@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arrow - Landing Page Cyberpunk Custom</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/nav.css">
+    <link rel="stylesheet" href="css/form.css">
+</head>
+<body>
+    <div class="scanlines"></div>
+    <div class="geometric-bg" id="geoBg"></div>
+
+    <!-- Navigation -->
+    <nav class="nav-container">
+        <div class="nav-wrapper">
+            <a href="index.html" class="nav-logo">ARROW</a>
+            <ul class="nav-menu" id="navMenu">
+                <li class="nav-item"><a href="index.html" class="nav-link active">Accueil</a></li>
+                <li class="nav-item"><a href="fonctionnalites.html" class="nav-link">Fonctionnalités</a></li>
+                <li class="nav-item"><a href="pour-qui.html" class="nav-link">Pour qui ?</a></li>
+                <li class="nav-item"><a href="tarifs.html" class="nav-link">Tarifs</a></li>
+                <li class="nav-item"><a href="a-propos.html" class="nav-link">À propos</a></li>
+                <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
+                <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <div class="main-container">
+        <!-- Header -->
+        <div class="cyber-header">
+            <h1 class="cyber-logo">ARROW</h1>
+            <p class="cyber-tagline">SYSTÈME DE GESTION ÉDUCATIVE NEXT-GEN</p>
+        </div>
+
+        <!-- HUD Stats Centered Above Cards -->
+        <div class="hud-stats">
+            <div class="stat-item">
+                <div class="stat-value">99.9%</div>
+                <div class="stat-label">du temps éveillé</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">24/7</div>
+                <div class="stat-label">Support</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">∞</div>
+                <div class="stat-label">Élèves</div>
+            </div>
+        </div>
+
+        <!-- Section Comparaison Ancienne plateforme vs Arrow -->
+        <div class="comparison-section">
+            <div class="comparison-header">
+                <h2 class="comparison-title">ANCIENNE PLATEFORME vs ARROW</h2>
+                <p class="comparison-instruction">← GLISSEZ LE CURSEUR POUR COMPARER →</p>
+            </div>
+
+            <!-- Slider Interactif -->
+            <div class="comparison-slider-wrapper">
+                <div class="comparison-slider" id="comparisonSlider">
+                    <!-- ARROW SIDE (New) -->
+                    <div class="comparison-side side-arrow">
+                        <div class="arrow-interface">
+                            <!-- Header -->
+                            <div class="arrow-header">
+                                <h1 class="arrow-page-title">Gestion des Étudiants</h1>
+                                <button class="arrow-add-button">
+                                    <span>+</span>
+                                    <span>Nouvel(le) étudiant(e)</span>
+                                </button>
+                            </div>
+
+                            <!-- Search Card -->
+                            <div class="arrow-search-card">
+                                <h3 class="arrow-search-title">Recherche et filtres</h3>
+                                <input type="text" class="arrow-search-input" placeholder="Nom, email, n° étudiant">
+                                <p class="arrow-result-count">12 étudiant(e)s</p>
+                            </div>
+
+                            <!-- Students Grid -->
+                            <div class="arrow-students-grid">
+                                <!-- Student 1 -->
+                                <div class="arrow-student-card" style="border-top-color: #0080FF;">
+                                    <div class="arrow-card-header">
+                                        <div class="arrow-student-initials" style="border-color: #0080FF; color: #0080FF;">SM</div>
+                                        <h4 class="arrow-student-name" style="color: #0080FF;">Sophie MARTIN</h4>
+                                        <p class="arrow-student-number">ET-2024-001</p>
+                                        <p class="arrow-student-email">sophie.martin@email.com</p>
+                                    </div>
+                                    <div class="arrow-student-info-section">
+                                        <div class="arrow-info-item">
+                                            <span class="arrow-info-label">📅 Né(e) le:</span>
+                                            <span class="arrow-info-value">21/08/2006</span>
+                                        </div>
+                                        <div class="arrow-info-item">
+                                            <span class="arrow-info-label">🎓 Formation:</span>
+                                            <span class="arrow-info-value">Bachelor 3 - Marketing Digital</span>
+                                        </div>
+                                        <div class="arrow-info-item">
+                                            <span class="arrow-info-label">📞 Téléphone:</span>
+                                            <span class="arrow-info-value">06 12 34 56 78</span>
+                                        </div>
+                                        <div class="arrow-info-item">
+                                            <span class="arrow-info-label">⏰ Absences:</span>
+                                            <span class="arrow-info-value">7h (3 séances)</span>
+                                        </div>
+                                        <div class="arrow-info-item">
+                                            <span class="arrow-info-label">📊 Dernière note:</span>
+                                            <span class="arrow-info-value">15/20 - Communication</span>
+                                        </div>
+                                    </div>
+                                    <div class="arrow-status-badge">
+                                        <span class="arrow-badge">Inscrit</span>
+                                    </div>
+                                    <div class="arrow-metrics-neon">
+                                        <div class="arrow-neon-card arrow-neon-average">
+                                            <div class="arrow-neon-label">Moyenne</div>
+                                            <div class="arrow-neon-value">14</div>
+                                            <div class="arrow-neon-unit">/20</div>
+                                        </div>
+                                        <div class="arrow-neon-card arrow-neon-presence">
+                                            <div class="arrow-neon-label">Présence</div>
+                                            <div class="arrow-neon-value">96</div>
+                                            <div class="arrow-neon-unit">%</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Student 2 -->
+                                <div class="arrow-student-card" style="border-top-color: #0080FF;">
+                                    <div class="arrow-card-header">
+                                        <div class="arrow-student-initials" style="border-color: #0080FF; color: #0080FF;">MD</div>
+                                        <h4 class="arrow-student-name" style="color: #0080FF;">Marc DUBOIS</h4>
+                                        <p class="arrow-student-number">ET-2024-002</p>
+                                        <p class="arrow-student-email">marc.dubois@email.com</p>
+                                    </div>
+                                    <div class="arrow-student-info-section">
+                                        <div class="arrow-info-item">
+                                            <span class="arrow-info-label">📅 Né(e) le:</span>
+                                            <span class="arrow-info-value">05/10/2006</span>
+                                        </div>
+                                        <div class="arrow-info-item">
+                                            <span class="arrow-info-label">🎓 Formation:</span>
+                                            <span class="arrow-info-value">Master 1 - Management</span>
+                                        </div>
+                                        <div class="arrow-info-item">
+                                            <span class="arrow-info-label">📞 Téléphone:</span>
+                                            <span class="arrow-info-value">06 23 45 67 89</span>
+                                        </div>
+                                        <div class="arrow-info-item">
+                                            <span class="arrow-info-label">⏰ Absences:</span>
+                                            <span class="arrow-info-value">34h (18 séances)</span>
+                                        </div>
+                                        <div class="arrow-info-item">
+                                            <span class="arrow-info-label">📊 Dernière note:</span>
+                                            <span class="arrow-info-value">11/20 - Stratégie</span>
+                                        </div>
+                                    </div>
+                                    <div class="arrow-status-badge">
+                                        <span class="arrow-badge en-attente">En attente</span>
+                                    </div>
+                                    <div class="arrow-metrics-neon">
+                                        <div class="arrow-neon-card arrow-neon-average">
+                                            <div class="arrow-neon-label">Moyenne</div>
+                                            <div class="arrow-neon-value">11</div>
+                                            <div class="arrow-neon-unit">/20</div>
+                                        </div>
+                                        <div class="arrow-neon-card arrow-neon-presence">
+                                            <div class="arrow-neon-label">Présence</div>
+                                            <div class="arrow-neon-value">78</div>
+                                            <div class="arrow-neon-unit">%</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Student 3 -->
+                                <div class="arrow-student-card" style="border-top-color: #0080FF;">
+                                    <div class="arrow-card-header">
+                                        <div class="arrow-student-initials" style="border-color: #0080FF; color: #0080FF;">LB</div>
+                                        <h4 class="arrow-student-name" style="color: #0080FF;">Lucas BERNARD</h4>
+                                        <p class="arrow-student-number">ET-2024-003</p>
+                                        <p class="arrow-student-email">lucas.bernard@email.com</p>
+                                    </div>
+                                    <div class="arrow-student-info-section">
+                                        <div class="arrow-info-item">
+                                            <span class="arrow-info-label">📅 Né(e) le:</span>
+                                            <span class="arrow-info-value">19/09/2007</span>
+                                        </div>
+                                        <div class="arrow-info-item">
+                                            <span class="arrow-info-label">🎓 Formation:</span>
+                                            <span class="arrow-info-value">Bachelor 2 - Commerce</span>
+                                        </div>
+                                        <div class="arrow-info-item">
+                                            <span class="arrow-info-label">📞 Téléphone:</span>
+                                            <span class="arrow-info-value">06 34 56 78 90</span>
+                                        </div>
+                                        <div class="arrow-info-item">
+                                            <span class="arrow-info-label">⏰ Absences:</span>
+                                            <span class="arrow-info-value">15h (6 séances)</span>
+                                        </div>
+                                        <div class="arrow-info-item">
+                                            <span class="arrow-info-label">📊 Dernière note:</span>
+                                            <span class="arrow-info-value">13/20 - Vente</span>
+                                        </div>
+                                    </div>
+                                    <div class="arrow-status-badge">
+                                        <span class="arrow-badge">Inscrit</span>
+                                    </div>
+                                    <div class="arrow-metrics-neon">
+                                        <div class="arrow-neon-card arrow-neon-average">
+                                            <div class="arrow-neon-label">Moyenne</div>
+                                            <div class="arrow-neon-value">13</div>
+                                            <div class="arrow-neon-unit">/20</div>
+                                        </div>
+                                        <div class="arrow-neon-card arrow-neon-presence">
+                                            <div class="arrow-neon-label">Présence</div>
+                                            <div class="arrow-neon-value">89</div>
+                                            <div class="arrow-neon-unit">%</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Student 4 -->
+                                <div class="arrow-student-card" style="border-top-color: #0080FF;">
+                                    <div class="arrow-card-header">
+                                        <div class="arrow-student-initials" style="border-color: #0080FF; color: #0080FF;">TP</div>
+                                        <h4 class="arrow-student-name" style="color: #0080FF;">Thomas PETIT</h4>
+                                        <p class="arrow-student-number">ET-2024-004</p>
+                                        <p class="arrow-student-email">thomas.petit@email.com</p>
+                                    </div>
+                                    <div class="arrow-student-info-section">
+                                        <div class="arrow-info-item">
+                                            <span class="arrow-info-label">📅 Né(e) le:</span>
+                                            <span class="arrow-info-value">08/01/2007</span>
+                                        </div>
+                                        <div class="arrow-info-item">
+                                            <span class="arrow-info-label">🎓 Formation:</span>
+                                            <span class="arrow-info-value">MBA 1 - Finance</span>
+                                        </div>
+                                        <div class="arrow-info-item">
+                                            <span class="arrow-info-label">📞 Téléphone:</span>
+                                            <span class="arrow-info-value">06 45 67 89 01</span>
+                                        </div>
+                                        <div class="arrow-info-item">
+                                            <span class="arrow-info-label">⏰ Absences:</span>
+                                            <span class="arrow-info-value">13h (5 séances)</span>
+                                        </div>
+                                        <div class="arrow-info-item">
+                                            <span class="arrow-info-label">📊 Dernière note:</span>
+                                            <span class="arrow-info-value">15/20 - Comptabilité</span>
+                                        </div>
+                                    </div>
+                                    <div class="arrow-status-badge">
+                                        <span class="arrow-badge">Inscrit</span>
+                                    </div>
+                                    <div class="arrow-metrics-neon">
+                                        <div class="arrow-neon-card arrow-neon-average">
+                                            <div class="arrow-neon-label">Moyenne</div>
+                                            <div class="arrow-neon-value">15</div>
+                                            <div class="arrow-neon-unit">/20</div>
+                                        </div>
+                                        <div class="arrow-neon-card arrow-neon-presence">
+                                            <div class="arrow-neon-label">Présence</div>
+                                            <div class="arrow-neon-value">94</div>
+                                            <div class="arrow-neon-unit">%</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Student 5 -->
+                                <div class="arrow-student-card" style="border-top-color: #0080FF;">
+                                    <div class="arrow-card-header">
+                                        <div class="arrow-student-initials" style="border-color: #0080FF; color: #0080FF;">RJ</div>
+                                        <h4 class="arrow-student-name" style="color: #0080FF;">Julie ROBERT</h4>
+                                        <p class="arrow-student-number">ET-2024-005</p>
+                                        <p class="arrow-student-email">julie.robert@email.com</p>
+                                    </div>
+                                    <div class="arrow-student-info-section">
+                                        <div class="arrow-info-item">
+                                            <span class="arrow-info-label">📅 Né(e) le:</span>
+                                            <span class="arrow-info-value">12/10/2007</span>
+                                        </div>
+                                        <div class="arrow-info-item">
+                                            <span class="arrow-info-label">🎓 Formation:</span>
+                                            <span class="arrow-info-value">Bachelor 1 - Communication</span>
+                                        </div>
+                                        <div class="arrow-info-item">
+                                            <span class="arrow-info-label">📞 Téléphone:</span>
+                                            <span class="arrow-info-value">06 56 78 90 12</span>
+                                        </div>
+                                        <div class="arrow-info-item">
+                                            <span class="arrow-info-label">⏰ Absences:</span>
+                                            <span class="arrow-info-value">20h (8 séances)</span>
+                                        </div>
+                                        <div class="arrow-info-item">
+                                            <span class="arrow-info-label">📊 Dernière note:</span>
+                                            <span class="arrow-info-value">11/20 - Anglais</span>
+                                        </div>
+                                    </div>
+                                    <div class="arrow-status-badge">
+                                        <span class="arrow-badge">Inscrit</span>
+                                    </div>
+                                    <div class="arrow-metrics-neon">
+                                        <div class="arrow-neon-card arrow-neon-average">
+                                            <div class="arrow-neon-label">Moyenne</div>
+                                            <div class="arrow-neon-value">11</div>
+                                            <div class="arrow-neon-unit">/20</div>
+                                        </div>
+                                        <div class="arrow-neon-card arrow-neon-presence">
+                                            <div class="arrow-neon-label">Présence</div>
+                                            <div class="arrow-neon-value">82</div>
+                                            <div class="arrow-neon-unit">%</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Student 6 -->
+                                <div class="arrow-student-card" style="border-top-color: #0080FF;">
+                                    <div class="arrow-card-header">
+                                        <div class="arrow-student-initials" style="border-color: #0080FF; color: #0080FF;">PR</div>
+                                        <h4 class="arrow-student-name" style="color: #0080FF;">Paul RICHARD</h4>
+                                        <p class="arrow-student-number">ET-2024-006</p>
+                                        <p class="arrow-student-email">paul.richard@email.com</p>
+                                    </div>
+                                    <div class="arrow-student-info-section">
+                                        <div class="arrow-info-item">
+                                            <span class="arrow-info-label">📅 Né(e) le:</span>
+                                            <span class="arrow-info-value">19/08/2004</span>
+                                        </div>
+                                        <div class="arrow-info-item">
+                                            <span class="arrow-info-label">🎓 Formation:</span>
+                                            <span class="arrow-info-value">Master 2 - RH</span>
+                                        </div>
+                                        <div class="arrow-info-item">
+                                            <span class="arrow-info-label">📞 Téléphone:</span>
+                                            <span class="arrow-info-value">06 67 89 01 23</span>
+                                        </div>
+                                        <div class="arrow-info-item">
+                                            <span class="arrow-info-label">⏰ Absences:</span>
+                                            <span class="arrow-info-value">12h (4 séances)</span>
+                                        </div>
+                                        <div class="arrow-info-item">
+                                            <span class="arrow-info-label">📊 Dernière note:</span>
+                                            <span class="arrow-info-value">16/20 - Droit du travail</span>
+                                        </div>
+                                    </div>
+                                    <div class="arrow-status-badge">
+                                        <span class="arrow-badge">Inscrit</span>
+                                    </div>
+                                    <div class="arrow-metrics-neon">
+                                        <div class="arrow-neon-card arrow-neon-average">
+                                            <div class="arrow-neon-label">Moyenne</div>
+                                            <div class="arrow-neon-value">16</div>
+                                            <div class="arrow-neon-unit">/20</div>
+                                        </div>
+                                        <div class="arrow-neon-card arrow-neon-presence">
+                                            <div class="arrow-neon-label">Présence</div>
+                                            <div class="arrow-neon-value">98</div>
+                                            <div class="arrow-neon-unit">%</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Student 7 -->
+                                <div class="arrow-student-card" style="border-top-color: #0080FF;">
+                                    <div class="arrow-card-header">
+                                        <div class="arrow-student-initials" style="border-color: #0080FF; color: #0080FF;">ED</div>
+                                        <h4 class="arrow-student-name" style="color: #0080FF;">Emma DURAND</h4>
+                                        <p class="arrow-student-number">ET-2024-007</p>
+                                        <p class="arrow-student-email">emma.durand@email.com</p>
+                                    </div>
+                                    <div class="arrow-student-info-section">
+                                        <div class="arrow-info-item">
+                                            <span class="arrow-info-label">📅 Né(e) le:</span>
+                                            <span class="arrow-info-value">22/06/2007</span>
+                                        </div>
+                                        <div class="arrow-info-item">
+                                            <span class="arrow-info-label">🎓 Formation:</span>
+                                            <span class="arrow-info-value">Bachelor 2 - Informatique</span>
+                                        </div>
+                                        <div class="arrow-info-item">
+                                            <span class="arrow-info-label">📞 Téléphone:</span>
+                                            <span class="arrow-info-value">06 78 90 12 34</span>
+                                        </div>
+                                        <div class="arrow-info-item">
+                                            <span class="arrow-info-label">⏰ Absences:</span>
+                                            <span class="arrow-info-value">2h (1 séance)</span>
+                                        </div>
+                                        <div class="arrow-info-item">
+                                            <span class="arrow-info-label">📊 Dernière note:</span>
+                                            <span class="arrow-info-value">17/20 - Programmation</span>
+                                        </div>
+                                    </div>
+                                    <div class="arrow-status-badge">
+                                        <span class="arrow-badge">Inscrit</span>
+                                    </div>
+                                    <div class="arrow-metrics-neon">
+                                        <div class="arrow-neon-card arrow-neon-average">
+                                            <div class="arrow-neon-label">Moyenne</div>
+                                            <div class="arrow-neon-value">17</div>
+                                            <div class="arrow-neon-unit">/20</div>
+                                        </div>
+                                        <div class="arrow-neon-card arrow-neon-presence">
+                                            <div class="arrow-neon-label">Présence</div>
+                                            <div class="arrow-neon-value">99</div>
+                                            <div class="arrow-neon-unit">%</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Student 8 -->
+                                <div class="arrow-student-card" style="border-top-color: #0080FF;">
+                                    <div class="arrow-card-header">
+                                        <div class="arrow-student-initials" style="border-color: #0080FF; color: #0080FF;">LM</div>
+                                        <h4 class="arrow-student-name" style="color: #0080FF;">Léo MOREAU</h4>
+                                        <p class="arrow-student-number">ET-2024-008</p>
+                                        <p class="arrow-student-email">leo.moreau@email.com</p>
+                                    </div>
+                                    <div class="arrow-student-info-section">
+                                        <div class="arrow-info-item">
+                                            <span class="arrow-info-label">📅 Né(e) le:</span>
+                                            <span class="arrow-info-value">21/10/2006</span>
+                                        </div>
+                                        <div class="arrow-info-item">
+                                            <span class="arrow-info-label">🎓 Formation:</span>
+                                            <span class="arrow-info-value">MBA 2 - Entrepreneuriat</span>
+                                        </div>
+                                        <div class="arrow-info-item">
+                                            <span class="arrow-info-label">📞 Téléphone:</span>
+                                            <span class="arrow-info-value">06 89 01 23 45</span>
+                                        </div>
+                                        <div class="arrow-info-item">
+                                            <span class="arrow-info-label">⏰ Absences:</span>
+                                            <span class="arrow-info-value">45h (22 séances)</span>
+                                        </div>
+                                        <div class="arrow-info-item">
+                                            <span class="arrow-info-label">📊 Dernière note:</span>
+                                            <span class="arrow-info-value">12/20 - Business Plan</span>
+                                        </div>
+                                    </div>
+                                    <div class="arrow-status-badge">
+                                        <span class="arrow-badge en-attente">En attente</span>
+                                    </div>
+                                    <div class="arrow-metrics-neon">
+                                        <div class="arrow-neon-card arrow-neon-average">
+                                            <div class="arrow-neon-label">Moyenne</div>
+                                            <div class="arrow-neon-value">12</div>
+                                            <div class="arrow-neon-unit">/20</div>
+                                        </div>
+                                        <div class="arrow-neon-card arrow-neon-presence">
+                                            <div class="arrow-neon-label">Présence</div>
+                                            <div class="arrow-neon-value">72</div>
+                                            <div class="arrow-neon-unit">%</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Student 9 -->
+                                <div class="arrow-student-card" style="border-top-color: #0080FF;">
+                                    <div class="arrow-card-header">
+                                        <div class="arrow-student-initials" style="border-color: #0080FF; color: #0080FF;">CS</div>
+                                        <h4 class="arrow-student-name" style="color: #0080FF;">Chloé SIMON</h4>
+                                        <p class="arrow-student-number">ET-2024-009</p>
+                                        <p class="arrow-student-email">chloe.simon@email.com</p>
+                                    </div>
+                                    <div class="arrow-student-info-section">
+                                        <div class="arrow-info-item">
+                                            <span class="arrow-info-label">📅 Né(e) le:</span>
+                                            <span class="arrow-info-value">19/11/2007</span>
+                                        </div>
+                                        <div class="arrow-info-item">
+                                            <span class="arrow-info-label">🎓 Formation:</span>
+                                            <span class="arrow-info-value">Master 1 - Marketing</span>
+                                        </div>
+                                        <div class="arrow-info-item">
+                                            <span class="arrow-info-label">📞 Téléphone:</span>
+                                            <span class="arrow-info-value">06 90 12 34 56</span>
+                                        </div>
+                                        <div class="arrow-info-item">
+                                            <span class="arrow-info-label">⏰ Absences:</span>
+                                            <span class="arrow-info-value">5h (2 séances)</span>
+                                        </div>
+                                        <div class="arrow-info-item">
+                                            <span class="arrow-info-label">📊 Dernière note:</span>
+                                            <span class="arrow-info-value">14/20 - E-commerce</span>
+                                        </div>
+                                    </div>
+                                    <div class="arrow-status-badge">
+                                        <span class="arrow-badge">Inscrit</span>
+                                    </div>
+                                    <div class="arrow-metrics-neon">
+                                        <div class="arrow-neon-card arrow-neon-average">
+                                            <div class="arrow-neon-label">Moyenne</div>
+                                            <div class="arrow-neon-value">14</div>
+                                            <div class="arrow-neon-unit">/20</div>
+                                        </div>
+                                        <div class="arrow-neon-card arrow-neon-presence">
+                                            <div class="arrow-neon-label">Présence</div>
+                                            <div class="arrow-neon-value">97</div>
+                                            <div class="arrow-neon-unit">%</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Student 10 -->
+                                <div class="arrow-student-card" style="border-top-color: #0080FF;">
+                                    <div class="arrow-card-header">
+                                        <div class="arrow-student-initials" style="border-color: #0080FF; color: #0080FF;">HL</div>
+                                        <h4 class="arrow-student-name" style="color: #0080FF;">Hugo LAURENT</h4>
+                                        <p class="arrow-student-number">ET-2024-010</p>
+                                        <p class="arrow-student-email">hugo.laurent@email.com</p>
+                                    </div>
+                                    <div class="arrow-student-info-section">
+                                        <div class="arrow-info-item">
+                                            <span class="arrow-info-label">📅 Né(e) le:</span>
+                                            <span class="arrow-info-value">31/05/2007</span>
+                                        </div>
+                                        <div class="arrow-info-item">
+                                            <span class="arrow-info-label">🎓 Formation:</span>
+                                            <span class="arrow-info-value">Bachelor 1 - Gestion</span>
+                                        </div>
+                                        <div class="arrow-info-item">
+                                            <span class="arrow-info-label">📞 Téléphone:</span>
+                                            <span class="arrow-info-value">06 01 23 45 67</span>
+                                        </div>
+                                        <div class="arrow-info-item">
+                                            <span class="arrow-info-label">⏰ Absences:</span>
+                                            <span class="arrow-info-value">28h (12 séances)</span>
+                                        </div>
+                                        <div class="arrow-info-item">
+                                            <span class="arrow-info-label">📊 Dernière note:</span>
+                                            <span class="arrow-info-value">13/20 - Comptabilité</span>
+                                        </div>
+                                    </div>
+                                    <div class="arrow-status-badge">
+                                        <span class="arrow-badge">Inscrit</span>
+                                    </div>
+                                    <div class="arrow-metrics-neon">
+                                        <div class="arrow-neon-card arrow-neon-average">
+                                            <div class="arrow-neon-label">Moyenne</div>
+                                            <div class="arrow-neon-value">13</div>
+                                            <div class="arrow-neon-unit">/20</div>
+                                        </div>
+                                        <div class="arrow-neon-card arrow-neon-presence">
+                                            <div class="arrow-neon-label">Présence</div>
+                                            <div class="arrow-neon-value">85</div>
+                                            <div class="arrow-neon-unit">%</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Student 11 -->
+                                <div class="arrow-student-card" style="border-top-color: #0080FF;">
+                                    <div class="arrow-card-header">
+                                        <div class="arrow-student-initials" style="border-color: #0080FF; color: #0080FF;">AF</div>
+                                        <h4 class="arrow-student-name" style="color: #0080FF;">Amélie FERREIRA</h4>
+                                        <p class="arrow-student-number">ET-2024-011</p>
+                                        <p class="arrow-student-email">amelie.ferreira@email.com</p>
+                                    </div>
+                                    <div class="arrow-student-info-section">
+                                        <div class="arrow-info-item">
+                                            <span class="arrow-info-label">📅 Né(e) le:</span>
+                                            <span class="arrow-info-value">14/03/2005</span>
+                                        </div>
+                                        <div class="arrow-info-item">
+                                            <span class="arrow-info-label">🎓 Formation:</span>
+                                            <span class="arrow-info-value">Master 2 - International</span>
+                                        </div>
+                                        <div class="arrow-info-item">
+                                            <span class="arrow-info-label">📞 Téléphone:</span>
+                                            <span class="arrow-info-value">06 12 34 56 89</span>
+                                        </div>
+                                        <div class="arrow-info-item">
+                                            <span class="arrow-info-label">⏰ Absences:</span>
+                                            <span class="arrow-info-value">8h (3 séances)</span>
+                                        </div>
+                                        <div class="arrow-info-item">
+                                            <span class="arrow-info-label">📊 Dernière note:</span>
+                                            <span class="arrow-info-value">15/20 - Commerce international</span>
+                                        </div>
+                                    </div>
+                                    <div class="arrow-status-badge">
+                                        <span class="arrow-badge">Inscrit</span>
+                                    </div>
+                                    <div class="arrow-metrics-neon">
+                                        <div class="arrow-neon-card arrow-neon-average">
+                                            <div class="arrow-neon-label">Moyenne</div>
+                                            <div class="arrow-neon-value">15</div>
+                                            <div class="arrow-neon-unit">/20</div>
+                                        </div>
+                                        <div class="arrow-neon-card arrow-neon-presence">
+                                            <div class="arrow-neon-label">Présence</div>
+                                            <div class="arrow-neon-value">95</div>
+                                            <div class="arrow-neon-unit">%</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Student 12 -->
+                                <div class="arrow-student-card" style="border-top-color: #0080FF;">
+                                    <div class="arrow-card-header">
+                                        <div class="arrow-student-initials" style="border-color: #0080FF; color: #0080FF;">NG</div>
+                                        <h4 class="arrow-student-name" style="color: #0080FF;">Nathan GARCIA</h4>
+                                        <p class="arrow-student-number">ET-2024-012</p>
+                                        <p class="arrow-student-email">nathan.garcia@email.com</p>
+                                    </div>
+                                    <div class="arrow-student-info-section">
+                                        <div class="arrow-info-item">
+                                            <span class="arrow-info-label">📅 Né(e) le:</span>
+                                            <span class="arrow-info-value">27/09/2006</span>
+                                        </div>
+                                        <div class="arrow-info-item">
+                                            <span class="arrow-info-label">🎓 Formation:</span>
+                                            <span class="arrow-info-value">Bachelor 3 - Commerce International</span>
+                                        </div>
+                                        <div class="arrow-info-item">
+                                            <span class="arrow-info-label">📞 Téléphone:</span>
+                                            <span class="arrow-info-value">06 23 45 67 90</span>
+                                        </div>
+                                        <div class="arrow-info-item">
+                                            <span class="arrow-info-label">⏰ Absences:</span>
+                                            <span class="arrow-info-value">18h (7 séances)</span>
+                                        </div>
+                                        <div class="arrow-info-item">
+                                            <span class="arrow-info-label">📊 Dernière note:</span>
+                                            <span class="arrow-info-value">13/20 - Langues</span>
+                                        </div>
+                                    </div>
+                                    <div class="arrow-status-badge">
+                                        <span class="arrow-badge">Inscrit</span>
+                                    </div>
+                                    <div class="arrow-metrics-neon">
+                                        <div class="arrow-neon-card arrow-neon-average">
+                                            <div class="arrow-neon-label">Moyenne</div>
+                                            <div class="arrow-neon-value">13</div>
+                                            <div class="arrow-neon-unit">/20</div>
+                                        </div>
+                                        <div class="arrow-neon-card arrow-neon-presence">
+                                            <div class="arrow-neon-label">Présence</div>
+                                            <div class="arrow-neon-value">88</div>
+                                            <div class="arrow-neon-unit">%</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ANCIENNE PLATEFORME SIDE (Old) -->
+                    <div class="comparison-side side-old-platform">
+                        <div class="old-platform-interface">
+                            <!-- Navbar -->
+                            <div class="hp-navbar">
+                                <div class="hp-nav-item">Cours</div>
+                                <div class="hp-nav-item">Notation</div>
+                                <div class="hp-nav-item">Enseignements</div>
+                                <div class="hp-nav-item">QCM</div>
+                                <div class="hp-nav-item">Assiduité</div>
+                                <div class="hp-nav-item" style="background: #8a5a5a;">Étudiants</div>
+                            </div>
+
+                            <!-- Toolbar -->
+                            <div class="hp-toolbar">
+                                <span style="font-size: 11px; color: #666;">Liste :</span>
+                                <select class="hp-dropdown">
+                                    <option>Saisie du nom</option>
+                                </select>
+                                <select class="hp-dropdown">
+                                    <option>Institut Formation (P27) > Scolaire</option>
+                                </select>
+                                <span style="font-size: 11px; color: #666; margin-left: 20px;">au :</span>
+                                <select class="hp-dropdown">
+                                    <option>Aujourd'hui</option>
+                                </select>
+                                <div class="hp-search-icon">🔍</div>
+                            </div>
+
+                            <!-- Table -->
+                            <div class="hp-table-container">
+                                <table class="hp-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Nom</th>
+                                            <th>Né(e) le</th>
+                                            <th>S.</th>
+                                            <th>E-mail</th>
+                                            <th colspan="2" style="text-align: center;">Heures manquées</th>
+                                            <th>Entrée</th>
+                                            <th>Sortie</th>
+                                        </tr>
+                                        <tr style="background: #fafafa;">
+                                            <th></th>
+                                            <th></th>
+                                            <th></th>
+                                            <th></th>
+                                            <th style="font-weight: 400; font-size: 10px;">Toutes</th>
+                                            <th style="font-weight: 400; font-size: 10px;">Mes cours</th>
+                                            <th></th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><span class="hp-icon hp-icon-pink">▼</span> MARTIN Sophie</td>
+                                            <td>21/08/2006</td>
+                                            <td><span class="hp-icon hp-icon-pink">♀</span></td>
+                                            <td><a href="#" class="hp-email-link">sophie.martin@email.com</a></td>
+                                            <td>21h00 (7)</td>
+                                            <td>03h00 (1)</td>
+                                            <td><span class="hp-status">Début d'année</span></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td><span class="hp-icon hp-icon-pink">▼</span> DUBOIS Marc</td>
+                                            <td>05/10/2006</td>
+                                            <td><span class="hp-icon hp-icon-blue">♂</span></td>
+                                            <td><a href="#" class="hp-email-link">marc.dubois@email.com</a></td>
+                                            <td>101h00 (34)</td>
+                                            <td>18h00 (6)</td>
+                                            <td><span class="hp-status">Début d'année</span></td>
+                                            <td>14/11/2025</td>
+                                        </tr>
+                                        <tr>
+                                            <td><span class="hp-icon hp-icon-pink">▼</span> BERNARD Lucas</td>
+                                            <td>19/09/2007</td>
+                                            <td><span class="hp-icon hp-icon-blue">♂</span></td>
+                                            <td><a href="#" class="hp-email-link">lucas.bernard@email.com</a></td>
+                                            <td>43h00 (15)</td>
+                                            <td>06h00 (2)</td>
+                                            <td><span class="hp-status">Début d'année</span></td>
+                                            <td>30/11/2025</td>
+                                        </tr>
+                                        <tr>
+                                            <td><span class="hp-icon hp-icon-pink">▼</span> PETIT Thomas</td>
+                                            <td>08/01/2007</td>
+                                            <td><span class="hp-icon hp-icon-blue">♂</span></td>
+                                            <td><a href="#" class="hp-email-link">thomas.petit@email.com</a></td>
+                                            <td>38h00 (13)</td>
+                                            <td>06h00 (2)</td>
+                                            <td><span class="hp-status">Début d'année</span></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td><span class="hp-icon hp-icon-pink">▼</span> ROBERT Julie</td>
+                                            <td>12/10/2007</td>
+                                            <td><span class="hp-icon hp-icon-pink">♀</span></td>
+                                            <td><a href="#" class="hp-email-link">julie.robert@email.com</a></td>
+                                            <td>60h00 (20)</td>
+                                            <td>06h00 (2)</td>
+                                            <td><span class="hp-status">Début d'année</span></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td><span class="hp-icon hp-icon-pink">▼</span> RICHARD Paul</td>
+                                            <td>19/08/2004</td>
+                                            <td><span class="hp-icon hp-icon-blue">♂</span></td>
+                                            <td><a href="#" class="hp-email-link">paul.richard@email.com</a></td>
+                                            <td>35h00 (12)</td>
+                                            <td>03h00 (1)</td>
+                                            <td><span class="hp-status">Début d'année</span></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td><span class="hp-icon hp-icon-pink">▼</span> DURAND Emma</td>
+                                            <td>22/06/2007</td>
+                                            <td><span class="hp-icon hp-icon-pink">♀</span></td>
+                                            <td><a href="#" class="hp-email-link">emma.durand@email.com</a></td>
+                                            <td>06h00 (2)</td>
+                                            <td>00h00</td>
+                                            <td><span class="hp-status">Début d'année</span></td>
+                                            <td>30/11/2025</td>
+                                        </tr>
+                                        <tr>
+                                            <td><span class="hp-icon hp-icon-pink">▼</span> MOREAU Léo</td>
+                                            <td>21/10/2006</td>
+                                            <td><span class="hp-icon hp-icon-blue">♂</span></td>
+                                            <td><a href="#" class="hp-email-link">leo.moreau@email.com</a></td>
+                                            <td>101h00 (34)</td>
+                                            <td>18h00 (6)</td>
+                                            <td><span class="hp-status">Début d'année</span></td>
+                                            <td>14/11/2025</td>
+                                        </tr>
+                                        <tr>
+                                            <td><span class="hp-icon hp-icon-pink">▼</span> SIMON Chloé</td>
+                                            <td>19/11/2007</td>
+                                            <td><span class="hp-icon hp-icon-pink">♀</span></td>
+                                            <td><a href="#" class="hp-email-link">chloe.simon@email.com</a></td>
+                                            <td>20h00 (7)</td>
+                                            <td>00h00</td>
+                                            <td><span class="hp-status">Début d'année</span></td>
+                                            <td>30/11/2025</td>
+                                        </tr>
+                                        <tr>
+                                            <td><span class="hp-icon hp-icon-pink">▼</span> LAURENT Hugo</td>
+                                            <td>31/05/2007</td>
+                                            <td><span class="hp-icon hp-icon-blue">♂</span></td>
+                                            <td><a href="#" class="hp-email-link">hugo.laurent@email.com</a></td>
+                                            <td>98h00 (33)</td>
+                                            <td>21h00 (7)</td>
+                                            <td><span class="hp-status">Début d'année</span></td>
+                                            <td>14/11/2025</td>
+                                        </tr>
+                                        <tr>
+                                            <td><span class="hp-icon hp-icon-pink">▼</span> LEFEVRE Camille</td>
+                                            <td>18/11/2007</td>
+                                            <td><span class="hp-icon hp-icon-pink">♀</span></td>
+                                            <td><a href="#" class="hp-email-link">camille.lefevre@email.com</a></td>
+                                            <td>21h00 (7)</td>
+                                            <td>03h00 (1)</td>
+                                            <td><span class="hp-status">Début d'année</span></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td><span class="hp-icon hp-icon-pink">▼</span> ANDRE Maxime</td>
+                                            <td>19/08/2005</td>
+                                            <td><span class="hp-icon hp-icon-blue">♂</span></td>
+                                            <td><a href="#" class="hp-email-link">maxime.andre@email.com</a></td>
+                                            <td>51h00 (17)</td>
+                                            <td>18h00 (6)</td>
+                                            <td><span class="hp-status">Début d'année</span></td>
+                                            <td></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slider Handle -->
+                    <div class="slider-handle" id="sliderHandle"></div>
+
+                    <!-- Labels -->
+                    <div class="comparison-label label-left">Ancienne plateforme</div>
+                    <div class="comparison-label label-right">Arrow</div>
+                </div>
+            </div>
+            
+            <p class="comparison-subtitle">Du chaos à la clarté</p>
+        </div>
+
+        <!-- Cards Grid -->
+        <div class="cyber-grid">
+            <div class="cyber-card">
+                <div class="cyber-icon">
+                    <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
+                        <rect x="12" y="12" width="40" height="40" stroke="#FFD700" stroke-width="2" fill="none" filter="drop-shadow(0 0 8px #FFD700)"/>
+                        <circle cx="32" cy="32" r="8" fill="#FFD700" filter="drop-shadow(0 0 8px #FFD700)"/>
+                        <line x1="20" y1="20" x2="44" y2="44" stroke="#FFD700" stroke-width="1.5" filter="drop-shadow(0 0 4px #FFD700)"/>
+                        <line x1="44" y1="20" x2="20" y2="44" stroke="#FFD700" stroke-width="1.5" filter="drop-shadow(0 0 4px #FFD700)"/>
+                    </svg>
+                </div>
+                <h3 class="cyber-title">GESTION ÉLÈVES</h3>
+                <p class="cyber-desc">Suivi complet des parcours avec bulletins automatisés</p>
+            </div>
+
+            <div class="cyber-card">
+                <div class="cyber-icon">
+                    <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
+                        <rect x="10" y="14" width="44" height="36" stroke="#FFD700" stroke-width="2" fill="none" filter="drop-shadow(0 0 8px #FFD700)"/>
+                        <line x1="18" y1="24" x2="46" y2="24" stroke="#FFD700" stroke-width="1.5" filter="drop-shadow(0 0 4px #FFD700)"/>
+                        <line x1="18" y1="32" x2="46" y2="32" stroke="#FFD700" stroke-width="1.5" filter="drop-shadow(0 0 4px #FFD700)"/>
+                        <line x1="18" y1="40" x2="38" y2="40" stroke="#FFD700" stroke-width="1.5" filter="drop-shadow(0 0 4px #FFD700)"/>
+                    </svg>
+                </div>
+                <h3 class="cyber-title">BULLETINS PDF</h3>
+                <p class="cyber-desc">Génération automatique professionnelle</p>
+            </div>
+
+            <div class="cyber-card">
+                <div class="cyber-icon">
+                    <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
+                        <circle cx="20" cy="32" r="10" stroke="#FFD700" stroke-width="2" fill="none" filter="drop-shadow(0 0 8px #FFD700)"/>
+                        <circle cx="44" cy="32" r="10" stroke="#FFD700" stroke-width="2" fill="none" filter="drop-shadow(0 0 8px #FFD700)"/>
+                        <line x1="30" y1="32" x2="34" y2="32" stroke="#FFD700" stroke-width="2" filter="drop-shadow(0 0 6px #FFD700)"/>
+                        <circle cx="20" cy="32" r="4" fill="#FFD700" filter="drop-shadow(0 0 6px #FFD700)"/>
+                        <circle cx="44" cy="32" r="4" fill="#FFD700" filter="drop-shadow(0 0 6px #FFD700)"/>
+                    </svg>
+                </div>
+                <h3 class="cyber-title">ALTERNANCE</h3>
+                <p class="cyber-desc">Contrats et suivi entreprises partenaires</p>
+            </div>
+
+            <div class="cyber-card">
+                <div class="cyber-icon">
+                    <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
+                        <polyline points="12,48 20,32 28,40 36,24 44,32 52,16" stroke="#FFD700" stroke-width="2.5" fill="none" filter="drop-shadow(0 0 8px #FFD700)" stroke-linecap="round" stroke-linejoin="round"/>
+                        <circle cx="20" cy="32" r="2" fill="#FFD700" filter="drop-shadow(0 0 4px #FFD700)"/>
+                        <circle cx="28" cy="40" r="2" fill="#FFD700" filter="drop-shadow(0 0 4px #FFD700)"/>
+                        <circle cx="36" cy="24" r="2" fill="#FFD700" filter="drop-shadow(0 0 4px #FFD700)"/>
+                        <circle cx="44" cy="32" r="2" fill="#FFD700" filter="drop-shadow(0 0 4px #FFD700)"/>
+                        <circle cx="52" cy="16" r="2" fill="#FFD700" filter="drop-shadow(0 0 4px #FFD700)"/>
+                    </svg>
+                </div>
+                <h3 class="cyber-title">ANALYTICS</h3>
+                <p class="cyber-desc">Tableaux de bord en temps réel</p>
+            </div>
+
+            <div class="cyber-card">
+                <div class="cyber-icon">
+                    <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
+                        <circle cx="32" cy="32" r="22" stroke="#FFD700" stroke-width="2" fill="none" filter="drop-shadow(0 0 8px #FFD700)"/>
+                        <line x1="32" y1="32" x2="32" y2="16" stroke="#FFD700" stroke-width="2" filter="drop-shadow(0 0 6px #FFD700)" stroke-linecap="round"/>
+                        <line x1="32" y1="32" x2="42" y2="38" stroke="#FFD700" stroke-width="2" filter="drop-shadow(0 0 6px #FFD700)" stroke-linecap="round"/>
+                        <circle cx="32" cy="32" r="2" fill="#FFD700" filter="drop-shadow(0 0 6px #FFD700)"/>
+                    </svg>
+                </div>
+                <h3 class="cyber-title">PLANNING</h3>
+                <p class="cyber-desc">Emplois du temps intelligents</p>
+            </div>
+
+            <div class="cyber-card">
+                <div class="cyber-icon">
+                    <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
+                        <polygon points="32,12 40,28 56,28 44,38 48,54 32,44 16,54 20,38 8,28 24,28" stroke="#FFD700" stroke-width="2" fill="none" filter="drop-shadow(0 0 8px #FFD700)"/>
+                        <polygon points="32,18 38,30 50,30 42,38 46,50 32,42 18,50 22,38 14,30 26,30" fill="#FFD700" opacity="0.3" filter="drop-shadow(0 0 6px #FFD700)"/>
+                    </svg>
+                </div>
+                <h3 class="cyber-title">QUALIOPI</h3>
+                <p class="cyber-desc">Conformité totale intégrée</p>
+            </div>
+
+            <div class="cyber-card">
+                <div class="cyber-icon">
+                    <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
+                        <rect x="28" y="8" width="8" height="20" stroke="#FFD700" stroke-width="2" fill="none" filter="drop-shadow(0 0 8px #FFD700)"/>
+                        <line x1="32" y1="8" x2="16" y2="24" stroke="#FFD700" stroke-width="1.5" filter="drop-shadow(0 0 4px #FFD700)"/>
+                        <line x1="36" y1="8" x2="48" y2="24" stroke="#FFD700" stroke-width="1.5" filter="drop-shadow(0 0 4px #FFD700)"/>
+                        <circle cx="32" cy="36" r="12" stroke="#FFD700" stroke-width="2" fill="none" filter="drop-shadow(0 0 8px #FFD700)"/>
+                        <circle cx="32" cy="36" r="6" fill="#FFD700" filter="drop-shadow(0 0 6px #FFD700)"/>
+                    </svg>
+                </div>
+                <h3 class="cyber-title">COMMUNICATION</h3>
+                <p class="cyber-desc">Plateforme unifiée multi-acteurs</p>
+            </div>
+
+            <div class="cyber-card">
+                <div class="cyber-icon">
+                    <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
+                        <path d="M32 12 L48 20 L48 44 L32 52 L16 44 L16 20 Z" stroke="#FFD700" stroke-width="2" fill="none" filter="drop-shadow(0 0 8px #FFD700)"/>
+                        <path d="M32 20 L42 25 L42 39 L32 44 L22 39 L22 25 Z" fill="#FFD700" opacity="0.2" filter="drop-shadow(0 0 6px #FFD700)"/>
+                        <circle cx="32" cy="32" r="4" fill="#FFD700" filter="drop-shadow(0 0 6px #FFD700)"/>
+                    </svg>
+                </div>
+                <h3 class="cyber-title">SÉCURITÉ</h3>
+                <p class="cyber-desc">Hébergement France, RGPD ready</p>
+            </div>
+        </div>
+
+        <!-- CTA Button -->
+        <div class="cyber-cta">
+            <a href="contact.html" class="cyber-button" style="text-decoration: none; display: inline-block;">Demander une démo</a>
+        </div>
+    </div>
+
+    <script src="js/nav.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/form.js"></script>
+</body>
+</html>

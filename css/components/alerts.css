@@ -1,0 +1,39 @@
+/* ============================================
+   ALERTS
+   ============================================ */
+
+.alert {
+    padding: 20px 25px;
+    background: rgba(0, 128, 255, 0.1);
+    border-left: 4px solid #0080FF;
+    color: #0080FF;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.alert-success {
+    background: rgba(0, 255, 100, 0.1);
+    border-color: #00FF64;
+    color: #00FF64;
+}
+
+.alert-warning {
+    background: rgba(255, 200, 0, 0.1);
+    border-color: #FFC800;
+    color: #FFC800;
+}
+
+.alert-error {
+    background: rgba(255, 0, 100, 0.1);
+    border-color: #FF0064;
+    color: #FF0064;
+}
+
+.alert-title {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    margin-bottom: 8px;
+    letter-spacing: 1px;
+}
+
+

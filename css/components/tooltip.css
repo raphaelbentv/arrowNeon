@@ -1,0 +1,32 @@
+/* ============================================
+   TOOLTIP
+   ============================================ */
+
+.tooltip-container {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #0080FF;
+    color: #000;
+    padding: 8px 16px;
+    font-size: 12px;
+    white-space: nowrap;
+    margin-bottom: 10px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+    font-weight: 600;
+    z-index: 1000;
+}
+
+.tooltip-container:hover .tooltip {
+    opacity: 1;
+}
+
+

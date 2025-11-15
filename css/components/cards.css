@@ -1,0 +1,41 @@
+/* ============================================
+   CARDS
+   ============================================ */
+
+.card {
+    background: rgba(0, 128, 255, 0.1);
+    border: 2px solid rgba(0, 128, 255, 0.3);
+    padding: 30px;
+    backdrop-filter: blur(10px);
+    clip-path: polygon(
+        0 0,
+        calc(100% - 20px) 0,
+        100% 20px,
+        100% 100%,
+        20px 100%,
+        0 calc(100% - 20px)
+    );
+    transition: all 0.3s;
+}
+
+.card:hover {
+    border-color: #0080FF;
+    box-shadow: 0 0 30px rgba(0, 128, 255, 0.3);
+    transform: translateY(-5px);
+}
+
+.card-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 20px;
+    color: #0080FF;
+    margin-bottom: 15px;
+    letter-spacing: 2px;
+}
+
+.card-content {
+    color: rgba(0, 128, 255, 0.8);
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+

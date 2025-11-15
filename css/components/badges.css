@@ -1,0 +1,36 @@
+/* ============================================
+   BADGES & TAGS
+   ============================================ */
+
+.badge {
+    display: inline-block;
+    padding: 8px 16px;
+    background: rgba(0, 128, 255, 0.2);
+    border: 1px solid #0080FF;
+    color: #0080FF;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.badge-success {
+    background: rgba(0, 255, 100, 0.2);
+    border-color: #00FF64;
+    color: #00FF64;
+}
+
+.badge-warning {
+    background: rgba(255, 200, 0, 0.2);
+    border-color: #FFC800;
+    color: #FFC800;
+}
+
+.badge-error {
+    background: rgba(255, 0, 100, 0.2);
+    border-color: #FF0064;
+    color: #FF0064;
+}
+
+

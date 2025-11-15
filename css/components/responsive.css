@@ -1,0 +1,104 @@
+/* Responsive styles for all components */
+
+/* Buttons */
+@media (max-width: 768px) {
+    .btn-primary,
+    .btn-secondary,
+    .btn-ghost {
+        padding: 15px 35px;
+        font-size: 14px;
+        letter-spacing: 2px;
+    }
+    
+    .btn-small {
+        padding: 10px 25px;
+        font-size: 11px;
+    }
+    
+    .btn-icon {
+        width: 45px;
+        height: 45px;
+        font-size: 18px;
+    }
+}
+
+/* Cards */
+@media (max-width: 768px) {
+    .card {
+        padding: 25px;
+    }
+    
+    .card-title {
+        font-size: 18px;
+    }
+    
+    .card-content {
+        font-size: 14px;
+    }
+}
+
+/* Modal */
+@media (max-width: 768px) {
+    .modal {
+        width: 95%;
+        padding: 30px 20px;
+    }
+    
+    .modal-title {
+        font-size: 24px;
+    }
+    
+    .modal-close {
+        top: 15px;
+        right: 15px;
+        font-size: 20px;
+    }
+}
+
+/* Footer */
+@media (max-width: 1024px) {
+    .footer {
+        padding: 40px 30px 20px;
+    }
+    
+    .footer-content {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .footer {
+        padding: 30px 20px 15px;
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+    
+    .footer-section-title {
+        font-size: 16px;
+    }
+}
+
+/* Alerts */
+@media (max-width: 768px) {
+    .alert {
+        padding: 15px 20px;
+    }
+    
+    .alert-title {
+        font-size: 14px;
+    }
+}
+
+/* Progress Bar */
+@media (max-width: 768px) {
+    .progress-container {
+        height: 6px;
+    }
+}
+
+
+

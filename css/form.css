@@ -1,0 +1,177 @@
+/* Styles formulaire */
+
+.form-container {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 40px;
+    background: rgba(0, 128, 255, 0.08);
+    border: 2px solid rgba(0, 128, 255, 0.3);
+    backdrop-filter: blur(10px);
+    clip-path: polygon(
+        0 0,
+        calc(100% - 25px) 0,
+        100% 25px,
+        100% 100%,
+        25px 100%,
+        0 calc(100% - 25px)
+    );
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 10px;
+    color: #0080FF;
+    font-weight: 600;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 16px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.form-input,
+.form-textarea,
+.form-select {
+    width: 100%;
+    padding: 15px;
+    background: rgba(0, 0, 0, 0.5);
+    border: 2px solid rgba(0, 128, 255, 0.4);
+    color: #0080FF;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 16px;
+    transition: all 0.3s;
+}
+
+.form-input:focus,
+.form-textarea:focus,
+.form-select:focus {
+    outline: none;
+    border-color: #0080FF;
+    box-shadow: 0 0 20px rgba(0, 128, 255, 0.5);
+    background: rgba(0, 0, 0, 0.7);
+}
+
+.form-textarea {
+    min-height: 150px;
+    resize: vertical;
+}
+
+.form-select {
+    cursor: pointer;
+}
+
+.form-button {
+    padding: 20px 60px;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    background: rgba(0, 128, 255, 0.15);
+    border: 3px solid #0080FF;
+    color: #0080FF;
+    letter-spacing: 3px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s;
+    text-transform: uppercase;
+    backdrop-filter: blur(10px);
+    clip-path: polygon(
+        0 0,
+        calc(100% - 20px) 0,
+        100% 20px,
+        100% 100%,
+        20px 100%,
+        0 calc(100% - 20px)
+    );
+    width: 100%;
+    margin-top: 20px;
+}
+
+.form-button:before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: #0080FF;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s;
+    z-index: -1;
+}
+
+.form-button:hover {
+    color: #000;
+    box-shadow: 
+        0 0 40px rgba(0, 128, 255, 0.6),
+        inset 0 0 40px rgba(0, 128, 255, 0.2);
+}
+
+.form-button:hover:before {
+    transform: scaleX(1);
+}
+
+.calendly-link {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 20px 60px;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    background: rgba(0, 128, 255, 0.15);
+    border: 3px solid #0080FF;
+    color: #0080FF;
+    text-decoration: none;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    text-align: center;
+    transition: all 0.3s;
+    backdrop-filter: blur(10px);
+    clip-path: polygon(
+        0 0,
+        calc(100% - 20px) 0,
+        100% 20px,
+        100% 100%,
+        20px 100%,
+        0 calc(100% - 20px)
+    );
+}
+
+.calendly-link:hover {
+    background: rgba(0, 128, 255, 0.25);
+    box-shadow: 0 0 40px rgba(0, 128, 255, 0.6);
+    transform: translateY(-3px);
+}
+
+@media (max-width: 768px) {
+    .form-container {
+        padding: 30px 20px;
+    }
+    
+    .form-label {
+        font-size: 14px;
+    }
+    
+    .form-input,
+    .form-textarea,
+    .form-select {
+        padding: 12px;
+        font-size: 15px;
+    }
+    
+    .form-button {
+        padding: 18px 40px;
+        font-size: 16px;
+        letter-spacing: 2px;
+    }
+    
+    .calendly-link {
+        padding: 18px 40px;
+        font-size: 16px;
+        letter-spacing: 2px;
+        width: 100%;
+        display: block;
+    }
+}
+

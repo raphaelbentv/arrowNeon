@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEON GRID - Design System Components</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/components.css">
+    <style>
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .section {
+            margin-bottom: 80px;
+            padding: 40px;
+            background: rgba(0, 217, 255, 0.05);
+            border: 1px solid rgba(0, 217, 255, 0.2);
+            border-radius: 10px;
+        }
+
+        .section-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 36px;
+            color: #00D9FF;
+            margin-bottom: 40px;
+            text-align: center;
+            letter-spacing: 3px;
+            text-shadow: 0 0 20px rgba(0, 217, 255, 0.6);
+        }
+
+        .component-row {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+            align-items: center;
+        }
+
+        .component-label {
+            width: 100%;
+            font-size: 14px;
+            color: rgba(0, 217, 255, 0.7);
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .demo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .demo-item {
+            background: rgba(0, 217, 255, 0.05);
+            padding: 30px;
+            border: 1px solid rgba(0, 217, 255, 0.2);
+        }
+
+        .demo-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 16px;
+            color: #00D9FF;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+    </style>
+</head>
+<body>
+    <div class="scanlines"></div>
+    <div class="geometric-bg" id="geoBg"></div>
+
+    <div class="container">
+        <h1 style="font-family: 'Orbitron', sans-serif; font-size: 60px; text-align: center; margin-bottom: 20px; text-shadow: 0 0 30px rgba(0, 217, 255, 0.8);">
+            NEON GRID
+        </h1>
+        <p style="text-align: center; font-size: 20px; margin-bottom: 60px; color: rgba(0, 217, 255, 0.7);">
+            Design System Components Library
+        </p>
+
+        <!-- BUTTONS -->
+        <div class="section">
+            <h2 class="section-title">BOUTONS</h2>
+            
+            <div class="component-row">
+                <div class="component-label">Primary Button</div>
+                <button class="btn-primary">Demander une démo</button>
+            </div>
+
+            <div class="component-row">
+                <div class="component-label">Secondary Button</div>
+                <button class="btn-secondary">En savoir plus</button>
+            </div>
+
+            <div class="component-row">
+                <div class="component-label">Ghost Button</div>
+                <button class="btn-ghost">Découvrir</button>
+            </div>
+
+            <div class="component-row">
+                <div class="component-label">Small Buttons</div>
+                <button class="btn-small">Small</button>
+                <button class="btn-small">Télécharger</button>
+            </div>
+
+            <div class="component-row">
+                <div class="component-label">Icon Buttons</div>
+                <button class="btn-icon">↗</button>
+                <button class="btn-icon">→</button>
+                <button class="btn-icon">✓</button>
+                <button class="btn-icon">×</button>
+            </div>
+        </div>
+
+        <!-- INPUTS -->
+        <div class="section">
+            <h2 class="section-title">INPUTS & FORMS</h2>
+            
+            <div class="demo-grid">
+                <div class="input-group">
+                    <label class="input-label">Nom complet</label>
+                    <input type="text" class="input-field" placeholder="Jean Dupont">
+                </div>
+
+                <div class="input-group">
+                    <label class="input-label">Email</label>
+                    <input type="email" class="input-field" placeholder="jean@exemple.fr">
+                </div>
+
+                <div class="input-group">
+                    <label class="input-label">Téléphone</label>
+                    <input type="tel" class="input-field" placeholder="06 12 34 56 78">
+                </div>
+
+                <div class="input-group">
+                    <label class="input-label">Type d'établissement</label>
+                    <select class="input-field">
+                        <option>Sélectionnez...</option>
+                        <option>CFA</option>
+                        <option>École</option>
+                        <option>Université</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label class="input-label">Message</label>
+                <textarea class="input-field" placeholder="Décrivez votre projet..."></textarea>
+            </div>
+
+            <div class="component-row">
+                <div class="component-label">Checkboxes</div>
+                <label class="checkbox-container">
+                    <input type="checkbox" class="checkbox-input" checked>
+                    <span class="checkbox-label">J'accepte les conditions d'utilisation</span>
+                </label>
+                <label class="checkbox-container">
+                    <input type="checkbox" class="checkbox-input">
+                    <span class="checkbox-label">Recevoir la newsletter</span>
+                </label>
+            </div>
+
+            <div class="component-row">
+                <div class="component-label">Radio Buttons</div>
+                <label class="radio-container">
+                    <input type="radio" name="plan" class="radio-input" checked>
+                    <span class="radio-label">Plan Starter</span>
+                </label>
+                <label class="radio-container">
+                    <input type="radio" name="plan" class="radio-input">
+                    <span class="radio-label">Plan Pro</span>
+                </label>
+                <label class="radio-container">
+                    <input type="radio" name="plan" class="radio-input">
+                    <span class="radio-label">Plan Enterprise</span>
+                </label>
+            </div>
+        </div>
+
+        <!-- CARDS -->
+        <div class="section">
+            <h2 class="section-title">CARDS</h2>
+            
+            <div class="demo-grid">
+                <div class="card">
+                    <h3 class="card-title">Gestion Élèves</h3>
+                    <p class="card-content">
+                        Suivi complet des parcours avec bulletins automatisés et reporting en temps réel.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <h3 class="card-title">Alternance</h3>
+                    <p class="card-content">
+                        Module dédié aux contrats d'apprentissage et suivi des entreprises partenaires.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <h3 class="card-title">Analytics</h3>
+                    <p class="card-content">
+                        Tableaux de bord intelligents avec statistiques avancées et exports personnalisables.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- BADGES -->
+        <div class="section">
+            <h2 class="section-title">BADGES & TAGS</h2>
+            
+            <div class="component-row">
+                <span class="badge">Nouveau</span>
+                <span class="badge">Populaire</span>
+                <span class="badge">Beta</span>
+            </div>
+
+            <div class="component-row">
+                <span class="badge badge-success">Actif</span>
+                <span class="badge badge-warning">En attente</span>
+                <span class="badge badge-error">Désactivé</span>
+            </div>
+        </div>
+
+        <!-- ALERTS -->
+        <div class="section">
+            <h2 class="section-title">ALERTS</h2>
+            
+            <div class="alert">
+                <div class="alert-title">Information</div>
+                Votre demande a été prise en compte. Nous vous contacterons sous 48h.
+            </div>
+
+            <div class="alert alert-success">
+                <div class="alert-title">Succès</div>
+                Votre inscription a été validée avec succès !
+            </div>
+
+            <div class="alert alert-warning">
+                <div class="alert-title">Attention</div>
+                Certains champs obligatoires n'ont pas été remplis.
+            </div>
+
+            <div class="alert alert-error">
+                <div class="alert-title">Erreur</div>
+                Une erreur est survenue. Veuillez réessayer ultérieurement.
+            </div>
+        </div>
+
+        <!-- MODAL -->
+        <div class="section">
+            <h2 class="section-title">MODAL</h2>
+            
+            <button class="btn-primary" onclick="openModal('demoModal')">
+                Ouvrir Modal
+            </button>
+
+            <div id="demoModal" class="modal-overlay" style="display: none;">
+                <div class="modal">
+                    <button class="modal-close" onclick="closeModal('demoModal')">×</button>
+                    <h3 class="modal-title">Demander une démo</h3>
+                    <div class="modal-content">
+                        <p style="margin-bottom: 20px;">
+                            Remplissez le formulaire ci-dessous et notre équipe vous contactera dans les 24h.
+                        </p>
+                        <div class="input-group">
+                            <input type="email" class="input-field" placeholder="Votre email">
+                        </div>
+                        <button class="btn-primary" style="width: 100%;">Envoyer</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PROGRESS BAR -->
+        <div class="section">
+            <h2 class="section-title">PROGRESS BAR</h2>
+            
+            <div class="component-label">75% complété</div>
+            <div class="progress-container">
+                <div class="progress-bar" style="width: 75%;"></div>
+            </div>
+        </div>
+
+        <!-- LOADER -->
+        <div class="section">
+            <h2 class="section-title">LOADER</h2>
+            
+            <div style="display: flex; justify-content: center;">
+                <div class="loader"></div>
+            </div>
+        </div>
+
+        <!-- DIVIDER -->
+        <div class="section">
+            <h2 class="section-title">DIVIDER</h2>
+            
+            <p style="color: rgba(0, 217, 255, 0.7);">Contenu au-dessus</p>
+            <div class="divider"></div>
+            <p style="color: rgba(0, 217, 255, 0.7);">Contenu en-dessous</p>
+        </div>
+
+        <!-- TOOLTIP -->
+        <div class="section">
+            <h2 class="section-title">TOOLTIP</h2>
+            
+            <div style="text-align: center; padding: 40px;">
+                <div class="tooltip-container">
+                    <button class="btn-secondary">Survolez-moi</button>
+                    <div class="tooltip">Ceci est un tooltip</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/components/modal.js"></script>
+</body>
+</html>
+
+
+
