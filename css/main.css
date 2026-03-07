@@ -1938,6 +1938,7 @@ body {
     background: rgba(0, 0, 0, 0.55);
     border: 2px solid rgba(0, 128, 255, 0.25);
     border-top-width: 4px;
+    border-left-width: 2px;
     padding: 0.75rem;
     display: flex;
     flex-direction: column;
@@ -1948,9 +1949,30 @@ body {
 }
 
 .arrow-student-card:hover {
-    border-top-width: 6px;
-    box-shadow: 0 12px 48px rgba(0, 128, 255, 0.4);
+    border-left-width: 6px;
     transform: translateY(-2px);
+    box-shadow: 
+        -8px 0 15px var(--card-neon-color, rgba(0, 128, 255, 0.6)),
+        -8px 0 30px var(--card-neon-color, rgba(0, 128, 255, 0.4)),
+        -8px 0 45px var(--card-neon-color, rgba(0, 128, 255, 0.2)),
+        0 12px 48px rgba(0, 128, 255, 0.2);
+}
+
+.arrow-student-card:hover::before {
+    content: '';
+    position: absolute;
+    left: -4px;
+    top: 0;
+    bottom: 0;
+    width: 8px;
+    background: var(--card-neon-color, #0080FF);
+    box-shadow: 
+        0 0 10px var(--card-neon-color, #0080FF),
+        0 0 20px var(--card-neon-color, #0080FF),
+        0 0 30px var(--card-neon-color, #0080FF);
+    z-index: -1;
+    opacity: 0.7;
+    filter: blur(3px);
 }
 
 /* Card Header */
