@@ -3,7 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arrow - Landing Page Cyberpunk Custom</title>
+    <title>Arrow - Plateforme de gestion educative nouvelle generation</title>
+    <meta name="description" content="Arrow - Plateforme de gestion educative nouvelle generation. Gerez vos eleves, notes, bulletins et alternances avec un systeme moderne et performant.">
+    <meta property="og:title" content="Arrow - Plateforme de gestion educative nouvelle generation">
+    <meta property="og:description" content="Arrow - Plateforme de gestion educative nouvelle generation. Gerez vos eleves, notes, bulletins et alternances avec un systeme moderne et performant.">
+    <meta property="og:type" content="website">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/nav.css">
     <link rel="stylesheet" href="css/form.css">
@@ -26,7 +30,7 @@
                 <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
                 <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
             </ul>
-            <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+            <button class="nav-toggle" id="navToggle" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="navMenu">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -34,7 +38,7 @@
         </div>
     </nav>
 
-    <div class="main-container">
+    <main class="main-container">
         <!-- Header -->
         <div class="cyber-header">
             <h1 class="cyber-logo">ARROW</h1>
@@ -72,7 +76,7 @@
                         <div class="arrow-interface">
                             <!-- Header -->
                             <div class="arrow-header">
-                                <h1 class="arrow-page-title">Gestion des Étudiants</h1>
+                                <h2 class="arrow-page-title">Gestion des Étudiants</h2>
                                 <button class="arrow-add-button">
                                     <span>+</span>
                                     <span>Nouvel(le) étudiant(e)</span>
@@ -848,7 +852,7 @@
             
             <!-- CTA Mode Brutal -->
             <div style="text-align: center; margin-top: 40px;">
-                <button class="brutal-mode-cta" onclick="openModal('brutalModeModal')">
+                <button class="brutal-mode-cta" data-modal-open="brutalModeModal">
                     <span class="brutal-cta-text">PASSER EN MODE BRUTAL</span>
                     <span class="brutal-cta-icon">⚡</span>
                 </button>
@@ -967,22 +971,22 @@
         <div class="cyber-cta">
             <a href="contact.html" class="cyber-button" style="text-decoration: none; display: inline-block;">Demander une démo</a>
         </div>
-    </div>
+    </main>
 
     <!-- Modal Mode Brutal -->
     <div id="brutalModeModal" class="modal-overlay brutal-modal-overlay" style="display: none;">
         <div class="brutal-modal-container">
-            <button class="brutal-modal-close" onclick="closeModal('brutalModeModal')">×</button>
+            <button class="brutal-modal-close" data-modal-close="brutalModeModal" aria-label="Fermer">×</button>
             <div class="brutal-modal-content">
                 <!-- HERO SECTION -->
                 <section class="brutal-hero">
                     <div class="brutal-hero-bg"></div>
                     <div class="brutal-hero-content">
                         <p class="brutal-hero-eyebrow">Enfin une solution du 21ème siècle</p>
-                        <h1 class="brutal-hero-title">
+                        <h2 class="brutal-hero-title">
                             Parce qu'il est temps<br>
                             de sortir de Windows 95
-                        </h1>
+                        </h2>
                         <p class="brutal-hero-subtitle">
                             Vos étudiants ont des smartphones. Vos profs utilisent Netflix.<br>
                             Alors pourquoi votre plateforme de gestion ressemble-t-elle encore à Excel 2003 ?
