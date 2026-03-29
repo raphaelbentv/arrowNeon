@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro'
 ---
-<BaseLayout title="Contact — Arrow" activePage="contact">
+<BaseLayout title="Contact — Arrow" description="Contactez l'équipe Arrow pour une démonstration personnalisée de la plateforme." activePage="contact">
   <div class="main-container">
     <div class="cyber-header">
       <h1 class="cyber-logo">CONTACT &amp; DÉMO</h1>
@@ -54,8 +54,79 @@ import BaseLayout from '../layouts/BaseLayout.astro'
                 <textarea id="message" name="message" class="form-textarea" required></textarea>
               </div>
 
-              <button type="submit" class="form-button">Envoyer la demande</button>
+              <div id="formSuccess" role="alert" aria-live="polite" style="display:none; color: var(--accent-cyan); border: 1px solid var(--accent-cyan); border-radius: var(--radius-md); padding: 1rem; margin-bottom: 1rem; text-align: center;">
+                Votre demande a bien été envoyée. Nous vous répondrons sous 24 h.
+              </div>
+              <div id="formError" role="alert" aria-live="polite" style="display:none; color: var(--destructive); border: 1px solid var(--destructive); border-radius: var(--radius-md); padding: 1rem; margin-bottom: 1rem; text-align: center;">
+                Une erreur est survenue. Veuillez réessayer.
+              </div>
+              <button type="submit" class="form-button" id="formSubmit">Envoyer la demande</button>
             </form>
+
+            <script>
+              const form = document.getElementById('contactForm') as HTMLFormElement | null
+              const successMsg = document.getElementById('formSuccess') as HTMLElement | null
+              const errorMsg = document.getElementById('formError') as HTMLElement | null
+              const submitBtn = document.getElementById('formSubmit') as HTMLButtonElement | null
+
+              // Validation en temps réel
+              document.querySelectorAll<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>(
+                '#contactForm input, #contactForm select, #contactForm textarea'
+              ).forEach(field => {
+                field.addEventListener('blur', () => {
+                  if (!field.checkValidity()) {
+                    field.setAttribute('aria-invalid', 'true')
+                  } else {
+                    field.removeAttribute('aria-invalid')
+                  }
+                })
+                field.addEventListener('input', () => {
+                  if (field.checkValidity()) {
+                    field.removeAttribute('aria-invalid')
+                  }
+                })
+              })
+
+              form?.addEventListener('submit', async (e) => {
+                e.preventDefault()
+                if (!form.checkValidity()) {
+                  form.querySelectorAll<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>(
+                    'input, select, textarea'
+                  ).forEach(field => {
+                    if (!field.checkValidity()) field.setAttribute('aria-invalid', 'true')
+                  })
+                  return
+                }
+
+                if (submitBtn) {
+                  submitBtn.disabled = true
+                  submitBtn.textContent = 'Envoi en cours...'
+                }
+                successMsg && (successMsg.style.display = 'none')
+                errorMsg && (errorMsg.style.display = 'none')
+
+                try {
+                  const res = await fetch(form.action || '/', {
+                    method: 'POST',
+                    body: new FormData(form),
+                    headers: { 'Accept': 'application/json' },
+                  })
+                  if (res.ok) {
+                    form.reset()
+                    successMsg && (successMsg.style.display = 'block')
+                  } else {
+                    throw new Error('server error')
+                  }
+                } catch {
+                  errorMsg && (errorMsg.style.display = 'block')
+                } finally {
+                  if (submitBtn) {
+                    submitBtn.disabled = false
+                    submitBtn.textContent = 'Envoyer la demande'
+                  }
+                }
+              })
+            </script>
 
             <div style="text-align: center; margin-top: 40px;">
               <p style="color: rgba(0, 217, 255, 0.8); margin-bottom: 20px; font-size: 18px;">OU</p>

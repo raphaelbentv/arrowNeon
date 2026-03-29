@@ -16,7 +16,7 @@ const posts = await getBlogPosts()
         <div class="blog-grid">
           {posts.map((post: any) => (
             <a href={`/blog/${post.slug.current}`} class="blog-card">
-              {post.coverImage && <img src={post.coverImage} alt={post.title} class="blog-card-image" />}
+              {post.coverImage && <img src={post.coverImage} alt={post.title} class="blog-card-image" loading="lazy" width="640" height="360" />}
               <div class="blog-card-content">
                 {post.tags && <span class="blog-tag">{post.tags[0]}</span>}
                 <h2 class="blog-card-title">{post.title}</h2>

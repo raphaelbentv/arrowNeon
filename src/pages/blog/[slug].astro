@@ -12,12 +12,12 @@ const { slug } = Astro.params
 const post = await getBlogPost(slug as string)
 if (!post) return Astro.redirect('/blog')
 ---
-<BaseLayout title={`${post.title} — Arrow`} activePage="blog">
+<BaseLayout title={`${post.title} — Arrow`} description={post.excerpt || `Article de blog Arrow : ${post.title}`} activePage="blog">
   <div class="main-container">
     <article class="blog-post">
       <header class="blog-post-header">
         <a href="/blog" class="blog-back">← Retour au blog</a>
-        {post.coverImage && <img src={post.coverImage} alt={post.title} class="blog-post-cover" />}
+        {post.coverImage && <img src={post.coverImage} alt={post.title} class="blog-post-cover" loading="lazy" width="1200" height="630" />}
         <div class="blog-post-meta">
           {post.tags?.map((tag: string) => <span class="blog-tag">{tag}</span>)}
           <span class="blog-post-date">{new Date(post.publishedAt).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })}</span>

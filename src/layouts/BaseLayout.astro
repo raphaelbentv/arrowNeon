@@ -1,13 +1,18 @@
 ---
 interface Props {
   title?: string
+  description?: string
   activePage?: string
 }
 
 const {
   title = 'Arrow — Plateforme de gestion éducative',
+  description = 'Arrow centralise la gestion de vos formations, de vos élèves et de vos résultats dans une interface claire et rapide.',
   activePage = '',
 } = Astro.props
+
+const siteUrl = 'https://arrow.venio.fr'
+const currentUrl = `${siteUrl}${Astro.url.pathname}`
 ---
 <!DOCTYPE html>
 <html lang="fr">
@@ -15,6 +20,36 @@ const {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{title}</title>
+  <meta name="description" content={description}>
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content={currentUrl}>
+  <meta property="og:title" content={title}>
+  <meta property="og:description" content={description}>
+  <meta property="og:site_name" content="Arrow">
+  <meta property="og:locale" content="fr_FR">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content={title}>
+  <meta name="twitter:description" content={description}>
+
+  <!-- Schema.org Organization -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Arrow",
+    "applicationCategory": "EducationalApplication",
+    "description": "Plateforme de gestion éducative pour établissements, CFA et formations professionnelles.",
+    "url": siteUrl,
+    "publisher": {
+      "@type": "Organization",
+      "name": "Arrow / Venio",
+      "url": siteUrl
+    }
+  })} />
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="stylesheet" href="/styles/arrow.css">
   <slot name="head" />
@@ -37,15 +72,35 @@ const {
         <li class="nav-item"><a href="/blog" class={`nav-link${activePage === 'blog' ? ' active' : ''}`}>Blog</a></li>
         <li class="nav-item"><a href="/contact" class={`nav-link${activePage === 'contact' ? ' active' : ''}`}>Contact</a></li>
       </ul>
-      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
-        <span></span>
-        <span></span>
-        <span></span>
+      <button class="nav-toggle" id="navToggle" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="navMenu">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
       </button>
     </div>
   </nav>
 
   <slot />
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <a href="/" class="footer-logo">ARROW</a>
+        <nav aria-label="Liens du footer">
+          <ul class="footer-links">
+            <li><a href="/fonctionnalites" class="footer-link">Fonctionnalités</a></li>
+            <li><a href="/pour-qui" class="footer-link">Pour qui ?</a></li>
+            <li><a href="/tarifs" class="footer-link">Tarifs</a></li>
+            <li><a href="/a-propos" class="footer-link">À propos</a></li>
+            <li><a href="/blog" class="footer-link">Blog</a></li>
+            <li><a href="/contact" class="footer-link">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+      <p class="footer-copy">&copy; {new Date().getFullYear()} Arrow / Venio. Tous droits réservés.</p>
+    </div>
+  </footer>
 
   <script src="/js/main.js" is:inline></script>
 </body>
