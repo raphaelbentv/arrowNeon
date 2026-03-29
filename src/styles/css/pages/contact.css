@@ -1,0 +1,32 @@
+/* css/pages/contact.css */
+.contact-section {
+    padding: var(--spacing-4xl) 0;
+    display: flex; justify-content: center;
+}
+.contact-orbit {
+    position: relative;
+    width: 100%; max-width: 560px;
+}
+.contact-orbit::before,
+.contact-orbit::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid var(--primary-15);
+    pointer-events: none;
+    z-index: 0;
+}
+.contact-orbit::before { width: 660px; height: 200px; top: 50%; left: 50%; transform: translate(-50%, -50%); }
+.contact-orbit::after  { width: 500px; height: 140px; top: 50%; left: 50%; transform: translate(-50%, -50%); }
+.contact-form-card {
+    position: relative; z-index: var(--z-content);
+    background: var(--card);
+    border: 1px solid var(--primary-15);
+    border-radius: var(--radius-xl);
+    padding: var(--spacing-2xl);
+    box-shadow: var(--theme-box-shadow);
+}
+.contact-form-card h2 { margin-bottom: var(--spacing-2xl); text-align: center; }
+.form-group { margin-bottom: var(--spacing-lg); }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: var(--spacing-md); }
+@media (max-width: 640px) { .form-row { grid-template-columns: 1fr; } }

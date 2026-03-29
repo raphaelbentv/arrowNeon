@@ -1,0 +1,14 @@
+/* ============================================
+   DIVIDER
+   ============================================ */
+
+.divider {
+    height: 2px;
+    background: linear-gradient(90deg, 
+        transparent, 
+        rgba(0, 128, 255, 0.5), 
+        transparent);
+    margin: 40px 0;
+}
+
+

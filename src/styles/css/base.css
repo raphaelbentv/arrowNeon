@@ -1,0 +1,71 @@
+/* css/base.css */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-family);
+  background: var(--background);
+  color: var(--foreground);
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* Masquer l'ancien fond géométrique (géré par main.js via #geoBg) */
+#geoBg { display: none !important; }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--background); }
+::-webkit-scrollbar-thumb { background: var(--primary-30); border-radius: 3px; }
+
+/* Conteneur principal */
+.main-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-xl);
+  padding-top: calc(64px + var(--spacing-4xl));
+}
+
+/* Scanlines */
+.scanlines {
+  position: fixed; inset: 0; pointer-events: none; z-index: var(--z-content);
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0px, transparent 3px,
+    rgba(0,0,0,0.08) 3px, rgba(0,0,0,0.08) 4px
+  );
+}
+
+/* Grille vaporwave */
+.grid-bg {
+  position: fixed; inset: 0; pointer-events: none; z-index: var(--z-base);
+  overflow: hidden;
+}
+.grid-bg::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: -50%; right: -50%;
+  height: 60%;
+  background-image:
+    linear-gradient(var(--primary-5) 1px, transparent 1px),
+    linear-gradient(90deg, var(--primary-5) 1px, transparent 1px);
+  background-size: 40px 40px;
+  transform: perspective(600px) rotateX(60deg) translateY(20%);
+  transform-origin: bottom center;
+  animation: grid-move 20s linear infinite;
+  will-change: background-position;
+}
+@keyframes grid-move {
+  from { background-position: 0 0; }
+  to   { background-position: 0 -40px; }
+}
+
+@media (max-width: 768px) {
+  .grid-bg { display: none; }
+  .main-container { padding-left: var(--spacing-md); padding-right: var(--spacing-md); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .grid-bg::after { animation: none; }
+}

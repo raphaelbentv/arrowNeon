@@ -1,0 +1,13 @@
+/* css/components/alerts.css */
+.alert {
+  display: flex; gap: var(--spacing-md); align-items: flex-start;
+  padding: var(--spacing-md) var(--spacing-lg);
+  border-radius: var(--radius-md);
+  border: 1px solid transparent;
+  font-size: 0.9rem;
+}
+.alert-info    { background: var(--primary-10);  border-color: var(--primary-20);  color: var(--primary); }
+.alert-success { background: rgba(0,255,136,0.08); border-color: rgba(0,255,136,0.2); color: #00ff88; }
+.alert-warning { background: rgba(255,215,0,0.08); border-color: rgba(255,215,0,0.2); color: #ffd700; }
+.alert-error   { background: rgba(239,68,68,0.08); border-color: rgba(239,68,68,0.2); color: #ef4444; }
+.alert-title   { font-weight: 700; margin-bottom: 2px; }

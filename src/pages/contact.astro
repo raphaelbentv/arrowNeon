@@ -1,0 +1,71 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+---
+<BaseLayout title="Contact — Arrow" activePage="contact">
+  <div class="main-container">
+    <div class="cyber-header">
+      <h1 class="cyber-logo">CONTACT &amp; DÉMO</h1>
+      <p class="cyber-tagline">PRENEZ RENDEZ-VOUS POUR UNE DÉMONSTRATION</p>
+    </div>
+
+    <section class="contact-section">
+      <div class="contact-orbit">
+        <div class="card contact-form-card">
+          <div class="contact-container">
+            <div class="contact-info">
+              <h2>Contactez-nous</h2>
+              <p>Remplissez le formulaire ci-dessous ou prenez directement rendez-vous pour une démonstration personnalisée.</p>
+            </div>
+
+            <form class="form-container" id="contactForm">
+              <div class="form-group">
+                <label for="nom" class="form-label">Nom complet *</label>
+                <input type="text" id="nom" name="nom" class="form-input" required>
+              </div>
+
+              <div class="form-group">
+                <label for="email" class="form-label">Email *</label>
+                <input type="email" id="email" name="email" class="form-input" required>
+              </div>
+
+              <div class="form-group">
+                <label for="telephone" class="form-label">Téléphone</label>
+                <input type="tel" id="telephone" name="telephone" class="form-input">
+              </div>
+
+              <div class="form-group">
+                <label for="etablissement" class="form-label">Établissement *</label>
+                <input type="text" id="etablissement" name="etablissement" class="form-input" required>
+              </div>
+
+              <div class="form-group">
+                <label for="type" class="form-label">Type d'établissement *</label>
+                <select id="type" name="type" class="form-select" required>
+                  <option value="">Sélectionnez...</option>
+                  <option value="ecole">École</option>
+                  <option value="formation-pro">Formation professionnelle</option>
+                  <option value="cfa">CFA</option>
+                  <option value="autre">Autre</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="message" class="form-label">Message *</label>
+                <textarea id="message" name="message" class="form-textarea" required></textarea>
+              </div>
+
+              <button type="submit" class="form-button">Envoyer la demande</button>
+            </form>
+
+            <div style="text-align: center; margin-top: 40px;">
+              <p style="color: rgba(0, 217, 255, 0.8); margin-bottom: 20px; font-size: 18px;">OU</p>
+              <a href="https://calendly.com/arrow-demo" target="_blank" class="calendly-link">
+                Prendre rendez-vous directement
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</BaseLayout>

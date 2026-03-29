@@ -1,0 +1,13 @@
+/* css/components/badges.css */
+.badge, [class^="badge-"], [class*=" badge-"] {
+  display: inline-flex; align-items: center;
+  padding: 3px 10px;
+  border-radius: var(--radius-sm);
+  font-size: 0.7rem; font-weight: 600;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  border: 1px solid transparent;
+}
+.badge-ok, .arrow-badge          { background: rgba(0,255,136,0.08); color: #00ff88; border-color: rgba(0,255,136,0.2); }
+.badge-warn, .arrow-badge.en-attente { background: rgba(255,215,0,0.08); color: #ffd700; border-color: rgba(255,215,0,0.2); }
+.badge-err                       { background: rgba(239,68,68,0.08); color: #ef4444; border-color: rgba(239,68,68,0.2); }
+.badge-info                      { background: var(--primary-10); color: var(--primary); border-color: var(--primary-20); }

@@ -1,0 +1,55 @@
+/* css/components/cards.css */
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-xl);
+  transition: box-shadow var(--transition-slow), transform var(--transition-slow);
+}
+.card:hover {
+  box-shadow: var(--theme-box-shadow);
+  transform: translateY(-4px);
+}
+
+.card-title {
+  font-family: var(--font-family);
+  font-size: 1.1rem; font-weight: 700;
+  color: var(--card-foreground);
+  margin-bottom: var(--spacing-md);
+}
+.card-content { color: var(--muted-foreground); font-size: 0.95rem; line-height: 1.6; }
+
+/* Card étudiants Arrow */
+.student-card {
+  background: var(--primary-5);
+  border: 1px solid var(--primary-15);
+  border-left: 3px solid var(--primary);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-md);
+  transition: box-shadow var(--transition-slow);
+}
+.student-card:hover { box-shadow: var(--theme-box-shadow-hover); }
+
+.arrow-student-card {
+  background: var(--primary-5);
+  border: 1px solid var(--primary-15);
+  border-top: 2px solid var(--primary);
+  border-left: 2px solid var(--primary);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-md);
+  transition: box-shadow var(--transition-slow);
+}
+.arrow-student-card:hover { box-shadow: var(--theme-box-shadow-hover); }
+
+.arrow-student-name { color: var(--primary); font-weight: 700; font-size: 1rem; }
+.arrow-student-number,
+.arrow-student-email { color: var(--muted-foreground); font-size: 0.8rem; }
+.arrow-student-initials {
+  width: 40px; height: 40px; border-radius: 50%;
+  border: 2px solid var(--primary);
+  color: var(--primary); font-weight: 800;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.85rem; margin-bottom: var(--spacing-sm);
+}
+.arrow-neon-value { color: var(--primary); font-weight: 800; font-size: 1.5rem; }
+.arrow-neon-label, .arrow-neon-unit { color: var(--muted-foreground); font-size: 0.7rem; text-transform: uppercase; }

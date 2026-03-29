@@ -1,0 +1,24 @@
+/* css/components/modal.css */
+.modal-overlay {
+  position: fixed; inset: 0; z-index: var(--z-modal);
+  background: rgba(5,6,15,0.85);
+  backdrop-filter: blur(8px);
+  display: none; align-items: center; justify-content: center;
+}
+/* JS (modal.js) contrôle l'affichage via style.display = 'flex'/'none' */
+.modal {
+  background: var(--card);
+  border: 1px solid var(--primary-15);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-2xl);
+  max-width: 560px; width: 90%;
+  box-shadow: var(--theme-box-shadow);
+  position: relative;
+}
+.modal-close {
+  position: absolute; top: var(--spacing-md); right: var(--spacing-md);
+  background: none; border: none; color: var(--muted-foreground);
+  font-size: 1.2rem; cursor: pointer; transition: color var(--transition-base);
+}
+.modal-close:hover { color: var(--primary); }
+.modal-title { font-size: 1.3rem; font-weight: 700; color: var(--card-foreground); margin-bottom: var(--spacing-md); }

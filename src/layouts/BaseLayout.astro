@@ -1,0 +1,52 @@
+---
+interface Props {
+  title?: string
+  activePage?: string
+}
+
+const {
+  title = 'Arrow — Plateforme de gestion éducative',
+  activePage = '',
+} = Astro.props
+---
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{title}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="/styles/arrow.css">
+  <slot name="head" />
+</head>
+<body>
+  <div class="scanlines"></div>
+  <div class="geometric-bg" id="geoBg"></div>
+  <div class="grid-bg" aria-hidden="true"></div>
+
+  <!-- Navigation -->
+  <nav class="nav-container">
+    <div class="nav-wrapper">
+      <a href="/" class="nav-logo">ARROW</a>
+      <ul class="nav-menu" id="navMenu">
+        <li class="nav-item"><a href="/" class={`nav-link${activePage === 'accueil' ? ' active' : ''}`}>Accueil</a></li>
+        <li class="nav-item"><a href="/fonctionnalites" class={`nav-link${activePage === 'fonctionnalites' ? ' active' : ''}`}>Fonctionnalités</a></li>
+        <li class="nav-item"><a href="/pour-qui" class={`nav-link${activePage === 'pour-qui' ? ' active' : ''}`}>Pour qui ?</a></li>
+        <li class="nav-item"><a href="/tarifs" class={`nav-link${activePage === 'tarifs' ? ' active' : ''}`}>Tarifs</a></li>
+        <li class="nav-item"><a href="/a-propos" class={`nav-link${activePage === 'a-propos' ? ' active' : ''}`}>À propos</a></li>
+        <li class="nav-item"><a href="/blog" class={`nav-link${activePage === 'blog' ? ' active' : ''}`}>Blog</a></li>
+        <li class="nav-item"><a href="/contact" class={`nav-link${activePage === 'contact' ? ' active' : ''}`}>Contact</a></li>
+      </ul>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <slot />
+
+  <script src="/js/main.js" is:inline></script>
+</body>
+</html>

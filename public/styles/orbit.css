@@ -1,0 +1,135 @@
+/* css/orbit.css */
+
+/* ── Système orbital (desktop) ─────────────────────── */
+.orbit-system {
+  position: relative;
+  width: 600px;
+  height: 400px;
+  margin: 0 auto;
+}
+
+/* Sphère centrale */
+.orbit-sphere {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -55%);
+  width: 160px; height: 160px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%,
+    rgba(61,155,255,0.5) 0%,
+    rgba(61,155,255,0.08) 60%,
+    transparent 100%);
+  border: 1px solid rgba(61,155,255,0.4);
+  box-shadow:
+    0 0 80px rgba(61,155,255,0.25),
+    inset 0 0 50px rgba(61,155,255,0.1);
+  animation: glow-pulse 8s ease-in-out infinite;
+  z-index: var(--z-orbit);
+}
+
+/* Variantes */
+.orbit-sphere--sm {
+  width: 48px; height: 48px;
+  position: static; transform: none;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.4rem;
+  flex-shrink: 0;
+}
+.orbit-sphere--md {
+  width: 100px; height: 100px;
+  position: static; transform: none;
+  margin: 0 auto var(--spacing-md);
+}
+
+/* Anneaux */
+.orbit-ring {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  border: 1px solid rgba(61,155,255,0.1);
+  animation: orbit-ring-rotate 30s linear infinite;
+}
+/* nth-child 1/2/3 car les 3 .orbit-ring sont les 3 premiers enfants de .orbit-system */
+.orbit-ring:nth-child(1) { width: 520px; height: 180px; animation-duration: 30s; }
+.orbit-ring:nth-child(2) { width: 420px; height: 140px; animation-duration: 22s; animation-direction: reverse; }
+.orbit-ring:nth-child(3) { width: 300px; height: 100px; animation-duration: 40s; }
+
+/* Variantes colorées (pour-qui.html) */
+.orbit-ring--cyan   { border-color: rgba(0,229,255,0.25); }
+.orbit-ring--violet { border-color: rgba(139,92,246,0.25); }
+.orbit-ring--primary { border-color: rgba(61,155,255,0.25); }
+
+/* Orbit cards (position absolue sur desktop) */
+.orbit-card {
+  position: absolute;
+  background: var(--card);
+  border: 1px solid var(--primary-15);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-md);
+  min-width: 130px;
+  z-index: var(--z-content);
+  box-shadow: var(--surface-panel-shadow);
+}
+.orbit-card--top-left     { top: 10%; left: 2%; }
+.orbit-card--top-right    { top: 10%; right: 2%; }
+.orbit-card--bottom-left  { bottom: 20%; left: 4%; }
+.orbit-card--bottom-right { bottom: 20%; right: 4%; }
+
+.orbit-card-value {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--primary);
+  text-shadow: var(--text-glow);
+}
+.orbit-card-label {
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted-foreground);
+  margin-top: var(--spacing-xs);
+}
+
+/* ── Animations ─────────────────────────────────────── */
+@keyframes glow-pulse {
+  0%, 100% { box-shadow: 0 0 80px rgba(61,155,255,0.25), inset 0 0 50px rgba(61,155,255,0.1); }
+  50%       { box-shadow: 0 0 120px rgba(61,155,255,0.40), inset 0 0 70px rgba(61,155,255,0.15); }
+}
+
+@keyframes orbit-ring-rotate {
+  from { transform: translate(-50%,-50%) rotate(0deg); }
+  to   { transform: translate(-50%,-50%) rotate(360deg); }
+}
+
+/* Grid mobile masquée par défaut — ne s'affiche que sur mobile */
+.orbit-cards-grid { display: none; }
+
+/* ── Responsive : passage en grille 2×2 sous 768px ─── */
+@media (max-width: 768px) {
+  .orbit-system {
+    width: 100%; height: auto;
+    position: static;
+    display: flex; flex-direction: column; align-items: center;
+    gap: var(--spacing-md);
+  }
+  .orbit-ring { display: none; }
+  .orbit-sphere {
+    position: static; transform: none;
+    width: 100px; height: 100px;
+  }
+  .orbit-cards-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-sm);
+    width: 100%;
+  }
+  .orbit-card {
+    position: static;
+    min-width: unset;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .orbit-sphere { animation: none; }
+  .orbit-ring   { animation: none; }
+}

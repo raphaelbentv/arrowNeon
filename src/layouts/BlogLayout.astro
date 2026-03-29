@@ -1,0 +1,62 @@
+---
+import BaseLayout from './BaseLayout.astro'
+
+interface Props {
+  title?: string
+  description?: string
+  image?: string
+}
+
+const {
+  title = 'Blog — Arrow',
+  description = 'Actualités, guides et ressources pour les établissements de formation',
+  image = '',
+} = Astro.props
+---
+<BaseLayout title={title} activePage="blog">
+  <Fragment slot="head">
+    <meta name="description" content={description}>
+    <meta property="og:title" content={title}>
+    <meta property="og:description" content={description}>
+    {image && <meta property="og:image" content={image}>}
+    <meta property="og:type" content="article">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content={title}>
+    <meta name="twitter:description" content={description}>
+    {image && <meta name="twitter:image" content={image}>}
+  </Fragment>
+
+  <div class="blog-breadcrumb-bar">
+    <div class="main-container">
+      <nav class="blog-breadcrumb" aria-label="Fil d'Ariane">
+        <a href="/">Accueil</a>
+        <span aria-hidden="true">›</span>
+        <a href="/blog">Blog</a>
+        <slot name="breadcrumb" />
+      </nav>
+    </div>
+  </div>
+
+  <slot />
+</BaseLayout>
+
+<style>
+  .blog-breadcrumb-bar {
+    border-bottom: 1px solid var(--border);
+    padding: 0.5rem 0;
+  }
+  .blog-breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    color: var(--muted-foreground);
+  }
+  .blog-breadcrumb a {
+    color: var(--primary);
+    text-decoration: none;
+  }
+  .blog-breadcrumb a:hover {
+    text-decoration: underline;
+  }
+</style>

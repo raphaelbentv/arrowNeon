@@ -1,0 +1,66 @@
+/* css/tokens.css */
+:root {
+  /* Couleurs */
+  --primary: #3d9bff;
+  --accent-cyan:   #00E5FF;
+  --accent-violet: #8b5cf6;
+  --primary-5:  rgba(61,155,255,0.05);
+  --primary-10: rgba(61,155,255,0.10);
+  --primary-15: rgba(61,155,255,0.15);
+  --primary-20: rgba(61,155,255,0.20);
+  --primary-30: rgba(61,155,255,0.30);
+  --primary-60: rgba(61,155,255,0.60);
+
+  /* Sémantique */
+  --background:       #05060f;
+  --foreground:       #e2e8f0;
+  --card:             #0f172a;
+  --card-foreground:  #f8fafc;
+  --muted:            #1f2937;
+  --muted-foreground: #94a3b8;
+  --destructive:      #ef4444;
+  --border:           rgba(255,255,255,0.08);
+
+  /* Effets */
+  --text-glow:              0 0 20px var(--primary);
+  --theme-box-shadow:       0 0 40px rgba(61,155,255,0.30);
+  --theme-box-shadow-hover: 0 0 60px rgba(61,155,255,0.50);
+  --surface-panel-shadow:   0 0 22px rgba(61,155,255,0.25);
+
+  /* Typographie */
+  --font-family: 'League Spartan', sans-serif;
+
+  /* Spacing */
+  --spacing-xs:  4px;
+  --spacing-sm:  8px;
+  --spacing-md:  16px;
+  --spacing-lg:  24px;
+  --spacing-xl:  32px;
+  --spacing-2xl: 48px;
+  --spacing-3xl: 64px;
+  --spacing-4xl: 96px;
+
+  /* Border radius */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 12px;
+  --radius-xl: 20px;
+
+  /* Transitions */
+  --transition-base: 0.2s ease;
+  --transition-slow: 0.3s ease;
+
+  /* Z-index */
+  --z-base:    1;
+  --z-orbit:   2;
+  --z-content: 5;
+  --z-nav:     100;
+  --z-modal:   200;
+  --z-tooltip: 300;
+
+  /* Breakpoints (référence doc — non utilisables dans media queries) */
+  --bp-sm: 640px;
+  --bp-md: 768px;
+  --bp-lg: 1024px;
+  --bp-xl: 1280px;
+}

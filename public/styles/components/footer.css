@@ -1,0 +1,19 @@
+/* css/components/footer.css */
+footer, .footer {
+  background: var(--card);
+  border-top: 1px solid var(--border);
+  padding: var(--spacing-3xl) var(--spacing-xl);
+  margin-top: var(--spacing-4xl);
+  color: var(--muted-foreground);
+  font-size: 0.85rem;
+}
+.footer-logo {
+  font-size: 1.2rem; font-weight: 800;
+  color: var(--primary);
+  text-shadow: var(--text-glow);
+  letter-spacing: 0.15em;
+}
+.footer-links { display: flex; gap: var(--spacing-xl); flex-wrap: wrap; }
+.footer-link { color: var(--muted-foreground); transition: color var(--transition-base); }
+.footer-link:hover { color: var(--primary); }
+.footer-copy { margin-top: var(--spacing-xl); color: var(--muted-foreground); opacity: 0.6; }

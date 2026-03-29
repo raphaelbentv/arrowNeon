@@ -1,0 +1,35 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro'
+import { getBlogPosts } from '../../lib/sanity'
+const posts = await getBlogPosts()
+---
+<BaseLayout title="Blog — Arrow" activePage="blog">
+  <div class="main-container">
+    <section class="blog-section">
+      <h1 class="blog-title">BLOG</h1>
+      <p class="blog-subtitle">Actualités, guides et ressources pour les établissements de formation</p>
+      {posts.length === 0 ? (
+        <div class="blog-empty">
+          <p>Les premiers articles arrivent bientôt.</p>
+        </div>
+      ) : (
+        <div class="blog-grid">
+          {posts.map((post: any) => (
+            <a href={`/blog/${post.slug.current}`} class="blog-card">
+              {post.coverImage && <img src={post.coverImage} alt={post.title} class="blog-card-image" />}
+              <div class="blog-card-content">
+                {post.tags && <span class="blog-tag">{post.tags[0]}</span>}
+                <h2 class="blog-card-title">{post.title}</h2>
+                <p class="blog-card-excerpt">{post.excerpt}</p>
+                <div class="blog-card-meta">
+                  <span>{post.author}</span>
+                  <span>{new Date(post.publishedAt).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })}</span>
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
+      )}
+    </section>
+  </div>
+</BaseLayout>

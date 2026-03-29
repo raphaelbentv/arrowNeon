@@ -1,0 +1,889 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+---
+<BaseLayout title="Arrow — Plateforme de gestion éducative" activePage="accueil">
+  <div class="main-container">
+    <!-- Hero Orbite -->
+    <section class="hero-orbit">
+      <div class="hero-orbit__text">
+        <p class="eyebrow">Plateforme éducative next-gen</p>
+        <h1>Gérez vos élèves <span class="text-primary text-glow">sans effort</span></h1>
+        <p class="hero-orbit__desc">Arrow centralise la gestion de vos formations, de vos élèves et de vos résultats dans une interface claire et rapide.</p>
+        <div class="hero-orbit__cta">
+          <a href="/contact" class="btn-primary">Démarrer gratuitement</a>
+          <a href="/fonctionnalites" class="btn-ghost">Voir les fonctionnalités</a>
+        </div>
+      </div>
+      <div class="orbit-system" aria-hidden="true">
+        <div class="orbit-ring"></div>
+        <div class="orbit-ring"></div>
+        <div class="orbit-ring"></div>
+        <div class="orbit-sphere"></div>
+        <!-- Orbit cards -->
+        <div class="orbit-card orbit-card--top-left">
+          <div class="orbit-card-value">99.9%</div>
+          <div class="orbit-card-label">Uptime</div>
+        </div>
+        <div class="orbit-card orbit-card--top-right">
+          <div class="orbit-card-value">∞</div>
+          <div class="orbit-card-label">Élèves</div>
+        </div>
+        <div class="orbit-card orbit-card--bottom-left">
+          <div class="orbit-card-value">24/7</div>
+          <div class="orbit-card-label">Support</div>
+        </div>
+        <div class="orbit-card orbit-card--bottom-right">
+          <div class="orbit-card-value">+89%</div>
+          <div class="orbit-card-label">Gain de temps</div>
+        </div>
+        <!-- Mobile fallback grid -->
+        <div class="orbit-cards-grid">
+          <div class="orbit-card"><div class="orbit-card-value">99.9%</div><div class="orbit-card-label">Uptime</div></div>
+          <div class="orbit-card"><div class="orbit-card-value">∞</div><div class="orbit-card-label">Élèves</div></div>
+          <div class="orbit-card"><div class="orbit-card-value">24/7</div><div class="orbit-card-label">Support</div></div>
+          <div class="orbit-card"><div class="orbit-card-value">+89%</div><div class="orbit-card-label">Gain</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HUD Stats Centered Above Cards -->
+    <div class="hud-stats">
+      <div class="stat-item">
+        <div class="stat-value">99.9%</div>
+        <div class="stat-label">du temps éveillé</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-value">24/7</div>
+        <div class="stat-label">Support</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-value">∞</div>
+        <div class="stat-label">Élèves</div>
+      </div>
+    </div>
+
+    <!-- Section Comparaison Ancienne plateforme vs Arrow -->
+    <div class="comparison-section">
+      <div class="comparison-header">
+        <h2 class="comparison-title"><span style="color: #fff;">ANCIENNE PLATEFORME</span> vs <span style="color: #FF007F;">ARROW</span></h2>
+        <p class="comparison-instruction">← GLISSEZ LE CURSEUR POUR COMPARER →</p>
+      </div>
+
+      <!-- Slider Interactif -->
+      <div class="comparison-slider-wrapper">
+        <div class="comparison-slider" id="comparisonSlider">
+          <!-- ANCIENNE PLATEFORME SIDE (Old) -->
+          <div class="comparison-side side-old-platform">
+            <div class="old-platform-interface">
+              <!-- Navbar -->
+              <div class="hp-navbar">
+                <div class="hp-nav-item">Cours</div>
+                <div class="hp-nav-item">Notation</div>
+                <div class="hp-nav-item">Enseignements</div>
+                <div class="hp-nav-item">QCM</div>
+                <div class="hp-nav-item">Assiduité</div>
+                <div class="hp-nav-item" style="background: #8a5a5a;">Étudiants</div>
+              </div>
+
+              <!-- Toolbar -->
+              <div class="hp-toolbar">
+                <span style="font-size: 11px; color: #666;">Liste :</span>
+                <select class="hp-dropdown">
+                  <option>Saisie du nom</option>
+                </select>
+                <select class="hp-dropdown">
+                  <option>Institut Formation (P27) &gt; Scolaire</option>
+                </select>
+                <span style="font-size: 11px; color: #666; margin-left: 20px;">au :</span>
+                <select class="hp-dropdown">
+                  <option>Aujourd'hui</option>
+                </select>
+                <div class="hp-search-icon">🔍</div>
+              </div>
+
+              <!-- Table -->
+              <div class="hp-table-container">
+                <table class="hp-table">
+                  <thead>
+                    <tr>
+                      <th>Nom</th>
+                      <th>Né(e) le</th>
+                      <th>S.</th>
+                      <th>E-mail</th>
+                      <th colspan="2" style="text-align: center;">Heures manquées</th>
+                      <th>Entrée</th>
+                      <th>Sortie</th>
+                    </tr>
+                    <tr style="background: #fafafa;">
+                      <th></th>
+                      <th></th>
+                      <th></th>
+                      <th></th>
+                      <th style="font-weight: 400; font-size: 10px;">Toutes</th>
+                      <th style="font-weight: 400; font-size: 10px;">Mes cours</th>
+                      <th></th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><span class="hp-icon hp-icon-pink">▼</span> MARTIN Sophie</td>
+                      <td>21/08/2006</td>
+                      <td><span class="hp-icon hp-icon-pink">♀</span></td>
+                      <td><a href="#" class="hp-email-link">sophie.martin@email.com</a></td>
+                      <td>21h00 (7)</td>
+                      <td>03h00 (1)</td>
+                      <td><span class="hp-status">Début d'année</span></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td><span class="hp-icon hp-icon-pink">▼</span> DUBOIS Marc</td>
+                      <td>05/10/2006</td>
+                      <td><span class="hp-icon hp-icon-blue">♂</span></td>
+                      <td><a href="#" class="hp-email-link">marc.dubois@email.com</a></td>
+                      <td>101h00 (34)</td>
+                      <td>18h00 (6)</td>
+                      <td><span class="hp-status">Début d'année</span></td>
+                      <td>14/11/2025</td>
+                    </tr>
+                    <tr>
+                      <td><span class="hp-icon hp-icon-pink">▼</span> BERNARD Lucas</td>
+                      <td>19/09/2007</td>
+                      <td><span class="hp-icon hp-icon-blue">♂</span></td>
+                      <td><a href="#" class="hp-email-link">lucas.bernard@email.com</a></td>
+                      <td>43h00 (15)</td>
+                      <td>06h00 (2)</td>
+                      <td><span class="hp-status">Début d'année</span></td>
+                      <td>30/11/2025</td>
+                    </tr>
+                    <tr>
+                      <td><span class="hp-icon hp-icon-pink">▼</span> PETIT Thomas</td>
+                      <td>08/01/2007</td>
+                      <td><span class="hp-icon hp-icon-blue">♂</span></td>
+                      <td><a href="#" class="hp-email-link">thomas.petit@email.com</a></td>
+                      <td>38h00 (13)</td>
+                      <td>06h00 (2)</td>
+                      <td><span class="hp-status">Début d'année</span></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td><span class="hp-icon hp-icon-pink">▼</span> ROBERT Julie</td>
+                      <td>12/10/2007</td>
+                      <td><span class="hp-icon hp-icon-pink">♀</span></td>
+                      <td><a href="#" class="hp-email-link">julie.robert@email.com</a></td>
+                      <td>60h00 (20)</td>
+                      <td>06h00 (2)</td>
+                      <td><span class="hp-status">Début d'année</span></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td><span class="hp-icon hp-icon-pink">▼</span> RICHARD Paul</td>
+                      <td>19/08/2004</td>
+                      <td><span class="hp-icon hp-icon-blue">♂</span></td>
+                      <td><a href="#" class="hp-email-link">paul.richard@email.com</a></td>
+                      <td>35h00 (12)</td>
+                      <td>03h00 (1)</td>
+                      <td><span class="hp-status">Début d'année</span></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td><span class="hp-icon hp-icon-pink">▼</span> DURAND Emma</td>
+                      <td>22/06/2007</td>
+                      <td><span class="hp-icon hp-icon-pink">♀</span></td>
+                      <td><a href="#" class="hp-email-link">emma.durand@email.com</a></td>
+                      <td>06h00 (2)</td>
+                      <td>00h00</td>
+                      <td><span class="hp-status">Début d'année</span></td>
+                      <td>30/11/2025</td>
+                    </tr>
+                    <tr>
+                      <td><span class="hp-icon hp-icon-pink">▼</span> MOREAU Léo</td>
+                      <td>21/10/2006</td>
+                      <td><span class="hp-icon hp-icon-blue">♂</span></td>
+                      <td><a href="#" class="hp-email-link">leo.moreau@email.com</a></td>
+                      <td>101h00 (34)</td>
+                      <td>18h00 (6)</td>
+                      <td><span class="hp-status">Début d'année</span></td>
+                      <td>14/11/2025</td>
+                    </tr>
+                    <tr>
+                      <td><span class="hp-icon hp-icon-pink">▼</span> SIMON Chloé</td>
+                      <td>19/11/2007</td>
+                      <td><span class="hp-icon hp-icon-pink">♀</span></td>
+                      <td><a href="#" class="hp-email-link">chloe.simon@email.com</a></td>
+                      <td>20h00 (7)</td>
+                      <td>00h00</td>
+                      <td><span class="hp-status">Début d'année</span></td>
+                      <td>30/11/2025</td>
+                    </tr>
+                    <tr>
+                      <td><span class="hp-icon hp-icon-pink">▼</span> LAURENT Hugo</td>
+                      <td>31/05/2007</td>
+                      <td><span class="hp-icon hp-icon-blue">♂</span></td>
+                      <td><a href="#" class="hp-email-link">hugo.laurent@email.com</a></td>
+                      <td>98h00 (33)</td>
+                      <td>21h00 (7)</td>
+                      <td><span class="hp-status">Début d'année</span></td>
+                      <td>14/11/2025</td>
+                    </tr>
+                    <tr>
+                      <td><span class="hp-icon hp-icon-pink">▼</span> LEFEVRE Camille</td>
+                      <td>18/11/2007</td>
+                      <td><span class="hp-icon hp-icon-pink">♀</span></td>
+                      <td><a href="#" class="hp-email-link">camille.lefevre@email.com</a></td>
+                      <td>21h00 (7)</td>
+                      <td>03h00 (1)</td>
+                      <td><span class="hp-status">Début d'année</span></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td><span class="hp-icon hp-icon-pink">▼</span> ANDRE Maxime</td>
+                      <td>19/08/2005</td>
+                      <td><span class="hp-icon hp-icon-blue">♂</span></td>
+                      <td><a href="#" class="hp-email-link">maxime.andre@email.com</a></td>
+                      <td>51h00 (17)</td>
+                      <td>18h00 (6)</td>
+                      <td><span class="hp-status">Début d'année</span></td>
+                      <td></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <!-- ARROW SIDE (New) -->
+          <div class="comparison-side side-arrow">
+            <div class="arrow-interface">
+
+              <!-- Mini nav -->
+              <div class="arrow-mini-nav">
+                <div class="arrow-mini-brand">
+                  <span class="arrow-mini-logo">ARROW</span>
+                  <span class="arrow-mini-school">GGI</span>
+                </div>
+                <div class="arrow-mini-tabs">
+                  <span class="arrow-mini-tab">Planning</span>
+                  <span class="arrow-mini-tab">Pédagogie</span>
+                  <span class="arrow-mini-tab arrow-mini-tab--active">Utilisateurs</span>
+                  <span class="arrow-mini-tab">Suivis</span>
+                  <span class="arrow-mini-tab">Paramètres</span>
+                </div>
+              </div>
+
+              <!-- Page content -->
+              <div class="arrow-page-content">
+
+                <!-- Page header -->
+                <h2 class="arrow-page-title">ÉTUDIANTS</h2>
+                <p class="arrow-page-subtitle">Gestion des étudiant(e)s et suivi académique</p>
+                <div class="arrow-header-actions">
+                  <button class="arrow-btn-outline">ACTUALISER</button>
+                  <button class="arrow-btn-outline">EXPORTER</button>
+                  <button class="arrow-btn-add">+ NOUVEL ÉTUDIANT</button>
+                </div>
+
+                <!-- Stats grid — row 1 (3 cols) -->
+                <div class="arrow-stats-grid">
+                  <div class="arrow-stat-card">
+                    <span class="arrow-stat-label">TOTAL ÉTUDIANTS</span>
+                    <span class="arrow-stat-value arrow-stat--cyan">82</span>
+                  </div>
+                  <div class="arrow-stat-card">
+                    <span class="arrow-stat-label">INSCRITS</span>
+                    <span class="arrow-stat-value arrow-stat--cyan">44</span>
+                  </div>
+                  <div class="arrow-stat-card">
+                    <span class="arrow-stat-label">EN ATTENTE</span>
+                    <span class="arrow-stat-value arrow-stat--cyan">38</span>
+                  </div>
+                </div>
+                <!-- Stats grid — row 2 -->
+                <div class="arrow-stats-grid">
+                  <div class="arrow-stat-card">
+                    <span class="arrow-stat-label">DIPLÔMÉS</span>
+                    <span class="arrow-stat-value">0</span>
+                  </div>
+                  <div class="arrow-stat-card">
+                    <span class="arrow-stat-label">INITIAL</span>
+                    <span class="arrow-stat-value arrow-stat--cyan">59</span>
+                  </div>
+                  <div class="arrow-stat-card">
+                    <span class="arrow-stat-label">ALTERNANCE</span>
+                    <span class="arrow-stat-value arrow-stat--teal">23</span>
+                  </div>
+                </div>
+
+                <!-- Toolbar -->
+                <div class="arrow-toolbar">
+                  <div class="arrow-view-toggle">
+                    <button class="arrow-view-btn arrow-view-btn--active">Grille</button>
+                    <button class="arrow-view-btn">Liste</button>
+                  </div>
+                  <input type="text" class="arrow-search-input" placeholder="Rechercher un étudiant...">
+                </div>
+
+                <!-- Student cards -->
+                <div class="arrow-cards-grid">
+
+                  <div class="arrow-student-card">
+                    <div class="arrow-card-top">
+                      <div class="arrow-card-badge" style="background:rgba(61,255,180,.12);border-color:#3dffb4;color:#3dffb4">SM</div>
+                      <div class="arrow-card-head-info">
+                        <p class="arrow-card-name">Sophie MARTIN</p>
+                        <p class="arrow-card-number">N° BACH-MKT-2024-001</p>
+                        <p class="arrow-card-email">s.martin@student.arrow.fr</p>
+                      </div>
+                      <span class="arrow-card-status arrow-status--inscrit">INSCRIT(E)</span>
+                    </div>
+                    <div class="arrow-card-fields">
+                      <div class="arrow-card-field">
+                        <span class="arrow-field-label">FORMATION</span>
+                        <span class="arrow-field-value">Bachelor Marketing 2024</span>
+                      </div>
+                      <div class="arrow-card-field">
+                        <span class="arrow-field-label">FINANCEMENT</span>
+                        <span class="arrow-field-value">Alternance</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="arrow-student-card">
+                    <div class="arrow-card-top">
+                      <div class="arrow-card-badge" style="background:rgba(61,155,255,.12);border-color:#3d9bff;color:#3d9bff">MD</div>
+                      <div class="arrow-card-head-info">
+                        <p class="arrow-card-name">Marc DUBOIS</p>
+                        <p class="arrow-card-number">N° MAST-MGT-2024-002</p>
+                        <p class="arrow-card-email">m.dubois@student.arrow.fr</p>
+                      </div>
+                      <span class="arrow-card-status arrow-status--attente">EN ATTENTE</span>
+                    </div>
+                    <div class="arrow-card-fields">
+                      <div class="arrow-card-field">
+                        <span class="arrow-field-label">FORMATION</span>
+                        <span class="arrow-field-value">Master Management 2024</span>
+                      </div>
+                      <div class="arrow-card-field">
+                        <span class="arrow-field-label">FINANCEMENT</span>
+                        <span class="arrow-field-value">Initial</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="arrow-student-card">
+                    <div class="arrow-card-top">
+                      <div class="arrow-card-badge" style="background:rgba(255,61,155,.12);border-color:#ff3d9b;color:#ff3d9b">TP</div>
+                      <div class="arrow-card-head-info">
+                        <p class="arrow-card-name">Thomas PETIT</p>
+                        <p class="arrow-card-number">N° MBA-FIN-2024-004</p>
+                        <p class="arrow-card-email">t.petit@student.arrow.fr</p>
+                      </div>
+                      <span class="arrow-card-status arrow-status--inscrit">INSCRIT(E)</span>
+                    </div>
+                    <div class="arrow-card-fields">
+                      <div class="arrow-card-field">
+                        <span class="arrow-field-label">FORMATION</span>
+                        <span class="arrow-field-value">MBA Finance 2024</span>
+                      </div>
+                      <div class="arrow-card-field">
+                        <span class="arrow-field-label">FINANCEMENT</span>
+                        <span class="arrow-field-value">Alternance</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="arrow-student-card">
+                    <div class="arrow-card-top">
+                      <div class="arrow-card-badge" style="background:rgba(61,255,180,.12);border-color:#3dffb4;color:#3dffb4">ED</div>
+                      <div class="arrow-card-head-info">
+                        <p class="arrow-card-name">Emma DURAND</p>
+                        <p class="arrow-card-number">N° BACH-INF-2024-007</p>
+                        <p class="arrow-card-email">e.durand@student.arrow.fr</p>
+                      </div>
+                      <span class="arrow-card-status arrow-status--inscrit">INSCRIT(E)</span>
+                    </div>
+                    <div class="arrow-card-fields">
+                      <div class="arrow-card-field">
+                        <span class="arrow-field-label">FORMATION</span>
+                        <span class="arrow-field-value">Bachelor Informatique 2024</span>
+                      </div>
+                      <div class="arrow-card-field">
+                        <span class="arrow-field-label">FINANCEMENT</span>
+                        <span class="arrow-field-value">Initial</span>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slider Handle -->
+          <div class="slider-handle" id="sliderHandle"></div>
+
+          <!-- Labels -->
+          <div class="comparison-label label-left">Ancienne plateforme</div>
+          <div class="comparison-label label-right">Arrow</div>
+        </div>
+      </div>
+
+      <p class="comparison-subtitle">Du chaos à la clarté</p>
+
+      <!-- CTA Mode Brutal -->
+      <div style="text-align: center; margin-top: 40px;">
+        <button class="brutal-mode-cta" onclick="openModal('brutalModeModal')">
+          <span class="brutal-cta-text">PASSER EN MODE BRUTAL</span>
+          <span class="brutal-cta-icon">⚡</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Cards Grid -->
+    <div class="cyber-grid">
+      <div class="cyber-card">
+        <div class="cyber-icon">
+          <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
+            <rect x="12" y="12" width="40" height="40" stroke="#FFD700" stroke-width="2" fill="none" filter="drop-shadow(0 0 8px #FFD700)"/>
+            <circle cx="32" cy="32" r="8" fill="#FFD700" filter="drop-shadow(0 0 8px #FFD700)"/>
+            <line x1="20" y1="20" x2="44" y2="44" stroke="#FFD700" stroke-width="1.5" filter="drop-shadow(0 0 4px #FFD700)"/>
+            <line x1="44" y1="20" x2="20" y2="44" stroke="#FFD700" stroke-width="1.5" filter="drop-shadow(0 0 4px #FFD700)"/>
+          </svg>
+        </div>
+        <h3 class="cyber-title">GESTION ÉLÈVES</h3>
+        <p class="cyber-desc">Suivi complet des parcours avec bulletins automatisés</p>
+      </div>
+
+      <div class="cyber-card">
+        <div class="cyber-icon">
+          <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
+            <rect x="10" y="14" width="44" height="36" stroke="#FFD700" stroke-width="2" fill="none" filter="drop-shadow(0 0 8px #FFD700)"/>
+            <line x1="18" y1="24" x2="46" y2="24" stroke="#FFD700" stroke-width="1.5" filter="drop-shadow(0 0 4px #FFD700)"/>
+            <line x1="18" y1="32" x2="46" y2="32" stroke="#FFD700" stroke-width="1.5" filter="drop-shadow(0 0 4px #FFD700)"/>
+            <line x1="18" y1="40" x2="38" y2="40" stroke="#FFD700" stroke-width="1.5" filter="drop-shadow(0 0 4px #FFD700)"/>
+          </svg>
+        </div>
+        <h3 class="cyber-title">BULLETINS PDF</h3>
+        <p class="cyber-desc">Génération automatique professionnelle</p>
+      </div>
+
+      <div class="cyber-card">
+        <div class="cyber-icon">
+          <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
+            <circle cx="20" cy="32" r="10" stroke="#FFD700" stroke-width="2" fill="none" filter="drop-shadow(0 0 8px #FFD700)"/>
+            <circle cx="44" cy="32" r="10" stroke="#FFD700" stroke-width="2" fill="none" filter="drop-shadow(0 0 8px #FFD700)"/>
+            <line x1="30" y1="32" x2="34" y2="32" stroke="#FFD700" stroke-width="2" filter="drop-shadow(0 0 6px #FFD700)"/>
+            <circle cx="20" cy="32" r="4" fill="#FFD700" filter="drop-shadow(0 0 6px #FFD700)"/>
+            <circle cx="44" cy="32" r="4" fill="#FFD700" filter="drop-shadow(0 0 6px #FFD700)"/>
+          </svg>
+        </div>
+        <h3 class="cyber-title">ALTERNANCE</h3>
+        <p class="cyber-desc">Contrats et suivi entreprises partenaires</p>
+      </div>
+
+      <div class="cyber-card">
+        <div class="cyber-icon">
+          <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
+            <polyline points="12,48 20,32 28,40 36,24 44,32 52,16" stroke="#FFD700" stroke-width="2.5" fill="none" filter="drop-shadow(0 0 8px #FFD700)" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="20" cy="32" r="2" fill="#FFD700" filter="drop-shadow(0 0 4px #FFD700)"/>
+            <circle cx="28" cy="40" r="2" fill="#FFD700" filter="drop-shadow(0 0 4px #FFD700)"/>
+            <circle cx="36" cy="24" r="2" fill="#FFD700" filter="drop-shadow(0 0 4px #FFD700)"/>
+            <circle cx="44" cy="32" r="2" fill="#FFD700" filter="drop-shadow(0 0 4px #FFD700)"/>
+            <circle cx="52" cy="16" r="2" fill="#FFD700" filter="drop-shadow(0 0 4px #FFD700)"/>
+          </svg>
+        </div>
+        <h3 class="cyber-title">ANALYTICS</h3>
+        <p class="cyber-desc">Tableaux de bord en temps réel</p>
+      </div>
+
+      <div class="cyber-card">
+        <div class="cyber-icon">
+          <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
+            <circle cx="32" cy="32" r="22" stroke="#FFD700" stroke-width="2" fill="none" filter="drop-shadow(0 0 8px #FFD700)"/>
+            <line x1="32" y1="32" x2="32" y2="16" stroke="#FFD700" stroke-width="2" filter="drop-shadow(0 0 6px #FFD700)" stroke-linecap="round"/>
+            <line x1="32" y1="32" x2="42" y2="38" stroke="#FFD700" stroke-width="2" filter="drop-shadow(0 0 6px #FFD700)" stroke-linecap="round"/>
+            <circle cx="32" cy="32" r="2" fill="#FFD700" filter="drop-shadow(0 0 6px #FFD700)"/>
+          </svg>
+        </div>
+        <h3 class="cyber-title">PLANNING</h3>
+        <p class="cyber-desc">Emplois du temps intelligents</p>
+      </div>
+
+      <div class="cyber-card">
+        <div class="cyber-icon">
+          <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
+            <polygon points="32,12 40,28 56,28 44,38 48,54 32,44 16,54 20,38 8,28 24,28" stroke="#FFD700" stroke-width="2" fill="none" filter="drop-shadow(0 0 8px #FFD700)"/>
+            <polygon points="32,18 38,30 50,30 42,38 46,50 32,42 18,50 22,38 14,30 26,30" fill="#FFD700" opacity="0.3" filter="drop-shadow(0 0 6px #FFD700)"/>
+          </svg>
+        </div>
+        <h3 class="cyber-title">QUALIOPI</h3>
+        <p class="cyber-desc">Conformité totale intégrée</p>
+      </div>
+
+      <div class="cyber-card">
+        <div class="cyber-icon">
+          <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
+            <rect x="28" y="8" width="8" height="20" stroke="#FFD700" stroke-width="2" fill="none" filter="drop-shadow(0 0 8px #FFD700)"/>
+            <line x1="32" y1="8" x2="16" y2="24" stroke="#FFD700" stroke-width="1.5" filter="drop-shadow(0 0 4px #FFD700)"/>
+            <line x1="36" y1="8" x2="48" y2="24" stroke="#FFD700" stroke-width="1.5" filter="drop-shadow(0 0 4px #FFD700)"/>
+            <circle cx="32" cy="36" r="12" stroke="#FFD700" stroke-width="2" fill="none" filter="drop-shadow(0 0 8px #FFD700)"/>
+            <circle cx="32" cy="36" r="6" fill="#FFD700" filter="drop-shadow(0 0 6px #FFD700)"/>
+          </svg>
+        </div>
+        <h3 class="cyber-title">COMMUNICATION</h3>
+        <p class="cyber-desc">Plateforme unifiée multi-acteurs</p>
+      </div>
+
+      <div class="cyber-card">
+        <div class="cyber-icon">
+          <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
+            <path d="M32 12 L48 20 L48 44 L32 52 L16 44 L16 20 Z" stroke="#FFD700" stroke-width="2" fill="none" filter="drop-shadow(0 0 8px #FFD700)"/>
+            <path d="M32 20 L42 25 L42 39 L32 44 L22 39 L22 25 Z" fill="#FFD700" opacity="0.2" filter="drop-shadow(0 0 6px #FFD700)"/>
+            <circle cx="32" cy="32" r="4" fill="#FFD700" filter="drop-shadow(0 0 6px #FFD700)"/>
+          </svg>
+        </div>
+        <h3 class="cyber-title">SÉCURITÉ</h3>
+        <p class="cyber-desc">Hébergement France, RGPD ready</p>
+      </div>
+    </div>
+
+    <!-- CTA Button -->
+    <div class="cyber-cta">
+      <a href="/contact" class="cyber-button" style="text-decoration: none; display: inline-block;">Demander une démo</a>
+    </div>
+  </div>
+
+  <!-- Modal Mode Brutal -->
+  <div id="brutalModeModal" class="modal-overlay brutal-modal-overlay" style="display: none;">
+    <div class="brutal-modal-container">
+      <button class="brutal-modal-close" onclick="closeModal('brutalModeModal')">×</button>
+      <div class="brutal-modal-content">
+        <!-- HERO SECTION -->
+        <section class="brutal-hero">
+          <div class="brutal-hero-bg"></div>
+          <div class="brutal-hero-content">
+            <p class="brutal-hero-eyebrow">Enfin une solution du 21ème siècle</p>
+            <h1 class="brutal-hero-title">
+              Parce qu'il est temps<br>
+              de sortir de Windows 95
+            </h1>
+            <p class="brutal-hero-subtitle">
+              Vos étudiants ont des smartphones. Vos profs utilisent Netflix.<br>
+              Alors pourquoi votre plateforme de gestion ressemble-t-elle encore à Excel 2003 ?
+            </p>
+          </div>
+        </section>
+
+        <!-- PROBLEMS SECTION -->
+        <section class="brutal-section brutal-problems-section">
+          <h2 class="brutal-section-title">On sait, vous souffrez en silence</h2>
+          <p class="brutal-section-subtitle">(Mais c'est fini maintenant)</p>
+
+          <div class="brutal-problems-grid">
+            <div class="brutal-problem-card">
+              <div class="brutal-problem-icon">🤯</div>
+              <h3 class="brutal-problem-title">Interface "Conviviale"</h3>
+              <p class="brutal-problem-desc">
+                Parce que rien ne dit "convivialité" comme 47 onglets imbriqués, des boutons gris sur fond gris, et une barre de défilement horizontale qui traverse 3 écrans.
+              </p>
+              <div class="brutal-problem-quote">
+                "Où j'ai mis le bouton pour exporter ? Ah oui, dans Fichier &gt; Outils &gt; Avancé &gt; Export &gt; Options &gt; PDF &gt; Paramètres... évidemment !"
+              </div>
+            </div>
+
+            <div class="brutal-problem-card">
+              <div class="brutal-problem-icon">⏰</div>
+              <h3 class="brutal-problem-title">Génération de Bulletins</h3>
+              <p class="brutal-problem-desc">
+                Prévoir 2-3h par classe, un café bien chaud, de la patience, et prier pour ne pas cliquer sur le mauvais bouton qui efface tout. Ah, et "Ctrl+Z" ? Jamais entendu parler.
+              </p>
+              <div class="brutal-problem-quote">
+                "Non mais c'est normal qu'il faille 15 clics pour générer UN bulletin. C'est pour la sécurité !"
+              </div>
+            </div>
+
+            <div class="brutal-problem-card">
+              <div class="brutal-problem-icon">🐌</div>
+              <h3 class="brutal-problem-title">Performance "Optimale"</h3>
+              <p class="brutal-problem-desc">
+                Chargement : 45 secondes. Enregistrement : 30 secondes. Crash aléatoire : gratuit. Cette plateforme tourne sur des serveurs de 2008, et ça se voit.
+              </p>
+              <div class="brutal-problem-quote">
+                "Laissez-moi deviner : vous n'aviez pas sauvegardé avant le crash ?"
+              </div>
+            </div>
+
+            <div class="brutal-problem-card">
+              <div class="brutal-problem-icon">📱</div>
+              <h3 class="brutal-problem-title">Version Mobile</h3>
+              <p class="brutal-problem-desc">
+                "Version mobile" = site desktop zoomé à 400% sur votre téléphone. Bonne chance pour cliquer sur les boutons de 2 pixels avec vos doigts.
+              </p>
+              <div class="brutal-problem-quote">
+                "On recommande d'utiliser un ordinateur 23 pouces minimum pour une expérience optimale"
+              </div>
+            </div>
+
+            <div class="brutal-problem-card">
+              <div class="brutal-problem-icon">❓</div>
+              <h3 class="brutal-problem-title">Logique d'Organisation</h3>
+              <p class="brutal-problem-desc">
+                Les absences sont dans "Assiduité", les notes dans "Notation", les bulletins dans "QCM" (pourquoi pas ?), et l'export Excel ? Dans "Paramètres avancés du module pédagogique".
+              </p>
+              <div class="brutal-problem-quote">
+                "C'est intuitif une fois qu'on a fait la formation de 3 jours !"
+              </div>
+            </div>
+
+            <div class="brutal-problem-card">
+              <div class="brutal-problem-icon">🎨</div>
+              <h3 class="brutal-problem-title">Design "Moderne"</h3>
+              <p class="brutal-problem-desc">
+                Gradient bleu-gris des années 2000, Comic Sans MS en option, et des icônes qui ressemblent à des cliparts de PowerPoint 97. Un vrai régal pour les yeux.
+              </p>
+              <div class="brutal-problem-quote">
+                "Notre dernière mise à jour graphique date de 2012. On reste classique !"
+              </div>
+            </div>
+          </div>
+
+          <div style="text-align: center; margin-top: 40px;">
+            <p style="font-size: 28px; color: #FF007F; font-family: 'Orbitron', sans-serif; font-weight: 700;">
+              Ça vous parle ? Bienvenue chez Arrow. 👋
+            </p>
+          </div>
+        </section>
+
+        <!-- USP SECTION -->
+        <section class="brutal-section brutal-usp-section">
+          <h2 class="brutal-section-title">Ce qu'Arrow fait (vraiment) mieux</h2>
+          <p class="brutal-usp-intro">
+            On ne va pas vous mentir : on a conçu Arrow en regardant tout ce qui nous énervait dans les plateformes existantes.
+            Et on a fait exactement l'inverse.
+          </p>
+
+          <div class="brutal-usp-grid">
+            <div class="brutal-usp-card">
+              <span class="brutal-usp-badge">Interface</span>
+              <h3 class="brutal-usp-title">Design du 21ème siècle</h3>
+              <p class="brutal-usp-desc">
+                Une interface moderne et intuitive qui ne ressemble pas à un tableur Excel de 2003.
+                Parce que vos yeux méritent mieux.
+              </p>
+              <div class="brutal-usp-benefit">Navigation claire et logique</div>
+              <div class="brutal-usp-benefit">Design responsive (vraiment)</div>
+              <div class="brutal-usp-benefit">Esthétique cyberpunk qui claque</div>
+              <div class="brutal-usp-benefit">Pas de barre de scroll horizontale</div>
+            </div>
+
+            <div class="brutal-usp-card">
+              <span class="brutal-usp-badge">Performance</span>
+              <h3 class="brutal-usp-title">Ultra-rapide</h3>
+              <p class="brutal-usp-desc">
+                Chargement instantané, sauvegarde en temps réel, zéro lag.
+                Parce que votre temps vaut plus que 45 secondes de chargement.
+              </p>
+              <div class="brutal-usp-benefit">Architecture cloud optimisée</div>
+              <div class="brutal-usp-benefit">Temps de réponse &lt; 200ms</div>
+              <div class="brutal-usp-benefit">Pas de "crash mystérieux"</div>
+              <div class="brutal-usp-benefit">Auto-save permanent</div>
+            </div>
+
+            <div class="brutal-usp-card">
+              <span class="brutal-usp-badge">Automation</span>
+              <h3 class="brutal-usp-title">Bulletins en 2 clics</h3>
+              <p class="brutal-usp-desc">
+                Génération automatique de bulletins PDF professionnels.
+                De 3 heures par classe à 30 secondes. Oui, vraiment.
+              </p>
+              <div class="brutal-usp-benefit">Templates personnalisables</div>
+              <div class="brutal-usp-benefit">Export PDF instantané</div>
+              <div class="brutal-usp-benefit">Envoi email automatique</div>
+              <div class="brutal-usp-benefit">×10 plus rapide que vos outils actuels</div>
+            </div>
+
+            <div class="brutal-usp-card">
+              <span class="brutal-usp-badge">Gestion</span>
+              <h3 class="brutal-usp-title">Tout centralisé</h3>
+              <p class="brutal-usp-desc">
+                Élèves, notes, absences, contrats alternance, planning...
+                Tout au même endroit. Révolutionnaire, non ?
+              </p>
+              <div class="brutal-usp-benefit">Dashboard 360° en temps réel</div>
+              <div class="brutal-usp-benefit">Recherche globale ultra-rapide</div>
+              <div class="brutal-usp-benefit">Vue unifiée par étudiant</div>
+              <div class="brutal-usp-benefit">Filtres intelligents</div>
+            </div>
+
+            <div class="brutal-usp-card">
+              <span class="brutal-usp-badge">Mobile</span>
+              <h3 class="brutal-usp-title">Vraiment mobile</h3>
+              <p class="brutal-usp-desc">
+                Pas un site desktop zoomé. Une vraie app mobile optimisée.
+                Parce que c'est 2025, pas 1995.
+              </p>
+              <div class="brutal-usp-benefit">Interface adaptative</div>
+              <div class="brutal-usp-benefit">Utilisable sur smartphone/tablette</div>
+              <div class="brutal-usp-benefit">Offline mode</div>
+              <div class="brutal-usp-benefit">Notifications push</div>
+            </div>
+
+            <div class="brutal-usp-card">
+              <span class="brutal-usp-badge">Alternance</span>
+              <h3 class="brutal-usp-title">Module alternance intégré</h3>
+              <p class="brutal-usp-desc">
+                Gestion complète des contrats d'apprentissage et suivi entreprises.
+                Fini les fichiers Excel éparpillés partout.
+              </p>
+              <div class="brutal-usp-benefit">Conformité Qualiopi automatique</div>
+              <div class="brutal-usp-benefit">Suivi entreprises centralisé</div>
+              <div class="brutal-usp-benefit">Calendrier alternance/école</div>
+              <div class="brutal-usp-benefit">Génération contrats CERFA</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- COMPARISON TABLE -->
+        <section class="brutal-section brutal-comparison-section">
+          <h2 class="brutal-section-title">Le match (très déséquilibré)</h2>
+          <p class="brutal-section-subtitle">Spoiler alert : on gagne à chaque fois</p>
+
+          <div class="brutal-table-wrapper">
+            <table class="brutal-comparison-table">
+              <thead>
+                <tr>
+                  <th style="width: 35%;">Fonctionnalité</th>
+                  <th style="width: 32.5%;">Anciennes plateformes</th>
+                  <th style="width: 32.5%;">ARROW</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="brutal-feature-name">Temps de formation</td>
+                  <td class="brutal-old-platform">
+                    2-3 jours minimum
+                    <span class="brutal-sarcasm">("C'est pour bien comprendre nos 47 onglets")</span>
+                  </td>
+                  <td class="brutal-arrow-platform">5 minutes chrono</td>
+                </tr>
+                <tr>
+                  <td class="brutal-feature-name">Génération bulletins</td>
+                  <td class="brutal-old-platform">
+                    2-3h par classe en mode manuel
+                    <span class="brutal-sarcasm">("Profitez-en pour méditer")</span>
+                  </td>
+                  <td class="brutal-arrow-platform">30 secondes, automatique</td>
+                </tr>
+                <tr>
+                  <td class="brutal-feature-name">Interface utilisateur</td>
+                  <td class="brutal-old-platform">
+                    Design Windows XP, gris sur gris
+                    <span class="brutal-sarcasm">("Le vintage c'est tendance non ?")</span>
+                  </td>
+                  <td class="brutal-arrow-platform">Interface moderne cyberpunk</td>
+                </tr>
+                <tr>
+                  <td class="brutal-feature-name">Version mobile</td>
+                  <td class="brutal-old-platform">
+                    "Utilisez un écran 23 pouces minimum"
+                    <span class="brutal-sarcasm">("Mobile ? C'est quoi ça ?")</span>
+                  </td>
+                  <td class="brutal-arrow-platform">App responsive optimisée</td>
+                </tr>
+                <tr>
+                  <td class="brutal-feature-name">Vitesse de chargement</td>
+                  <td class="brutal-old-platform">
+                    45s... si vous avez de la chance
+                    <span class="brutal-sarcasm">("Le temps de faire un café !")</span>
+                  </td>
+                  <td class="brutal-arrow-platform">&lt; 200ms</td>
+                </tr>
+                <tr>
+                  <td class="brutal-feature-name">Gestion alternance</td>
+                  <td class="brutal-old-platform">
+                    Excel + Word + emails + prières
+                    <span class="brutal-sarcasm">("C'est artisanal, c'est mieux")</span>
+                  </td>
+                  <td class="brutal-arrow-platform">Module dédié intégré</td>
+                </tr>
+                <tr>
+                  <td class="brutal-feature-name">Support technique</td>
+                  <td class="brutal-old-platform">
+                    Email, réponse sous 3-5 jours ouvrés
+                    <span class="brutal-sarcasm">("On vous rappelle... un jour")</span>
+                  </td>
+                  <td class="brutal-arrow-platform">Chat 24/7, réponse &lt; 2h</td>
+                </tr>
+                <tr>
+                  <td class="brutal-feature-name">Mises à jour</td>
+                  <td class="brutal-old-platform">
+                    Installation manuelle tous les 2 ans
+                    <span class="brutal-sarcasm">("On aime la stabilité nous !")</span>
+                  </td>
+                  <td class="brutal-arrow-platform">Automatiques, mensuelles</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- TESTIMONIALS -->
+        <section class="brutal-section brutal-testimonials-section">
+          <h2 class="brutal-section-title">Ce qu'ils disent</h2>
+          <p class="brutal-section-subtitle">Avant/Après Arrow</p>
+
+          <div class="brutal-testimonials-grid">
+            <div class="brutal-testimonial brutal-testimonial-before">
+              <div class="brutal-testimonial-type">😤 Avant Arrow</div>
+              <p class="brutal-testimonial-quote">
+                "Je passais 10 heures par semaine juste à générer les bulletins.
+                10 HEURES. J'aurais pu apprendre le japonais avec ce temps perdu."
+              </p>
+              <p class="brutal-testimonial-author">— Directrice pédagogique, CFA Paris</p>
+            </div>
+
+            <div class="brutal-testimonial">
+              <div class="brutal-testimonial-type">🚀 Avec Arrow</div>
+              <p class="brutal-testimonial-quote">
+                "Maintenant ? 2 clics, 30 secondes, café encore chaud.
+                J'ai enfin du temps pour faire mon vrai boulot : l'éducation."
+              </p>
+              <p class="brutal-testimonial-author">— Directrice pédagogique, CFA Paris</p>
+            </div>
+
+            <div class="brutal-testimonial brutal-testimonial-before">
+              <div class="brutal-testimonial-type">😤 Avant Arrow</div>
+              <p class="brutal-testimonial-quote">
+                "Former un nouveau collègue prenait 3 jours. TROIS JOURS.
+                Juste pour qu'il comprenne où cliquer pour ne pas tout casser."
+              </p>
+              <p class="brutal-testimonial-author">— Responsable admin, École Lyon</p>
+            </div>
+
+            <div class="brutal-testimonial">
+              <div class="brutal-testimonial-type">🚀 Avec Arrow</div>
+              <p class="brutal-testimonial-quote">
+                "Mon nouveau collègue était opérationnel en 30 minutes.
+                L'interface est tellement intuitive qu'aucune formation n'est nécessaire."
+              </p>
+              <p class="brutal-testimonial-author">— Responsable admin, École Lyon</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- FINAL CTA -->
+        <section class="brutal-final-cta">
+          <h2 class="brutal-final-title">Prêt à rejoindre le 21ème siècle ?</h2>
+          <p class="brutal-final-subtitle">
+            On ne vous promet pas la lune. Juste une plateforme qui marche,
+            qui est belle, et qui vous fait gagner un temps fou.<br>
+            C'est déjà pas mal, non ?
+          </p>
+          <a href="/contact" class="brutal-hero-cta">Demander une démo</a>
+          <p style="margin-top: 30px; font-size: 14px; color: rgba(0, 217, 255, 0.6);">
+            (Promis, on ne vous forcera pas à signer un contrat de 47 pages)
+          </p>
+        </section>
+      </div>
+    </div>
+  </div>
+</BaseLayout>

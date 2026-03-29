@@ -1,0 +1,40 @@
+/* css/pages/tarifs.css */
+.pricing-section { padding: var(--spacing-4xl) 0; }
+.pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: var(--spacing-xl);
+    align-items: start;
+}
+.pricing-card--featured {
+    box-shadow: var(--theme-box-shadow);
+    border-color: var(--primary-30);
+    transform: scale(1.03);
+}
+.pricing-card__sphere { margin: 0 auto var(--spacing-lg); }
+.pricing-card__name { font-size: 1.2rem; font-weight: 700; margin-bottom: var(--spacing-sm); }
+.pricing-card__price { font-size: 2.5rem; font-weight: 900; color: var(--primary); text-shadow: var(--text-glow); }
+.pricing-card__period { font-size: 0.8rem; color: var(--muted-foreground); }
+.pricing-card__features { list-style: none; margin: var(--spacing-xl) 0; text-align: left; display: flex; flex-direction: column; gap: var(--spacing-sm); }
+.pricing-card__features li { display: flex; gap: var(--spacing-sm); align-items: flex-start; font-size: 0.9rem; color: var(--muted-foreground); }
+.pricing-card__features li::before { content: '✓'; color: var(--primary); font-weight: 700; flex-shrink: 0; }
+@media (max-width: 768px) {
+    .pricing-card--featured { transform: none; }
+}
+
+/* Aliases classes HTML existantes tarifs.html */
+.pricing-container { padding: var(--spacing-4xl) 0; }
+.pricing-card      { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: var(--spacing-2xl); text-align: center; transition: box-shadow var(--transition-slow); }
+.pricing-card.featured { box-shadow: var(--theme-box-shadow); border-color: var(--primary-30); transform: scale(1.03); }
+.pricing-badge     { display: inline-block; background: var(--primary); color: #000; font-size: 0.65rem; font-weight: 800; letter-spacing: 0.15em; text-transform: uppercase; padding: 4px 10px; border-radius: var(--radius-sm); margin-bottom: var(--spacing-sm); }
+.pricing-header    { margin-bottom: var(--spacing-xl); }
+.pricing-title     { font-size: 1.1rem; font-weight: 700; color: var(--card-foreground); margin-bottom: var(--spacing-sm); letter-spacing: 0.1em; text-transform: uppercase; }
+.pricing-price     { display: flex; align-items: baseline; justify-content: center; gap: var(--spacing-xs); flex-wrap: wrap; }
+.price-amount      { font-size: 0.75rem; color: var(--muted-foreground); }
+.price-value       { font-size: 2.5rem; font-weight: 900; color: var(--primary); text-shadow: var(--text-glow); }
+.price-period      { font-size: 0.8rem; color: var(--muted-foreground); }
+.pricing-subtitle  { font-size: 0.8rem; color: var(--muted-foreground); margin-top: var(--spacing-xs); }
+.pricing-features  { text-align: left; margin: var(--spacing-xl) 0; }
+.pricing-features ul { list-style: none; display: flex; flex-direction: column; gap: var(--spacing-sm); }
+.pricing-features li { display: flex; gap: var(--spacing-sm); color: var(--muted-foreground); font-size: 0.9rem; }
+.pricing-cta       { margin-top: var(--spacing-xl); }

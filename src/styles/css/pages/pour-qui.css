@@ -1,0 +1,61 @@
+/* css/pages/pour-qui.css */
+.profiles-section { padding: var(--spacing-4xl) 0; }
+.profiles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-2xl);
+}
+.profile-card {
+    position: relative;
+    overflow: visible;
+    padding: var(--spacing-2xl);
+}
+.profile-card__orbit {
+    position: relative;
+    width: 80px; height: 80px;
+    margin: 0 auto var(--spacing-lg);
+}
+.profile-card__orbit .orbit-sphere--md {
+    width: 80px; height: 80px;
+}
+.profile-card__title {
+    text-align: center;
+    font-size: 1.3rem; font-weight: 700;
+    color: var(--card-foreground);
+    margin-bottom: var(--spacing-md);
+}
+.profile-card__benefits { list-style: none; display: flex; flex-direction: column; gap: var(--spacing-sm); }
+.profile-card__benefits li {
+    display: flex; align-items: flex-start; gap: var(--spacing-sm);
+    color: var(--muted-foreground); font-size: 0.9rem;
+}
+.profile-card__benefits li::before {
+    content: '→';
+    color: var(--primary); flex-shrink: 0; font-weight: 700;
+}
+/* Couleurs par profil */
+.profile-card--cyan   .orbit-sphere--md { border-color: rgba(0,229,255,0.4); box-shadow: 0 0 40px rgba(0,229,255,0.2); }
+.profile-card--violet .orbit-sphere--md { border-color: rgba(139,92,246,0.4); box-shadow: 0 0 40px rgba(139,92,246,0.2); }
+
+/* Aliases classes HTML existantes pour-qui.html */
+.establishment-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-2xl);
+    padding: var(--spacing-4xl) 0;
+}
+.establishment-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-2xl);
+    transition: box-shadow var(--transition-slow), transform var(--transition-slow);
+}
+.establishment-card:hover { box-shadow: var(--theme-box-shadow); transform: translateY(-4px); }
+.establishment-icon  { font-size: 2.5rem; margin-bottom: var(--spacing-md); }
+.establishment-title {
+    font-size: 1.1rem; font-weight: 700;
+    color: var(--primary); letter-spacing: 0.1em; text-transform: uppercase;
+    margin-bottom: var(--spacing-md);
+}
+.establishment-content { color: var(--muted-foreground); font-size: 0.9rem; line-height: 1.6; }
