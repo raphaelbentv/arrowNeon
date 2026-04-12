@@ -4,6 +4,7 @@ import { getBlogPosts } from '../../lib/sanity'
 const posts = await getBlogPosts()
 ---
 <BaseLayout title="Blog — Arrow" activePage="blog">
+  <link rel="stylesheet" href="/styles/pages/blog.css" slot="head">
   <div class="main-container">
     <section class="blog-section">
       <h1 class="blog-title">BLOG</h1>

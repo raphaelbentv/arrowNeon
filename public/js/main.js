@@ -3,6 +3,33 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Initialisation des animations
     initAnimations();
+    // Fermeture des modals au clic sur l'overlay
+    document.querySelectorAll('.modal-overlay').forEach(overlay => {
+        overlay.addEventListener('click', function(e) {
+            if (e.target === overlay) closeModal(overlay.id);
+        });
+    });
+});
+
+function openModal(id) {
+    const modal = document.getElementById(id);
+    if (!modal) return;
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+}
+
+function closeModal(id) {
+    const modal = document.getElementById(id);
+    if (!modal) return;
+    modal.style.display = 'none';
+    document.body.style.overflow = '';
+}
+
+document.addEventListener('keydown', function(e) {
+    if (e.key !== 'Escape') return;
+    document.querySelectorAll('.modal-overlay').forEach(overlay => {
+        if (overlay.style.display === 'flex') closeModal(overlay.id);
+    });
 });
 
 function initAnimations() {
