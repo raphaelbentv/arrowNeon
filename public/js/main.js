@@ -112,45 +112,30 @@ function initCardTiltEffect() {
 
 // Subtle parallax effect for background shapes
 function initParallaxEffect() {
+    const shapes = Array.from(document.querySelectorAll('.geo-shape'));
+    if (shapes.length === 0) return;
+
+    let frameRequested = false;
+    let nextX = 0.5;
+    let nextY = 0.5;
+
     document.addEventListener('mousemove', (e) => {
-        const shapes = document.querySelectorAll('.geo-shape');
-        const x = e.clientX / window.innerWidth;
-        const y = e.clientY / window.innerHeight;
-        
-        shapes.forEach((shape, index) => {
-            const depth = (index % 5 + 1) * 3;
-            const moveX = (x - 0.5) * depth;
-            const moveY = (y - 0.5) * depth;
-            
-            shape.style.transform += ` translate(${moveX}px, ${moveY}px)`;
+        nextX = e.clientX / window.innerWidth;
+        nextY = e.clientY / window.innerHeight;
+
+        if (frameRequested) return;
+        frameRequested = true;
+
+        window.requestAnimationFrame(() => {
+            shapes.forEach((shape, index) => {
+                const depth = (index % 5 + 1) * 3;
+                const moveX = (nextX - 0.5) * depth;
+                const moveY = (nextY - 0.5) * depth;
+                shape.style.transform = `translate(${moveX}px, ${moveY}px)`;
+            });
+            frameRequested = false;
         });
     });
-}
-
-// Matrix Rain Effect
-function createMatrixRain() {
-    const container = document.getElementById('matrixBg');
-    if (!container) return;
-    
-    container.innerHTML = '';
-    const columns = Math.floor(window.innerWidth / 20);
-    
-    for (let i = 0; i < columns; i++) {
-        const column = document.createElement('div');
-        column.className = 'matrix-column';
-        column.style.left = (i * 20) + 'px';
-        column.style.animationDuration = (Math.random() * 3 + 2) + 's';
-        column.style.animationDelay = (Math.random() * 2) + 's';
-        
-        let text = '';
-        const chars = 'アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン01';
-        for (let j = 0; j < 30; j++) {
-            text += chars[Math.floor(Math.random() * chars.length)] + '<br>';
-        }
-        column.innerHTML = text;
-        
-        container.appendChild(column);
-    }
 }
 
 // Slider interactif pour la comparaison Ancienne plateforme vs Arrow
@@ -210,17 +195,5 @@ function initComparisonSlider() {
         if (e.target !== handle && !e.target.closest('.slider-handle')) {
             updateSliderPosition(e.clientX);
         }
-    });
-    
-    // Create matrix rain effect
-    createMatrixRain();
-    
-    // Recreate matrix on resize
-    let resizeTimeout;
-    window.addEventListener('resize', () => {
-        clearTimeout(resizeTimeout);
-        resizeTimeout = setTimeout(() => {
-            createMatrixRain();
-        }, 250);
     });
 }

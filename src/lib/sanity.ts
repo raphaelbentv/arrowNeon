@@ -7,8 +7,8 @@ const configured = projectId && projectId !== 'your-project-id'
 export const client = createClient({
   projectId: projectId || 'placeholder',
   dataset,
-  useCdn: true,
-  apiVersion: '2024-01-01',
+  useCdn: false,
+  apiVersion: '2025-01-01',
 })
 
 export async function getBlogPosts(): Promise<any[]> {
