@@ -2,6 +2,7 @@ import { createClient } from '@sanity/client'
 
 const projectId = import.meta.env.PUBLIC_SANITY_PROJECT_ID
 const dataset   = import.meta.env.PUBLIC_SANITY_DATASET || 'production'
+const token     = import.meta.env.SANITY_API_TOKEN
 const configured = projectId && projectId !== 'your-project-id'
 
 export const client = createClient({
@@ -9,6 +10,8 @@ export const client = createClient({
   dataset,
   useCdn: false,
   apiVersion: '2025-01-01',
+  token,
+  perspective: 'published',
 })
 
 export async function getBlogPosts(): Promise<any[]> {
