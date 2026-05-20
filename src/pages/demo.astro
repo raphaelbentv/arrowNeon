@@ -117,169 +117,248 @@ import BaseLayout from '../layouts/BaseLayout.astro'
 
             <!-- Tab Synthèse -->
             <div class="arr-tab-panel active" id="admin-tab-synthese">
+              <!-- KPIs — données réelles API Arrow démo -->
               <div class="arr-stats">
-                <div class="arr-stat"><div class="arr-stat-label">Étudiants</div><div class="arr-stat-value blue">82</div></div>
-                <div class="arr-stat"><div class="arr-stat-label">Intervenants</div><div class="arr-stat-value purple">12</div></div>
-                <div class="arr-stat"><div class="arr-stat-label">Cohortes</div><div class="arr-stat-value cyan">6</div></div>
-                <div class="arr-stat"><div class="arr-stat-label">Modules</div><div class="arr-stat-value orange">24</div></div>
-                <div class="arr-stat"><div class="arr-stat-label">Évaluations</div><div class="arr-stat-value pink">15</div></div>
-                <div class="arr-stat"><div class="arr-stat-label">Moyenne</div><div class="arr-stat-value green">13.4</div></div>
+                <div class="arr-stat"><div class="arr-stat-label">Étudiants</div><div class="arr-stat-value pink">11</div></div>
+                <div class="arr-stat"><div class="arr-stat-label">Intervenants</div><div class="arr-stat-value purple">5</div></div>
+                <div class="arr-stat"><div class="arr-stat-label">Cohortes</div><div class="arr-stat-value blue">3</div></div>
+                <div class="arr-stat"><div class="arr-stat-label">Modules</div><div class="arr-stat-value orange">5</div></div>
+                <div class="arr-stat"><div class="arr-stat-label">Évaluations</div><div class="arr-stat-value cyan">6</div></div>
+                <div class="arr-stat"><div class="arr-stat-label">Moyenne</div><div class="arr-stat-value green">14.1</div></div>
               </div>
 
+              <!-- Points d'attention — 4 items fidèles au vrai Arrow -->
               <div class="arr-section">
                 <h3 class="arr-section-title">Points d'attention</h3>
-                <div class="arr-alert">
-                  <div class="arr-alert-info">
-                    <span class="arr-alert-title">Inactifs 14j+</span>
-                    <span class="arr-alert-desc">3 étudiant(s) sans activité depuis plus de 14 jours</span>
+                <div class="arr-alerts-grid">
+                  <div class="arr-alert">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+                    <div class="arr-alert-info">
+                      <span class="arr-alert-title">Sans sessions</span>
+                      <span class="arr-alert-desc">3 module(s) non planifié(s)</span>
+                    </div>
+                    <span class="arr-alert-count">3</span>
                   </div>
-                  <span class="arr-alert-count">3</span>
-                </div>
-                <div class="arr-alert">
-                  <div class="arr-alert-info">
-                    <span class="arr-alert-title">Bulletins à valider</span>
-                    <span class="arr-alert-desc">5 bulletins en attente de signature</span>
+                  <div class="arr-alert">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#3d9bff" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+                    <div class="arr-alert-info">
+                      <span class="arr-alert-title">Inactifs 14j+</span>
+                      <span class="arr-alert-desc">5 intervenant(s)</span>
+                    </div>
+                    <span class="arr-alert-count blue">5</span>
                   </div>
-                  <span class="arr-alert-count">5</span>
+                  <div class="arr-alert">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                    <div class="arr-alert-info">
+                      <span class="arr-alert-title">Classes vides</span>
+                      <span class="arr-alert-desc">3 classe(s) sans étudiants</span>
+                    </div>
+                    <span class="arr-alert-count">3</span>
+                  </div>
+                  <div class="arr-alert arr-alert--muted">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#6b7280" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+                    <div class="arr-alert-info">
+                      <span class="arr-alert-title">Semaine vide</span>
+                      <span class="arr-alert-desc">Aucune session programmée cette semaine</span>
+                    </div>
+                  </div>
                 </div>
               </div>
 
               <div class="arr-two-col">
+                <!-- Présences avec vrais étudiants démo -->
                 <div class="arr-card">
                   <div class="arr-card-header">Présences</div>
                   <div class="arr-row" data-goto-profile>
                     <div>
-                      <div class="arr-row-name">Sophie MARTIN</div>
-                      <div class="arr-row-meta">BACH-MKT-2024 · Absence 14/05</div>
+                      <div class="arr-row-name">Sofia BENALI</div>
+                      <div class="arr-row-meta">ARW-DEMO-002 · Absence 19/05</div>
                     </div>
                     <span class="arr-badge warn">Non justifiée</span>
                   </div>
                   <div class="arr-row" data-goto-profile>
                     <div>
-                      <div class="arr-row-name">Lucas DUBOIS</div>
-                      <div class="arr-row-meta">BACH-RH-2024 · Absence 13/05</div>
+                      <div class="arr-row-name">Noah FERNANDEZ</div>
+                      <div class="arr-row-meta">ARW-DEMO-007 · Absence 15/05</div>
                     </div>
                     <span class="arr-badge warn">En attente</span>
                   </div>
                   <div class="arr-row" data-goto-profile>
                     <div>
-                      <div class="arr-row-name">Emma BERNARD</div>
-                      <div class="arr-row-meta">MAST-FIN-2023 · Absence 12/05</div>
+                      <div class="arr-row-name">Emma ROUSSEAU</div>
+                      <div class="arr-row-meta">ARW-DEMO-004 · Absence 14/05</div>
                     </div>
                     <span class="arr-badge ok">Justifiée</span>
                   </div>
                   <div class="arr-row" data-goto-profile>
                     <div>
-                      <div class="arr-row-name">Thomas PETIT</div>
-                      <div class="arr-row-meta">BACH-MKT-2024 · Absence 12/05</div>
+                      <div class="arr-row-name">Mehdi KACEM</div>
+                      <div class="arr-row-meta">ARW-DEMO-005 · Absence 13/05</div>
                     </div>
                     <span class="arr-badge err">3e absence</span>
                   </div>
                 </div>
+                <!-- Sessions récentes — vrais modules API -->
                 <div class="arr-card">
                   <div class="arr-card-header">Sessions récentes</div>
                   <div class="arr-row">
                     <div>
-                      <div class="arr-row-name">Marketing Digital</div>
-                      <div class="arr-row-meta">Lundi 13/05 · 09h–12h</div>
+                      <div class="arr-row-name">Communication professionnelle</div>
+                      <div class="arr-row-meta">Jeu 5 mai · 13:30–17:00 · Salle 118</div>
                     </div>
-                    <span class="arr-badge ok">24/26</span>
+                    <span class="arr-badge ok">7/8</span>
                   </div>
                   <div class="arr-row">
                     <div>
-                      <div class="arr-row-name">Droit du travail</div>
-                      <div class="arr-row-meta">Lundi 13/05 · 14h–17h</div>
+                      <div class="arr-row-name">Stratégie marketing digital</div>
+                      <div class="arr-row-meta">Mar 5 mai · 09:00–12:30 · Salle 204</div>
                     </div>
-                    <span class="arr-badge info">18/20</span>
+                    <span class="arr-badge info">8/8</span>
                   </div>
                   <div class="arr-row">
                     <div>
-                      <div class="arr-row-name">Finance d'entreprise</div>
-                      <div class="arr-row-meta">Vendredi 10/05 · 09h–13h</div>
+                      <div class="arr-row-name">Communication professionnelle</div>
+                      <div class="arr-row-meta">Jeu 28 avr · 13:30–17:00 · Salle 118</div>
                     </div>
-                    <span class="arr-badge warn">21/24</span>
+                    <span class="arr-badge ok">6/8</span>
                   </div>
                   <div class="arr-row">
                     <div>
-                      <div class="arr-row-name">Communication RH</div>
-                      <div class="arr-row-meta">Vendredi 10/05 · 14h–17h</div>
+                      <div class="arr-row-name">Stratégie marketing digital</div>
+                      <div class="arr-row-meta">Mar 28 avr · 09:00–12:30 · Salle 204</div>
                     </div>
-                    <span class="arr-badge ok">20/20</span>
+                    <span class="arr-badge warn">5/8</span>
                   </div>
                 </div>
               </div>
             </div>
 
-            <!-- Tab Planning -->
+            <!-- Tab Planning — fidèle au vrai Arrow avec sélecteur semaines -->
             <div class="arr-tab-panel" id="admin-tab-planning">
-              <div class="arr-planning">
-                <div class="arr-planning-header">
-                  <div class="arr-planning-title">Semaine du 20 au 24 mai 2026</div>
-                  <div style="display:flex;gap:8px;">
-                    <button class="arr-btn">◄</button>
-                    <button class="arr-btn">Aujourd'hui</button>
-                    <button class="arr-btn">►</button>
+              <div class="arr-planning-layout">
+                <!-- Sidebar gauche : filtres + actions -->
+                <div class="arr-planning-sidebar">
+                  <div class="arr-planning-filters">
+                    <div class="arr-filter-group">
+                      <div class="arr-filter-label">CLASSE</div>
+                      <div class="arr-filter-value">Sélectionner</div>
+                    </div>
+                    <div class="arr-filter-group">
+                      <div class="arr-filter-label">MODULE</div>
+                      <div class="arr-filter-value">Sélectionner</div>
+                    </div>
+                    <div class="arr-filter-group">
+                      <div class="arr-filter-label">INTERVENANT</div>
+                      <div class="arr-filter-value">Choisissez un module</div>
+                    </div>
                   </div>
+                  <div class="arr-planning-actions-title">PLANIFIER DES SÉANCES</div>
+                  <button class="arr-planning-action-btn">+ Nouvelle séance</button>
+                  <button class="arr-planning-action-btn">+ Nouvelle récurrence</button>
+                  <button class="arr-planning-action-btn purple">Placement automatisé</button>
                 </div>
-                <div class="arr-planning-grid">
-                  <div class="arr-planning-cell arr-planning-head"></div>
-                  <div class="arr-planning-cell arr-planning-head">Lundi 20</div>
-                  <div class="arr-planning-cell arr-planning-head">Mardi 21</div>
-                  <div class="arr-planning-cell arr-planning-head">Mercredi 22</div>
-                  <div class="arr-planning-cell arr-planning-head">Jeudi 23</div>
-                  <div class="arr-planning-cell arr-planning-head">Vendredi 24</div>
 
-                  <div class="arr-planning-cell arr-planning-time">09h</div>
-                  <div class="arr-planning-cell"><div class="arr-planning-session">Marketing Digital<br><small>Bach-MKT · S. Bernier</small></div></div>
-                  <div class="arr-planning-cell"></div>
-                  <div class="arr-planning-cell"><div class="arr-planning-session purple">Stratégie<br><small>Bach-MKT · M. Durand</small></div></div>
-                  <div class="arr-planning-cell"><div class="arr-planning-session green">Finance<br><small>Mast-FIN · L. Robin</small></div></div>
-                  <div class="arr-planning-cell"><div class="arr-planning-session orange">Com. digitale<br><small>Bach-MKT · S. Bernier</small></div></div>
+                <!-- Calendrier principal -->
+                <div class="arr-planning-main">
+                  <!-- Sélecteur de semaine (style Arrow) -->
+                  <div class="arr-week-nav">
+                    <button class="arr-btn arr-btn-icon">←</button>
+                    <span class="arr-week-title">Semaine 21 — Mai 2026</span>
+                    <button class="arr-btn arr-btn-icon">→</button>
+                    <div class="arr-view-btns">
+                      <button class="arr-view-btn active">SEMAINE</button>
+                      <button class="arr-view-btn">MOIS</button>
+                      <button class="arr-view-btn">ANNÉE</button>
+                      <button class="arr-view-btn">LISTE</button>
+                    </div>
+                  </div>
 
-                  <div class="arr-planning-cell arr-planning-time">14h</div>
-                  <div class="arr-planning-cell"><div class="arr-planning-session purple">Droit du travail<br><small>Bach-RH · P. Lemaire</small></div></div>
-                  <div class="arr-planning-cell"><div class="arr-planning-session">Marketing Digital<br><small>Bach-MKT · S. Bernier</small></div></div>
-                  <div class="arr-planning-cell"></div>
-                  <div class="arr-planning-cell"><div class="arr-planning-session orange">Communication<br><small>Bach-MKT · C. Roy</small></div></div>
-                  <div class="arr-planning-cell"></div>
+                  <!-- Strip semaines 1-52 -->
+                  <div class="arr-week-strip">
+                    {Array.from({length: 52}, (_, i) => i+1).map(w => (
+                      <span class={`arr-week-num${w === 21 ? ' active' : ''}`}>{w}</span>
+                    ))}
+                    <span class="arr-week-month" style="left:0">JAN</span>
+                    <span class="arr-week-month" style="left:50%">JUN</span>
+                    <span class="arr-week-month" style="right:0">DÉC</span>
+                  </div>
+
+                  <!-- Grille calendrier 7 jours -->
+                  <div class="arr-cal-grid">
+                    <div class="arr-cal-times">
+                      {['08:00','09:00','10:00','11:00','12:00','13:00','14:00','15:00','16:00'].map(t => (
+                        <div class="arr-cal-time">{t}</div>
+                      ))}
+                    </div>
+                    {[
+                      {day:'Lun', n:'18'},
+                      {day:'Mar', n:'19', sessions:[{h:2, title:'Stratégie marketing digital', sub:'Bach. MKT · M. Dubois · Salle 204', color:'blue'}]},
+                      {day:'Mer', n:'20'},
+                      {day:'Jeu', n:'21', sessions:[{h:5, title:'Communication professionnelle', sub:'Bach. MKT · A. Lefevre · Salle 118', color:'green'}]},
+                      {day:'Ven', n:'22'},
+                      {day:'Sam', n:'23'},
+                      {day:'Dim', n:'24'},
+                    ].map(({day, n, sessions}) => (
+                      <div class="arr-cal-col">
+                        <div class="arr-cal-head"><span class="arr-cal-day">{day}</span><span class="arr-cal-num">{n}</span></div>
+                        <div class="arr-cal-body">
+                          {sessions?.map(s => (
+                            <div class={`arr-cal-event ${s.color}`} style={`top:${(s.h-8)*56}px`}>
+                              <div class="arr-cal-event-title">{s.title}</div>
+                              <div class="arr-cal-event-sub">{s.sub}</div>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
 
-            <!-- Tab Étudiants -->
+            <!-- Tab Étudiants — vrais étudiants API Arrow démo -->
             <div class="arr-tab-panel" id="admin-tab-etudiants">
-              <p class="arr-subtitle" style="margin-bottom:14px;">Aperçu de la liste — voir tous les étudiants pour la version complète.</p>
+              <div class="arr-students-header">
+                <div class="arr-students-stats">
+                  <div class="arr-sstat"><span class="arr-sstat-label">TOTAL ÉTUDIANTS</span><span class="arr-sstat-val">11</span></div>
+                  <div class="arr-sstat"><span class="arr-sstat-label">INSCRITS</span><span class="arr-sstat-val">0</span></div>
+                  <div class="arr-sstat"><span class="arr-sstat-label">EN ATTENTE</span><span class="arr-sstat-val">11</span></div>
+                  <div class="arr-sstat"><span class="arr-sstat-label">DIPLÔMÉS</span><span class="arr-sstat-val">0</span></div>
+                  <div class="arr-sstat"><span class="arr-sstat-label">INITIAL</span><span class="arr-sstat-val cyan">4</span></div>
+                  <div class="arr-sstat"><span class="arr-sstat-label">ALTERNANCE</span><span class="arr-sstat-val blue">4</span></div>
+                </div>
+                <div class="arr-students-toolbar">
+                  <div class="arr-view-toggle"><button class="arr-view-btn active">Grille</button><button class="arr-view-btn">Liste</button></div>
+                  <input class="arr-search" type="text" placeholder="Rechercher un étudiant…" readonly>
+                  <button class="arr-btn-primary">+ NOUVEL ÉTUDIANT</button>
+                </div>
+              </div>
               <div class="arr-students-grid" id="admin-tab-students-grid">
-                <div class="arr-student-card" data-admin-card-goto>
-                  <div class="arr-student-top">
-                    <div class="arr-avatar green">SM</div>
-                    <div class="arr-student-info">
-                      <div class="arr-student-name">Sophie MARTIN</div>
-                      <div class="arr-student-email">s.martin@arrow.test</div>
+                {[
+                  {init:'JM', color:'blue',   name:'Jean MARTIN',    num:'ARW-DEMO-001', fin:'Alternance'},
+                  {init:'SB', color:'pink',   name:'Sofia BENALI',   num:'ARW-DEMO-002', fin:'Initial'},
+                  {init:'LM', color:'purple', name:'Lucas MOREAU',   num:'ARW-DEMO-003', fin:'Alternance'},
+                  {init:'ER', color:'green',  name:'Emma ROUSSEAU',  num:'ARW-DEMO-004', fin:'Initial'},
+                  {init:'MK', color:'orange', name:'Mehdi KACEM',    num:'ARW-DEMO-005', fin:'Alternance'},
+                  {init:'CL', color:'cyan',   name:'Chloé LAMBERT',  num:'ARW-DEMO-006', fin:'Initial'},
+                  {init:'NF', color:'blue',   name:'Noah FERNANDEZ', num:'ARW-DEMO-007', fin:'Alternance'},
+                  {init:'LZ', color:'purple', name:'Lina ZHANG',     num:'ARW-DEMO-008', fin:'Initial'},
+                ].map(s => (
+                  <div class="arr-student-card" data-admin-card-goto>
+                    <div class="arr-student-top">
+                      <div class={`arr-avatar ${s.color}`}>{s.init}</div>
+                      <div class="arr-student-info">
+                        <div class="arr-student-name">{s.name}</div>
+                        <div class="arr-student-num">{s.num}</div>
+                      </div>
+                      <span class="arr-badge warn">En attente</span>
                     </div>
-                    <span class="arr-badge ok">Inscrite</span>
-                  </div>
-                </div>
-                <div class="arr-student-card" data-admin-card-goto>
-                  <div class="arr-student-top">
-                    <div class="arr-avatar">LD</div>
-                    <div class="arr-student-info">
-                      <div class="arr-student-name">Lucas DUBOIS</div>
-                      <div class="arr-student-email">l.dubois@arrow.test</div>
+                    <div class="arr-student-fields">
+                      <div class="arr-field"><span class="arr-field-label">FORMATION</span><span class="arr-field-val">Bachelor Marketing Digital</span></div>
+                      <div class="arr-field"><span class="arr-field-label">FINANCEMENT</span><span class="arr-field-val">{s.fin}</span></div>
                     </div>
-                    <span class="arr-badge ok">Inscrit</span>
                   </div>
-                </div>
-                <div class="arr-student-card" data-admin-card-goto>
-                  <div class="arr-student-top">
-                    <div class="arr-avatar purple">EB</div>
-                    <div class="arr-student-info">
-                      <div class="arr-student-name">Emma BERNARD</div>
-                      <div class="arr-student-email">e.bernard@arrow.test</div>
-                    </div>
-                    <span class="arr-badge ok">Inscrite</span>
-                  </div>
-                </div>
+                ))}
               </div>
               <div style="text-align:center;margin-top:18px;">
                 <button class="arr-btn" data-admin-nav="students">Voir tous les étudiants →</button>
