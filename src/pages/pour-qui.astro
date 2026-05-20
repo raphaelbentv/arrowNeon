@@ -1,80 +1,124 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro'
 ---
-<BaseLayout title="Pour qui — Arrow" activePage="pour-qui">
+<BaseLayout
+  title="Pour qui — Arrow"
+  description="Arrow s'adresse aux équipes qui veulent un suivi étudiant plus clair, plus centralisé et plus simple à partager."
+  activePage="pour-qui"
+>
   <link rel="stylesheet" href="/styles/pages/pour-qui.css" slot="head">
-  <div class="main-container">
+
+  <div class="main-container audience-page">
     <div class="cyber-header">
       <h1 class="cyber-logo">POUR QUI ?</h1>
-      <p class="cyber-tagline">ARROW S'ADAPTE À TOUS LES TYPES D'ÉTABLISSEMENTS</p>
+      <p class="cyber-tagline">POUR LES ÉQUIPES QUI VEULENT VOIR PLUS CLAIR</p>
     </div>
 
-    <div class="establishment-grid">
-      <!-- Écoles -->
-      <div class="establishment-card">
-        <div class="establishment-icon">🏫</div>
-        <h2 class="establishment-title">ÉCOLES</h2>
-        <div class="establishment-content">
-          <h3>Cas d'usage</h3>
-          <ul>
-            <li>Gestion complète des élèves de la maternelle au lycée</li>
-            <li>Suivi pédagogique et administratif</li>
-            <li>Communication avec les familles</li>
-            <li>Génération automatique des bulletins</li>
-            <li>Gestion des absences et retards</li>
-          </ul>
-          <h3>Avantages spécifiques</h3>
-          <ul>
-            <li>Interface adaptée aux différents niveaux</li>
-            <li>Conformité avec les exigences académiques</li>
-            <li>Export vers les systèmes académiques</li>
-          </ul>
-        </div>
+    <section class="audience-intro card">
+      <div>
+        <p class="eyebrow">Le point commun</p>
+        <h2>Quand le suivi étudiant se disperse, Arrow remet les infos utiles au même endroit.</h2>
+        <p>
+          Si vous jonglez entre absences, notes, bulletins, documents et commentaires, Arrow parle déjà votre langue.
+          Le but n'est pas d'ajouter une couche de complexité, mais d'éviter la chasse au bon fichier.
+        </p>
       </div>
+      <div class="audience-intro__chips">
+        <span>Absences</span>
+        <span>Notes</span>
+        <span>Bulletins</span>
+        <span>Documents</span>
+        <span>Commentaires</span>
+        <span>Preuves de suivi</span>
+      </div>
+    </section>
 
-      <!-- Formations professionnelles -->
-      <div class="establishment-card">
-        <div class="establishment-icon">🎓</div>
-        <h2 class="establishment-title">FORMATIONS PROFESSIONNELLES</h2>
-        <div class="establishment-content">
-          <h3>Cas d'usage</h3>
-          <ul>
-            <li>Gestion des parcours de formation</li>
-            <li>Suivi des compétences et certifications</li>
-            <li>Gestion des stages en entreprise</li>
-            <li>Évaluation continue des apprenants</li>
-            <li>Génération de certificats</li>
-          </ul>
-          <h3>Avantages spécifiques</h3>
-          <ul>
-            <li>Conformité Qualiopi intégrée</li>
-            <li>Gestion des référentiels de compétences</li>
-            <li>Suivi des financements (CPF, OPCO)</li>
-          </ul>
+    <section class="establishment-grid">
+      <article class="card establishment-card">
+        <div class="establishment-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" focusable="false">
+            <path d="M3 21h18" />
+            <path d="M5 21V8l7-4 7 4v13" />
+            <path d="M9 21v-6h6v6" />
+            <path d="M8 10h.01" />
+            <path d="M12 10h.01" />
+            <path d="M16 10h.01" />
+          </svg>
         </div>
-      </div>
+        <h2 class="establishment-title">Écoles supérieures privées</h2>
+        <p class="establishment-copy">
+          Pour les équipes pédagogiques, scolarité et qualité qui veulent une lecture commune de la situation étudiante.
+        </p>
+        <ul class="establishment-list">
+          <li>Vue plus nette par étudiant</li>
+          <li>Moins d'allers-retours entre outils</li>
+          <li>Documents et preuves plus faciles à retrouver</li>
+        </ul>
+      </article>
 
-      <!-- CFA -->
-      <div class="establishment-card">
-        <div class="establishment-icon">⚙️</div>
-        <h2 class="establishment-title">CFA</h2>
-        <div class="establishment-content">
-          <h3>Cas d'usage</h3>
-          <ul>
-            <li>Gestion des contrats d'apprentissage</li>
-            <li>Suivi alternance entreprise/CFA</li>
-            <li>Coordination avec les maîtres d'apprentissage</li>
-            <li>Évaluation des compétences en entreprise</li>
-            <li>Gestion des examens et certifications</li>
-          </ul>
-          <h3>Avantages spécifiques</h3>
-          <ul>
-            <li>Interface dédiée aux entreprises partenaires</li>
-            <li>Conformité avec la réglementation de l'apprentissage</li>
-            <li>Export vers les systèmes de financement</li>
-          </ul>
+      <article class="card establishment-card">
+        <div class="establishment-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" focusable="false">
+            <path d="M12 3v3" />
+            <path d="M12 18v3" />
+            <path d="M3 12h3" />
+            <path d="M18 12h3" />
+            <path d="m5.6 5.6 2.1 2.1" />
+            <path d="m16.3 16.3 2.1 2.1" />
+            <path d="m18.4 5.6-2.1 2.1" />
+            <path d="m7.7 16.3-2.1 2.1" />
+            <circle cx="12" cy="12" r="4" />
+          </svg>
         </div>
+        <h2 class="establishment-title">CFA et alternance</h2>
+        <p class="establishment-copy">
+          Pour les structures qui doivent suivre parcours, pièces utiles et coordination sans empiler les fichiers.
+        </p>
+        <ul class="establishment-list">
+          <li>Suivi plus lisible entre école et entreprise</li>
+          <li>Informations utiles réunies plus vite</li>
+          <li>Moins de bricolage pour garder le contexte</li>
+        </ul>
+      </article>
+
+      <article class="card establishment-card">
+        <div class="establishment-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" focusable="false">
+            <path d="M22 10 12 5 2 10l10 5 10-5Z" />
+            <path d="M6 12.5V17c2 1.7 4 2.5 6 2.5s4-.8 6-2.5v-4.5" />
+            <path d="M22 10v5" />
+          </svg>
+        </div>
+        <h2 class="establishment-title">Organismes de formation</h2>
+        <p class="establishment-copy">
+          Pour les équipes qui veulent centraliser le suivi apprenant sans transformer chaque vérification en mini enquête.
+        </p>
+        <ul class="establishment-list">
+          <li>Parcours plus simple à relire</li>
+          <li>Meilleure circulation de l'information</li>
+          <li>Base plus propre pour les preuves utiles</li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="audience-note card">
+      <p class="eyebrow">En pratique</p>
+      <h2>Arrow aide surtout quand il faut retrouver vite la bonne info.</h2>
+      <p>
+        Un étudiant en difficulté, un bulletin à sortir, une pièce à retrouver, une preuve de suivi à montrer :
+        c'est là qu'Arrow doit faire la différence.
+      </p>
+    </section>
+
+    <section class="audience-cta">
+      <div class="card audience-cta__panel">
+        <div>
+          <p class="eyebrow">Étape suivante</p>
+          <h2>Vous pouvez tester la bêta pendant 1 mois.</h2>
+          <p>Un mois d'accès offert permet de vérifier simplement si Arrow s'intègre bien à votre quotidien.</p>
+        </div>
+        <a href="/contact" data-open-modal="betaAccessModal" class="btn-primary" data-track="audience_demo">Parler de mon contexte</a>
       </div>
-    </div>
+    </section>
   </div>
 </BaseLayout>

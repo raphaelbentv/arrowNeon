@@ -100,5 +100,19 @@
     }
 }
 
+@media (max-width: 768px) {
+    .btn-primary,
+    .btn-secondary,
+    .btn-ghost {
+        max-width: 100%;
+        min-height: 44px;
+        padding: 13px 18px;
+        font-size: 0.92rem;
+        line-height: 1.15;
+        letter-spacing: 0.02em;
+        white-space: normal;
+        overflow-wrap: anywhere;
+    }
+}
 
 

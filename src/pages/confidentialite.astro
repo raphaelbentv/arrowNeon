@@ -1,0 +1,113 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+---
+<BaseLayout
+  title="Confidentialité & RGPD — Arrow"
+  description="Politique de confidentialité Arrow : données collectées, finalités, bases légales, newsletter, conservation et droits RGPD."
+>
+  <link rel="stylesheet" href="/styles/pages/legal.css" slot="head">
+
+  <main class="main-container legal-page">
+    <section class="legal-hero">
+      <p class="eyebrow">Données personnelles</p>
+      <h1 class="cyber-logo">CONFIDENTIALITÉ & RGPD</h1>
+      <p>
+        Cette page explique comment Arrow traite les données personnelles transmises via le site, notamment lors
+        d’une demande de démo ou d’une inscription à la newsletter.
+      </p>
+      <p class="legal-meta">Dernière mise à jour : 15 mai 2026</p>
+    </section>
+
+    <section class="legal-layout">
+      <article class="card legal-card">
+        <h2>Responsable du traitement</h2>
+        <p>
+          Le responsable du traitement est l’éditeur du site Arrow. Les informations administratives complètes sont
+          indiquées ou à compléter dans les <a href="/mentions-legales">mentions légales</a>.
+        </p>
+        <p>Contact pour les données personnelles : <a href="mailto:hey@arr0w.app">hey@arr0w.app</a>.</p>
+      </article>
+
+      <article class="card legal-card">
+        <h2>Données collectées</h2>
+        <p>Lorsque vous remplissez un formulaire, Arrow peut collecter :</p>
+        <ul>
+          <li>votre nom ;</li>
+          <li>votre adresse email professionnelle ;</li>
+          <li>votre établissement ou organisation ;</li>
+          <li>votre fonction ;</li>
+          <li>le contenu de votre demande ;</li>
+          <li>votre choix d’inscription à la newsletter ;</li>
+          <li>la date de consentement au traitement des données.</li>
+        </ul>
+      </article>
+
+      <article class="card legal-card">
+        <h2>Finalités et bases légales</h2>
+        <ul>
+          <li>Répondre à une demande de démo ou de contact : intérêt légitime ou mesures précontractuelles.</li>
+          <li>Gérer une inscription à la newsletter : consentement.</li>
+          <li>Sécuriser le site et prévenir le spam : intérêt légitime.</li>
+          <li>Mesurer l’audience du site si l’outil analytics est activé : consentement ou intérêt légitime selon la configuration retenue.</li>
+        </ul>
+      </article>
+
+      <article class="card legal-card">
+        <h2>Newsletter</h2>
+        <p>
+          L’inscription à la newsletter est facultative. Elle n’est activée que si vous cochez explicitement l’option
+          correspondante. Vous pourrez vous désinscrire à tout moment via le lien de désinscription présent dans les
+          emails ou en écrivant à <a href="mailto:hey@arr0w.app">hey@arr0w.app</a>.
+        </p>
+      </article>
+
+      <article class="card legal-card">
+        <h2>Destinataires et outils</h2>
+        <p>
+          Les données peuvent être transmises aux outils nécessaires au traitement des demandes : service d’email,
+          outil de formulaire, outil de newsletter, outil d’analytics ou outil de supervision technique. Les accès sont
+          limités aux besoins opérationnels d’Arrow.
+        </p>
+      </article>
+
+      <article class="card legal-card">
+        <h2>Durée de conservation</h2>
+        <ul>
+          <li>Demandes de contact ou de démo : durée nécessaire au suivi commercial, puis archivage ou suppression.</li>
+          <li>Newsletter : jusqu’au retrait du consentement ou désinscription.</li>
+          <li>Logs techniques : durée limitée aux besoins de sécurité et de diagnostic.</li>
+        </ul>
+      </article>
+
+      <article class="card legal-card">
+        <h2>Vos droits</h2>
+        <p>
+          Vous pouvez demander l’accès, la rectification, l’effacement, la limitation ou l’opposition au traitement de
+          vos données, ainsi que le retrait de votre consentement lorsque le traitement repose sur celui-ci.
+        </p>
+        <p>
+          Pour exercer vos droits : <a href="mailto:hey@arr0w.app">hey@arr0w.app</a>. Vous pouvez également introduire
+          une réclamation auprès de la CNIL.
+        </p>
+      </article>
+
+      <article class="card legal-card">
+        <h2>Cookies et mesure d’audience</h2>
+        <p>
+          Le site peut utiliser des traceurs nécessaires au fonctionnement du site et, si configuré, un outil de mesure
+          d’audience comme PostHog. Une gestion plus détaillée des préférences cookies devra être ajoutée si des
+          traceurs non essentiels sont activés en production.
+        </p>
+      </article>
+
+      <article class="card legal-card legal-note">
+        <h2>Validation avant production</h2>
+        <p>
+          Cette politique est une base opérationnelle. Avant la mise en production publique, elle doit être relue avec
+          les outils réellement utilisés, l’hébergeur définitif, les durées de conservation retenues et les coordonnées
+          complètes de la structure.
+        </p>
+      </article>
+    </section>
+  </main>
+</BaseLayout>

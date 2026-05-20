@@ -21,4 +21,171 @@
   font-size: 1.2rem; cursor: pointer; transition: color var(--transition-base);
 }
 .modal-close:hover { color: var(--primary); }
+
+:root[data-theme="light"] .modal-close {
+  color: var(--foreground);
+}
 .modal-title { font-size: 1.3rem; font-weight: 700; color: var(--card-foreground); margin-bottom: var(--spacing-md); }
+
+/* ============================================
+   BETA / DEMO ACCESS MODAL
+   (markup : .beta-modal-overlay + .beta-modal-container ...)
+   ============================================ */
+
+.beta-modal-overlay {
+  padding: 24px;
+  overflow-y: auto;
+}
+
+.beta-modal-container {
+  position: relative;
+  width: 100%;
+  max-width: 760px;
+  max-height: calc(100vh - 48px);
+  overflow-y: auto;
+  background:
+    linear-gradient(180deg, rgba(61, 155, 255, 0.08), rgba(61, 155, 255, 0.02)),
+    var(--background);
+  border: 1px solid var(--primary-20);
+  border-radius: var(--radius-xl);
+  box-shadow:
+    0 30px 80px rgba(0, 0, 0, 0.45),
+    0 0 60px rgba(61, 155, 255, 0.16);
+  padding: 0;
+}
+
+.beta-modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 40px;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--primary-20);
+  border-radius: 50%;
+  color: rgba(255, 255, 255, 0.85);
+  font-family: 'League Spartan', sans-serif;
+  font-size: 26px;
+  font-weight: 800;
+  line-height: 1;
+  cursor: pointer;
+  transition: transform 0.3s ease, background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+  z-index: 10;
+}
+.beta-modal-close:hover {
+  transform: rotate(90deg);
+  background: var(--primary-10);
+  color: #fff;
+  box-shadow: 0 0 18px var(--primary-30);
+}
+
+:root[data-theme="light"] .beta-modal-close {
+  background: #fff;
+  color: var(--foreground);
+  border-color: var(--primary-30);
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.12);
+}
+
+.beta-modal-content {
+  padding: 48px 48px 40px;
+}
+
+.beta-modal-copy {
+  max-width: 560px;
+  margin-bottom: var(--spacing-xl);
+}
+
+.beta-modal-copy .eyebrow {
+  margin: 0 0 var(--spacing-sm);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--primary);
+}
+
+.beta-modal-copy h2 {
+  margin: 0 0 var(--spacing-sm);
+  font-family: 'League Spartan', sans-serif;
+  font-size: clamp(1.6rem, 3vw, 2.1rem);
+  font-weight: 800;
+  line-height: 1.2;
+  color: var(--card-foreground);
+}
+
+.beta-modal-copy p {
+  margin: 0;
+  color: var(--muted-foreground);
+  line-height: 1.6;
+}
+
+.beta-modal-form {
+  display: grid;
+  gap: var(--spacing-lg);
+}
+
+.beta-modal-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--spacing-md) var(--spacing-lg);
+}
+
+.beta-modal-field {
+  display: grid;
+  gap: 6px;
+  font-size: 0.85rem;
+}
+.beta-modal-field--full {
+  grid-column: 1 / -1;
+}
+
+.beta-modal-field > span {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted-foreground);
+}
+
+.beta-modal-field input,
+.beta-modal-field textarea,
+.beta-modal-field select {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--primary-15);
+  border-radius: var(--radius-md);
+  padding: 12px 14px;
+  color: var(--foreground);
+  font: inherit;
+  transition: border-color var(--transition-base), box-shadow var(--transition-base), background var(--transition-base);
+}
+.beta-modal-field textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+.beta-modal-field input:focus,
+.beta-modal-field textarea:focus,
+.beta-modal-field select:focus {
+  outline: none;
+  border-color: var(--primary);
+  background: rgba(61, 155, 255, 0.06);
+  box-shadow: 0 0 0 3px var(--primary-15);
+}
+
+:root[data-theme="light"] .beta-modal-field input,
+:root[data-theme="light"] .beta-modal-field textarea,
+:root[data-theme="light"] .beta-modal-field select {
+  background: #fff;
+  border-color: var(--primary-20);
+  color: var(--foreground);
+}
+
+/* Responsive : passage en 1 colonne sous 720px */
+@media (max-width: 720px) {
+  .beta-modal-content { padding: 32px 24px 28px; }
+  .beta-modal-grid    { grid-template-columns: 1fr; }
+  .beta-modal-close   { top: 12px; right: 12px; }
+}

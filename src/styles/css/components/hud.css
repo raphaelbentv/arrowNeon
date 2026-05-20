@@ -11,14 +11,20 @@
   max-width: 600px;
 }
 .stat-item, .hud-stat {
+  --stat-accent: var(--primary);
   display: flex; flex-direction: column; align-items: center;
   gap: var(--spacing-xs);
 }
+/* Cycle des accents Arrow : bleu (dominant), cyan, vert pétant */
+.hud-stats .stat-item:nth-child(1), .hud-stats .hud-stat:nth-child(1) { --stat-accent: var(--primary); }
+.hud-stats .stat-item:nth-child(2), .hud-stats .hud-stat:nth-child(2) { --stat-accent: var(--accent-cyan); }
+.hud-stats .stat-item:nth-child(3), .hud-stats .hud-stat:nth-child(3) { --stat-accent: var(--accent-green); }
+
 .stat-value, .hud-stat-value {
   font-size: clamp(1.5rem, 3vw, 2rem);
   font-weight: 800;
-  color: var(--primary);
-  text-shadow: var(--text-glow);
+  color: var(--stat-accent);
+  text-shadow: 0 0 22px color-mix(in srgb, var(--stat-accent) 55%, transparent);
   font-family: var(--font-family);
 }
 .stat-label, .hud-stat-label {

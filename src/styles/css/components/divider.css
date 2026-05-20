@@ -4,11 +4,20 @@
 
 .divider {
     height: 2px;
-    background: linear-gradient(90deg, 
-        transparent, 
-        rgba(0, 128, 255, 0.5), 
-        transparent);
+    background: linear-gradient(90deg,
+        transparent 0%,
+        rgba(0, 128, 255, 0.5) 25%,
+        rgba(0, 217, 255, 0.85) 50%,
+        rgba(255, 0, 214, 0.55) 75%,
+        transparent 100%);
     margin: 40px 0;
+    box-shadow: 0 0 12px rgba(0, 217, 255, 0.25);
 }
+
+/* Variantes par accent */
+.divider--cyan    { background: linear-gradient(90deg, transparent, rgba(0,217,255,0.7), transparent); }
+.divider--magenta { background: linear-gradient(90deg, transparent, rgba(255,0,214,0.7), transparent); }
+.divider--violet  { background: linear-gradient(90deg, transparent, rgba(138,44,255,0.7), transparent); }
+.divider--green   { background: linear-gradient(90deg, transparent, rgba(0,255,136,0.7), transparent); }
 
 

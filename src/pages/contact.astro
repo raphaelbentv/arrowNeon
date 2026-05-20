@@ -1,71 +1,166 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro'
 ---
-<BaseLayout title="Contact — Arrow" activePage="contact">
+<BaseLayout
+  title="Demander une démo Arrow — Bêta disponible"
+  description="Remplissez une fiche rapide pour demander une démo Arrow et cadrer un test bêta adapté à votre établissement."
+  activePage="contact"
+>
   <link rel="stylesheet" href="/styles/pages/contact.css" slot="head">
-  <div class="main-container">
+
+  <div class="main-container demo-page">
     <div class="cyber-header">
-      <h1 class="cyber-logo">CONTACT &amp; DÉMO</h1>
-      <p class="cyber-tagline">PRENEZ RENDEZ-VOUS POUR UNE DÉMONSTRATION</p>
+      <h1 class="cyber-logo">DÉMO ARROW</h1>
+      <p class="cyber-tagline">UN ÉCHANGE COURT POUR VOIR SI ARROW COLLE À VOS USAGES</p>
     </div>
 
-    <section class="contact-section">
-      <div class="contact-orbit">
-        <div class="card contact-form-card">
-          <div class="contact-container">
-            <div class="contact-info">
-              <h2>Contactez-nous</h2>
-              <p>Remplissez le formulaire ci-dessous ou prenez directement rendez-vous pour une démonstration personnalisée.</p>
-            </div>
+    <section class="demo-hero card">
+      <div class="demo-hero__copy">
+        <p class="eyebrow">Comment ça se passe</p>
+        <h2>Demander une démo, puis cadrer la bêta si c'est pertinent.</h2>
+        <p>
+          On part de votre usage réel. Si le produit répond au bon problème,
+          la bêta peut ensuite être activée dans un cadre simple.
+        </p>
 
-            <form class="form-container" id="contactForm">
-              <div class="form-group">
-                <label for="nom" class="form-label">Nom complet *</label>
-                <input type="text" id="nom" name="nom" class="form-input" required>
-              </div>
+        <ul class="demo-hero__points">
+          <li>Une demande rapide, sans tunnel compliqué</li>
+          <li>Un mail envoyé directement à hey@arr0w.app</li>
+          <li>Un retour humain pour cadrer la suite</li>
+        </ul>
+      </div>
 
-              <div class="form-group">
-                <label for="email" class="form-label">Email *</label>
-                <input type="email" id="email" name="email" class="form-input" required>
-              </div>
+      <form
+        class="demo-request-form"
+        action="/api/demo-request"
+        method="POST"
+      >
+        <input type="hidden" name="_subject" value="Nouvelle demande de démo Arrow" />
+        <input type="hidden" name="_next" value="https://arr0w.app/merci-beta" data-form-next />
+        <input type="hidden" name="_template" value="table" />
+        <input type="hidden" name="Source" value="/contact" data-form-source />
+        <input type="text" name="_honey" class="form-honeypot" tabindex="-1" autocomplete="off" />
+        <input type="hidden" name="ConsentementRGPD" value="non" />
+        <input type="hidden" name="Newsletter" value="non" />
 
-              <div class="form-group">
-                <label for="telephone" class="form-label">Téléphone</label>
-                <input type="tel" id="telephone" name="telephone" class="form-input">
-              </div>
+        <div class="form-row">
+          <label class="form-field">
+            <span>Nom</span>
+            <input type="text" name="Nom" autocomplete="name" required />
+          </label>
 
-              <div class="form-group">
-                <label for="etablissement" class="form-label">Établissement *</label>
-                <input type="text" id="etablissement" name="etablissement" class="form-input" required>
-              </div>
-
-              <div class="form-group">
-                <label for="type" class="form-label">Type d'établissement *</label>
-                <select id="type" name="type" class="form-select" required>
-                  <option value="">Sélectionnez...</option>
-                  <option value="ecole">École</option>
-                  <option value="formation-pro">Formation professionnelle</option>
-                  <option value="cfa">CFA</option>
-                  <option value="autre">Autre</option>
-                </select>
-              </div>
-
-              <div class="form-group">
-                <label for="message" class="form-label">Message *</label>
-                <textarea id="message" name="message" class="form-textarea" required></textarea>
-              </div>
-
-              <button type="submit" class="form-button">Envoyer la demande</button>
-            </form>
-
-            <div style="text-align: center; margin-top: 40px;">
-              <p style="color: rgba(0, 217, 255, 0.8); margin-bottom: 20px; font-size: 18px;">OU</p>
-              <a href="https://calendly.com/arrow-demo" target="_blank" class="calendly-link">
-                Prendre rendez-vous directement
-              </a>
-            </div>
-          </div>
+          <label class="form-field">
+            <span>Email pro</span>
+            <input type="email" name="Email" autocomplete="email" required />
+          </label>
         </div>
+
+        <div class="form-row">
+          <label class="form-field">
+            <span>Établissement</span>
+            <input type="text" name="Etablissement" autocomplete="organization" required />
+          </label>
+
+          <label class="form-field">
+            <span>Fonction</span>
+            <input type="text" name="Fonction" placeholder="Direction, scolarité, pédagogie..." required />
+          </label>
+        </div>
+
+        <label class="form-field">
+          <span>Ce que vous voulez voir ou tester</span>
+          <textarea
+            name="Besoin"
+            rows="5"
+            placeholder="Ex: suivi des absences, centralisation des bulletins, documents et preuves de suivi..."
+            required
+          ></textarea>
+        </label>
+
+        <div class="form-consents" aria-label="Préférences et consentement">
+          <label class="form-choice form-choice--newsletter">
+            <input type="checkbox" name="Newsletter" value="oui" />
+            <span class="form-choice__box" aria-hidden="true"></span>
+            <span class="form-choice__content">
+              <strong>Recevoir la newsletter Arrow</strong>
+              <small>Conseils produit, suivi étudiant et nouvelles de la bêta. Désinscription possible à tout moment.</small>
+            </span>
+          </label>
+
+          <label class="form-choice form-choice--required">
+            <input type="checkbox" name="ConsentementRGPD" value="oui" required />
+            <span class="form-choice__box" aria-hidden="true"></span>
+            <span class="form-choice__content">
+              <strong>J'accepte le traitement de mes données</strong>
+              <small>Arrow utilise ces informations uniquement pour répondre à ma demande. Je peux exercer mes droits à hey@arr0w.app.</small>
+            </span>
+          </label>
+        </div>
+
+        <button type="submit" class="btn-primary" data-track="contact_beta_request_submit">
+          Envoyer la demande
+        </button>
+
+        <p class="form-note">
+          Votre demande est envoyée directement à
+          <a href="mailto:hey@arr0w.app" data-track="contact_email_direct">hey@arr0w.app</a>.
+        </p>
+      </form>
+    </section>
+
+    <section class="demo-grid">
+      <article class="card demo-card">
+        <h3>Ce qu'on regarde ensemble</h3>
+        <ul>
+          <li>Comment vous suivez aujourd'hui absences, notes, documents et preuves</li>
+          <li>Où l'information se disperse et vous fait perdre du temps</li>
+          <li>Comment Arrow peut s'intégrer naturellement dans votre quotidien</li>
+        </ul>
+      </article>
+
+      <article class="card demo-card">
+        <h3>Ce que la bêta permet</h3>
+        <ul>
+          <li>Tester le produit dans un vrai contexte</li>
+          <li>Valider les usages les plus importants pour votre équipe</li>
+          <li>Partager des retours concrets pour faire évoluer Arrow</li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="demo-prep">
+      <div class="card demo-prep__panel">
+        <div>
+          <p class="eyebrow">Préparation utile</p>
+          <h2>Quelques infos simples suffisent pour lancer la demande.</h2>
+        </div>
+        <ul>
+          <li>Votre rôle dans l'établissement</li>
+          <li>Le sujet que vous voulez tester en priorité</li>
+          <li>Le point de friction principal dans votre suivi actuel</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="demo-mail">
+      <div class="card demo-mail__panel">
+        <p class="eyebrow">Contact direct</p>
+        <h2>Besoin d'un échange plus simple ?</h2>
+        <p>
+          Vous pouvez aussi nous écrire directement à
+          <a href="mailto:hey@arr0w.app" data-track="contact_email_direct_secondary">hey@arr0w.app</a>.
+        </p>
+      </div>
+    </section>
+
+    <section class="demo-cta">
+      <div class="card demo-cta__panel">
+        <div>
+          <p class="eyebrow">Rappel</p>
+          <h2>La bêta reste disponible après cadrage.</h2>
+          <p>Un test peut être activé rapidement quand le périmètre est clair.</p>
+        </div>
+        <a href="/tarifs" class="btn-ghost" data-track="contact_beta_details">Voir les modalités</a>
       </div>
     </section>
   </div>

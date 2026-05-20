@@ -445,3 +445,148 @@
     display: none;
   }
 }
+
+/* --- Dashboard fidèle Arrow --- */
+
+/* Navigation complète */
+.arrow-mini-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+.arrow-mini-tab {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: rgba(255,255,255,0.5);
+  padding: 3px 7px;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+.arrow-mini-tab--active,
+.arrow-mini-tab:first-child { color: #3d9bff; }
+
+/* School name */
+.arrow-mini-school { font-size: 9px; color: rgba(255,255,255,0.4); }
+
+/* Greeting */
+.arrow-greeting {
+  font-size: 18px;
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 12px;
+}
+.arrow-greeting__name { color: #3d9bff; }
+
+/* Onglets dashboard */
+.arrow-dashboard-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px;
+  margin-bottom: 14px;
+  padding: 3px;
+  background: rgba(255,255,255,0.04);
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.06);
+}
+.arrow-dtab {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: rgba(255,255,255,0.4);
+  padding: 5px 8px;
+  border-radius: 5px;
+}
+.arrow-dtab--active {
+  background: #3d9bff;
+  color: #fff;
+}
+
+/* KPI grid — 6 cartes */
+.arrow-kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+  margin-bottom: 14px;
+}
+.arrow-kpi-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 8px;
+  padding: 10px 10px 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.arrow-kpi-label {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: rgba(255,255,255,0.45);
+  text-transform: uppercase;
+}
+.arrow-kpi-value {
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 1;
+}
+.arrow-kpi--pink   { color: #ff3d9b; }
+.arrow-kpi--purple { color: #a855f7; }
+.arrow-kpi--cyan   { color: #06b6d4; }
+.arrow-kpi--orange { color: #f59e0b; }
+.arrow-kpi--green  { color: #22c55e; }
+
+/* Points d'attention */
+.arrow-alerts-section {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 8px;
+  padding: 10px 12px;
+  margin-bottom: 12px;
+}
+.arrow-alerts-title {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: rgba(255,255,255,0.5);
+  margin: 0 0 8px;
+}
+.arrow-alert-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 7px 8px;
+  margin-bottom: 4px;
+  background: rgba(245,158,11,0.06);
+  border: 1px solid rgba(245,158,11,0.15);
+  border-radius: 6px;
+}
+.arrow-alert-content { display: flex; flex-direction: column; gap: 2px; }
+.arrow-alert-name { font-size: 11px; font-weight: 700; color: #fff; }
+.arrow-alert-desc { font-size: 9px; color: rgba(255,255,255,0.45); }
+.arrow-alert-count { font-size: 18px; font-weight: 800; flex-shrink: 0; }
+
+/* CTA arrow */
+.arrow-demo-cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 10px 12px;
+  background: rgba(61,155,255,0.06);
+  border: 1px solid rgba(61,155,255,0.2);
+  border-radius: 8px;
+}
+.arrow-demo-cta__text { font-size: 10px; color: rgba(255,255,255,0.7); line-height: 1.4; }
+.arrow-demo-cta__btn {
+  font-size: 10px;
+  font-weight: 700;
+  padding: 7px 12px;
+  background: #3d9bff;
+  color: #000;
+  border: none;
+  border-radius: 6px;
+  cursor: default;
+  white-space: nowrap;
+  flex-shrink: 0;
+}

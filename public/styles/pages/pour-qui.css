@@ -1,61 +1,145 @@
-/* css/pages/pour-qui.css */
-.profiles-section { padding: var(--spacing-4xl) 0; }
-.profiles-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: var(--spacing-2xl);
+.audience-page {
+  display: grid;
+  gap: var(--spacing-3xl);
+  padding-bottom: var(--spacing-4xl);
 }
-.profile-card {
-    position: relative;
-    overflow: visible;
-    padding: var(--spacing-2xl);
-}
-.profile-card__orbit {
-    position: relative;
-    width: 80px; height: 80px;
-    margin: 0 auto var(--spacing-lg);
-}
-.profile-card__orbit .orbit-sphere--md {
-    width: 80px; height: 80px;
-}
-.profile-card__title {
-    text-align: center;
-    font-size: 1.3rem; font-weight: 700;
-    color: var(--card-foreground);
-    margin-bottom: var(--spacing-md);
-}
-.profile-card__benefits { list-style: none; display: flex; flex-direction: column; gap: var(--spacing-sm); }
-.profile-card__benefits li {
-    display: flex; align-items: flex-start; gap: var(--spacing-sm);
-    color: var(--muted-foreground); font-size: 0.9rem;
-}
-.profile-card__benefits li::before {
-    content: '→';
-    color: var(--primary); flex-shrink: 0; font-weight: 700;
-}
-/* Couleurs par profil */
-.profile-card--cyan   .orbit-sphere--md { border-color: rgba(0,229,255,0.4); box-shadow: 0 0 40px rgba(0,229,255,0.2); }
-.profile-card--violet .orbit-sphere--md { border-color: rgba(139,92,246,0.4); box-shadow: 0 0 40px rgba(139,92,246,0.2); }
 
-/* Aliases classes HTML existantes pour-qui.html */
+.audience-intro {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+  gap: var(--spacing-xl);
+  align-items: center;
+  padding: var(--spacing-2xl);
+}
+
+.audience-intro__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+  justify-content: flex-end;
+}
+
+.audience-intro__chips span {
+  --chip-accent: var(--primary);
+  padding: 10px 14px;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--chip-accent) 45%, transparent);
+  background: color-mix(in srgb, var(--chip-accent) 14%, transparent);
+  color: var(--chip-accent);
+  font-weight: 700;
+}
+
+.audience-intro__chips span:nth-child(2) { --chip-accent: var(--accent-cyan); }
+.audience-intro__chips span:nth-child(3) { --chip-accent: var(--accent-green); }
+
 .establishment-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: var(--spacing-2xl);
-    padding: var(--spacing-4xl) 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--spacing-xl);
 }
+
 .establishment-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-lg);
-    padding: var(--spacing-2xl);
-    transition: box-shadow var(--transition-slow), transform var(--transition-slow);
+  --card-accent: var(--primary);
+  display: grid;
+  gap: var(--spacing-md);
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--card-accent) 9%, transparent), transparent 62%),
+    var(--card);
 }
-.establishment-card:hover { box-shadow: var(--theme-box-shadow); transform: translateY(-4px); }
-.establishment-icon  { font-size: 2.5rem; margin-bottom: var(--spacing-md); }
+
+.establishment-card:nth-child(2) { --card-accent: var(--accent-green); }
+.establishment-card:nth-child(3) { --card-accent: var(--accent-cyan); }
+
+.establishment-icon {
+  width: 46px;
+  height: 46px;
+  border-radius: var(--radius-md);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--card-accent);
+  background: color-mix(in srgb, var(--card-accent) 14%, transparent);
+  border: 1px solid color-mix(in srgb, var(--card-accent) 48%, transparent);
+  box-shadow:
+    0 0 18px color-mix(in srgb, var(--card-accent) 24%, transparent),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+
+.establishment-icon svg {
+  width: 24px;
+  height: 24px;
+  display: block;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
 .establishment-title {
-    font-size: 1.1rem; font-weight: 700;
-    color: var(--primary); letter-spacing: 0.1em; text-transform: uppercase;
-    margin-bottom: var(--spacing-md);
+  color: var(--card-accent);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-size: 1rem;
 }
-.establishment-content { color: var(--muted-foreground); font-size: 0.9rem; line-height: 1.6; }
+
+.establishment-copy {
+  color: var(--card-foreground);
+}
+
+.establishment-list {
+  list-style: none;
+  display: grid;
+  gap: var(--spacing-sm);
+}
+
+.establishment-list li,
+.audience-note p:last-child {
+  color: var(--muted-foreground);
+}
+
+.establishment-list li {
+  position: relative;
+  padding-left: 18px;
+}
+
+.establishment-list li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: var(--card-accent);
+}
+
+.audience-note {
+  padding: var(--spacing-2xl);
+  max-width: 840px;
+}
+
+.audience-cta__panel {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--spacing-xl);
+  align-items: center;
+  padding: var(--spacing-2xl);
+}
+
+@media (max-width: 980px) {
+  .audience-intro,
+  .establishment-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .audience-intro__chips {
+    justify-content: start;
+  }
+
+  .audience-cta__panel {
+    flex-direction: column;
+    align-items: start;
+  }
+
+  .audience-cta__panel .btn-primary {
+    width: 100%;
+    text-align: center;
+  }
+}

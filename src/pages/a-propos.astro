@@ -1,79 +1,141 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro'
 ---
-<BaseLayout title="À propos — Arrow" activePage="a-propos">
+<BaseLayout
+  title="À propos — Arrow"
+  description="Pourquoi Arrow existe, ce que le produit cherche à changer, et la manière dont nous construisons la bêta."
+  activePage="a-propos"
+>
   <link rel="stylesheet" href="/styles/pages/a-propos.css" slot="head">
-  <div class="main-container">
+
+  <div class="main-container about-page">
     <div class="cyber-header">
       <h1 class="cyber-logo">À PROPOS</h1>
-      <p class="cyber-tagline">NOTRE VISION, NOS VALEURS, NOTRE ÉQUIPE</p>
+      <p class="cyber-tagline">POURQUOI ARROW EXISTE, ET COMMENT ON LE CONSTRUIT</p>
     </div>
 
-    <div class="about-container">
-      <!-- Vision -->
-      <section class="about-section">
-        <h2 class="about-title">NOTRE VISION</h2>
-        <p class="about-text">
-          Arrow révolutionne la gestion éducative en proposant une plateforme complète, intuitive et sécurisée.
-          Notre objectif est d'accompagner les établissements dans leur transformation digitale tout en préservant
-          l'essence pédagogique de l'éducation.
+    <section class="about-hero card">
+      <div class="about-hero__copy">
+        <p class="eyebrow">Le point de départ</p>
+        <h2>Arrow existe pour rendre le suivi étudiant plus clair, pas pour ajouter un outil de plus.</h2>
+        <p>
+          Trop souvent, les absences, les notes, les bulletins, les documents et les preuves de suivi
+          vivent dans plusieurs endroits à la fois. Arrow part de ce problème simple : quand l'information
+          se disperse, tout le monde perd du temps.
         </p>
-        <p class="about-text">
-          Nous croyons que la technologie doit servir l'éducation, pas l'inverse. C'est pourquoi Arrow a été conçu
-          en collaboration étroite avec les acteurs du secteur éducatif pour répondre aux vrais besoins du terrain.
-        </p>
-      </section>
+      </div>
+      <div class="about-hero__note">
+        <span class="about-note__label">Ce qu'on cherche à changer</span>
+        <strong>Passer d'une recherche dispersée à une lecture plus nette.</strong>
+        <p>Moins d'allers-retours, moins de reconstitution manuelle, plus de visibilité utile.</p>
+      </div>
+    </section>
 
-      <!-- Valeurs -->
-      <section class="about-section">
-        <h2 class="about-title">NOS VALEURS</h2>
-        <div class="values-grid">
-          <div class="value-card">
-            <div class="value-icon value-icon--security"></div>
-            <h3>Sécurité</h3>
-            <p>Protection des données et conformité RGPD au cœur de notre architecture</p>
+    <section class="about-split">
+      <article class="card about-panel">
+        <p class="eyebrow">Notre angle</p>
+        <h2>On préfère un produit utile à une promesse trop large.</h2>
+        <p>
+          Arrow ne commence pas par un catalogue infini de modules. On commence par un vrai usage :
+          retrouver rapidement ce qu'il faut savoir sur un étudiant, au bon moment, dans un espace cohérent.
+        </p>
+        <p>
+          La bêta suit la même logique. On montre le produit, on teste en conditions, puis on améliore à partir
+          de retours réels, pas d'hypothèses de slide deck.
+        </p>
+      </article>
+
+      <article class="card about-panel about-panel--accent">
+        <p class="eyebrow">Notre méthode</p>
+        <div class="about-steps">
+          <div class="about-step">
+            <span>01</span>
+            <div>
+              <h3>Montrer clairement</h3>
+              <p>La valeur du produit doit se comprendre vite, sans manuel ni parcours obscur.</p>
+            </div>
           </div>
-          <div class="value-card">
-            <div class="value-icon value-icon--innovation"></div>
-            <h3>Innovation</h3>
-            <p>Technologies de pointe pour une expérience utilisateur optimale</p>
+          <div class="about-step">
+            <span>02</span>
+            <div>
+              <h3>Tester en vrai</h3>
+              <p>Un mois de bêta permet de voir ce qui tient dans le quotidien et ce qui doit bouger.</p>
+            </div>
           </div>
-          <div class="value-card">
-            <div class="value-icon value-icon--proximity"></div>
-            <h3>Proximité</h3>
-            <p>Support réactif et accompagnement personnalisé de chaque établissement</p>
-          </div>
-          <div class="value-card">
-            <div class="value-icon value-icon--excellence"></div>
-            <h3>Excellence</h3>
-            <p>Qualité et fiabilité pour garantir la continuité pédagogique</p>
+          <div class="about-step">
+            <span>03</span>
+            <div>
+              <h3>Améliorer utilement</h3>
+              <p>Chaque retour doit servir le produit, pas gonfler artificiellement le périmètre.</p>
+            </div>
           </div>
         </div>
-      </section>
+      </article>
+    </section>
 
-      <!-- Équipe -->
-      <section class="about-section">
-        <h2 class="about-title">NOTRE ÉQUIPE</h2>
-        <p class="about-text">
-          Arrow est développé par une équipe passionnée d'experts en éducation et en technologie.
-          Notre équipe combine des années d'expérience dans le secteur éducatif avec une expertise
-          technique de pointe pour créer la solution la plus adaptée aux besoins des établissements.
-        </p>
-      </section>
+    <section class="about-values">
+      <div class="about-values__header">
+        <p class="eyebrow">Ce qu'on défend</p>
+        <h2>Des principes simples, tenus jusqu'au produit.</h2>
+      </div>
 
-      <!-- Lien avec Venio -->
-      <section class="about-section">
-        <h2 class="about-title">ARROW &amp; VENIO</h2>
-        <p class="about-text">
-          Arrow est développé en partenariat avec Venio, leader dans le domaine de la gestion éducative.
-          Cette collaboration nous permet de bénéficier d'une expertise reconnue et d'une vision à long terme
-          pour l'évolution de la plateforme.
+      <div class="values-grid">
+        <article class="value-card">
+          <div class="value-icon value-icon--clarity">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 12h16"/>
+              <path d="M4 7h10"/>
+              <path d="M4 17h7"/>
+            </svg>
+          </div>
+          <h3>Clarté</h3>
+          <p>Le produit doit aider à lire une situation plus vite, pas la rendre plus confuse.</p>
+        </article>
+
+        <article class="value-card">
+          <div class="value-icon value-icon--focus">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="7"/>
+              <circle cx="12" cy="12" r="2"/>
+            </svg>
+          </div>
+          <h3>Focus</h3>
+          <p>On préfère résoudre un vrai problème proprement plutôt que promettre de tout couvrir trop tôt.</p>
+        </article>
+
+        <article class="value-card">
+          <div class="value-icon value-icon--terrain">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 19h16"/>
+              <path d="M7 19V9l5-3 5 3v10"/>
+            </svg>
+          </div>
+          <h3>Terrain</h3>
+          <p>Les retours d'usage comptent plus que les formulations abstraites ou les roadmaps décoratives.</p>
+        </article>
+
+        <article class="value-card">
+          <div class="value-icon value-icon--care">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 21s-6-4.35-8.5-7.5C1.42 10.96 2.2 7 5.75 7A4.74 4.74 0 0 1 12 10a4.74 4.74 0 0 1 6.25-3c3.55 0 4.33 3.96 2.25 6.5C18 16.65 12 21 12 21z"/>
+            </svg>
+          </div>
+          <h3>Soin du détail</h3>
+          <p>Une interface plus juste, un wording plus net, un parcours plus calme: ça change la perception du produit.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="about-beta card">
+      <div>
+        <p class="eyebrow">Aujourd'hui</p>
+        <h2>Arrow avance avec une bêta d'un mois, accès offert.</h2>
+        <p>
+          Le meilleur moyen de vérifier la valeur d'Arrow reste encore le test.
+          Si le produit correspond à l'usage, la bêta permet de le confronter au terrain pendant un mois.
         </p>
-        <p class="about-text">
-          Ensemble, nous construisons l'avenir de la gestion éducative en France, en proposant des solutions
-          innovantes qui répondent aux défis actuels et futurs du secteur.
-        </p>
-      </section>
-    </div>
+      </div>
+      <a href="/contact" data-open-modal="betaAccessModal" class="btn-primary" data-track="about_beta_trial">Échanger sur la bêta</a>
+    </section>
   </div>
 </BaseLayout>

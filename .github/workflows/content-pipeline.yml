@@ -1,0 +1,90 @@
+name: content-pipeline
+
+# Pipeline auto blog + newsletter Arrow.
+#
+# Cadence :
+#   - Mardi 7h00 UTC (9h Paris) → générer un nouvel article de blog
+#   - Lundi 7h00 UTC (9h Paris) → générer la newsletter de la semaine (digest/éditorial alterné)
+#   - Toutes les heures           → envoyer les newsletters dont scheduledFor est passé
+
+on:
+  schedule:
+    - cron: '0 7 * * 2'   # mardi 07:00 UTC → article hebdo
+    - cron: '0 7 * * 1'   # lundi 07:00 UTC → générer la newsletter
+    - cron: '0 * * * *'   # toutes les heures → envoi des newsletters dues
+  workflow_dispatch:
+    inputs:
+      job:
+        description: 'Job à exécuter'
+        required: true
+        default: 'send-newsletter'
+        type: choice
+        options:
+          - generate-post
+          - generate-newsletter
+          - send-newsletter
+
+jobs:
+  generate-post:
+    if: github.event.schedule == '0 7 * * 2' || github.event.inputs.job == 'generate-post'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+      - run: npm ci
+      - run: npm run pipeline:generate-post
+        env:
+          PUBLIC_SANITY_PROJECT_ID: ${{ secrets.PUBLIC_SANITY_PROJECT_ID }}
+          PUBLIC_SANITY_DATASET:   ${{ secrets.PUBLIC_SANITY_DATASET }}
+          SANITY_API_TOKEN:        ${{ secrets.SANITY_API_TOKEN }}
+          ANTHROPIC_API_KEY:       ${{ secrets.ANTHROPIC_API_KEY }}
+          ANTHROPIC_MODEL:         ${{ secrets.ANTHROPIC_MODEL }}
+          PUBLIC_SITE_URL:         ${{ secrets.PUBLIC_SITE_URL }}
+          NEWSLETTER_TOKEN_SECRET: ${{ secrets.NEWSLETTER_TOKEN_SECRET }}
+          RESEND_API_KEY:          ${{ secrets.RESEND_API_KEY }}
+
+  generate-newsletter:
+    if: github.event.schedule == '0 7 * * 1' || github.event.inputs.job == 'generate-newsletter'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+      - run: npm ci
+      - run: npm run pipeline:generate-newsletter
+        env:
+          PUBLIC_SANITY_PROJECT_ID: ${{ secrets.PUBLIC_SANITY_PROJECT_ID }}
+          PUBLIC_SANITY_DATASET:   ${{ secrets.PUBLIC_SANITY_DATASET }}
+          SANITY_API_TOKEN:        ${{ secrets.SANITY_API_TOKEN }}
+          ANTHROPIC_API_KEY:       ${{ secrets.ANTHROPIC_API_KEY }}
+          ANTHROPIC_MODEL:         ${{ secrets.ANTHROPIC_MODEL }}
+          PUBLIC_SITE_URL:         ${{ secrets.PUBLIC_SITE_URL }}
+          NEWSLETTER_TOKEN_SECRET: ${{ secrets.NEWSLETTER_TOKEN_SECRET }}
+          RESEND_API_KEY:          ${{ secrets.RESEND_API_KEY }}
+
+  send-newsletter:
+    if: github.event.schedule == '0 * * * *' || github.event.inputs.job == 'send-newsletter'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+      - run: npm ci
+      - run: npm run pipeline:send-newsletter
+        env:
+          PUBLIC_SANITY_PROJECT_ID: ${{ secrets.PUBLIC_SANITY_PROJECT_ID }}
+          PUBLIC_SANITY_DATASET:   ${{ secrets.PUBLIC_SANITY_DATASET }}
+          SANITY_API_TOKEN:        ${{ secrets.SANITY_API_TOKEN }}
+          ANTHROPIC_API_KEY:       ${{ secrets.ANTHROPIC_API_KEY }}
+          PUBLIC_SITE_URL:         ${{ secrets.PUBLIC_SITE_URL }}
+          NEWSLETTER_TOKEN_SECRET: ${{ secrets.NEWSLETTER_TOKEN_SECRET }}
+          RESEND_API_KEY:          ${{ secrets.RESEND_API_KEY }}
+          RESEND_FROM:             ${{ secrets.RESEND_FROM }}
+          RESEND_REPLY_TO:         ${{ secrets.RESEND_REPLY_TO }}

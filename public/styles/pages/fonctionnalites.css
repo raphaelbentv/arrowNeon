@@ -224,6 +224,14 @@
   --tile-accent: var(--primary);
 }
 
+.feature-tile--green {
+  --tile-accent: #22c55e;
+}
+
+.feature-tile--violet {
+  --tile-accent: #a855f7;
+}
+
 .motion-lab {
   display: grid;
   gap: var(--spacing-xl);

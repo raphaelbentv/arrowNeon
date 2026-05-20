@@ -1,5 +1,5 @@
 /* ============================================
-   MODAL MODE BRUTAL
+   MODAL DIAGNOSTIC
    ============================================ */
 
 .brutal-modal-overlay {
@@ -15,22 +15,23 @@
     padding: 20px;
 }
 
+:root[data-theme="light"] .brutal-modal-overlay {
+    background: rgba(248, 251, 255, 0.82);
+}
+
 .brutal-modal-container {
-    background: #050510;
-    border: 3px solid #00D9FF;
+    background:
+        linear-gradient(180deg, rgba(61, 155, 255, 0.08), rgba(61, 155, 255, 0.02)),
+        var(--background);
+    border: 1px solid rgba(61, 155, 255, 0.22);
+    border-radius: var(--radius-xl);
     max-width: 1200px;
     width: 100%;
     max-height: 95vh;
     position: relative;
-    box-shadow: 0 0 80px rgba(0, 217, 255, 0.6);
-    clip-path: polygon(
-        0 0,
-        calc(100% - 30px) 0,
-        100% 30px,
-        100% 100%,
-        30px 100%,
-        0 calc(100% - 30px)
-    );
+    box-shadow:
+        0 30px 80px rgba(0, 0, 0, 0.45),
+        0 0 60px rgba(61, 155, 255, 0.16);
     overflow: hidden;
 }
 
@@ -38,9 +39,10 @@
     position: absolute;
     top: 20px;
     right: 20px;
-    background: rgba(255, 0, 127, 0.2);
-    border: 2px solid #FF007F;
-    color: #FF007F;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(61, 155, 255, 0.22);
+    border-radius: 50%;
+    color: rgba(255, 255, 255, 0.82);
     font-size: 32px;
     font-weight: 900;
     cursor: pointer;
@@ -56,10 +58,23 @@
 }
 
 .brutal-modal-close:hover {
-    transform: scale(1.1) rotate(90deg);
-    background: #FF007F;
-    color: #000;
-    box-shadow: 0 0 20px rgba(255, 0, 127, 0.6);
+    transform: rotate(90deg);
+    background: rgba(61, 155, 255, 0.12);
+    color: #fff;
+    box-shadow: 0 0 20px rgba(61, 155, 255, 0.22);
+}
+
+:root[data-theme="light"] .brutal-modal-close {
+    background: rgba(255, 255, 255, 0.92);
+    border-color: rgba(31, 122, 224, 0.32);
+    color: var(--foreground);
+    box-shadow: 0 10px 28px rgba(15, 23, 42, 0.12);
+}
+
+:root[data-theme="light"] .brutal-modal-close:hover {
+    background: var(--primary);
+    color: #fff;
+    box-shadow: 0 14px 32px rgba(31, 122, 224, 0.24);
 }
 
 .brutal-modal-content {
@@ -79,6 +94,7 @@
     font-weight: 900;
     background: rgba(255, 0, 127, 0.15);
     border: 3px solid #FF007F;
+    border-radius: var(--radius-md);
     color: #FF007F;
     letter-spacing: 3px;
     cursor: pointer;
@@ -108,6 +124,10 @@
     transform: translateY(-2px);
 }
 
+:root[data-theme="light"] .brutal-mode-cta:hover {
+    color: #fff;
+}
+
 .brutal-mode-cta:hover:before {
     transform: scaleX(1);
 }
@@ -122,7 +142,6 @@
    ============================================ */
 
 .brutal-hero {
-    min-height: 60vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -130,8 +149,8 @@
     text-align: center;
     position: relative;
     overflow: hidden;
-    padding: 60px 20px;
-    margin-bottom: 40px;
+    padding: 60px 20px 40px;
+    margin-bottom: 0;
 }
 
 .brutal-hero-bg {
@@ -184,42 +203,52 @@
     margin-right: auto;
 }
 
-.brutal-hero-cta {
-    padding: 20px 50px;
-    font-family: 'League Spartan', sans-serif;
-    font-size: 18px;
-    font-weight: 700;
-    background: rgba(0, 217, 255, 0.15);
-    border: 3px solid #00D9FF;
-    color: #00D9FF;
-    letter-spacing: 3px;
-    cursor: pointer;
-    transition: all 0.3s;
-    text-transform: uppercase;
-    position: relative;
-    overflow: hidden;
-    text-decoration: none;
-    display: inline-block;
+:root[data-theme="light"] .brutal-hero-title,
+:root[data-theme="light"] .brutal-final-title {
+    filter: none;
 }
 
-.brutal-hero-cta:before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: #00D9FF;
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.4s;
-    z-index: -1;
+:root[data-theme="light"] .brutal-hero-subtitle,
+:root[data-theme="light"] .brutal-final-subtitle,
+:root[data-theme="light"] .brutal-testimonial-quote {
+    color: var(--muted-foreground);
+}
+
+.brutal-hero-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px 40px;
+    font-family: var(--font-family);
+    font-size: 1rem;
+    font-weight: 800;
+    background: var(--primary);
+    border: 0;
+    border-radius: var(--radius-md);
+    color: #000;
+    letter-spacing: 0.06em;
+    cursor: pointer;
+    transition: box-shadow var(--transition-base), transform var(--transition-base), color var(--transition-base);
+    text-transform: uppercase;
+    position: relative;
+    text-decoration: none;
+    text-align: center;
+    box-shadow: 0 0 28px rgba(61, 155, 255, 0.45);
 }
 
 .brutal-hero-cta:hover {
     color: #000;
-    box-shadow: 0 0 40px rgba(0, 217, 255, 0.6);
+    box-shadow: 0 0 48px rgba(61, 155, 255, 0.65);
+    transform: translateY(-2px);
 }
 
-.brutal-hero-cta:hover:before {
-    transform: scaleX(1);
+:root[data-theme="light"] .brutal-hero-cta {
+    color: #fff;
+}
+
+:root[data-theme="light"] .brutal-hero-cta:hover {
+    color: #fff;
+    box-shadow: 0 0 48px rgba(31, 122, 224, 0.38);
 }
 
 /* ============================================
@@ -227,43 +256,66 @@
    ============================================ */
 
 .brutal-section {
-    padding: 60px 20px;
-    margin-bottom: 40px;
+    padding: var(--spacing-3xl) 0;
+    margin-bottom: 0;
 }
 
 .brutal-problems-section {
-    background: linear-gradient(180deg, #050510 0%, #0a0a15 100%);
+    background: transparent;
 }
 
 .brutal-usp-section {
-    background: #050510;
+    background: transparent;
 }
 
 .brutal-comparison-section {
-    background: linear-gradient(180deg, #050510 0%, #0a0a15 100%);
+    background: transparent;
 }
 
 .brutal-testimonials-section {
-    background: #050510;
+    background: transparent;
 }
 
 .brutal-section-title {
+    --section-accent: var(--primary);
     font-family: 'League Spartan', sans-serif;
-    font-size: 36px;
-    font-weight: 900;
-    color: #00D9FF;
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--card-foreground);
     text-align: center;
-    margin-bottom: 20px;
-    letter-spacing: 3px;
-    text-shadow: 0 0 30px rgba(0, 217, 255, 0.6);
+    margin-bottom: var(--spacing-md);
+    letter-spacing: 0.02em;
+    text-shadow: none;
+    position: relative;
+    display: inline-block;
+    left: 50%;
+    transform: translateX(-50%);
 }
+.brutal-section-title::after {
+    content: '';
+    display: block;
+    margin: var(--spacing-sm) auto 0;
+    width: 56px;
+    height: 3px;
+    border-radius: 2px;
+    background: linear-gradient(90deg,
+        var(--section-accent),
+        color-mix(in srgb, var(--section-accent) 60%, white));
+    box-shadow: 0 0 14px color-mix(in srgb, var(--section-accent) 65%, transparent);
+}
+
+/* Rotation des accents Arrow sur les sections */
+.brutal-problems-section     .brutal-section-title { --section-accent: var(--accent-magenta); }
+.brutal-usp-section          .brutal-section-title { --section-accent: var(--primary); }
+.brutal-comparison-section   .brutal-section-title { --section-accent: var(--accent-cyan); }
+.brutal-testimonials-section .brutal-section-title { --section-accent: var(--accent-green); }
 
 .brutal-section-subtitle {
     text-align: center;
-    font-size: 18px;
-    color: rgba(0, 217, 255, 0.7);
-    margin-bottom: 60px;
-    font-style: italic;
+    font-size: 1.08rem;
+    color: var(--muted-foreground);
+    margin-bottom: var(--spacing-2xl);
+    font-style: normal;
 }
 
 /* ============================================
@@ -273,52 +325,80 @@
 .brutal-problems-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 25px;
+    gap: var(--spacing-xl);
     margin-bottom: 40px;
 }
 
 .brutal-problem-card {
-    background: rgba(255, 0, 100, 0.08);
-    border: 2px solid rgba(255, 0, 100, 0.3);
-    padding: 30px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-xl);
     position: relative;
-    transition: all 0.3s;
+    transition: box-shadow var(--transition-slow), transform var(--transition-slow), border-color var(--transition-slow);
 }
 
 .brutal-problem-card:hover {
-    border-color: #FF0064;
-    box-shadow: 0 0 30px rgba(255, 0, 100, 0.3);
-    transform: translateY(-5px);
+    border-color: var(--primary-30);
+    box-shadow: var(--theme-box-shadow);
+    transform: translateY(-4px);
+}
+
+.brutal-problem-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 16px;
 }
 
 .brutal-problem-icon {
-    font-size: 40px;
-    margin-bottom: 15px;
+    width: 44px;
+    height: 44px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--primary-5);
+    border: 1px solid var(--primary-15);
+    border-radius: var(--radius-md);
+    color: var(--primary);
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
 }
 
 .brutal-problem-title {
     font-family: 'League Spartan', sans-serif;
-    font-size: 20px;
-    color: #FF0064;
-    margin-bottom: 15px;
+    font-size: 18px;
+    color: var(--card-foreground);
+    margin: 0;
     font-weight: 700;
+    line-height: 1.3;
 }
 
 .brutal-problem-desc {
-    color: rgba(255, 100, 100, 0.9);
+    color: var(--muted-foreground);
     line-height: 1.8;
-    font-size: 15px;
+    font-size: 16.5px;
     margin-bottom: 15px;
 }
 
 .brutal-problem-quote {
     margin-top: 15px;
-    padding: 12px;
-    background: rgba(0, 0, 0, 0.4);
-    border-left: 3px solid #FF0064;
+    padding: 12px 14px;
+    background: var(--primary-5);
+    border-left: 3px solid var(--primary-30);
+    border-radius: var(--radius-sm);
     font-style: italic;
-    color: rgba(255, 0, 100, 0.8);
-    font-size: 13px;
+    color: rgba(226, 232, 240, 0.72);
+    font-size: 15px;
+    line-height: 1.55;
+}
+
+:root[data-theme="light"] .brutal-problem-quote {
+    background: rgba(31, 122, 224, 0.07);
+    color: rgba(23, 32, 51, 0.82);
+    border-left-color: rgba(31, 122, 224, 0.38);
 }
 
 /* ============================================
@@ -328,54 +408,40 @@
 .brutal-usp-intro {
     text-align: center;
     max-width: 800px;
-    margin: 0 auto 50px;
-    font-size: 18px;
-    color: rgba(0, 217, 255, 0.8);
-    line-height: 1.8;
+    margin: 0 auto var(--spacing-2xl);
+    font-size: 1.08rem;
+    color: var(--muted-foreground);
+    line-height: 1.7;
 }
 
 .brutal-usp-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 30px;
+    gap: var(--spacing-xl);
 }
 
 .brutal-usp-card {
-    background: linear-gradient(135deg, rgba(0, 217, 255, 0.08) 0%, rgba(0, 100, 150, 0.05) 100%);
-    border: 2px solid rgba(0, 217, 255, 0.3);
-    padding: 35px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-xl);
     position: relative;
     overflow: hidden;
-    transition: all 0.3s;
-    clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 20px 100%, 0 calc(100% - 20px));
-}
-
-.brutal-usp-card:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(0, 217, 255, 0.15), transparent);
-    transition: left 0.5s;
+    transition: box-shadow var(--transition-slow), transform var(--transition-slow), border-color var(--transition-slow);
 }
 
 .brutal-usp-card:hover {
-    border-color: #00D9FF;
-    box-shadow: 0 0 40px rgba(0, 217, 255, 0.4);
-    transform: translateY(-8px);
-}
-
-.brutal-usp-card:hover:before {
-    left: 100%;
+    border-color: var(--primary-30);
+    box-shadow: var(--theme-box-shadow);
+    transform: translateY(-4px);
 }
 
 .brutal-usp-badge {
     display: inline-block;
-    background: rgba(255, 0, 127, 0.2);
-    border: 1px solid #FF007F;
-    color: #FF007F;
+    background: var(--primary-5);
+    border: 1px solid var(--primary-15);
+    border-radius: var(--radius-sm);
+    color: var(--primary);
     padding: 6px 14px;
     font-size: 11px;
     font-weight: 700;
@@ -388,16 +454,16 @@
 .brutal-usp-title {
     font-family: 'League Spartan', sans-serif;
     font-size: 24px;
-    color: #00D9FF;
+    color: var(--card-foreground);
     margin-bottom: 15px;
     font-weight: 700;
     letter-spacing: 1px;
 }
 
 .brutal-usp-desc {
-    color: rgba(0, 217, 255, 0.85);
+    color: var(--muted-foreground);
     line-height: 1.8;
-    font-size: 16px;
+    font-size: 16.5px;
     margin-bottom: 20px;
 }
 
@@ -406,13 +472,17 @@
     align-items: center;
     gap: 10px;
     margin-bottom: 12px;
-    color: rgba(0, 217, 255, 0.9);
-    font-size: 14px;
+    color: rgba(226, 232, 240, 0.82);
+    font-size: 15px;
+}
+
+:root[data-theme="light"] .brutal-usp-benefit {
+    color: var(--foreground);
 }
 
 .brutal-usp-benefit:before {
     content: '→';
-    color: #FF007F;
+    color: var(--primary);
     font-weight: 900;
     font-size: 18px;
 }
@@ -438,6 +508,10 @@
     background: rgba(0, 217, 255, 0.1);
 }
 
+:root[data-theme="light"] .brutal-comparison-table thead {
+    background: var(--primary-5);
+}
+
 .brutal-comparison-table th {
     padding: 20px;
     font-family: 'League Spartan', sans-serif;
@@ -447,6 +521,11 @@
     border: 1px solid rgba(0, 217, 255, 0.3);
     text-align: left;
     font-weight: 900;
+}
+
+:root[data-theme="light"] .brutal-comparison-table th,
+:root[data-theme="light"] .brutal-comparison-table td {
+    border-color: var(--border);
 }
 
 .brutal-comparison-table td {
@@ -475,6 +554,11 @@
     font-weight: 600;
 }
 
+:root[data-theme="light"] .brutal-old-platform,
+:root[data-theme="light"] .brutal-arrow-platform {
+    color: var(--foreground);
+}
+
 .brutal-sarcasm {
     color: #FF007F;
     font-size: 12px;
@@ -490,13 +574,14 @@
 .brutal-testimonials-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 25px;
+    gap: var(--spacing-xl);
 }
 
 .brutal-testimonial {
-    background: rgba(0, 217, 255, 0.05);
-    border: 2px solid rgba(0, 217, 255, 0.3);
-    padding: 25px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-xl);
     position: relative;
 }
 
@@ -510,7 +595,7 @@
 }
 
 .brutal-testimonial-quote {
-    font-size: 16px;
+    font-size: 16.5px;
     line-height: 1.7;
     color: rgba(0, 217, 255, 0.9);
     margin-bottom: 20px;
@@ -518,14 +603,18 @@
 }
 
 .brutal-testimonial-author {
-    font-size: 13px;
+    font-size: 14px;
     color: #87ceeb;
     text-align: right;
 }
 
+:root[data-theme="light"] .brutal-testimonial-author {
+    color: var(--muted-foreground);
+}
+
 .brutal-testimonial-before {
-    border-color: rgba(255, 0, 100, 0.4);
-    background: rgba(255, 0, 100, 0.05);
+    border-color: var(--border);
+    background: var(--card);
 }
 
 .brutal-testimonial-before .brutal-testimonial-type {
@@ -534,6 +623,10 @@
 
 .brutal-testimonial-before .brutal-testimonial-quote {
     color: rgba(255, 100, 100, 0.9);
+}
+
+:root[data-theme="light"] .brutal-testimonial-before .brutal-testimonial-quote {
+    color: var(--muted-foreground);
 }
 
 /* ============================================
@@ -609,5 +702,3 @@
         font-size: 32px;
     }
 }
-
-

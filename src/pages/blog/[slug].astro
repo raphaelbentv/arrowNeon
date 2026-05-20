@@ -1,33 +1,68 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro'
 import { getBlogPosts, getBlogPost } from '../../lib/sanity'
+import type { BlogPost } from '../../lib/sanity'
 import { PortableText } from '@portabletext/react'
 
 export async function getStaticPaths() {
   const posts = await getBlogPosts()
-  return posts.map((post: any) => ({ params: { slug: post.slug.current } }))
+  return posts.map((post) => ({ params: { slug: post.slug.current } }))
 }
 
 const { slug } = Astro.params
-const post = await getBlogPost(slug as string)
+const post = await getBlogPost(slug as string) as BlogPost | null
 if (!post) return Astro.redirect('/blog')
+
+const formattedDate = new Date(post.publishedAt).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })
+const postUrl = new URL(`/blog/${slug}`, Astro.site).href
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: post.title,
+  description: post.excerpt ?? '',
+  ...(post.coverImage ? { image: post.coverImage } : {}),
+  datePublished: post.publishedAt,
+  dateModified: post.publishedAt,
+  ...(post.author ? { author: { '@type': 'Person', name: post.author } } : {}),
+  publisher: { '@type': 'Organization', name: 'Arrow', url: 'https://arr0w.app' },
+  mainEntityOfPage: { '@type': 'WebPage', '@id': postUrl },
+}
 ---
-<BaseLayout title={`${post.title} — Arrow`} activePage="blog">
+<BaseLayout
+  title={`${post.title} — Arrow`}
+  description={post.excerpt ?? `Article de blog Arrow : ${post.title}`}
+  ogImage={post.coverImage ?? undefined}
+  ogType="article"
+  canonical={postUrl}
+  activePage="blog"
+  jsonLd={jsonLd}
+>
+  <link rel="stylesheet" href="/styles/pages/blog.css" slot="head">
   <div class="main-container">
-    <article class="blog-post">
+    <article class="blog-post" itemscope itemtype="https://schema.org/BlogPosting">
       <header class="blog-post-header">
         <a href="/blog" class="blog-back">← Retour au blog</a>
-        {post.coverImage && <img src={post.coverImage} alt={post.title} class="blog-post-cover" />}
+        {post.coverImage && (
+          <img
+            src={post.coverImage}
+            alt={post.title}
+            class="blog-post-cover"
+            loading="eager"
+            decoding="async"
+            itemprop="image"
+          />
+        )}
         <div class="blog-post-meta">
           {post.tags?.map((tag: string) => <span class="blog-tag">{tag}</span>)}
-          <span class="blog-post-date">{new Date(post.publishedAt).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })}</span>
+          <time class="blog-post-date" datetime={post.publishedAt} itemprop="datePublished">{formattedDate}</time>
         </div>
-        <h1 class="blog-post-title">{post.title}</h1>
-        {post.excerpt && <p class="blog-post-excerpt">{post.excerpt}</p>}
-        {post.author && <p class="blog-post-author">Par {post.author}</p>}
+        <h1 class="blog-post-title" itemprop="headline">{post.title}</h1>
+        {post.excerpt && <p class="blog-post-excerpt" itemprop="description">{post.excerpt}</p>}
+        {post.author && <p class="blog-post-author" itemprop="author">{post.author}</p>}
       </header>
-      <div class="blog-post-body">
-        <PortableText value={post.body} client:load />
+      <div class="blog-post-body" itemprop="articleBody">
+        <PortableText value={post.body} />
       </div>
     </article>
   </div>

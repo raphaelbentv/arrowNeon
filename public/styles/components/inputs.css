@@ -6,7 +6,7 @@ input[type="tel"], input[type="number"], textarea, select {
   border: 1px solid var(--primary-15);
   border-radius: var(--radius-md);
   color: var(--foreground);
-  font-family: var(--font-family);
+  font-family: var(--font-body);
   font-size: 0.95rem;
   padding: var(--spacing-md);
   outline: none;
@@ -21,6 +21,7 @@ textarea:focus, select:focus {
 .input::placeholder { color: var(--muted-foreground); }
 label {
   display: block;
+  font-family: var(--font-family);
   font-size: 0.8rem; font-weight: 600;
   color: var(--muted-foreground);
   margin-bottom: var(--spacing-xs);

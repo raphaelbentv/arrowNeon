@@ -1,0 +1,76 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+---
+<BaseLayout
+  title="Mentions légales — Arrow"
+  description="Mentions légales du site Arrow : éditeur, contact, hébergement, propriété intellectuelle et responsabilité."
+>
+  <link rel="stylesheet" href="/styles/pages/legal.css" slot="head">
+
+  <main class="main-container legal-page">
+    <section class="legal-hero">
+      <p class="eyebrow">Informations légales</p>
+      <h1 class="cyber-logo">MENTIONS LÉGALES</h1>
+      <p>
+        Cette page rassemble les informations légales relatives au site Arrow. Certaines informations administratives
+        doivent être complétées avant la mise en production définitive.
+      </p>
+      <p class="legal-meta">Dernière mise à jour : 15 mai 2026</p>
+    </section>
+
+    <section class="legal-layout">
+      <article class="card legal-card legal-note">
+        <h2>Informations à compléter</h2>
+        <p>
+          Les éléments administratifs ci-dessous doivent être validés avec les informations officielles de la structure :
+          dénomination sociale, forme juridique, capital social, SIREN/SIRET, RCS, adresse du siège et hébergeur.
+        </p>
+      </article>
+
+      <article class="card legal-card">
+        <h2>Éditeur du site</h2>
+        <ul>
+          <li>Nom commercial : Arrow</li>
+          <li>Dénomination sociale : à compléter</li>
+          <li>Forme juridique : à compléter</li>
+          <li>Capital social : à compléter</li>
+          <li>SIREN / SIRET : à compléter</li>
+          <li>RCS : à compléter</li>
+          <li>Siège social : à compléter</li>
+          <li>Email de contact : <a href="mailto:hey@arr0w.app">hey@arr0w.app</a></li>
+        </ul>
+      </article>
+
+      <article class="card legal-card">
+        <h2>Directeur de la publication</h2>
+        <p>À compléter avec le nom de la personne responsable de la publication du site.</p>
+      </article>
+
+      <article class="card legal-card">
+        <h2>Hébergement</h2>
+        <p>
+          L’hébergeur du site doit être indiqué ici une fois l’environnement de production définitif choisi.
+          À compléter : nom de l’hébergeur, adresse et moyen de contact.
+        </p>
+      </article>
+
+      <article class="card legal-card">
+        <h2>Propriété intellectuelle</h2>
+        <p>
+          Les contenus présents sur ce site, incluant les textes, interfaces, éléments graphiques, logos et visuels,
+          sont protégés par le droit de la propriété intellectuelle. Toute reproduction ou réutilisation non autorisée
+          est interdite.
+        </p>
+      </article>
+
+      <article class="card legal-card">
+        <h2>Responsabilité</h2>
+        <p>
+          Arrow s’efforce de fournir des informations exactes et à jour. Le site peut toutefois évoluer, contenir des
+          erreurs ou être temporairement indisponible. Les informations publiées ne constituent pas un engagement
+          contractuel tant qu’un accord spécifique n’a pas été conclu.
+        </p>
+      </article>
+    </section>
+  </main>
+</BaseLayout>

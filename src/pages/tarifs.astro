@@ -1,97 +1,81 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro'
 ---
-<BaseLayout title="Tarifs — Arrow" activePage="tarifs">
+<BaseLayout
+  title="Bêta — Arrow"
+  description="Arrow propose un test bêta d'un mois, avec accès offert, pour permettre aux établissements de découvrir le produit en conditions."
+  activePage="beta"
+>
   <link rel="stylesheet" href="/styles/pages/tarifs.css" slot="head">
-  <div class="main-container">
+
+  <div class="main-container beta-page">
     <div class="cyber-header">
-      <h1 class="cyber-logo">TARIFS</h1>
-      <p class="cyber-tagline">TARIFICATION FLEXIBLE SELON VOS BESOINS</p>
+      <h1 class="cyber-logo">BÊTA</h1>
+      <p class="cyber-tagline">ACCÈS COMPLET OFFERT PENDANT 1 MOIS</p>
     </div>
 
-    <div class="pricing-container">
-      <div class="pricing-grid">
-        <!-- Starter -->
-        <div class="pricing-card">
-          <div class="pricing-header">
-            <h3 class="pricing-title">STARTER</h3>
-            <div class="pricing-price">
-              <span class="price-amount">À partir de</span>
-              <span class="price-value">299€</span>
-              <span class="price-period">/mois</span>
-            </div>
-            <p class="pricing-subtitle">Jusqu'à 50 étudiants</p>
-          </div>
-          <div class="pricing-features">
-            <ul>
-              <li>✓ Tous les modules de base</li>
-              <li>✓ Support par email</li>
-              <li>✓ Mises à jour incluses</li>
-              <li>✓ Hébergement sécurisé</li>
-              <li>✓ Formation initiale</li>
-            </ul>
-          </div>
-          <div class="pricing-cta">
-            <a href="/contact" class="btn-primary">Demander un devis</a>
-          </div>
-        </div>
+    <section class="beta-hero card">
+      <p class="eyebrow">1 mois de test</p>
+      <h2>Tester Arrow pendant 1 mois, avec accès offert.</h2>
+      <p>
+        Arrow est prêt à être testé comme plateforme. La bêta ouvre l'accès complet
+        pendant 1 mois, offert, pour l'utiliser dans de vraies conditions.
+      </p>
+    </section>
 
-        <!-- Professional -->
-        <div class="pricing-card featured">
-          <div class="pricing-badge">POPULAIRE</div>
-          <div class="pricing-header">
-            <h3 class="pricing-title">PROFESSIONAL</h3>
-            <div class="pricing-price">
-              <span class="price-amount">À partir de</span>
-              <span class="price-value">599€</span>
-              <span class="price-period">/mois</span>
-            </div>
-            <p class="pricing-subtitle">Jusqu'à 200 étudiants</p>
-          </div>
-          <div class="pricing-features">
-            <ul>
-              <li>✓ Tous les modules avancés</li>
-              <li>✓ Support prioritaire</li>
-              <li>✓ Personnalisation</li>
-              <li>✓ API et intégrations</li>
-              <li>✓ Formation continue</li>
-              <li>✓ Gestionnaire de compte dédié</li>
-            </ul>
-          </div>
-          <div class="pricing-cta">
-            <a href="/contact" class="btn-primary">Demander un devis</a>
-          </div>
-        </div>
+    <section class="beta-grid">
+      <article class="card beta-card">
+        <h3>Ce que c'est</h3>
+        <ul>
+          <li>Un accès bêta complet à Arrow pendant 1 mois</li>
+          <li>Une vraie utilisation de la plateforme, pas une simple démo</li>
+          <li>Un cadre direct pour voir comment Arrow fonctionne au quotidien</li>
+        </ul>
+      </article>
 
-        <!-- Enterprise -->
-        <div class="pricing-card">
-          <div class="pricing-header">
-            <h3 class="pricing-title">ENTERPRISE</h3>
-            <div class="pricing-price">
-              <span class="price-amount">Sur mesure</span>
-              <span class="price-value">—</span>
-            </div>
-            <p class="pricing-subtitle">Plus de 200 étudiants</p>
-          </div>
-          <div class="pricing-features">
-            <ul>
-              <li>✓ Solution sur mesure</li>
-              <li>✓ Support 24/7</li>
-              <li>✓ Développements personnalisés</li>
-              <li>✓ Hébergement dédié</li>
-              <li>✓ Formation sur site</li>
-              <li>✓ SLA garanti</li>
-            </ul>
-          </div>
-          <div class="pricing-cta">
-            <a href="/contact" class="btn-primary">Nous contacter</a>
-          </div>
+      <article class="card beta-card">
+        <h3>Ce qui est inclus</h3>
+        <ul>
+          <li>1 mois d'accès bêta offert</li>
+          <li>Accès complet aux fonctionnalités disponibles</li>
+          <li>Utilisation sur un vrai périmètre de suivi étudiant</li>
+          <li>Échange direct si vous avez besoin d'aide pendant le test</li>
+        </ul>
+      </article>
+
+      <article class="card beta-card">
+        <h3>À quoi ça sert</h3>
+        <ul>
+          <li>Voir si Arrow simplifie vraiment votre suivi étudiant</li>
+          <li>Tester absences, notes, bulletins, documents et preuves dans le même espace</li>
+          <li>Vérifier si la plateforme tient bien dans votre fonctionnement réel</li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="beta-boundaries">
+      <div class="card beta-boundaries__panel">
+        <div>
+          <p class="eyebrow">Ce que la bêta n'est pas</p>
+          <h2>Pas de sur-promesse commerciale.</h2>
         </div>
+        <ul>
+          <li>Ce n'est pas une promesse floue ou une preview limitée à quelques écrans.</li>
+          <li>Ce n'est pas encore un déploiement généralisé pour tous les cas et tous les contextes.</li>
+          <li>Ce n'est pas la bonne étape si vous cherchez immédiatement un projet très large et très spécifique.</li>
+        </ul>
       </div>
+    </section>
 
-      <div class="pricing-note">
-        <p>💡 <strong>Tarification personnalisée disponible</strong> - Contactez-nous pour un devis adapté à votre établissement</p>
+    <section class="beta-cta">
+      <div class="card beta-cta__panel">
+        <div>
+          <p class="eyebrow">Prochaine étape</p>
+          <h2>Voir ensemble si la bêta a du sens pour vous.</h2>
+          <p>Un échange court permet de cadrer le périmètre avant d'activer un test.</p>
+        </div>
+        <a href="/contact" data-open-modal="betaAccessModal" class="btn-primary" data-track="beta_demo_beta">Demander une démo</a>
       </div>
-    </div>
+    </section>
   </div>
 </BaseLayout>

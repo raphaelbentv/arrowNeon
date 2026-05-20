@@ -1,0 +1,1922 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+---
+<BaseLayout
+  title="Démo interactive — Arrow"
+  description="Explorez Arrow sans vous connecter. Visualisez les 3 espaces de la plateforme : Administration, Intervenant et Étudiant."
+  activePage="demo"
+>
+  <link rel="stylesheet" href="/styles/pages/demo.css" slot="head">
+
+  <div class="main-container demo-page">
+
+    <div class="demo-page-header">
+      <p class="eyebrow">Aperçu de la plateforme</p>
+      <h1>Explorez Arrow sans vous connecter</h1>
+      <p>Sélectionnez un espace pour voir l'interface correspondante. Les données affichées sont fictives — c'est un clone fidèle de l'app réelle.</p>
+    </div>
+
+    <div class="demo-selector">
+      <button class="demo-selector-btn active" data-space="admin" type="button">
+        <span class="demo-selector-label">Administration</span>
+        <span class="demo-selector-desc">Direction & scolarité</span>
+      </button>
+      <button class="demo-selector-btn" data-space="teacher" type="button">
+        <span class="demo-selector-label">Intervenant</span>
+        <span class="demo-selector-desc">Suivi pédagogique</span>
+      </button>
+      <button class="demo-selector-btn" data-space="student" type="button">
+        <span class="demo-selector-label">Étudiant</span>
+        <span class="demo-selector-desc">Espace personnel</span>
+      </button>
+    </div>
+
+    <div class="demo-browser" id="demoBrowser" data-demo-theme="dark">
+      <div class="demo-chrome">
+        <div class="demo-chrome-dots">
+          <span class="demo-chrome-dot"></span>
+          <span class="demo-chrome-dot"></span>
+          <span class="demo-chrome-dot"></span>
+        </div>
+        <div class="demo-chrome-url" id="demoUrl">arr0w.app/dashboard</div>
+        <button class="demo-theme-toggle" id="demoThemeToggle" type="button" aria-label="Basculer thème clair/sombre">
+          <svg class="icon-moon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="icon-sun" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+        </button>
+      </div>
+
+      <div class="demo-viewport" id="demoViewport">
+
+        <!-- ══════════════════════════════════════════════
+             ESPACE ADMIN
+        ══════════════════════════════════════════════ -->
+        <div class="demo-space active" id="space-admin">
+
+          <header class="arr-header">
+            <div class="arr-logo-block">
+              <span class="arr-logo">ARROW</span>
+              <span class="arr-role-badge">Super admin</span>
+              <span class="arr-school">Arrow demo campus</span>
+            </div>
+            <ul class="arr-nav">
+              <li class="arr-nav-item active" data-admin-nav="dashboard">Mon espace</li>
+              <li class="arr-nav-item arr-nav-dropdown" data-admin-nav-dropdown>
+                <span class="arr-nav-label">Planning <svg class="arr-nav-caret" width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+                <div class="arr-nav-menu">
+                  <a class="arr-nav-menu-item" data-admin-nav="calendrier">Calendrier</a>
+                  <a class="arr-nav-menu-item" data-admin-nav="planning-modules">Planning des modules</a>
+                  <a class="arr-nav-menu-item" data-admin-nav="disponibilites">Disponibilités des intervenants</a>
+                </div>
+              </li>
+              <li class="arr-nav-item arr-nav-dropdown" data-admin-nav-dropdown>
+                <span class="arr-nav-label">Pédagogie <svg class="arr-nav-caret" width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+                <div class="arr-nav-menu">
+                  <a class="arr-nav-menu-item" data-admin-nav="classes">Classes</a>
+                  <a class="arr-nav-menu-item" data-admin-nav="modules">Modules</a>
+                  <a class="arr-nav-menu-item" data-admin-nav="evaluations">Évaluations</a>
+                  <a class="arr-nav-menu-item" data-admin-nav="notes">Notes</a>
+                  <div class="arr-nav-menu-sep">Bulletins</div>
+                  <a class="arr-nav-menu-item" data-admin-nav="rapports">Rapports personnalisés</a>
+                  <a class="arr-nav-menu-item" data-admin-nav="presences">Présences</a>
+                  <a class="arr-nav-menu-item" data-admin-nav="budget">Budget de formation</a>
+                </div>
+              </li>
+              <li class="arr-nav-item arr-nav-dropdown" data-admin-nav-dropdown>
+                <span class="arr-nav-label">Utilisateurs <svg class="arr-nav-caret" width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+                <div class="arr-nav-menu">
+                  <a class="arr-nav-menu-item" data-admin-nav="students">Étudiants</a>
+                  <a class="arr-nav-menu-item" data-admin-nav="intervenants">Intervenants</a>
+                  <a class="arr-nav-menu-item" data-admin-nav="administrateurs">Administrateurs</a>
+                </div>
+              </li>
+              <li class="arr-nav-item">Communication</li>
+              <li class="arr-nav-item">Suivis</li>
+              <li class="arr-nav-item">Paramètres</li>
+            </ul>
+            <div class="arr-header-actions">
+              <button class="arr-icon-btn" aria-label="Recherche"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></button>
+              <button class="arr-icon-btn" aria-label="Messages"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></button>
+              <button class="arr-icon-btn profile" aria-label="Profil"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg></button>
+            </div>
+          </header>
+
+          <!-- ÉCRAN 1 : Dashboard admin -->
+          <div class="arr-screen active" id="admin-screen-dashboard">
+            <p class="arr-greeting">Bonjour <strong>Admin</strong></p>
+
+            <div class="arr-tabs" id="admin-tabs">
+              <button class="arr-tab active" data-admin-tab="synthese">Synthèse</button>
+              <button class="arr-tab" data-admin-tab="planning">Planning</button>
+              <button class="arr-tab" data-admin-tab="etudiants">Étudiants</button>
+              <button class="arr-tab" data-admin-tab="intervenants">Intervenants</button>
+              <button class="arr-tab" data-admin-tab="modules">Modules</button>
+              <button class="arr-tab" data-admin-tab="presences">Présences</button>
+              <button class="arr-tab" data-admin-tab="evaluations">Évaluations</button>
+              <button class="arr-tab" data-admin-tab="exports">Exports</button>
+            </div>
+
+            <!-- Tab Synthèse -->
+            <div class="arr-tab-panel active" id="admin-tab-synthese">
+              <div class="arr-stats">
+                <div class="arr-stat"><div class="arr-stat-label">Étudiants</div><div class="arr-stat-value blue">82</div></div>
+                <div class="arr-stat"><div class="arr-stat-label">Intervenants</div><div class="arr-stat-value purple">12</div></div>
+                <div class="arr-stat"><div class="arr-stat-label">Cohortes</div><div class="arr-stat-value cyan">6</div></div>
+                <div class="arr-stat"><div class="arr-stat-label">Modules</div><div class="arr-stat-value orange">24</div></div>
+                <div class="arr-stat"><div class="arr-stat-label">Évaluations</div><div class="arr-stat-value pink">15</div></div>
+                <div class="arr-stat"><div class="arr-stat-label">Moyenne</div><div class="arr-stat-value green">13.4</div></div>
+              </div>
+
+              <div class="arr-section">
+                <h3 class="arr-section-title">Points d'attention</h3>
+                <div class="arr-alert">
+                  <div class="arr-alert-info">
+                    <span class="arr-alert-title">Inactifs 14j+</span>
+                    <span class="arr-alert-desc">3 étudiant(s) sans activité depuis plus de 14 jours</span>
+                  </div>
+                  <span class="arr-alert-count">3</span>
+                </div>
+                <div class="arr-alert">
+                  <div class="arr-alert-info">
+                    <span class="arr-alert-title">Bulletins à valider</span>
+                    <span class="arr-alert-desc">5 bulletins en attente de signature</span>
+                  </div>
+                  <span class="arr-alert-count">5</span>
+                </div>
+              </div>
+
+              <div class="arr-two-col">
+                <div class="arr-card">
+                  <div class="arr-card-header">Présences</div>
+                  <div class="arr-row" data-goto-profile>
+                    <div>
+                      <div class="arr-row-name">Sophie MARTIN</div>
+                      <div class="arr-row-meta">BACH-MKT-2024 · Absence 14/05</div>
+                    </div>
+                    <span class="arr-badge warn">Non justifiée</span>
+                  </div>
+                  <div class="arr-row" data-goto-profile>
+                    <div>
+                      <div class="arr-row-name">Lucas DUBOIS</div>
+                      <div class="arr-row-meta">BACH-RH-2024 · Absence 13/05</div>
+                    </div>
+                    <span class="arr-badge warn">En attente</span>
+                  </div>
+                  <div class="arr-row" data-goto-profile>
+                    <div>
+                      <div class="arr-row-name">Emma BERNARD</div>
+                      <div class="arr-row-meta">MAST-FIN-2023 · Absence 12/05</div>
+                    </div>
+                    <span class="arr-badge ok">Justifiée</span>
+                  </div>
+                  <div class="arr-row" data-goto-profile>
+                    <div>
+                      <div class="arr-row-name">Thomas PETIT</div>
+                      <div class="arr-row-meta">BACH-MKT-2024 · Absence 12/05</div>
+                    </div>
+                    <span class="arr-badge err">3e absence</span>
+                  </div>
+                </div>
+                <div class="arr-card">
+                  <div class="arr-card-header">Sessions récentes</div>
+                  <div class="arr-row">
+                    <div>
+                      <div class="arr-row-name">Marketing Digital</div>
+                      <div class="arr-row-meta">Lundi 13/05 · 09h–12h</div>
+                    </div>
+                    <span class="arr-badge ok">24/26</span>
+                  </div>
+                  <div class="arr-row">
+                    <div>
+                      <div class="arr-row-name">Droit du travail</div>
+                      <div class="arr-row-meta">Lundi 13/05 · 14h–17h</div>
+                    </div>
+                    <span class="arr-badge info">18/20</span>
+                  </div>
+                  <div class="arr-row">
+                    <div>
+                      <div class="arr-row-name">Finance d'entreprise</div>
+                      <div class="arr-row-meta">Vendredi 10/05 · 09h–13h</div>
+                    </div>
+                    <span class="arr-badge warn">21/24</span>
+                  </div>
+                  <div class="arr-row">
+                    <div>
+                      <div class="arr-row-name">Communication RH</div>
+                      <div class="arr-row-meta">Vendredi 10/05 · 14h–17h</div>
+                    </div>
+                    <span class="arr-badge ok">20/20</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Tab Planning -->
+            <div class="arr-tab-panel" id="admin-tab-planning">
+              <div class="arr-planning">
+                <div class="arr-planning-header">
+                  <div class="arr-planning-title">Semaine du 20 au 24 mai 2026</div>
+                  <div style="display:flex;gap:8px;">
+                    <button class="arr-btn">◄</button>
+                    <button class="arr-btn">Aujourd'hui</button>
+                    <button class="arr-btn">►</button>
+                  </div>
+                </div>
+                <div class="arr-planning-grid">
+                  <div class="arr-planning-cell arr-planning-head"></div>
+                  <div class="arr-planning-cell arr-planning-head">Lundi 20</div>
+                  <div class="arr-planning-cell arr-planning-head">Mardi 21</div>
+                  <div class="arr-planning-cell arr-planning-head">Mercredi 22</div>
+                  <div class="arr-planning-cell arr-planning-head">Jeudi 23</div>
+                  <div class="arr-planning-cell arr-planning-head">Vendredi 24</div>
+
+                  <div class="arr-planning-cell arr-planning-time">09h</div>
+                  <div class="arr-planning-cell"><div class="arr-planning-session">Marketing Digital<br><small>Bach-MKT · S. Bernier</small></div></div>
+                  <div class="arr-planning-cell"></div>
+                  <div class="arr-planning-cell"><div class="arr-planning-session purple">Stratégie<br><small>Bach-MKT · M. Durand</small></div></div>
+                  <div class="arr-planning-cell"><div class="arr-planning-session green">Finance<br><small>Mast-FIN · L. Robin</small></div></div>
+                  <div class="arr-planning-cell"><div class="arr-planning-session orange">Com. digitale<br><small>Bach-MKT · S. Bernier</small></div></div>
+
+                  <div class="arr-planning-cell arr-planning-time">14h</div>
+                  <div class="arr-planning-cell"><div class="arr-planning-session purple">Droit du travail<br><small>Bach-RH · P. Lemaire</small></div></div>
+                  <div class="arr-planning-cell"><div class="arr-planning-session">Marketing Digital<br><small>Bach-MKT · S. Bernier</small></div></div>
+                  <div class="arr-planning-cell"></div>
+                  <div class="arr-planning-cell"><div class="arr-planning-session orange">Communication<br><small>Bach-MKT · C. Roy</small></div></div>
+                  <div class="arr-planning-cell"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Tab Étudiants -->
+            <div class="arr-tab-panel" id="admin-tab-etudiants">
+              <p class="arr-subtitle" style="margin-bottom:14px;">Aperçu de la liste — voir tous les étudiants pour la version complète.</p>
+              <div class="arr-students-grid" id="admin-tab-students-grid">
+                <div class="arr-student-card" data-admin-card-goto>
+                  <div class="arr-student-top">
+                    <div class="arr-avatar green">SM</div>
+                    <div class="arr-student-info">
+                      <div class="arr-student-name">Sophie MARTIN</div>
+                      <div class="arr-student-email">s.martin@arrow.test</div>
+                    </div>
+                    <span class="arr-badge ok">Inscrite</span>
+                  </div>
+                </div>
+                <div class="arr-student-card" data-admin-card-goto>
+                  <div class="arr-student-top">
+                    <div class="arr-avatar">LD</div>
+                    <div class="arr-student-info">
+                      <div class="arr-student-name">Lucas DUBOIS</div>
+                      <div class="arr-student-email">l.dubois@arrow.test</div>
+                    </div>
+                    <span class="arr-badge ok">Inscrit</span>
+                  </div>
+                </div>
+                <div class="arr-student-card" data-admin-card-goto>
+                  <div class="arr-student-top">
+                    <div class="arr-avatar purple">EB</div>
+                    <div class="arr-student-info">
+                      <div class="arr-student-name">Emma BERNARD</div>
+                      <div class="arr-student-email">e.bernard@arrow.test</div>
+                    </div>
+                    <span class="arr-badge ok">Inscrite</span>
+                  </div>
+                </div>
+              </div>
+              <div style="text-align:center;margin-top:18px;">
+                <button class="arr-btn" data-admin-nav="students">Voir tous les étudiants →</button>
+              </div>
+            </div>
+
+            <!-- Tab Intervenants -->
+            <div class="arr-tab-panel" id="admin-tab-intervenants">
+              <table class="arr-table">
+                <thead><tr><th>Intervenant</th><th>Modules</th><th>Étudiants suivis</th><th>Statut</th></tr></thead>
+                <tbody>
+                  <tr><td><strong>Sophie BERNIER</strong><div class="arr-row-meta">s.bernier@arrow.test</div></td><td>Marketing Digital · Com. digitale</td><td>45</td><td><span class="arr-badge ok">Actif</span></td></tr>
+                  <tr><td><strong>Paul LEMAIRE</strong><div class="arr-row-meta">p.lemaire@arrow.test</div></td><td>Droit du travail</td><td>22</td><td><span class="arr-badge ok">Actif</span></td></tr>
+                  <tr><td><strong>Laure ROBIN</strong><div class="arr-row-meta">l.robin@arrow.test</div></td><td>Finance d'entreprise</td><td>18</td><td><span class="arr-badge ok">Actif</span></td></tr>
+                  <tr><td><strong>Marc DURAND</strong><div class="arr-row-meta">m.durand@arrow.test</div></td><td>Stratégie de marque</td><td>26</td><td><span class="arr-badge warn">Inactif 14j+</span></td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Tab Modules -->
+            <div class="arr-tab-panel" id="admin-tab-modules">
+              <table class="arr-table">
+                <thead><tr><th>Module</th><th>Cohorte</th><th>Intervenant</th><th>Progression</th></tr></thead>
+                <tbody>
+                  <tr><td><strong>Marketing Digital</strong></td><td>BACH-MKT-2024</td><td>S. Bernier</td><td><span class="arr-badge ok">68%</span></td></tr>
+                  <tr><td><strong>Droit du travail</strong></td><td>BACH-RH-2024</td><td>P. Lemaire</td><td><span class="arr-badge info">54%</span></td></tr>
+                  <tr><td><strong>Finance d'entreprise</strong></td><td>MAST-FIN-2023</td><td>L. Robin</td><td><span class="arr-badge warn">42%</span></td></tr>
+                  <tr><td><strong>Stratégie de marque</strong></td><td>BACH-MKT-2024</td><td>M. Durand</td><td><span class="arr-badge ok">76%</span></td></tr>
+                  <tr><td><strong>Communication RH</strong></td><td>BACH-RH-2024</td><td>C. Roy</td><td><span class="arr-badge info">61%</span></td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Tab Présences -->
+            <div class="arr-tab-panel" id="admin-tab-presences">
+              <div class="arr-stats" style="grid-template-columns:repeat(3,1fr);">
+                <div class="arr-stat"><div class="arr-stat-label">Taux présence</div><div class="arr-stat-value green">87%</div></div>
+                <div class="arr-stat"><div class="arr-stat-label">Absences ce mois</div><div class="arr-stat-value orange">14</div></div>
+                <div class="arr-stat"><div class="arr-stat-label">Non justifiées</div><div class="arr-stat-value pink">6</div></div>
+              </div>
+              <div class="arr-card">
+                <div class="arr-card-header">Top absents</div>
+                <div class="arr-row"><div><div class="arr-row-name">Thomas PETIT</div><div class="arr-row-meta">BACH-MKT-2024 · 3 abs.</div></div><span class="arr-badge err">À signaler</span></div>
+                <div class="arr-row"><div><div class="arr-row-name">Julie ROBERT</div><div class="arr-row-meta">BACH-MKT-2024 · 2 abs.</div></div><span class="arr-badge warn">À surveiller</span></div>
+                <div class="arr-row"><div><div class="arr-row-name">Marc DURAND</div><div class="arr-row-meta">BACH-RH-2024 · 2 abs.</div></div><span class="arr-badge warn">À surveiller</span></div>
+              </div>
+            </div>
+
+            <!-- Tab Évaluations -->
+            <div class="arr-tab-panel" id="admin-tab-evaluations">
+              <table class="arr-table">
+                <thead><tr><th>Évaluation</th><th>Module</th><th>Date</th><th>Statut</th></tr></thead>
+                <tbody>
+                  <tr><td><strong>Étude de cas — Marque</strong></td><td>Stratégie de marque</td><td>25/05/2026</td><td><span class="arr-badge warn">À corriger</span></td></tr>
+                  <tr><td><strong>Examen mi-parcours</strong></td><td>Droit du travail</td><td>03/06/2026</td><td><span class="arr-badge info">À venir</span></td></tr>
+                  <tr><td><strong>Rapport RH</strong></td><td>Communication RH</td><td>10/06/2026</td><td><span class="arr-badge info">À venir</span></td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Tab Exports -->
+            <div class="arr-tab-panel" id="admin-tab-exports">
+              <div class="arr-empty">
+                <span class="arr-empty-icon">📤</span>
+                Préparez des exports CSV/PDF des bulletins, absences et évaluations.
+              </div>
+            </div>
+          </div>
+
+          <!-- ÉCRAN 2 : Liste étudiants -->
+          <div class="arr-screen" id="admin-screen-students">
+            <div class="arr-page-header">
+              <div>
+                <h1 class="arr-h1">Étudiants</h1>
+                <p class="arr-subtitle">Gestion des étudiant(e)s et suivi académique</p>
+              </div>
+              <div class="arr-page-actions">
+                <button class="arr-btn">Actualiser</button>
+                <button class="arr-btn">Exporter</button>
+                <button class="arr-btn arr-btn-primary">+ Nouvel étudiant</button>
+              </div>
+            </div>
+
+            <div class="arr-mini-stats">
+              <div class="arr-mini-stat"><div class="arr-mini-stat-label">Total étudiants</div><div class="arr-mini-stat-val">82</div></div>
+              <div class="arr-mini-stat"><div class="arr-mini-stat-label">Inscrits</div><div class="arr-mini-stat-val">44</div></div>
+              <div class="arr-mini-stat"><div class="arr-mini-stat-label">En attente</div><div class="arr-mini-stat-val">38</div></div>
+              <div class="arr-mini-stat"><div class="arr-mini-stat-label">Diplômés</div><div class="arr-mini-stat-val">0</div></div>
+              <div class="arr-mini-stat dark"><div class="arr-mini-stat-label">Initial</div><div class="arr-mini-stat-val">59</div></div>
+              <div class="arr-mini-stat dark"><div class="arr-mini-stat-label">Alternance</div><div class="arr-mini-stat-val green">23</div></div>
+            </div>
+
+            <div class="arr-toolbar">
+              <div class="arr-view-toggle">
+                <button class="arr-view-btn active">Grille</button>
+                <button class="arr-view-btn">Liste</button>
+              </div>
+              <input type="text" class="arr-search" id="studentSearch" placeholder="Rechercher un étudiant...">
+            </div>
+
+            <div class="arr-students-grid" id="studentsGrid">
+              <div class="arr-student-card" data-name="Sophie MARTIN" data-goto-detail="emma">
+                <div class="arr-student-top">
+                  <div class="arr-avatar green">SM</div>
+                  <div class="arr-student-info">
+                    <div class="arr-student-name">Sophie MARTIN</div>
+                    <div class="arr-student-email">s.martin@arrow.test</div>
+                  </div>
+                  <span class="arr-badge ok">Inscrite</span>
+                </div>
+                <div class="arr-student-meta">
+                  <div class="arr-meta-cell"><div class="arr-meta-cell-label">Formation</div><div class="arr-meta-cell-val">BACH-MKT-2024</div></div>
+                  <div class="arr-meta-cell"><div class="arr-meta-cell-label">Présence</div><div class="arr-meta-cell-val">92%</div></div>
+                </div>
+              </div>
+              <div class="arr-student-card" data-name="Lucas DUBOIS" data-goto-detail="emma">
+                <div class="arr-student-top">
+                  <div class="arr-avatar">LD</div>
+                  <div class="arr-student-info">
+                    <div class="arr-student-name">Lucas DUBOIS</div>
+                    <div class="arr-student-email">l.dubois@arrow.test</div>
+                  </div>
+                  <span class="arr-badge ok">Inscrit</span>
+                </div>
+                <div class="arr-student-meta">
+                  <div class="arr-meta-cell"><div class="arr-meta-cell-label">Formation</div><div class="arr-meta-cell-val">BACH-MKT-2024</div></div>
+                  <div class="arr-meta-cell"><div class="arr-meta-cell-label">Présence</div><div class="arr-meta-cell-val">88%</div></div>
+                </div>
+              </div>
+              <div class="arr-student-card" data-name="Emma BERNARD" data-goto-detail="emma">
+                <div class="arr-student-top">
+                  <div class="arr-avatar purple">EB</div>
+                  <div class="arr-student-info">
+                    <div class="arr-student-name">Emma BERNARD</div>
+                    <div class="arr-student-email">e.bernard@arrow.test</div>
+                  </div>
+                  <span class="arr-badge ok">Inscrite</span>
+                </div>
+                <div class="arr-student-meta">
+                  <div class="arr-meta-cell"><div class="arr-meta-cell-label">Formation</div><div class="arr-meta-cell-val">MAST-FIN-2023</div></div>
+                  <div class="arr-meta-cell"><div class="arr-meta-cell-label">Présence</div><div class="arr-meta-cell-val">95%</div></div>
+                </div>
+              </div>
+              <div class="arr-student-card" data-name="Thomas PETIT" data-goto-detail="emma">
+                <div class="arr-student-top">
+                  <div class="arr-avatar pink">TP</div>
+                  <div class="arr-student-info">
+                    <div class="arr-student-name">Thomas PETIT</div>
+                    <div class="arr-student-email">t.petit@arrow.test</div>
+                  </div>
+                  <span class="arr-badge warn">En attente</span>
+                </div>
+                <div class="arr-student-meta">
+                  <div class="arr-meta-cell"><div class="arr-meta-cell-label">Formation</div><div class="arr-meta-cell-val">BACH-RH-2024</div></div>
+                  <div class="arr-meta-cell"><div class="arr-meta-cell-label">Présence</div><div class="arr-meta-cell-val">74%</div></div>
+                </div>
+              </div>
+              <div class="arr-student-card" data-name="Julie ROBERT" data-goto-detail="emma">
+                <div class="arr-student-top">
+                  <div class="arr-avatar orange">JR</div>
+                  <div class="arr-student-info">
+                    <div class="arr-student-name">Julie ROBERT</div>
+                    <div class="arr-student-email">j.robert@arrow.test</div>
+                  </div>
+                  <span class="arr-badge ok">Inscrite</span>
+                </div>
+                <div class="arr-student-meta">
+                  <div class="arr-meta-cell"><div class="arr-meta-cell-label">Formation</div><div class="arr-meta-cell-val">BACH-MKT-2024</div></div>
+                  <div class="arr-meta-cell"><div class="arr-meta-cell-label">Présence</div><div class="arr-meta-cell-val">90%</div></div>
+                </div>
+              </div>
+              <div class="arr-student-card" data-name="Marc DURAND" data-goto-detail="emma">
+                <div class="arr-student-top">
+                  <div class="arr-avatar green">MD</div>
+                  <div class="arr-student-info">
+                    <div class="arr-student-name">Marc DURAND</div>
+                    <div class="arr-student-email">m.durand@arrow.test</div>
+                  </div>
+                  <span class="arr-badge ok">Inscrit</span>
+                </div>
+                <div class="arr-student-meta">
+                  <div class="arr-meta-cell"><div class="arr-meta-cell-label">Formation</div><div class="arr-meta-cell-val">BACH-RH-2024</div></div>
+                  <div class="arr-meta-cell"><div class="arr-meta-cell-label">Présence</div><div class="arr-meta-cell-val">86%</div></div>
+                </div>
+              </div>
+              <div class="arr-student-card" data-name="Camille SIMON" data-goto-detail="emma">
+                <div class="arr-student-top">
+                  <div class="arr-avatar">CS</div>
+                  <div class="arr-student-info">
+                    <div class="arr-student-name">Camille SIMON</div>
+                    <div class="arr-student-email">c.simon@arrow.test</div>
+                  </div>
+                  <span class="arr-badge ok">Inscrite</span>
+                </div>
+                <div class="arr-student-meta">
+                  <div class="arr-meta-cell"><div class="arr-meta-cell-label">Formation</div><div class="arr-meta-cell-val">MAST-MKT-2023</div></div>
+                  <div class="arr-meta-cell"><div class="arr-meta-cell-label">Présence</div><div class="arr-meta-cell-val">98%</div></div>
+                </div>
+              </div>
+              <div class="arr-student-card" data-name="Hugo LEFEVRE" data-goto-detail="emma">
+                <div class="arr-student-top">
+                  <div class="arr-avatar purple">HL</div>
+                  <div class="arr-student-info">
+                    <div class="arr-student-name">Hugo LEFEVRE</div>
+                    <div class="arr-student-email">h.lefevre@arrow.test</div>
+                  </div>
+                  <span class="arr-badge warn">En attente</span>
+                </div>
+                <div class="arr-student-meta">
+                  <div class="arr-meta-cell"><div class="arr-meta-cell-label">Formation</div><div class="arr-meta-cell-val">BACH-FIN-2024</div></div>
+                  <div class="arr-meta-cell"><div class="arr-meta-cell-label">Présence</div><div class="arr-meta-cell-val">81%</div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ÉCRAN 3 : Fiche étudiant -->
+          <div class="arr-screen" id="admin-screen-detail">
+            <button class="arr-back" data-admin-back="students">← Étudiants</button>
+
+            <div class="arr-detail-header">
+              <div class="arr-detail-avatar">EB</div>
+              <div class="arr-detail-info">
+                <div class="arr-detail-name">Emma BERNARD</div>
+                <div class="arr-detail-meta">
+                  <span>N° MAST-FIN-2023-001</span>
+                  <span>e.bernard@arrow.test</span>
+                  <span class="arr-badge ok">Inscrite</span>
+                </div>
+              </div>
+              <div class="arr-page-actions">
+                <button class="arr-btn">Modifier</button>
+                <button class="arr-btn arr-btn-primary">Contacter</button>
+              </div>
+            </div>
+
+            <div class="arr-tabs" id="detail-tabs">
+              <button class="arr-tab active" data-detail-tab="resume">Résumé</button>
+              <button class="arr-tab" data-detail-tab="absences">Absences</button>
+              <button class="arr-tab" data-detail-tab="notes">Notes</button>
+              <button class="arr-tab" data-detail-tab="documents">Documents</button>
+            </div>
+
+            <div class="arr-tab-panel active" id="detail-tab-resume">
+              <div class="arr-stats" style="grid-template-columns:repeat(3,1fr);">
+                <div class="arr-stat"><div class="arr-stat-label">Moyenne</div><div class="arr-stat-value green">13.8</div></div>
+                <div class="arr-stat"><div class="arr-stat-label">Absences</div><div class="arr-stat-value orange">2</div></div>
+                <div class="arr-stat"><div class="arr-stat-label">Modules</div><div class="arr-stat-value blue">5</div></div>
+              </div>
+              <div class="arr-card">
+                <div class="arr-card-header">Dernière activité</div>
+                <div class="arr-row"><div><div class="arr-row-name">Bulletin S1 publié</div><div class="arr-row-meta">15/05/2026</div></div><span class="arr-badge ok">Publié</span></div>
+                <div class="arr-row"><div><div class="arr-row-name">Évaluation Finance</div><div class="arr-row-meta">12/05/2026 · Note 15/20</div></div><span class="arr-badge info">Notée</span></div>
+              </div>
+            </div>
+
+            <div class="arr-tab-panel" id="detail-tab-absences">
+              <table class="arr-table">
+                <thead><tr><th>Date</th><th>Module</th><th>Type</th><th>Statut</th></tr></thead>
+                <tbody>
+                  <tr><td>12/05/2026</td><td>Finance d'entreprise</td><td>Cours magistral</td><td><span class="arr-badge ok">Justifiée</span></td></tr>
+                  <tr><td>28/04/2026</td><td>Stratégie de marque</td><td>TD</td><td><span class="arr-badge warn">Non justifiée</span></td></tr>
+                  <tr><td>10/03/2026</td><td>Communication RH</td><td>Cours magistral</td><td><span class="arr-badge ok">Justifiée</span></td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="arr-tab-panel" id="detail-tab-notes">
+              <table class="arr-table">
+                <thead><tr><th>Module</th><th>Évaluation</th><th>Note</th><th>Date</th></tr></thead>
+                <tbody>
+                  <tr><td>Finance d'entreprise</td><td>DS mi-parcours</td><td><span class="arr-grade good">15/20</span></td><td>12/05/2026</td></tr>
+                  <tr><td>Marketing Digital</td><td>CC #2</td><td><span class="arr-grade mid">13/20</span></td><td>05/05/2026</td></tr>
+                  <tr><td>Stratégie de marque</td><td>Étude de cas</td><td><span class="arr-grade good">14/20</span></td><td>22/04/2026</td></tr>
+                  <tr><td>Communication RH</td><td>TP groupe</td><td><span class="arr-grade low">11/20</span></td><td>15/04/2026</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="arr-tab-panel" id="detail-tab-documents">
+              <div class="arr-card">
+                <div class="arr-row">
+                  <div>
+                    <div class="arr-row-name">📄 Bulletin S1 2026</div>
+                    <div class="arr-row-meta">Déposé le 15/05/2026 · PDF · 156 Ko</div>
+                  </div>
+                  <span class="arr-badge ok">Validé</span>
+                </div>
+                <div class="arr-row">
+                  <div>
+                    <div class="arr-row-name">📄 Convention de stage</div>
+                    <div class="arr-row-meta">Déposé le 04/03/2026 · PDF · 84 Ko</div>
+                  </div>
+                  <span class="arr-badge info">Signé</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ÉCRAN 4 : Calendrier -->
+          <div class="arr-screen" id="admin-screen-calendrier" data-cal-view="semaine">
+            <div class="arr-cal-card">
+              <div class="arr-cal-titlebar">
+                <div class="arr-cal-titlebar-left">
+                  <span class="arr-cal-icon">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                  </span>
+                  <h1 class="arr-h1 arr-h1-violet arr-cal-title">Calendrier</h1>
+                </div>
+                <div class="arr-cal-titlebar-right">
+                  <button class="arr-icon-pill" aria-label="Précédent">‹</button>
+                  <span class="arr-cal-date-label" data-cal-date>
+                    <span data-cal-date-week>Sem. 21 — 18 - 24 mai 2026</span>
+                    <span data-cal-date-month hidden>mai 2026</span>
+                  </span>
+                  <button class="arr-icon-pill" aria-label="Suivant">›</button>
+                  <button class="arr-btn arr-cal-today">Aujourd'hui</button>
+                </div>
+              </div>
+              <p class="arr-cal-subtitle" data-cal-sub-week>Vue hebdomadaire · Administration</p>
+              <p class="arr-cal-subtitle" data-cal-sub-month hidden>Vue mensuelle · Administration</p>
+
+              <div class="arr-pill-toggle" data-cal-toggle>
+                <button class="arr-pill" data-cal-view-btn="jour">Jour</button>
+                <button class="arr-pill active" data-cal-view-btn="semaine">Semaine</button>
+                <button class="arr-pill" data-cal-view-btn="mois">Mois</button>
+                <button class="arr-pill" data-cal-view-btn="annee">Année</button>
+                <button class="arr-pill" data-cal-view-btn="liste">Liste</button>
+              </div>
+
+              <div class="arr-cal-filters">
+                <div class="arr-cal-filter">
+                  <label class="arr-cal-filter-label">Classe</label>
+                  <select class="arr-cal-select">
+                    <option>— Toutes les classes —</option>
+                    <option>BACH-MKT-2024</option>
+                    <option>BACH-RH-2024</option>
+                    <option>MAST-FIN-2023</option>
+                  </select>
+                </div>
+                <div class="arr-cal-filter">
+                  <label class="arr-cal-filter-label">Intervenant</label>
+                  <select class="arr-cal-select">
+                    <option>— Tous les intervenants —</option>
+                    <option>Sophie BERNIER</option>
+                    <option>Marc DURAND</option>
+                  </select>
+                </div>
+                <div class="arr-cal-filter">
+                  <label class="arr-cal-filter-label">Heures</label>
+                  <div class="arr-cal-hours">19 h</div>
+                </div>
+              </div>
+
+              <!-- Bande des semaines (vue semaine) -->
+              <div class="arr-cal-bandwrap" data-cal-band-week>
+                <div class="arr-cal-band">
+                  <button class="arr-cal-band-cell" data-week="1">1</button>
+                  <button class="arr-cal-band-cell" data-week="2">2</button>
+                  <button class="arr-cal-band-cell" data-week="3">3</button>
+                  <button class="arr-cal-band-cell" data-week="4">4</button>
+                  <button class="arr-cal-band-cell" data-week="5">5</button>
+                  <button class="arr-cal-band-cell" data-week="6">6</button>
+                  <button class="arr-cal-band-cell" data-week="7">7</button>
+                  <button class="arr-cal-band-cell" data-week="8">8</button>
+                  <button class="arr-cal-band-cell" data-week="9">9</button>
+                  <button class="arr-cal-band-cell" data-week="10">10</button>
+                  <button class="arr-cal-band-cell" data-week="11">11</button>
+                  <button class="arr-cal-band-cell" data-week="12">12</button>
+                  <button class="arr-cal-band-cell" data-week="13">13</button>
+                  <button class="arr-cal-band-cell" data-week="14">14</button>
+                  <button class="arr-cal-band-cell" data-week="15">15</button>
+                  <button class="arr-cal-band-cell" data-week="16">16</button>
+                  <button class="arr-cal-band-cell" data-week="17">17</button>
+                  <button class="arr-cal-band-cell" data-week="18">18</button>
+                  <button class="arr-cal-band-cell" data-week="19">19</button>
+                  <button class="arr-cal-band-cell" data-week="20">20</button>
+                  <button class="arr-cal-band-cell active" data-week="21">21</button>
+                  <button class="arr-cal-band-cell" data-week="22">22</button>
+                  <button class="arr-cal-band-cell" data-week="23">23</button>
+                  <button class="arr-cal-band-cell" data-week="24">24</button>
+                  <button class="arr-cal-band-cell" data-week="25">25</button>
+                  <button class="arr-cal-band-cell" data-week="26">26</button>
+                  <button class="arr-cal-band-cell" data-week="27">27</button>
+                  <button class="arr-cal-band-cell" data-week="28">28</button>
+                  <button class="arr-cal-band-cell" data-week="29">29</button>
+                  <button class="arr-cal-band-cell" data-week="30">30</button>
+                  <button class="arr-cal-band-cell" data-week="31">31</button>
+                  <button class="arr-cal-band-cell" data-week="32">32</button>
+                  <button class="arr-cal-band-cell" data-week="33">33</button>
+                  <button class="arr-cal-band-cell" data-week="34">34</button>
+                  <button class="arr-cal-band-cell" data-week="35">35</button>
+                  <button class="arr-cal-band-cell" data-week="36">36</button>
+                  <button class="arr-cal-band-cell" data-week="37">37</button>
+                  <button class="arr-cal-band-cell" data-week="38">38</button>
+                  <button class="arr-cal-band-cell" data-week="39">39</button>
+                  <button class="arr-cal-band-cell" data-week="40">40</button>
+                  <button class="arr-cal-band-cell" data-week="41">41</button>
+                  <button class="arr-cal-band-cell" data-week="42">42</button>
+                  <button class="arr-cal-band-cell" data-week="43">43</button>
+                  <button class="arr-cal-band-cell" data-week="44">44</button>
+                  <button class="arr-cal-band-cell" data-week="45">45</button>
+                  <button class="arr-cal-band-cell" data-week="46">46</button>
+                  <button class="arr-cal-band-cell" data-week="47">47</button>
+                  <button class="arr-cal-band-cell" data-week="48">48</button>
+                  <button class="arr-cal-band-cell" data-week="49">49</button>
+                  <button class="arr-cal-band-cell" data-week="50">50</button>
+                  <button class="arr-cal-band-cell" data-week="51">51</button>
+                  <button class="arr-cal-band-cell" data-week="52">52</button>
+                </div>
+                <div class="arr-cal-band-months">
+                  <span>JAN</span>
+                  <span>JUN</span>
+                  <span>DEC</span>
+                </div>
+              </div>
+
+              <!-- Bande des jours (vue mois) -->
+              <div class="arr-cal-bandwrap" data-cal-band-month hidden>
+                <div class="arr-cal-band arr-cal-band-days">
+                  <button class="arr-cal-band-cell">1</button>
+                  <button class="arr-cal-band-cell">2</button>
+                  <button class="arr-cal-band-cell">3</button>
+                  <button class="arr-cal-band-cell">4</button>
+                  <button class="arr-cal-band-cell">5</button>
+                  <button class="arr-cal-band-cell">6</button>
+                  <button class="arr-cal-band-cell">7</button>
+                  <button class="arr-cal-band-cell">8</button>
+                  <button class="arr-cal-band-cell">9</button>
+                  <button class="arr-cal-band-cell">10</button>
+                  <button class="arr-cal-band-cell">11</button>
+                  <button class="arr-cal-band-cell">12</button>
+                  <button class="arr-cal-band-cell">13</button>
+                  <button class="arr-cal-band-cell">14</button>
+                  <button class="arr-cal-band-cell">15</button>
+                  <button class="arr-cal-band-cell">16</button>
+                  <button class="arr-cal-band-cell">17</button>
+                  <button class="arr-cal-band-cell">18</button>
+                  <button class="arr-cal-band-cell">19</button>
+                  <button class="arr-cal-band-cell active">20</button>
+                  <button class="arr-cal-band-cell">21</button>
+                  <button class="arr-cal-band-cell">22</button>
+                  <button class="arr-cal-band-cell">23</button>
+                  <button class="arr-cal-band-cell">24</button>
+                  <button class="arr-cal-band-cell">25</button>
+                  <button class="arr-cal-band-cell">26</button>
+                  <button class="arr-cal-band-cell">27</button>
+                  <button class="arr-cal-band-cell">28</button>
+                  <button class="arr-cal-band-cell">29</button>
+                  <button class="arr-cal-band-cell">30</button>
+                  <button class="arr-cal-band-cell">31</button>
+                </div>
+              </div>
+
+              <!-- VUE SEMAINE -->
+              <div class="arr-cal-weekgrid" data-cal-view-pane="semaine">
+                <div class="arr-cal-cell arr-cal-head arr-cal-head-time"></div>
+                <div class="arr-cal-cell arr-cal-head">LUN<br><span>18</span></div>
+                <div class="arr-cal-cell arr-cal-head">MAR<br><span>19</span></div>
+                <div class="arr-cal-cell arr-cal-head arr-cal-head-today">MER<br><span>20</span></div>
+                <div class="arr-cal-cell arr-cal-head">JEU<br><span>21</span></div>
+                <div class="arr-cal-cell arr-cal-head">VEN<br><span>22</span></div>
+                <div class="arr-cal-cell arr-cal-head arr-cal-head-dim">SAM<br><span>23</span></div>
+                <div class="arr-cal-cell arr-cal-head arr-cal-head-dim">DIM<br><span>24</span></div>
+
+                <div class="arr-cal-cell arr-cal-time">7h</div>
+                <div class="arr-cal-cell"></div>
+                <div class="arr-cal-cell"></div>
+                <div class="arr-cal-cell arr-cal-cell-today"></div>
+                <div class="arr-cal-cell"></div>
+                <div class="arr-cal-cell"></div>
+                <div class="arr-cal-cell arr-cal-cell-dim"></div>
+                <div class="arr-cal-cell arr-cal-cell-dim"></div>
+
+                <div class="arr-cal-cell arr-cal-time">8h</div>
+                <div class="arr-cal-cell"></div>
+                <div class="arr-cal-cell"></div>
+                <div class="arr-cal-cell arr-cal-cell-today"></div>
+                <div class="arr-cal-cell"></div>
+                <div class="arr-cal-cell"></div>
+                <div class="arr-cal-cell arr-cal-cell-dim"></div>
+                <div class="arr-cal-cell arr-cal-cell-dim"></div>
+
+                <div class="arr-cal-cell arr-cal-time">9h</div>
+                <div class="arr-cal-cell"></div>
+                <div class="arr-cal-cell"></div>
+                <div class="arr-cal-cell arr-cal-cell-today">
+                  <div class="arr-cal-event cyan">09:00<br>Stratégie marketing digital</div>
+                </div>
+                <div class="arr-cal-cell"></div>
+                <div class="arr-cal-cell"></div>
+                <div class="arr-cal-cell arr-cal-cell-dim"></div>
+                <div class="arr-cal-cell arr-cal-cell-dim"></div>
+
+                <div class="arr-cal-cell arr-cal-time">10h</div>
+                <div class="arr-cal-cell"></div>
+                <div class="arr-cal-cell"></div>
+                <div class="arr-cal-cell arr-cal-cell-today"></div>
+                <div class="arr-cal-cell"></div>
+                <div class="arr-cal-cell"></div>
+                <div class="arr-cal-cell arr-cal-cell-dim"></div>
+                <div class="arr-cal-cell arr-cal-cell-dim"></div>
+
+                <div class="arr-cal-cell arr-cal-time">11h</div>
+                <div class="arr-cal-cell"></div>
+                <div class="arr-cal-cell"></div>
+                <div class="arr-cal-cell arr-cal-cell-today"></div>
+                <div class="arr-cal-cell"></div>
+                <div class="arr-cal-cell"></div>
+                <div class="arr-cal-cell arr-cal-cell-dim"></div>
+                <div class="arr-cal-cell arr-cal-cell-dim"></div>
+              </div>
+
+              <!-- VUE MOIS -->
+              <div class="arr-cal-monthgrid" data-cal-view-pane="mois" hidden>
+                <div class="arr-cal-mhead">LUN</div>
+                <div class="arr-cal-mhead">MAR</div>
+                <div class="arr-cal-mhead">MER</div>
+                <div class="arr-cal-mhead">JEU</div>
+                <div class="arr-cal-mhead">VEN</div>
+                <div class="arr-cal-mhead arr-cal-mhead-dim">SAM</div>
+                <div class="arr-cal-mhead arr-cal-mhead-dim">DIM</div>
+
+                <!-- Semaine 1 : 27 avril - 3 mai -->
+                <div class="arr-cal-mcell arr-cal-mcell-outside"><span class="arr-cal-mday">27</span></div>
+                <div class="arr-cal-mcell arr-cal-mcell-outside"><span class="arr-cal-mday">28</span></div>
+                <div class="arr-cal-mcell arr-cal-mcell-outside"><span class="arr-cal-mday">29</span></div>
+                <div class="arr-cal-mcell arr-cal-mcell-outside"><span class="arr-cal-mday">30</span></div>
+                <div class="arr-cal-mcell"><span class="arr-cal-mday">1</span></div>
+                <div class="arr-cal-mcell arr-cal-mcell-dim"><span class="arr-cal-mday">2</span></div>
+                <div class="arr-cal-mcell arr-cal-mcell-dim"><span class="arr-cal-mday">3</span></div>
+
+                <!-- Semaine 2 -->
+                <div class="arr-cal-mcell"><span class="arr-cal-mday">4</span></div>
+                <div class="arr-cal-mcell"><span class="arr-cal-mday">5</span></div>
+                <div class="arr-cal-mcell"><span class="arr-cal-mday">6</span><div class="arr-cal-event cyan">09:00 Marketing Dig.</div></div>
+                <div class="arr-cal-mcell"><span class="arr-cal-mday">7</span></div>
+                <div class="arr-cal-mcell"><span class="arr-cal-mday">8</span></div>
+                <div class="arr-cal-mcell arr-cal-mcell-dim"><span class="arr-cal-mday">9</span></div>
+                <div class="arr-cal-mcell arr-cal-mcell-dim"><span class="arr-cal-mday">10</span></div>
+
+                <!-- Semaine 3 -->
+                <div class="arr-cal-mcell"><span class="arr-cal-mday">11</span><div class="arr-cal-event teal">13:30 Com. prof.</div></div>
+                <div class="arr-cal-mcell"><span class="arr-cal-mday">12</span></div>
+                <div class="arr-cal-mcell"><span class="arr-cal-mday">13</span></div>
+                <div class="arr-cal-mcell"><span class="arr-cal-mday">14</span></div>
+                <div class="arr-cal-mcell"><span class="arr-cal-mday">15</span></div>
+                <div class="arr-cal-mcell arr-cal-mcell-dim"><span class="arr-cal-mday">16</span></div>
+                <div class="arr-cal-mcell arr-cal-mcell-dim"><span class="arr-cal-mday">17</span></div>
+
+                <!-- Semaine 4 -->
+                <div class="arr-cal-mcell"><span class="arr-cal-mday">18</span></div>
+                <div class="arr-cal-mcell"><span class="arr-cal-mday">19</span></div>
+                <div class="arr-cal-mcell arr-cal-mcell-today"><span class="arr-cal-mday">20</span><div class="arr-cal-event cyan">09:00 Stratégie</div></div>
+                <div class="arr-cal-mcell"><span class="arr-cal-mday">21</span></div>
+                <div class="arr-cal-mcell"><span class="arr-cal-mday">22</span><div class="arr-cal-event teal">13:30 Com. digitale</div></div>
+                <div class="arr-cal-mcell arr-cal-mcell-dim"><span class="arr-cal-mday">23</span></div>
+                <div class="arr-cal-mcell arr-cal-mcell-dim"><span class="arr-cal-mday">24</span></div>
+
+                <!-- Semaine 5 -->
+                <div class="arr-cal-mcell"><span class="arr-cal-mday">25</span></div>
+                <div class="arr-cal-mcell"><span class="arr-cal-mday">26</span></div>
+                <div class="arr-cal-mcell"><span class="arr-cal-mday">27</span></div>
+                <div class="arr-cal-mcell"><span class="arr-cal-mday">28</span></div>
+                <div class="arr-cal-mcell"><span class="arr-cal-mday">29</span></div>
+                <div class="arr-cal-mcell arr-cal-mcell-dim"><span class="arr-cal-mday">30</span></div>
+                <div class="arr-cal-mcell arr-cal-mcell-dim"><span class="arr-cal-mday">31</span></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ÉCRAN 5 : Planning des modules -->
+          <div class="arr-screen" id="admin-screen-planning-modules">
+            <h1 class="arr-h1 arr-h1-violet arr-h1-upper">Planifier des séances</h1>
+
+            <div class="arr-pm-actions">
+              <button class="arr-btn arr-btn-cyan">+ Nouvelle séance</button>
+              <button class="arr-btn arr-btn-purple">+ Nouvelle récurrence</button>
+              <button class="arr-btn arr-btn-purple-outline">Placement automatisé</button>
+            </div>
+
+            <div class="arr-pm-card">
+              <div class="arr-pm-card-title">Sélectionner les critères</div>
+              <div class="arr-pm-criteria">
+                <div class="arr-pm-criterion">
+                  <label class="arr-pm-label">Classe</label>
+                  <select class="arr-cal-select"><option>Sélectionner</option><option>BACH-MKT-2024</option></select>
+                </div>
+                <div class="arr-pm-criterion">
+                  <label class="arr-pm-label">Module</label>
+                  <select class="arr-cal-select"><option>Sélectionner</option><option>Marketing Digital</option></select>
+                </div>
+                <div class="arr-pm-criterion">
+                  <label class="arr-pm-label">Intervenant</label>
+                  <select class="arr-cal-select" disabled><option>Choisissez un module</option></select>
+                </div>
+              </div>
+            </div>
+
+            <div class="arr-pm-navbar">
+              <button class="arr-icon-pill" aria-label="Précédent">‹</button>
+              <span class="arr-pm-week">Semaine 21 — Mai 2026</span>
+              <button class="arr-icon-pill" aria-label="Suivant">›</button>
+            </div>
+
+            <div class="arr-pill-toggle arr-pill-toggle-purple">
+              <button class="arr-pill active">Semaine</button>
+              <button class="arr-pill">Mois</button>
+              <button class="arr-pill">Année</button>
+              <button class="arr-pill">Liste</button>
+            </div>
+
+            <div class="arr-cal-bandwrap">
+              <div class="arr-cal-band arr-cal-band-purple">
+                <button class="arr-cal-band-cell">1</button>
+                <button class="arr-cal-band-cell">2</button>
+                <button class="arr-cal-band-cell">3</button>
+                <button class="arr-cal-band-cell">4</button>
+                <button class="arr-cal-band-cell">5</button>
+                <button class="arr-cal-band-cell">6</button>
+                <button class="arr-cal-band-cell">7</button>
+                <button class="arr-cal-band-cell">8</button>
+                <button class="arr-cal-band-cell">9</button>
+                <button class="arr-cal-band-cell">10</button>
+                <button class="arr-cal-band-cell">11</button>
+                <button class="arr-cal-band-cell">12</button>
+                <button class="arr-cal-band-cell">13</button>
+                <button class="arr-cal-band-cell">14</button>
+                <button class="arr-cal-band-cell">15</button>
+                <button class="arr-cal-band-cell">16</button>
+                <button class="arr-cal-band-cell">17</button>
+                <button class="arr-cal-band-cell">18</button>
+                <button class="arr-cal-band-cell">19</button>
+                <button class="arr-cal-band-cell">20</button>
+                <button class="arr-cal-band-cell active">21</button>
+                <button class="arr-cal-band-cell">22</button>
+                <button class="arr-cal-band-cell">23</button>
+                <button class="arr-cal-band-cell">24</button>
+                <button class="arr-cal-band-cell">25</button>
+                <button class="arr-cal-band-cell">26</button>
+                <button class="arr-cal-band-cell">27</button>
+                <button class="arr-cal-band-cell">28</button>
+                <button class="arr-cal-band-cell">29</button>
+                <button class="arr-cal-band-cell">30</button>
+                <button class="arr-cal-band-cell">31</button>
+                <button class="arr-cal-band-cell">32</button>
+                <button class="arr-cal-band-cell">33</button>
+                <button class="arr-cal-band-cell">34</button>
+                <button class="arr-cal-band-cell">35</button>
+                <button class="arr-cal-band-cell">36</button>
+                <button class="arr-cal-band-cell">37</button>
+                <button class="arr-cal-band-cell">38</button>
+                <button class="arr-cal-band-cell">39</button>
+                <button class="arr-cal-band-cell">40</button>
+                <button class="arr-cal-band-cell">41</button>
+                <button class="arr-cal-band-cell">42</button>
+                <button class="arr-cal-band-cell">43</button>
+                <button class="arr-cal-band-cell">44</button>
+                <button class="arr-cal-band-cell">45</button>
+                <button class="arr-cal-band-cell">46</button>
+                <button class="arr-cal-band-cell">47</button>
+                <button class="arr-cal-band-cell">48</button>
+                <button class="arr-cal-band-cell">49</button>
+                <button class="arr-cal-band-cell">50</button>
+                <button class="arr-cal-band-cell">51</button>
+                <button class="arr-cal-band-cell">52</button>
+              </div>
+            </div>
+
+            <div class="arr-cal-weekgrid arr-cal-weekgrid-pm">
+              <div class="arr-cal-cell arr-cal-head arr-cal-head-time"></div>
+              <div class="arr-cal-cell arr-cal-head">LUN<br><span>18</span></div>
+              <div class="arr-cal-cell arr-cal-head">MAR<br><span>19</span></div>
+              <div class="arr-cal-cell arr-cal-head arr-cal-head-today">MER<br><span>20</span></div>
+              <div class="arr-cal-cell arr-cal-head">JEU<br><span>21</span></div>
+              <div class="arr-cal-cell arr-cal-head">VEN<br><span>22</span></div>
+              <div class="arr-cal-cell arr-cal-head arr-cal-head-dim">SAM<br><span>23</span></div>
+              <div class="arr-cal-cell arr-cal-head arr-cal-head-dim">DIM<br><span>24</span></div>
+
+              <div class="arr-cal-cell arr-cal-time">08:00</div>
+              <div class="arr-cal-cell"></div><div class="arr-cal-cell"></div><div class="arr-cal-cell arr-cal-cell-today"></div><div class="arr-cal-cell"></div><div class="arr-cal-cell"></div><div class="arr-cal-cell arr-cal-cell-dim"></div><div class="arr-cal-cell arr-cal-cell-dim"></div>
+
+              <div class="arr-cal-cell arr-cal-time">09:00</div>
+              <div class="arr-cal-cell"></div><div class="arr-cal-cell"></div><div class="arr-cal-cell arr-cal-cell-today"><div class="arr-cal-event purple">09:00 Stratégie</div></div><div class="arr-cal-cell"></div><div class="arr-cal-cell"></div><div class="arr-cal-cell arr-cal-cell-dim"></div><div class="arr-cal-cell arr-cal-cell-dim"></div>
+
+              <div class="arr-cal-cell arr-cal-time">10:00</div>
+              <div class="arr-cal-cell"></div><div class="arr-cal-cell"></div><div class="arr-cal-cell arr-cal-cell-today"></div><div class="arr-cal-cell"></div><div class="arr-cal-cell"></div><div class="arr-cal-cell arr-cal-cell-dim"></div><div class="arr-cal-cell arr-cal-cell-dim"></div>
+
+              <div class="arr-cal-cell arr-cal-time">11:00</div>
+              <div class="arr-cal-cell"></div><div class="arr-cal-cell"></div><div class="arr-cal-cell arr-cal-cell-today"></div><div class="arr-cal-cell"></div><div class="arr-cal-cell"></div><div class="arr-cal-cell arr-cal-cell-dim"></div><div class="arr-cal-cell arr-cal-cell-dim"></div>
+
+              <div class="arr-cal-cell arr-cal-time">14:00</div>
+              <div class="arr-cal-cell"><div class="arr-cal-event cyan">14:00 Droit</div></div><div class="arr-cal-cell"></div><div class="arr-cal-cell arr-cal-cell-today"></div><div class="arr-cal-cell"></div><div class="arr-cal-cell"></div><div class="arr-cal-cell arr-cal-cell-dim"></div><div class="arr-cal-cell arr-cal-cell-dim"></div>
+
+              <div class="arr-cal-cell arr-cal-time">15:00</div>
+              <div class="arr-cal-cell"></div><div class="arr-cal-cell"></div><div class="arr-cal-cell arr-cal-cell-today"></div><div class="arr-cal-cell"></div><div class="arr-cal-cell"></div><div class="arr-cal-cell arr-cal-cell-dim"></div><div class="arr-cal-cell arr-cal-cell-dim"></div>
+
+              <div class="arr-cal-cell arr-cal-time">16:00</div>
+              <div class="arr-cal-cell"></div><div class="arr-cal-cell"></div><div class="arr-cal-cell arr-cal-cell-today"></div><div class="arr-cal-cell"></div><div class="arr-cal-cell"></div><div class="arr-cal-cell arr-cal-cell-dim"></div><div class="arr-cal-cell arr-cal-cell-dim"></div>
+
+              <div class="arr-cal-cell arr-cal-time">17:00</div>
+              <div class="arr-cal-cell"></div><div class="arr-cal-cell"></div><div class="arr-cal-cell arr-cal-cell-today"></div><div class="arr-cal-cell"></div><div class="arr-cal-cell"></div><div class="arr-cal-cell arr-cal-cell-dim"></div><div class="arr-cal-cell arr-cal-cell-dim"></div>
+            </div>
+          </div>
+
+          <!-- ÉCRAN 6 : Gestion des classes -->
+          <div class="arr-screen" id="admin-screen-classes">
+            <div class="arr-page-header">
+              <div>
+                <h1 class="arr-h1 arr-h1-violet arr-h1-upper">Gestion des classes</h1>
+                <p class="arr-subtitle">Créer, modifier et organiser les classes de l'établissement</p>
+              </div>
+              <div class="arr-page-actions">
+                <button class="arr-btn arr-btn-purple-outline">+ Nouvelle classe</button>
+              </div>
+            </div>
+
+            <div class="arr-classes-filterbar">
+              <div class="arr-classes-filterhead">
+                <span class="arr-classes-filtertitle">Recherche et filtres <span class="arr-classes-count">(<span id="classesCount">3</span> classes)</span></span>
+                <button class="arr-classes-advanced">Options avancées <span class="arr-classes-advanced-icon">⌃</span></button>
+              </div>
+              <input type="text" class="arr-search arr-search-wide" id="classesSearch" placeholder="Rechercher une classe par nom, code, année...">
+            </div>
+
+            <div class="arr-classes-grid" id="classesGrid">
+              <div class="arr-class-card" data-class-name="QA BACHELOR 1777822822335">
+                <div class="arr-class-top">
+                  <h3 class="arr-class-title">QA BACHELOR 1777822822335</h3>
+                  <span class="arr-badge arr-badge-prep">En préparation</span>
+                </div>
+                <span class="arr-class-tag">QA-1777822822335</span>
+                <p class="arr-class-meta">2025-2026 · Bachelor</p>
+                <div class="arr-class-mini">
+                  <div class="arr-class-mini-cell"><div class="arr-class-mini-val">2</div><div class="arr-class-mini-label">Étudiants</div></div>
+                  <div class="arr-class-mini-cell"><div class="arr-class-mini-val">1</div><div class="arr-class-mini-label">Modules</div></div>
+                  <div class="arr-class-mini-cell"><div class="arr-class-mini-val">2</div><div class="arr-class-mini-label">Intervenants</div></div>
+                </div>
+                <div class="arr-class-section-title">Étudiants (2)</div>
+                <div class="arr-class-people">
+                  <div class="arr-class-people-row"><span class="arr-avatar small green">SM</span><span>Sophie MARTIN</span></div>
+                  <div class="arr-class-people-row"><span class="arr-avatar small">LD</span><span>Lucas DUBOIS</span></div>
+                </div>
+                <button class="arr-btn arr-btn-purple-outline arr-class-cta">Voir détails</button>
+              </div>
+
+              <div class="arr-class-card" data-class-name="QA BACHELOR 1777822688668">
+                <div class="arr-class-top">
+                  <h3 class="arr-class-title">QA BACHELOR 1777822688668</h3>
+                  <span class="arr-badge arr-badge-prep">En préparation</span>
+                </div>
+                <span class="arr-class-tag">QA-1777822688668</span>
+                <p class="arr-class-meta">2025-2026 · Bachelor</p>
+                <div class="arr-class-mini">
+                  <div class="arr-class-mini-cell"><div class="arr-class-mini-val">0</div><div class="arr-class-mini-label">Étudiants</div></div>
+                  <div class="arr-class-mini-cell"><div class="arr-class-mini-val">0</div><div class="arr-class-mini-label">Modules</div></div>
+                  <div class="arr-class-mini-cell"><div class="arr-class-mini-val">2</div><div class="arr-class-mini-label">Intervenants</div></div>
+                </div>
+                <div class="arr-class-section-title">Étudiants (0)</div>
+                <div class="arr-class-empty">Aucun étudiant inscrit</div>
+                <button class="arr-btn arr-btn-purple-outline arr-class-cta">Voir détails</button>
+              </div>
+
+              <div class="arr-class-card" data-class-name="BACHELOR MARKETING 2024">
+                <div class="arr-class-top">
+                  <h3 class="arr-class-title">BACHELOR MARKETING 2024</h3>
+                  <span class="arr-badge ok">Active</span>
+                </div>
+                <span class="arr-class-tag arr-class-tag-green">BACH-MKT-2024</span>
+                <p class="arr-class-meta">2024-2025 · Bachelor</p>
+                <div class="arr-class-mini">
+                  <div class="arr-class-mini-cell"><div class="arr-class-mini-val">12</div><div class="arr-class-mini-label">Étudiants</div></div>
+                  <div class="arr-class-mini-cell"><div class="arr-class-mini-val">4</div><div class="arr-class-mini-label">Modules</div></div>
+                  <div class="arr-class-mini-cell"><div class="arr-class-mini-val">3</div><div class="arr-class-mini-label">Intervenants</div></div>
+                </div>
+                <div class="arr-class-section-title">Étudiants (12)</div>
+                <div class="arr-class-people">
+                  <div class="arr-class-people-row"><span class="arr-avatar small purple">EB</span><span>Emma BERNARD</span></div>
+                  <div class="arr-class-people-row"><span class="arr-avatar small orange">JR</span><span>Julie ROBERT</span></div>
+                  <div class="arr-class-people-row"><span class="arr-avatar small">CS</span><span>Camille SIMON</span></div>
+                  <div class="arr-class-people-more">+ 9 autres</div>
+                </div>
+                <button class="arr-btn arr-btn-purple-outline arr-class-cta">Voir détails</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- ÉCRAN 7 : Intervenants -->
+          <div class="arr-screen" id="admin-screen-intervenants">
+            <div class="arr-page-header">
+              <div>
+                <h1 class="arr-h1 arr-h1-violet">Intervenants</h1>
+                <p class="arr-subtitle">Gestion des professeurs et formateurs</p>
+              </div>
+              <div class="arr-page-actions">
+                <button class="arr-btn">Actualiser</button>
+                <button class="arr-btn">Exporter</button>
+                <button class="arr-btn arr-btn-primary">+ Nouvel intervenant</button>
+              </div>
+            </div>
+
+            <div class="arr-mini-stats arr-mini-stats-4">
+              <div class="arr-mini-stat"><div class="arr-mini-stat-label">Total intervenants</div><div class="arr-mini-stat-val purple">5</div></div>
+              <div class="arr-mini-stat"><div class="arr-mini-stat-label">Actifs ce mois</div><div class="arr-mini-stat-val green">4</div></div>
+              <div class="arr-mini-stat"><div class="arr-mini-stat-label">Nouveaux ce mois</div><div class="arr-mini-stat-val pink">0</div></div>
+              <div class="arr-mini-stat"><div class="arr-mini-stat-label">Total heures</div><div class="arr-mini-stat-val purple">0h</div></div>
+            </div>
+
+            <div class="arr-toolbar">
+              <div class="arr-view-toggle">
+                <button class="arr-view-btn active">Grille</button>
+                <button class="arr-view-btn">Liste</button>
+              </div>
+              <input type="text" class="arr-search" placeholder="Rechercher un intervenant...">
+            </div>
+
+            <div class="arr-people-grid">
+              <div class="arr-person-card arr-person-card-red">
+                <div class="arr-person-top">
+                  <div class="arr-avatar large purple">?</div>
+                  <div class="arr-person-info">
+                    <div class="arr-person-name">Marie DUBOIS</div>
+                    <div class="arr-person-role">Poste non défini</div>
+                    <div class="arr-person-email">teacher@arrow.test</div>
+                  </div>
+                  <span class="arr-badge purple">Salarié</span>
+                </div>
+                <div class="arr-person-meta">
+                  <div class="arr-meta-cell"><div class="arr-meta-cell-label">Contrat</div><div class="arr-meta-cell-val">Non renseigné</div></div>
+                  <div class="arr-meta-cell"><div class="arr-meta-cell-label">Modules</div><div class="arr-meta-cell-val">Aucun module</div></div>
+                </div>
+                <div class="arr-person-meta">
+                  <div class="arr-meta-cell"><div class="arr-meta-cell-label">Contact</div><div class="arr-meta-cell-val">—</div></div>
+                  <div class="arr-meta-cell"><div class="arr-meta-cell-label">Tarif</div><div class="arr-meta-cell-val">Non renseigné</div></div>
+                </div>
+                <span class="arr-person-chip">Demo</span>
+                <div class="arr-person-foot">
+                  <div class="arr-meta-cell"><div class="arr-meta-cell-label">Modules</div><div class="arr-meta-cell-val arr-meta-cell-empty">Aucun module</div></div>
+                  <div class="arr-meta-cell"><div class="arr-meta-cell-label">Heures prévues</div><div class="arr-meta-cell-val">— h</div></div>
+                </div>
+              </div>
+
+              <div class="arr-person-card arr-person-card-green">
+                <div class="arr-person-top">
+                  <div class="arr-avatar large purple">?</div>
+                  <div class="arr-person-info">
+                    <div class="arr-person-name">Antoine LEFEVRE</div>
+                    <div class="arr-person-role">Poste non défini</div>
+                    <div class="arr-person-email">teacher2@arrow.test</div>
+                  </div>
+                  <span class="arr-badge purple">Salarié</span>
+                </div>
+                <div class="arr-person-meta">
+                  <div class="arr-meta-cell"><div class="arr-meta-cell-label">Contrat</div><div class="arr-meta-cell-val">Non renseigné</div></div>
+                  <div class="arr-meta-cell"><div class="arr-meta-cell-label">Modules</div><div class="arr-meta-cell-val">Aucun module</div></div>
+                </div>
+                <div class="arr-person-meta">
+                  <div class="arr-meta-cell"><div class="arr-meta-cell-label">Contact</div><div class="arr-meta-cell-val">—</div></div>
+                  <div class="arr-meta-cell"><div class="arr-meta-cell-label">Tarif</div><div class="arr-meta-cell-val">Non renseigné</div></div>
+                </div>
+                <span class="arr-person-chip arr-person-chip-muted">Aucune spécialité</span>
+                <div class="arr-person-foot">
+                  <div class="arr-meta-cell"><div class="arr-meta-cell-label">Modules</div><div class="arr-meta-cell-val arr-meta-cell-empty">Aucun module</div></div>
+                  <div class="arr-meta-cell"><div class="arr-meta-cell-label">Heures prévues</div><div class="arr-meta-cell-val">— h</div></div>
+                </div>
+              </div>
+
+              <div class="arr-person-card arr-person-card-teal">
+                <div class="arr-person-top">
+                  <div class="arr-avatar large purple">?</div>
+                  <div class="arr-person-info">
+                    <div class="arr-person-name">Qa1777822688668 AUTO…</div>
+                    <div class="arr-person-role">Poste non défini</div>
+                    <div class="arr-person-email">qa-teacher-1777822688668@arrow.test</div>
+                  </div>
+                  <span class="arr-badge purple">Salarié</span>
+                </div>
+                <div class="arr-person-meta">
+                  <div class="arr-meta-cell"><div class="arr-meta-cell-label">Contrat</div><div class="arr-meta-cell-val">Non renseigné</div></div>
+                  <div class="arr-meta-cell"><div class="arr-meta-cell-label">Modules</div><div class="arr-meta-cell-val">Aucun module</div></div>
+                </div>
+                <div class="arr-person-meta">
+                  <div class="arr-meta-cell"><div class="arr-meta-cell-label">Contact</div><div class="arr-meta-cell-val">—</div></div>
+                  <div class="arr-meta-cell"><div class="arr-meta-cell-label">Tarif</div><div class="arr-meta-cell-val">Non renseigné</div></div>
+                </div>
+                <span class="arr-person-chip arr-person-chip-muted">Aucune spécialité</span>
+                <div class="arr-person-foot">
+                  <div class="arr-meta-cell"><div class="arr-meta-cell-label">Modules</div><div class="arr-meta-cell-val arr-meta-cell-empty">Aucun module</div></div>
+                  <div class="arr-meta-cell"><div class="arr-meta-cell-label">Heures prévues</div><div class="arr-meta-cell-val">— h</div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ÉCRAN 8 : Administrateurs -->
+          <div class="arr-screen" id="admin-screen-administrateurs">
+            <div class="arr-page-header">
+              <div>
+                <h1 class="arr-h1 arr-h1-violet">Administrateurs</h1>
+                <p class="arr-subtitle">Gestion des comptes administrateurs et permissions</p>
+              </div>
+              <div class="arr-page-actions">
+                <button class="arr-btn">Actualiser</button>
+                <button class="arr-btn">Exporter</button>
+                <button class="arr-btn arr-btn-primary">+ Nouvel admin</button>
+              </div>
+            </div>
+
+            <div class="arr-mini-stats arr-mini-stats-4">
+              <div class="arr-mini-stat"><div class="arr-mini-stat-label">Total administrateurs</div><div class="arr-mini-stat-val purple">6</div></div>
+              <div class="arr-mini-stat"><div class="arr-mini-stat-label">Super admins</div><div class="arr-mini-stat-val purple">1</div></div>
+              <div class="arr-mini-stat"><div class="arr-mini-stat-label">Actifs</div><div class="arr-mini-stat-val purple">6</div></div>
+              <div class="arr-mini-stat"><div class="arr-mini-stat-label">Inactifs</div><div class="arr-mini-stat-val purple">0</div></div>
+            </div>
+
+            <h3 class="arr-section-title arr-section-title-icon">
+              <span class="arr-section-icon">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              </span>
+              Annuaire des administrateurs
+            </h3>
+
+            <div class="arr-toolbar">
+              <div class="arr-view-toggle">
+                <button class="arr-view-btn active">Grille</button>
+                <button class="arr-view-btn">Liste</button>
+              </div>
+              <input type="text" class="arr-search" placeholder="Rechercher un administrateur...">
+            </div>
+
+            <div class="arr-people-grid">
+              <div class="arr-person-card arr-person-card-pink">
+                <div class="arr-person-top">
+                  <div class="arr-avatar large pink">A</div>
+                  <div class="arr-person-info">
+                    <div class="arr-person-name">Admin ARROW</div>
+                    <div class="arr-person-role">SUPER_ADMIN</div>
+                    <div class="arr-person-email">admin@arrow.test</div>
+                  </div>
+                  <span class="arr-badge arr-badge-pink-outline">Super admin</span>
+                </div>
+                <div class="arr-person-meta">
+                  <div class="arr-meta-cell"><div class="arr-meta-cell-label">Permissions</div><div class="arr-meta-cell-val">1 permission</div></div>
+                  <div class="arr-meta-cell"><div class="arr-meta-cell-label">Type</div><div class="arr-meta-cell-val">Super Admin</div></div>
+                </div>
+                <div class="arr-person-meta">
+                  <div class="arr-meta-cell"><div class="arr-meta-cell-label">Statut</div><div class="arr-meta-cell-val">Compte actif</div></div>
+                  <div class="arr-meta-cell"><div class="arr-meta-cell-label">Créé le</div><div class="arr-meta-cell-val">03/04/2026</div></div>
+                </div>
+                <span class="arr-person-chip arr-person-chip-purple">all</span>
+              </div>
+
+              <div class="arr-person-card arr-person-card-green">
+                <div class="arr-person-top">
+                  <div class="arr-avatar large green">Q</div>
+                  <div class="arr-person-info">
+                    <div class="arr-person-name">Qa-s3 ADMINCUSTOM</div>
+                    <div class="arr-person-role">ADMIN</div>
+                    <div class="arr-person-email">qa-s3-admincustom-…@arrow.test</div>
+                  </div>
+                  <span class="arr-badge ok">Actif</span>
+                </div>
+                <div class="arr-person-meta">
+                  <div class="arr-meta-cell"><div class="arr-meta-cell-label">Permissions</div><div class="arr-meta-cell-val">Toutes</div></div>
+                  <div class="arr-meta-cell"><div class="arr-meta-cell-label">Type</div><div class="arr-meta-cell-val">Admin</div></div>
+                </div>
+                <div class="arr-person-meta">
+                  <div class="arr-meta-cell"><div class="arr-meta-cell-label">Statut</div><div class="arr-meta-cell-val">Compte actif</div></div>
+                  <div class="arr-meta-cell"><div class="arr-meta-cell-label">Créé le</div><div class="arr-meta-cell-val">03/05/2026</div></div>
+                </div>
+              </div>
+
+              <div class="arr-person-card arr-person-card-orange">
+                <div class="arr-person-top">
+                  <div class="arr-avatar large orange">Q</div>
+                  <div class="arr-person-info">
+                    <div class="arr-person-name">Qa-s3 ADMINCUSTOM</div>
+                    <div class="arr-person-role">ADMIN</div>
+                    <div class="arr-person-email">qa-s3-admincustom-2…@arrow.test</div>
+                  </div>
+                  <span class="arr-badge ok">Actif</span>
+                </div>
+                <div class="arr-person-meta">
+                  <div class="arr-meta-cell"><div class="arr-meta-cell-label">Permissions</div><div class="arr-meta-cell-val">Toutes</div></div>
+                  <div class="arr-meta-cell"><div class="arr-meta-cell-label">Type</div><div class="arr-meta-cell-val">Admin</div></div>
+                </div>
+                <div class="arr-person-meta">
+                  <div class="arr-meta-cell"><div class="arr-meta-cell-label">Statut</div><div class="arr-meta-cell-val">Compte actif</div></div>
+                  <div class="arr-meta-cell"><div class="arr-meta-cell-label">Créé le</div><div class="arr-meta-cell-val">03/05/2026</div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- ══════════════════════════════════════════════
+             ESPACE INTERVENANT
+        ══════════════════════════════════════════════ -->
+        <div class="demo-space" id="space-teacher">
+
+          <header class="arr-header">
+            <div class="arr-logo-block">
+              <span class="arr-logo">ARROW</span>
+              <span class="arr-role-badge">Intervenant</span>
+              <span class="arr-school">Arrow demo campus</span>
+            </div>
+            <ul class="arr-nav">
+              <li class="arr-nav-item active" data-teacher-nav="panel">Planning</li>
+              <li class="arr-nav-item">Mes cours</li>
+              <li class="arr-nav-item">Pédagogie</li>
+              <li class="arr-nav-item">Suivi</li>
+              <li class="arr-nav-item">Communication</li>
+              <li class="arr-nav-item">Établissement</li>
+              <li class="arr-nav-item">Paramètres</li>
+            </ul>
+            <div class="arr-header-actions">
+              <button class="arr-icon-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></button>
+              <button class="arr-icon-btn profile"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg></button>
+            </div>
+          </header>
+
+          <!-- ÉCRAN 1 : Panel intervenant -->
+          <div class="arr-screen active" id="teacher-screen-panel">
+            <h1 class="arr-mega-title">Bonjour Marie</h1>
+            <p class="arr-mega-subtitle">Tableau de bord et suivi pédagogique</p>
+
+            <h3 class="arr-section-title">Prochaines sessions</h3>
+
+            <div class="arr-session-card">
+              <div class="arr-session-head">
+                <div>
+                  <div class="arr-session-title">Stratégie marketing digital</div>
+                  <span class="arr-session-today">📅 Aujourd'hui</span>
+                </div>
+                <div class="arr-session-actions">
+                  <button class="arr-btn">📹 + Créer visio</button>
+                  <button class="arr-btn arr-btn-primary" data-teacher-appel="strat">📋 Appel</button>
+                </div>
+              </div>
+              <div class="arr-session-grid">
+                <div>
+                  <div class="arr-session-field-label">Cohorte</div>
+                  <div class="arr-session-field-val">Bachelor Marketing Digital · Démo</div>
+                </div>
+                <div>
+                  <div class="arr-session-field-label">Date & heure</div>
+                  <div class="arr-session-field-val">lundi 4 mai à 09:00</div>
+                </div>
+                <div>
+                  <div class="arr-session-field-label">Durée</div>
+                  <div class="arr-session-field-val">3h30</div>
+                </div>
+              </div>
+              <div class="arr-countdown">
+                <span class="arr-countdown-label">Dans</span>
+                <span class="arr-countdown-val">33 min</span>
+              </div>
+            </div>
+
+            <div class="arr-session-card" style="border-color:var(--arr-card-border);">
+              <div class="arr-session-head">
+                <div>
+                  <div class="arr-session-title">Communication digitale</div>
+                </div>
+                <div class="arr-session-actions">
+                  <button class="arr-btn">📹 + Créer visio</button>
+                  <button class="arr-btn">📋 Appel</button>
+                </div>
+              </div>
+              <div class="arr-session-grid">
+                <div>
+                  <div class="arr-session-field-label">Cohorte</div>
+                  <div class="arr-session-field-val">Bachelor Marketing Digital</div>
+                </div>
+                <div>
+                  <div class="arr-session-field-label">Date & heure</div>
+                  <div class="arr-session-field-val">mercredi 6 mai à 14:00</div>
+                </div>
+                <div>
+                  <div class="arr-session-field-label">Durée</div>
+                  <div class="arr-session-field-val">3h00</div>
+                </div>
+              </div>
+            </div>
+
+            <div style="margin-top:32px;">
+              <h3 class="arr-section-title">Alertes assiduité</h3>
+              <div class="arr-card">
+                <div class="arr-row"><div><div class="arr-row-name">Thomas PETIT</div><div class="arr-row-meta">Marketing Digital · 3 absences</div></div><span class="arr-badge err">À signaler</span></div>
+                <div class="arr-row"><div><div class="arr-row-name">Julie ROBERT</div><div class="arr-row-meta">Stratégie de marque · 2 absences</div></div><span class="arr-badge warn">À surveiller</span></div>
+              </div>
+            </div>
+
+            <div style="margin-top:24px;">
+              <h3 class="arr-section-title">Devoirs à corriger</h3>
+              <div class="arr-card">
+                <div class="arr-row">
+                  <div>
+                    <div class="arr-row-name">Étude de cas — Stratégie de marque</div>
+                    <div class="arr-row-meta">Remis le 15/05 · 19 copies</div>
+                  </div>
+                  <span class="arr-badge warn">19 à corriger</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ÉCRAN 2 : Appel -->
+          <div class="arr-screen" id="teacher-screen-appel">
+            <button class="arr-back" data-teacher-back="panel">← Mon panel</button>
+
+            <div class="arr-appel-header">
+              <div>
+                <div class="arr-appel-title">Appel — Stratégie marketing digital</div>
+                <div class="arr-appel-meta">Bachelor Marketing Digital · Lundi 4 mai · 09:00 – 12:30</div>
+              </div>
+              <div>
+                <div class="arr-session-field-label">Présents</div>
+                <div class="arr-appel-counter"><span id="presentCount">10</span> / 10</div>
+              </div>
+            </div>
+
+            <div class="arr-appel-list" id="appelList">
+              <div class="arr-appel-row"><div class="arr-avatar green">SM</div><div class="arr-appel-name">Sophie MARTIN</div><div class="arr-appel-toggle"><button class="arr-appel-btn active present" data-status="present">Présent</button><button class="arr-appel-btn" data-status="absent">Absent</button></div></div>
+              <div class="arr-appel-row"><div class="arr-avatar">LD</div><div class="arr-appel-name">Lucas DUBOIS</div><div class="arr-appel-toggle"><button class="arr-appel-btn active present" data-status="present">Présent</button><button class="arr-appel-btn" data-status="absent">Absent</button></div></div>
+              <div class="arr-appel-row"><div class="arr-avatar purple">EB</div><div class="arr-appel-name">Emma BERNARD</div><div class="arr-appel-toggle"><button class="arr-appel-btn active present" data-status="present">Présent</button><button class="arr-appel-btn" data-status="absent">Absent</button></div></div>
+              <div class="arr-appel-row"><div class="arr-avatar pink">TP</div><div class="arr-appel-name">Thomas PETIT</div><div class="arr-appel-toggle"><button class="arr-appel-btn active present" data-status="present">Présent</button><button class="arr-appel-btn" data-status="absent">Absent</button></div></div>
+              <div class="arr-appel-row"><div class="arr-avatar orange">JR</div><div class="arr-appel-name">Julie ROBERT</div><div class="arr-appel-toggle"><button class="arr-appel-btn active present" data-status="present">Présent</button><button class="arr-appel-btn" data-status="absent">Absent</button></div></div>
+              <div class="arr-appel-row"><div class="arr-avatar green">MD</div><div class="arr-appel-name">Marc DURAND</div><div class="arr-appel-toggle"><button class="arr-appel-btn active present" data-status="present">Présent</button><button class="arr-appel-btn" data-status="absent">Absent</button></div></div>
+              <div class="arr-appel-row"><div class="arr-avatar">CS</div><div class="arr-appel-name">Camille SIMON</div><div class="arr-appel-toggle"><button class="arr-appel-btn active present" data-status="present">Présent</button><button class="arr-appel-btn" data-status="absent">Absent</button></div></div>
+              <div class="arr-appel-row"><div class="arr-avatar purple">HL</div><div class="arr-appel-name">Hugo LEFEVRE</div><div class="arr-appel-toggle"><button class="arr-appel-btn active present" data-status="present">Présent</button><button class="arr-appel-btn" data-status="absent">Absent</button></div></div>
+              <div class="arr-appel-row"><div class="arr-avatar green">CB</div><div class="arr-appel-name">Chloé BRUN</div><div class="arr-appel-toggle"><button class="arr-appel-btn active present" data-status="present">Présent</button><button class="arr-appel-btn" data-status="absent">Absent</button></div></div>
+              <div class="arr-appel-row"><div class="arr-avatar orange">PR</div><div class="arr-appel-name">Paul RICHARD</div><div class="arr-appel-toggle"><button class="arr-appel-btn active present" data-status="present">Présent</button><button class="arr-appel-btn" data-status="absent">Absent</button></div></div>
+            </div>
+
+            <div style="text-align:center;">
+              <button class="arr-btn arr-btn-primary" id="validerAppel" style="padding:12px 28px;font-size:0.85rem;">Valider l'appel</button>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- ══════════════════════════════════════════════
+             ESPACE ÉTUDIANT
+        ══════════════════════════════════════════════ -->
+        <div class="demo-space" id="space-student">
+
+          <header class="arr-header">
+            <div class="arr-logo-block">
+              <span class="arr-logo">ARROW</span>
+              <span class="arr-role-badge">Étudiant</span>
+              <span class="arr-school">Arrow demo campus</span>
+            </div>
+            <ul class="arr-nav">
+              <li class="arr-nav-item active" data-student-nav="dashboard">Planning</li>
+              <li class="arr-nav-item" data-student-nav="pedago">Espace pédagogique</li>
+              <li class="arr-nav-item">Suivi</li>
+              <li class="arr-nav-item">Carrière</li>
+            </ul>
+            <div class="arr-header-actions">
+              <button class="arr-icon-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></button>
+              <button class="arr-icon-btn profile"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg></button>
+            </div>
+          </header>
+
+          <!-- ÉCRAN 1 : Dashboard étudiant -->
+          <div class="arr-screen active" id="student-screen-dashboard">
+            <div class="arr-student-hero">
+              <button class="arr-bell" aria-label="Notifications">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 22a2 2 0 0 0 2-2h-4a2 2 0 0 0 2 2zm6-6V11c0-3.07-1.63-5.64-4.5-6.32V4a1.5 1.5 0 0 0-3 0v.68C7.64 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/></svg>
+                <span class="arr-bell-dot">1</span>
+              </button>
+              <div class="arr-student-hero-title">BONJOUR JEAN</div>
+              <div class="arr-student-hero-sub">( Tableau de bord )</div>
+            </div>
+
+            <div class="arr-student-stats">
+              <div class="arr-student-stat"><div class="arr-student-stat-label">Moyenne générale</div><div class="arr-student-stat-val">14,5/20</div></div>
+              <div class="arr-student-stat" style="border-top-color:var(--arr-orange);"><div class="arr-student-stat-label">Taux de présence</div><div class="arr-student-stat-val">87%</div></div>
+              <div class="arr-student-stat" style="border-top-color:var(--arr-purple);"><div class="arr-student-stat-label">Modules suivis</div><div class="arr-student-stat-val">4</div></div>
+              <div class="arr-student-stat" style="border-top-color:var(--arr-green);"><div class="arr-student-stat-label">Notes enregistrées</div><div class="arr-student-stat-val">12</div></div>
+            </div>
+
+            <div class="arr-action-required">
+              <div class="arr-action-head">
+                <div class="arr-action-icon">✓</div>
+                <div class="arr-action-title">Action requise</div>
+                <span class="arr-action-urgent">URGENT</span>
+              </div>
+              <div class="arr-action-desc">1 signature(s) de présence en attente · Session Stratégie marketing digital</div>
+            </div>
+
+            <h3 class="arr-section-title">Notes récentes</h3>
+            <div class="arr-student-bottom">
+              <div class="arr-card">
+                <div class="arr-card-header">Notes</div>
+                <div class="arr-row" data-student-nav="notes"><div><div class="arr-row-name">Marketing Digital</div><div class="arr-row-meta">CC · 14/05</div></div><span class="arr-grade good">16/20</span></div>
+                <div class="arr-row" data-student-nav="notes"><div><div class="arr-row-name">Droit du travail</div><div class="arr-row-meta">Examen · 10/05</div></div><span class="arr-grade mid">13/20</span></div>
+                <div class="arr-row" data-student-nav="notes"><div><div class="arr-row-name">Finance d'entreprise</div><div class="arr-row-meta">DS · 07/05</div></div><span class="arr-grade good">15/20</span></div>
+                <div class="arr-row" data-student-nav="notes"><div><div class="arr-row-name">Communication RH</div><div class="arr-row-meta">TP · 03/05</div></div><span class="arr-grade low">11/20</span></div>
+              </div>
+              <div class="arr-card">
+                <div class="arr-card-header">Prochains cours</div>
+                <div class="arr-row" data-student-nav="planning"><div><div class="arr-row-name">Marketing Digital</div><div class="arr-row-meta">Mer. 22/05 · 09h–12h</div></div><span class="arr-badge info">Salle B3</span></div>
+                <div class="arr-row" data-student-nav="planning"><div><div class="arr-row-name">Stratégie marque</div><div class="arr-row-meta">Jeu. 23/05 · 14h–17h</div></div><span class="arr-badge info">Salle A1</span></div>
+                <div class="arr-row" data-student-nav="planning"><div><div class="arr-row-name">Com. digitale</div><div class="arr-row-meta">Ven. 24/05 · 09h–13h</div></div><span class="arr-badge info">Amphi C</span></div>
+              </div>
+              <div class="arr-card">
+                <div class="arr-card-header">Devoirs</div>
+                <div class="arr-row"><div><div class="arr-row-name">Étude de cas</div><div class="arr-row-meta">Pour le 25/05</div></div><span class="arr-badge warn">Urgent</span></div>
+                <div class="arr-row"><div><div class="arr-row-name">Rapport RH</div><div class="arr-row-meta">Pour le 30/05</div></div><span class="arr-badge info">À faire</span></div>
+                <div class="arr-row"><div><div class="arr-row-name">Analyse financière</div><div class="arr-row-meta">Pour le 02/06</div></div><span class="arr-badge ok">Rendu</span></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ÉCRAN 2 : Mes notes -->
+          <div class="arr-screen" id="student-screen-notes">
+            <button class="arr-back" data-student-back="dashboard">← Tableau de bord</button>
+            <h1 class="arr-h1">Mes notes</h1>
+            <p class="arr-subtitle">Moyenne générale : <strong style="color:var(--arr-green);">14,2/20</strong></p>
+
+            <div class="arr-tabs" id="notes-tabs">
+              <button class="arr-tab active" data-notes-filter="all">Tous</button>
+              <button class="arr-tab" data-notes-filter="mkt">Marketing</button>
+              <button class="arr-tab" data-notes-filter="droit">Droit</button>
+              <button class="arr-tab" data-notes-filter="fin">Finance</button>
+            </div>
+
+            <table class="arr-table">
+              <thead><tr><th>Module</th><th>Évaluation</th><th>Type</th><th>Note</th><th>Date</th></tr></thead>
+              <tbody id="notesTbody">
+                <tr data-module="mkt"><td>Marketing Digital</td><td>Contrôle continu</td><td><span class="arr-badge info">CC</span></td><td><span class="arr-grade good">16/20</span></td><td>14/05/2026</td></tr>
+                <tr data-module="droit"><td>Droit du travail</td><td>Examen mi-parcours</td><td><span class="arr-badge purple">Examen</span></td><td><span class="arr-grade mid">13/20</span></td><td>10/05/2026</td></tr>
+                <tr data-module="fin"><td>Finance d'entreprise</td><td>Devoir surveillé</td><td><span class="arr-badge warn">DS</span></td><td><span class="arr-grade good">15/20</span></td><td>07/05/2026</td></tr>
+                <tr data-module="rh"><td>Communication RH</td><td>TP groupe</td><td><span class="arr-badge ok">TP</span></td><td><span class="arr-grade low">11/20</span></td><td>03/05/2026</td></tr>
+                <tr data-module="mkt"><td>Marketing Digital</td><td>Étude de cas</td><td><span class="arr-badge info">CC</span></td><td><span class="arr-grade good">14/20</span></td><td>22/04/2026</td></tr>
+                <tr data-module="fin"><td>Finance d'entreprise</td><td>QCM</td><td><span class="arr-badge info">CC</span></td><td><span class="arr-grade mid">12/20</span></td><td>15/04/2026</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- ÉCRAN 3 : Planning étudiant -->
+          <div class="arr-screen" id="student-screen-planning">
+            <button class="arr-back" data-student-back="dashboard">← Tableau de bord</button>
+            <h1 class="arr-h1 arr-h1-icon">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              Agenda pédagogique
+            </h1>
+            <p class="arr-subtitle">Semaine du 20 au 24 mai 2026</p>
+
+            <div class="arr-planning">
+              <div class="arr-planning-grid">
+                <div class="arr-planning-cell arr-planning-head"></div>
+                <div class="arr-planning-cell arr-planning-head">Lundi 20</div>
+                <div class="arr-planning-cell arr-planning-head">Mardi 21</div>
+                <div class="arr-planning-cell arr-planning-head">Mercredi 22</div>
+                <div class="arr-planning-cell arr-planning-head">Jeudi 23</div>
+                <div class="arr-planning-cell arr-planning-head">Vendredi 24</div>
+
+                <div class="arr-planning-cell arr-planning-time">09h</div>
+                <div class="arr-planning-cell"><div class="arr-planning-session">Marketing Digital<br><small>Salle B3</small></div></div>
+                <div class="arr-planning-cell"></div>
+                <div class="arr-planning-cell"><div class="arr-planning-session purple">Marketing Digital<br><small>Salle B3</small></div></div>
+                <div class="arr-planning-cell"><div class="arr-planning-session green">Finance<br><small>Amphi C</small></div></div>
+                <div class="arr-planning-cell"><div class="arr-planning-session orange">Com. digitale<br><small>Amphi C</small></div></div>
+
+                <div class="arr-planning-cell arr-planning-time">14h</div>
+                <div class="arr-planning-cell"><div class="arr-planning-session purple">Droit du travail<br><small>Salle A2</small></div></div>
+                <div class="arr-planning-cell"></div>
+                <div class="arr-planning-cell"></div>
+                <div class="arr-planning-cell"><div class="arr-planning-session orange">Stratégie marque<br><small>Salle A1</small></div></div>
+                <div class="arr-planning-cell"></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Toast -->
+        <div class="arr-toast" id="arrToast">Appel validé !</div>
+
+      </div>
+    </div>
+
+    <div class="demo-cta">
+      <p>Vous voulez voir Arrow sur vos données réelles ?</p>
+      <a href="/contact" data-open-modal="betaAccessModal" class="btn-primary" data-track="demo_page_cta">Demander une démo</a>
+    </div>
+
+  </div>
+
+  <script>
+    // ═══════════════════════════════════════════
+    // STATE & UTILS
+    // ═══════════════════════════════════════════
+    const $ = (s, c = document) => c.querySelector(s);
+    const $$ = (s, c = document) => Array.from(c.querySelectorAll(s));
+
+    const urls = {
+      admin: { dashboard: 'arr0w.app/admin', students: 'arr0w.app/admin/students', detail: 'arr0w.app/admin/students/emma-bernard' },
+      teacher: { panel: 'arr0w.app/teacher', appel: 'arr0w.app/teacher/sessions/strat/appel' },
+      student: { dashboard: 'arr0w.app/student', notes: 'arr0w.app/student/notes', planning: 'arr0w.app/student/planning' },
+    };
+
+    function updateUrl(space, screen) {
+      $('#demoUrl').textContent = urls[space]?.[screen] || 'arr0w.app';
+    }
+
+    // ═══════════════════════════════════════════
+    // THEME TOGGLE (dark par défaut)
+    // ═══════════════════════════════════════════
+    const browser = $('#demoBrowser');
+    const storedTheme = localStorage.getItem('demo-theme');
+    if (storedTheme === 'light') browser.dataset.demoTheme = 'light';
+
+    $('#demoThemeToggle')?.addEventListener('click', () => {
+      const next = browser.dataset.demoTheme === 'dark' ? 'light' : 'dark';
+      browser.dataset.demoTheme = next;
+      localStorage.setItem('demo-theme', next);
+    });
+
+    // ═══════════════════════════════════════════
+    // SPACE SWITCHER
+    // ═══════════════════════════════════════════
+    $$('.demo-selector-btn').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const space = btn.dataset.space;
+        $$('.demo-selector-btn').forEach((b) => b.classList.remove('active'));
+        btn.classList.add('active');
+        $$('.demo-space').forEach((s) => s.classList.remove('active'));
+        $('#space-' + space).classList.add('active');
+
+        const firstScreen = space === 'admin' ? 'dashboard' : space === 'teacher' ? 'panel' : 'dashboard';
+        updateUrl(space, firstScreen);
+        $('#demoViewport').scrollTop = 0;
+      });
+    });
+
+    // ═══════════════════════════════════════════
+    // ADMIN — NAV + TABS + SCREENS
+    // ═══════════════════════════════════════════
+    // Mapping écran → libellé du parent de nav à activer (Mon espace, Planning, Pédagogie, Utilisateurs)
+    const adminScreenToNavLabel = {
+      dashboard: 'Mon espace',
+      calendrier: 'Planning',
+      'planning-modules': 'Planning',
+      disponibilites: 'Planning',
+      classes: 'Pédagogie',
+      modules: 'Pédagogie',
+      evaluations: 'Pédagogie',
+      notes: 'Pédagogie',
+      rapports: 'Pédagogie',
+      presences: 'Pédagogie',
+      budget: 'Pédagogie',
+      students: 'Utilisateurs',
+      detail: 'Utilisateurs',
+      intervenants: 'Utilisateurs',
+      administrateurs: 'Utilisateurs',
+    };
+
+    // Liste des écrans réellement implémentés (pour fallback)
+    const adminAvailableScreens = new Set([
+      'dashboard', 'students', 'detail',
+      'calendrier', 'planning-modules', 'classes', 'intervenants', 'administrateurs',
+    ]);
+
+    const adminUrlMap = {
+      dashboard: 'arr0w.app/admin',
+      students: 'arr0w.app/admin/students',
+      detail: 'arr0w.app/admin/students/emma-bernard',
+      calendrier: 'arr0w.app/admin/planning/calendrier',
+      'planning-modules': 'arr0w.app/admin/planning/modules',
+      disponibilites: 'arr0w.app/admin/planning/disponibilites',
+      classes: 'arr0w.app/admin/pedagogie/classes',
+      modules: 'arr0w.app/admin/pedagogie/modules',
+      evaluations: 'arr0w.app/admin/pedagogie/evaluations',
+      notes: 'arr0w.app/admin/pedagogie/notes',
+      rapports: 'arr0w.app/admin/pedagogie/rapports',
+      presences: 'arr0w.app/admin/pedagogie/presences',
+      budget: 'arr0w.app/admin/pedagogie/budget',
+      intervenants: 'arr0w.app/admin/users/intervenants',
+      administrateurs: 'arr0w.app/admin/users/administrateurs',
+    };
+
+    function showAdminScreen(name) {
+      // Fallback : si l'écran n'existe pas (modules, notes, etc.), on retombe sur le dashboard tab correspondant
+      const target = adminAvailableScreens.has(name) ? name : 'dashboard';
+      $$('#space-admin .arr-screen').forEach((s) => s.classList.remove('active'));
+      $('#admin-screen-' + target)?.classList.add('active');
+
+      // Reset des items de nav (top-level seulement, pas les items de menu)
+      $$('#space-admin > .arr-header .arr-nav > .arr-nav-item').forEach((n) => n.classList.remove('active'));
+      const navLabel = adminScreenToNavLabel[name] || 'Mon espace';
+      $$('#space-admin > .arr-header .arr-nav > .arr-nav-item').forEach((n) => {
+        const lbl = (n.querySelector('.arr-nav-label')?.textContent || n.textContent || '').trim();
+        if (lbl.startsWith(navLabel)) n.classList.add('active');
+      });
+
+      // Si fallback dashboard depuis un item du dropdown Pédagogie (ex: modules → tab modules)
+      const dashboardTabMap = {
+        presences: 'presences',
+        evaluations: 'evaluations',
+        notes: 'evaluations',
+        modules: 'modules',
+        rapports: 'exports',
+        budget: 'exports',
+        disponibilites: 'planning',
+      };
+      if (!adminAvailableScreens.has(name) && dashboardTabMap[name]) {
+        const tabName = dashboardTabMap[name];
+        $$('#admin-tabs .arr-tab').forEach((t) => t.classList.remove('active'));
+        $(`#admin-tabs .arr-tab[data-admin-tab="${tabName}"]`)?.classList.add('active');
+        $$('#admin-screen-dashboard .arr-tab-panel').forEach((p) => p.classList.remove('active'));
+        $('#admin-tab-' + tabName)?.classList.add('active');
+      }
+
+      $('#demoUrl').textContent = adminUrlMap[name] || adminUrlMap[target] || 'arr0w.app';
+      $('#demoViewport').scrollTop = 0;
+    }
+
+    // Sidebar / nav admin (cliquer un item de nav top-level ou un item de menu)
+    $$('#space-admin [data-admin-nav]').forEach((el) => {
+      el.addEventListener('click', (e) => {
+        e.stopPropagation();
+        showAdminScreen(el.dataset.adminNav);
+        // Fermer dropdowns ouverts
+        $$('#space-admin .arr-nav-dropdown.open').forEach((d) => d.classList.remove('open'));
+      });
+    });
+
+    // Dropdowns admin nav (click pour toggle, hover géré en CSS)
+    $$('#space-admin .arr-nav-dropdown').forEach((d) => {
+      d.addEventListener('click', (e) => {
+        // Si on a cliqué sur un item de menu, ne pas re-toggler (laisser le handler ci-dessus gérer)
+        if (e.target.closest('.arr-nav-menu-item')) return;
+        e.stopPropagation();
+        const wasOpen = d.classList.contains('open');
+        $$('#space-admin .arr-nav-dropdown.open').forEach((x) => x.classList.remove('open'));
+        if (!wasOpen) d.classList.add('open');
+      });
+    });
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.arr-nav-dropdown')) {
+        $$('#space-admin .arr-nav-dropdown.open').forEach((d) => d.classList.remove('open'));
+      }
+    });
+
+    // Tabs admin dashboard
+    $$('#admin-tabs .arr-tab').forEach((tab) => {
+      tab.addEventListener('click', () => {
+        $$('#admin-tabs .arr-tab').forEach((t) => t.classList.remove('active'));
+        tab.classList.add('active');
+        const name = tab.dataset.adminTab;
+        $$('#admin-screen-dashboard .arr-tab-panel').forEach((p) => p.classList.remove('active'));
+        $('#admin-tab-' + name)?.classList.add('active');
+      });
+    });
+
+    // Lignes absences → fiche
+    $$('#space-admin [data-goto-profile]').forEach((row) => {
+      row.addEventListener('click', () => showAdminScreen('detail'));
+    });
+
+    // Cartes étudiants → fiche
+    $$('#space-admin [data-goto-detail]').forEach((card) => {
+      card.addEventListener('click', () => showAdminScreen('detail'));
+    });
+    // Cartes mini liste dans Tab Étudiants
+    $$('#admin-tab-students-grid [data-admin-card-goto]').forEach((card) => {
+      card.addEventListener('click', () => showAdminScreen('detail'));
+    });
+
+    // Back fiche
+    $$('#space-admin [data-admin-back]').forEach((b) => {
+      b.addEventListener('click', () => showAdminScreen(b.dataset.adminBack));
+    });
+
+    // Tabs fiche détail
+    $$('#detail-tabs .arr-tab').forEach((tab) => {
+      tab.addEventListener('click', () => {
+        $$('#detail-tabs .arr-tab').forEach((t) => t.classList.remove('active'));
+        tab.classList.add('active');
+        const name = tab.dataset.detailTab;
+        $$('#admin-screen-detail .arr-tab-panel').forEach((p) => p.classList.remove('active'));
+        $('#detail-tab-' + name)?.classList.add('active');
+      });
+    });
+
+    // Recherche étudiants
+    $('#studentSearch')?.addEventListener('input', (e) => {
+      const q = e.target.value.toLowerCase().trim();
+      $$('#studentsGrid .arr-student-card').forEach((card) => {
+        const name = (card.dataset.name || '').toLowerCase();
+        card.style.display = !q || name.includes(q) ? '' : 'none';
+      });
+    });
+
+    // ═══════════════════════════════════════════
+    // ADMIN — CALENDRIER (toggle Semaine / Mois)
+    // ═══════════════════════════════════════════
+    $$('#admin-screen-calendrier [data-cal-view-btn]').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const view = btn.dataset.calViewBtn;
+        const scope = $('#admin-screen-calendrier');
+        if (!scope) return;
+        // Met à jour pill active
+        $$('#admin-screen-calendrier [data-cal-view-btn]').forEach((b) => b.classList.remove('active'));
+        btn.classList.add('active');
+        scope.dataset.calView = view;
+
+        const isMonth = view === 'mois';
+        const isWeek = view === 'semaine';
+        const showWeek = isWeek;
+        const showMonth = isMonth;
+
+        // Sub-titles
+        $('[data-cal-sub-week]', scope).hidden = !showWeek;
+        $('[data-cal-sub-month]', scope).hidden = !showMonth;
+
+        // Date labels
+        $('[data-cal-date-week]', scope).hidden = !showWeek;
+        $('[data-cal-date-month]', scope).hidden = !showMonth;
+
+        // Bandes
+        $('[data-cal-band-week]', scope).hidden = !showWeek;
+        $('[data-cal-band-month]', scope).hidden = !showMonth;
+
+        // Vues principales
+        $('[data-cal-view-pane="semaine"]', scope).hidden = !showWeek;
+        $('[data-cal-view-pane="mois"]', scope).hidden = !showMonth;
+
+        // Pour les autres vues (jour, année, liste), on affiche la semaine par défaut
+        if (!isMonth && !isWeek) {
+          $('[data-cal-sub-week]', scope).hidden = false;
+          $('[data-cal-date-week]', scope).hidden = false;
+          $('[data-cal-band-week]', scope).hidden = false;
+          $('[data-cal-view-pane="semaine"]', scope).hidden = false;
+        }
+      });
+    });
+
+    // ═══════════════════════════════════════════
+    // ADMIN — RECHERCHE CLASSES
+    // ═══════════════════════════════════════════
+    $('#classesSearch')?.addEventListener('input', (e) => {
+      const q = e.target.value.toLowerCase().trim();
+      let visible = 0;
+      $$('#classesGrid .arr-class-card').forEach((card) => {
+        const name = (card.dataset.className || '').toLowerCase();
+        const match = !q || name.includes(q);
+        card.style.display = match ? '' : 'none';
+        if (match) visible += 1;
+      });
+      const counter = $('#classesCount');
+      if (counter) counter.textContent = visible;
+    });
+
+    // ═══════════════════════════════════════════
+    // INTERVENANT — APPEL
+    // ═══════════════════════════════════════════
+    function showTeacherScreen(name) {
+      $$('#space-teacher .arr-screen').forEach((s) => s.classList.remove('active'));
+      $('#teacher-screen-' + name)?.classList.add('active');
+      updateUrl('teacher', name);
+      $('#demoViewport').scrollTop = 0;
+    }
+
+    $$('#space-teacher [data-teacher-appel]').forEach((b) => {
+      b.addEventListener('click', () => showTeacherScreen('appel'));
+    });
+    $$('#space-teacher [data-teacher-back]').forEach((b) => {
+      b.addEventListener('click', () => showTeacherScreen(b.dataset.teacherBack));
+    });
+
+    // Toggle présent/absent
+    function updatePresentCount() {
+      const total = $$('#appelList .arr-appel-row').length;
+      const present = $$('#appelList .arr-appel-btn.active.present').length;
+      $('#presentCount').textContent = present;
+      $('.arr-appel-counter').innerHTML = `<span id="presentCount">${present}</span> / ${total}`;
+    }
+
+    $$('#appelList .arr-appel-row').forEach((row) => {
+      const buttons = $$('.arr-appel-btn', row);
+      buttons.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          buttons.forEach((b) => {
+            b.classList.remove('active', 'present', 'absent');
+          });
+          btn.classList.add('active', btn.dataset.status);
+          updatePresentCount();
+        });
+      });
+    });
+
+    // Valider appel
+    $('#validerAppel')?.addEventListener('click', () => {
+      const toast = $('#arrToast');
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 2400);
+    });
+
+    // ═══════════════════════════════════════════
+    // ÉTUDIANT — NAV + TABS
+    // ═══════════════════════════════════════════
+    function showStudentScreen(name) {
+      $$('#space-student .arr-screen').forEach((s) => s.classList.remove('active'));
+      $('#student-screen-' + name)?.classList.add('active');
+      updateUrl('student', name);
+      $('#demoViewport').scrollTop = 0;
+    }
+
+    $$('#space-student [data-student-nav]').forEach((el) => {
+      el.addEventListener('click', () => {
+        const target = el.dataset.studentNav;
+        // Map nav clicks: pedago → notes
+        const screenMap = { dashboard: 'dashboard', notes: 'notes', planning: 'planning', pedago: 'notes' };
+        showStudentScreen(screenMap[target] || 'dashboard');
+      });
+    });
+
+    $$('#space-student [data-student-back]').forEach((b) => {
+      b.addEventListener('click', () => showStudentScreen(b.dataset.studentBack));
+    });
+
+    // Filtres notes
+    $$('#notes-tabs .arr-tab').forEach((tab) => {
+      tab.addEventListener('click', () => {
+        $$('#notes-tabs .arr-tab').forEach((t) => t.classList.remove('active'));
+        tab.classList.add('active');
+        const filter = tab.dataset.notesFilter;
+        $$('#notesTbody tr').forEach((tr) => {
+          tr.style.display = filter === 'all' || tr.dataset.module === filter ? '' : 'none';
+        });
+      });
+    });
+  </script>
+</BaseLayout>

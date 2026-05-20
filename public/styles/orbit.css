@@ -60,27 +60,120 @@
 .orbit-ring--violet { border-color: rgba(139,92,246,0.25); }
 .orbit-ring--primary { border-color: rgba(61,155,255,0.25); }
 
+/* @property permet d'animer un angle CSS (sinon les @keyframes ne savent pas
+   interpoler une custom property non typée). */
+@property --orbit-border-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
 /* Orbit cards (position absolue sur desktop) */
 .orbit-card {
+  --orbit-accent: var(--primary);
+  --orbit-accent-15: var(--primary-15);
+  --orbit-accent-glow: 0 0 22px color-mix(in srgb, var(--orbit-accent) 55%, transparent);
+  --orbit-border-angle: 0deg;
   position: absolute;
   background: var(--card);
-  border: 1px solid var(--primary-15);
+  border: 1px solid var(--orbit-accent-15);
   border-radius: var(--radius-lg);
   padding: var(--spacing-md);
   min-width: 130px;
   z-index: var(--z-content);
-  box-shadow: var(--surface-panel-shadow);
+  box-shadow:
+    0 0 26px color-mix(in srgb, var(--orbit-accent) 28%, transparent),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  transition: box-shadow var(--transition-base), transform var(--transition-base);
+  isolation: isolate; /* nouveau stacking-context pour que ::before passe derrière proprement */
 }
-.orbit-card--top-left     { top: 10%; left: 2%; }
-.orbit-card--top-right    { top: 10%; right: 2%; }
-.orbit-card--bottom-left  { bottom: 20%; left: 4%; }
-.orbit-card--bottom-right { bottom: 20%; right: 4%; }
+
+/* Bordure rotative : un point lumineux qui tourne autour de la carte au survol.
+   Technique : conic-gradient en couche externe, masquée pour ne montrer qu'un anneau de 2px. */
+.orbit-card::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 2px;
+  background: conic-gradient(
+    from var(--orbit-border-angle),
+    transparent 0deg,
+    transparent 300deg,
+    var(--orbit-accent) 340deg,
+    color-mix(in srgb, var(--orbit-accent) 50%, white) 360deg
+  );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+          mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Halo flou qui suit la même rotation, pour la sensation de lumière. */
+.orbit-card::after {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  background: conic-gradient(
+    from var(--orbit-border-angle),
+    transparent 280deg,
+    color-mix(in srgb, var(--orbit-accent) 80%, transparent) 340deg,
+    transparent 360deg
+  );
+  filter: blur(8px);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.orbit-card:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 0 38px color-mix(in srgb, var(--orbit-accent) 45%, transparent),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+.orbit-card:hover::before,
+.orbit-card:hover::after {
+  opacity: 1;
+  animation: orbit-border-rotate 2.4s linear infinite;
+}
+.orbit-card:hover::after { opacity: 0.7; }
+
+@keyframes orbit-border-rotate {
+  to { --orbit-border-angle: 360deg; }
+}
+
+/* Rotation des accents Arrow : bleu → cyan → magenta → violet */
+.orbit-card--top-left     { top: 10%; left: 2%;
+  --orbit-accent: var(--primary);        --orbit-accent-15: var(--primary-15); }
+.orbit-card--top-right    { top: 10%; right: 2%;
+  --orbit-accent: var(--accent-cyan);    --orbit-accent-15: var(--accent-cyan-15); }
+.orbit-card--bottom-left  { bottom: 20%; left: 4%;
+  --orbit-accent: var(--accent-magenta); --orbit-accent-15: var(--accent-magenta-15); }
+.orbit-card--bottom-right { bottom: 20%; right: 4%;
+  --orbit-accent: var(--accent-violet);  --orbit-accent-15: var(--accent-violet-15); }
+
+/* Mobile grid : cycle de 4 accents Arrow */
+.orbit-cards-grid .orbit-card:nth-child(1) { --orbit-accent: var(--primary);        --orbit-accent-15: var(--primary-15); }
+.orbit-cards-grid .orbit-card:nth-child(2) { --orbit-accent: var(--accent-cyan);    --orbit-accent-15: var(--accent-cyan-15); }
+.orbit-cards-grid .orbit-card:nth-child(3) { --orbit-accent: var(--accent-magenta); --orbit-accent-15: var(--accent-magenta-15); }
+.orbit-cards-grid .orbit-card:nth-child(4) { --orbit-accent: var(--accent-violet);  --orbit-accent-15: var(--accent-violet-15); }
 
 .orbit-card-value {
   font-size: 1.4rem;
   font-weight: 800;
-  color: var(--primary);
-  text-shadow: var(--text-glow);
+  color: var(--orbit-accent);
+  text-shadow: 0 0 18px color-mix(in srgb, var(--orbit-accent) 60%, transparent);
 }
 .orbit-card-label {
   font-size: 0.65rem;
@@ -113,6 +206,9 @@
     gap: var(--spacing-md);
   }
   .orbit-ring { display: none; }
+  .orbit-system > .orbit-card {
+    display: none;
+  }
   .orbit-sphere {
     position: static; transform: none;
     width: 100px; height: 100px;
@@ -124,6 +220,7 @@
     width: 100%;
   }
   .orbit-card {
+    display: block;
     position: static;
     min-width: unset;
   }

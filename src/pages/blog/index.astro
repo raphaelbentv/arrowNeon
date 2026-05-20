@@ -1,9 +1,16 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro'
 import { getBlogPosts } from '../../lib/sanity'
+import type { BlogPostPreview } from '../../lib/sanity'
+
 const posts = await getBlogPosts()
 ---
-<BaseLayout title="Blog — Arrow" activePage="blog">
+<BaseLayout
+  title="Blog — Arrow"
+  description="Actualités, guides pratiques et ressources pour les établissements de formation : CFA, écoles, organismes de formation professionnelle."
+  ogType="website"
+  activePage="blog"
+>
   <link rel="stylesheet" href="/styles/pages/blog.css" slot="head">
   <div class="main-container">
     <section class="blog-section">
@@ -15,15 +22,25 @@ const posts = await getBlogPosts()
         </div>
       ) : (
         <div class="blog-grid">
-          {posts.map((post: any) => (
+          {posts.map((post: BlogPostPreview) => (
             <a href={`/blog/${post.slug.current}`} class="blog-card">
-              {post.coverImage && <img src={post.coverImage} alt={post.title} class="blog-card-image" />}
+              {post.coverImage && (
+                <img
+                  src={post.coverImage}
+                  alt={post.title}
+                  class="blog-card-image"
+                  loading="lazy"
+                  decoding="async"
+                  width="800"
+                  height="450"
+                />
+              )}
               <div class="blog-card-content">
-                {post.tags && <span class="blog-tag">{post.tags[0]}</span>}
+                {post.tags && post.tags[0] && <span class="blog-tag">{post.tags[0]}</span>}
                 <h2 class="blog-card-title">{post.title}</h2>
                 <p class="blog-card-excerpt">{post.excerpt}</p>
                 <div class="blog-card-meta">
-                  <span>{post.author}</span>
+                  {post.author && <span>{post.author}</span>}
                   <span>{new Date(post.publishedAt).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })}</span>
                 </div>
               </div>
