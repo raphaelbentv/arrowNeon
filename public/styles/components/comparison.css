@@ -4,6 +4,8 @@
 .comparison-section { margin: var(--spacing-3xl) 0; }
 .comparison-header { text-align: center; margin-bottom: var(--spacing-2xl); }
 .comparison-title  { font-size: clamp(1.2rem, 3vw, 1.8rem); font-weight: 700; color: var(--card-foreground); }
+.comparison-title__old { color: var(--card-foreground); }
+.comparison-title__arrow { color: #FF007F; }
 .comparison-instruction {
   font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase;
   color: var(--muted-foreground); margin-top: var(--spacing-sm);
@@ -63,11 +65,17 @@
   position: absolute; top: 0;
   left: var(--slider-position, 50%);
   width: 3px; height: 100%;
+  padding: 0;
+  border: 0;
   background: var(--primary);
   cursor: ew-resize; z-index: 3;
   box-shadow: 0 0 14px rgba(61,155,255,0.9);
   animation: handle-glow 2s ease-in-out infinite;
   transform: translateX(-1.5px);
+}
+.slider-handle:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 4px;
 }
 @keyframes handle-glow {
   0%, 100% { box-shadow: 0 0 14px rgba(61,155,255,0.8); }
@@ -123,7 +131,16 @@
 .hp-search-icon {
   width: 22px; height: 22px; background: #c91d5d;
   border-radius: 50%; display: flex; align-items: center;
-  justify-content: center; color: #fff; font-size: 13px; cursor: default;
+  justify-content: center; color: #fff; cursor: default;
+}
+.hp-search-icon svg {
+  width: 13px;
+  height: 13px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 .hp-table-container {
   background: #fff; margin: 8px;
@@ -162,7 +179,7 @@
 .arrow-interface {
   width: 100%; height: 100%;
   background: #05060f;
-  font-family: 'League Spartan', sans-serif;
+  font-family: var(--font-family);
   overflow: auto;
 }
 
@@ -213,13 +230,13 @@
 .arrow-btn-outline {
   background: transparent; color: #3d9bff;
   border: 1px solid rgba(61,155,255,0.35);
-  border-radius: 5px; font-family: 'League Spartan', sans-serif;
+  border-radius: 5px; font-family: var(--font-family);
   font-size: 0.5rem; font-weight: 700; letter-spacing: 0.07em;
   padding: 4px 7px; cursor: default; text-transform: uppercase;
 }
 .arrow-btn-add {
-  background: #3d9bff; color: #000; border: none;
-  border-radius: 5px; font-family: 'League Spartan', sans-serif;
+  background: #3d9bff; color: #fff; border: none;
+  border-radius: 5px; font-family: var(--font-family);
   font-size: 0.5rem; font-weight: 700; letter-spacing: 0.07em;
   padding: 4px 7px; cursor: default; text-transform: uppercase; white-space: nowrap;
 }
@@ -251,7 +268,7 @@
 .arrow-view-btn {
   background: transparent; color: rgba(255,255,255,0.4);
   border: 1px solid rgba(255,255,255,0.1);
-  border-radius: 5px; font-family: 'League Spartan', sans-serif;
+  border-radius: 5px; font-family: var(--font-family);
   font-size: 0.55rem; font-weight: 600;
   padding: 4px 8px; cursor: default;
 }
@@ -263,7 +280,7 @@
   flex: 1; background: rgba(255,255,255,0.04);
   border: 1px solid rgba(255,255,255,0.08);
   border-radius: 5px; padding: 5px 8px;
-  color: #fff; font-family: 'League Spartan', sans-serif;
+  color: #fff; font-family: var(--font-family);
   font-size: 0.62rem; outline: none;
 }
 
@@ -318,4 +335,113 @@
 }
 .arrow-field-value {
   display: block; font-size: 0.58rem; color: rgba(255,255,255,0.85);
+}
+
+@media (max-width: 768px) {
+  .comparison-section {
+    margin: var(--spacing-2xl) 0;
+  }
+
+  .comparison-header {
+    text-align: left;
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .comparison-title {
+    line-height: 1.15;
+  }
+
+  .comparison-instruction {
+    letter-spacing: 0.08em;
+    line-height: 1.4;
+  }
+
+  .comparison-slider-wrapper {
+    overflow: visible;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .comparison-slider {
+    display: grid;
+    gap: var(--spacing-md);
+    height: auto;
+    overflow: visible;
+    cursor: default;
+  }
+
+  .comparison-side.side-old-platform,
+  .comparison-side.side-arrow {
+    position: relative;
+    inset: auto;
+    left: auto;
+    right: auto;
+    width: 100%;
+    height: 360px;
+    z-index: auto;
+    border: 1px solid rgba(61,155,255,0.25);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+  }
+
+  .comparison-side::before {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 5;
+    padding: 5px 8px;
+    border-radius: 999px;
+    background: rgba(5, 6, 15, 0.78);
+    border: 1px solid rgba(61,155,255,0.22);
+    color: #fff;
+    font-size: 0.55rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    pointer-events: none;
+  }
+
+  .comparison-side.side-old-platform::before {
+    content: 'Ancienne plateforme';
+  }
+
+  .comparison-side.side-arrow::before {
+    content: 'Arrow';
+    color: var(--primary);
+  }
+
+  .old-platform-interface,
+  .arrow-interface {
+    height: 100%;
+  }
+
+  .hp-navbar,
+  .arrow-mini-tabs {
+    overflow-x: auto;
+  }
+
+  .hp-nav-item,
+  .arrow-mini-tab {
+    flex: 0 0 auto;
+  }
+
+  .arrow-toolbar {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .arrow-search-input {
+    width: 100%;
+  }
+
+  .arrow-cards-grid,
+  .arrow-card-fields {
+    grid-template-columns: 1fr;
+  }
+
+  .slider-handle,
+  .comparison-label {
+    display: none;
+  }
 }

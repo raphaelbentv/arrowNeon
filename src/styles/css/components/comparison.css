@@ -4,6 +4,8 @@
 .comparison-section { margin: var(--spacing-3xl) 0; }
 .comparison-header { text-align: center; margin-bottom: var(--spacing-2xl); }
 .comparison-title  { font-size: clamp(1.2rem, 3vw, 1.8rem); font-weight: 700; color: var(--card-foreground); }
+.comparison-title__old { color: var(--card-foreground); }
+.comparison-title__arrow { color: #FF007F; }
 .comparison-instruction {
   font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase;
   color: var(--muted-foreground); margin-top: var(--spacing-sm);
@@ -63,11 +65,17 @@
   position: absolute; top: 0;
   left: var(--slider-position, 50%);
   width: 3px; height: 100%;
+  padding: 0;
+  border: 0;
   background: var(--primary);
   cursor: ew-resize; z-index: 3;
   box-shadow: 0 0 14px rgba(61,155,255,0.9);
   animation: handle-glow 2s ease-in-out infinite;
   transform: translateX(-1.5px);
+}
+.slider-handle:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 4px;
 }
 @keyframes handle-glow {
   0%, 100% { box-shadow: 0 0 14px rgba(61,155,255,0.8); }
@@ -123,7 +131,16 @@
 .hp-search-icon {
   width: 22px; height: 22px; background: #c91d5d;
   border-radius: 50%; display: flex; align-items: center;
-  justify-content: center; color: #fff; font-size: 13px; cursor: default;
+  justify-content: center; color: #fff; cursor: default;
+}
+.hp-search-icon svg {
+  width: 13px;
+  height: 13px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 .hp-table-container {
   background: #fff; margin: 8px;
@@ -162,7 +179,7 @@
 .arrow-interface {
   width: 100%; height: 100%;
   background: #05060f;
-  font-family: 'League Spartan', sans-serif;
+  font-family: var(--font-family);
   overflow: auto;
 }
 
@@ -213,13 +230,13 @@
 .arrow-btn-outline {
   background: transparent; color: #3d9bff;
   border: 1px solid rgba(61,155,255,0.35);
-  border-radius: 5px; font-family: 'League Spartan', sans-serif;
+  border-radius: 5px; font-family: var(--font-family);
   font-size: 0.5rem; font-weight: 700; letter-spacing: 0.07em;
   padding: 4px 7px; cursor: default; text-transform: uppercase;
 }
 .arrow-btn-add {
-  background: #3d9bff; color: #000; border: none;
-  border-radius: 5px; font-family: 'League Spartan', sans-serif;
+  background: #3d9bff; color: #fff; border: none;
+  border-radius: 5px; font-family: var(--font-family);
   font-size: 0.5rem; font-weight: 700; letter-spacing: 0.07em;
   padding: 4px 7px; cursor: default; text-transform: uppercase; white-space: nowrap;
 }
@@ -251,7 +268,7 @@
 .arrow-view-btn {
   background: transparent; color: rgba(255,255,255,0.4);
   border: 1px solid rgba(255,255,255,0.1);
-  border-radius: 5px; font-family: 'League Spartan', sans-serif;
+  border-radius: 5px; font-family: var(--font-family);
   font-size: 0.55rem; font-weight: 600;
   padding: 4px 8px; cursor: default;
 }
@@ -263,7 +280,7 @@
   flex: 1; background: rgba(255,255,255,0.04);
   border: 1px solid rgba(255,255,255,0.08);
   border-radius: 5px; padding: 5px 8px;
-  color: #fff; font-family: 'League Spartan', sans-serif;
+  color: #fff; font-family: var(--font-family);
   font-size: 0.62rem; outline: none;
 }
 
@@ -318,4 +335,258 @@
 }
 .arrow-field-value {
   display: block; font-size: 0.58rem; color: rgba(255,255,255,0.85);
+}
+
+@media (max-width: 768px) {
+  .comparison-section {
+    margin: var(--spacing-2xl) 0;
+  }
+
+  .comparison-header {
+    text-align: left;
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .comparison-title {
+    line-height: 1.15;
+  }
+
+  .comparison-instruction {
+    letter-spacing: 0.08em;
+    line-height: 1.4;
+  }
+
+  .comparison-slider-wrapper {
+    overflow: visible;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .comparison-slider {
+    display: grid;
+    gap: var(--spacing-md);
+    height: auto;
+    overflow: visible;
+    cursor: default;
+  }
+
+  .comparison-side.side-old-platform,
+  .comparison-side.side-arrow {
+    position: relative;
+    inset: auto;
+    left: auto;
+    right: auto;
+    width: 100%;
+    height: 360px;
+    z-index: auto;
+    border: 1px solid rgba(61,155,255,0.25);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+  }
+
+  .comparison-side::before {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 5;
+    padding: 5px 8px;
+    border-radius: 999px;
+    background: rgba(5, 6, 15, 0.78);
+    border: 1px solid rgba(61,155,255,0.22);
+    color: #fff;
+    font-size: 0.55rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    pointer-events: none;
+  }
+
+  .comparison-side.side-old-platform::before {
+    content: 'Ancienne plateforme';
+  }
+
+  .comparison-side.side-arrow::before {
+    content: 'Arrow';
+    color: var(--primary);
+  }
+
+  .old-platform-interface,
+  .arrow-interface {
+    height: 100%;
+  }
+
+  .hp-navbar,
+  .arrow-mini-tabs {
+    overflow-x: auto;
+  }
+
+  .hp-nav-item,
+  .arrow-mini-tab {
+    flex: 0 0 auto;
+  }
+
+  .arrow-toolbar {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .arrow-search-input {
+    width: 100%;
+  }
+
+  .arrow-cards-grid,
+  .arrow-card-fields {
+    grid-template-columns: 1fr;
+  }
+
+  .slider-handle,
+  .comparison-label {
+    display: none;
+  }
+}
+
+/* --- Dashboard fidèle Arrow --- */
+
+/* Navigation complète */
+.arrow-mini-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+.arrow-mini-tab {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: rgba(255,255,255,0.5);
+  padding: 3px 7px;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+.arrow-mini-tab--active,
+.arrow-mini-tab:first-child { color: #3d9bff; }
+
+/* School name */
+.arrow-mini-school { font-size: 9px; color: rgba(255,255,255,0.4); }
+
+/* Greeting */
+.arrow-greeting {
+  font-size: 18px;
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 12px;
+}
+.arrow-greeting__name { color: #3d9bff; }
+
+/* Onglets dashboard */
+.arrow-dashboard-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px;
+  margin-bottom: 14px;
+  padding: 3px;
+  background: rgba(255,255,255,0.04);
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.06);
+}
+.arrow-dtab {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: rgba(255,255,255,0.4);
+  padding: 5px 8px;
+  border-radius: 5px;
+}
+.arrow-dtab--active {
+  background: #3d9bff;
+  color: #fff;
+}
+
+/* KPI grid — 6 cartes */
+.arrow-kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+  margin-bottom: 14px;
+}
+.arrow-kpi-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 8px;
+  padding: 10px 10px 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.arrow-kpi-label {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: rgba(255,255,255,0.45);
+  text-transform: uppercase;
+}
+.arrow-kpi-value {
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 1;
+}
+.arrow-kpi--pink   { color: #ff3d9b; }
+.arrow-kpi--purple { color: #a855f7; }
+.arrow-kpi--cyan   { color: #06b6d4; }
+.arrow-kpi--orange { color: #f59e0b; }
+.arrow-kpi--green  { color: #22c55e; }
+
+/* Points d'attention */
+.arrow-alerts-section {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 8px;
+  padding: 10px 12px;
+  margin-bottom: 12px;
+}
+.arrow-alerts-title {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: rgba(255,255,255,0.5);
+  margin: 0 0 8px;
+}
+.arrow-alert-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 7px 8px;
+  margin-bottom: 4px;
+  background: rgba(245,158,11,0.06);
+  border: 1px solid rgba(245,158,11,0.15);
+  border-radius: 6px;
+}
+.arrow-alert-content { display: flex; flex-direction: column; gap: 2px; }
+.arrow-alert-name { font-size: 11px; font-weight: 700; color: #fff; }
+.arrow-alert-desc { font-size: 9px; color: rgba(255,255,255,0.45); }
+.arrow-alert-count { font-size: 18px; font-weight: 800; flex-shrink: 0; }
+
+/* CTA arrow */
+.arrow-demo-cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 10px 12px;
+  background: rgba(61,155,255,0.06);
+  border: 1px solid rgba(61,155,255,0.2);
+  border-radius: 8px;
+}
+.arrow-demo-cta__text { font-size: 10px; color: rgba(255,255,255,0.7); line-height: 1.4; }
+.arrow-demo-cta__btn {
+  font-size: 10px;
+  font-weight: 700;
+  padding: 7px 12px;
+  background: #3d9bff;
+  color: #000;
+  border: none;
+  border-radius: 6px;
+  cursor: default;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
