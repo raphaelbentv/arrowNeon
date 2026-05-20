@@ -2327,3 +2327,47 @@
   opacity: 0.65;
   margin-top: 3px;
 }
+
+/* ── Planning view panes ──────────────────────────────────────────── */
+.arr-planning-view-pane { flex: 1; overflow: auto; }
+
+/* Vue Mois */
+.arr-month-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 1px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 8px;
+  overflow: hidden;
+}
+.arr-month-head { padding: 6px 4px; text-align: center; font-size: 9px; font-weight: 700; letter-spacing: 0.08em; color: #6b7280; background: rgba(255,255,255,0.03); }
+.arr-month-cell { min-height: 72px; background: rgba(255,255,255,0.01); padding: 4px 5px; position: relative; }
+.arr-month-cell.arr-month-today { background: rgba(61,155,255,0.06); }
+.arr-month-day { font-size: 11px; font-weight: 600; color: #9ca3af; display: block; margin-bottom: 3px; }
+.arr-month-today .arr-month-day { color: #3d9bff; font-weight: 800; }
+.arr-month-event { font-size: 9px; font-weight: 600; padding: 2px 5px; border-radius: 3px; margin-bottom: 2px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.arr-month-event.blue { background: rgba(61,155,255,0.18); color: #3d9bff; }
+.arr-month-event.green { background: rgba(22,163,74,0.18); color: #4ade80; }
+
+/* Vue Année */
+.arr-year-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; padding: 8px; }
+.arr-year-month { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 8px; padding: 10px; }
+.arr-year-month-label { font-size: 11px; font-weight: 700; color: #9ca3af; margin-bottom: 8px; }
+.arr-year-month-bars { display: flex; gap: 3px; height: 32px; align-items: flex-end; }
+.arr-year-bar { flex: 1; background: rgba(255,255,255,0.06); border-radius: 2px; height: 60%; }
+.arr-year-bar--active { background: rgba(61,155,255,0.4); height: 100%; }
+.arr-year-count { font-size: 9px; color: #3d9bff; margin-top: 4px; }
+
+/* Vue Liste */
+.arr-list-planning { display: flex; flex-direction: column; gap: 16px; padding: 8px; }
+.arr-list-date-group { display: flex; flex-direction: column; gap: 8px; }
+.arr-list-date { font-size: 11px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: #6b7280; padding-bottom: 6px; border-bottom: 1px solid rgba(255,255,255,0.06); }
+.arr-list-session { display: flex; align-items: center; gap: 12px; padding: 10px 12px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 8px; }
+.arr-list-time { font-size: 11px; font-weight: 700; color: #9ca3af; white-space: nowrap; min-width: 100px; }
+.arr-list-content { flex: 1; min-width: 0; }
+.arr-list-title { font-size: 13px; font-weight: 700; }
+.arr-list-title.blue { color: #3d9bff; }
+.arr-list-title.green { color: #4ade80; }
+.arr-list-meta { font-size: 11px; color: #6b7280; margin-top: 2px; }
+.arr-list-empty { text-align: center; padding: 20px; font-size: 12px; color: #4b5563; }

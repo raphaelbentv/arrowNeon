@@ -265,11 +265,11 @@ import BaseLayout from '../layouts/BaseLayout.astro'
                     <button class="arr-btn arr-btn-icon">←</button>
                     <span class="arr-week-title">Semaine 21 — Mai 2026</span>
                     <button class="arr-btn arr-btn-icon">→</button>
-                    <div class="arr-view-btns">
-                      <button class="arr-view-btn active">SEMAINE</button>
-                      <button class="arr-view-btn">MOIS</button>
-                      <button class="arr-view-btn">ANNÉE</button>
-                      <button class="arr-view-btn">LISTE</button>
+                    <div class="arr-view-btns" id="planningViewBtns">
+                      <button class="arr-view-btn active" data-planning-view="semaine">SEMAINE</button>
+                      <button class="arr-view-btn" data-planning-view="mois">MOIS</button>
+                      <button class="arr-view-btn" data-planning-view="annee">ANNÉE</button>
+                      <button class="arr-view-btn" data-planning-view="liste">LISTE</button>
                     </div>
                   </div>
 
@@ -335,6 +335,69 @@ import BaseLayout from '../layouts/BaseLayout.astro'
                       </div>
                     ))}
                   </div>
+
+                  <!-- Vue MOIS -->
+                  <div class="arr-planning-view-pane" id="planning-view-mois" hidden>
+                    <div class="arr-month-grid">
+                      {['LUN','MAR','MER','JEU','VEN','SAM','DIM'].map(d => (
+                        <div class="arr-month-head">{d}</div>
+                      ))}
+                      {[null,null,null,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31].map((d, i) => (
+                        <div class={`arr-month-cell${d===20?'':d===21?' arr-month-today':''}`}>
+                          {d && <span class="arr-month-day">{d}</span>}
+                          {d===19 && <div class="arr-month-event blue">09:00 Strat. Mktg</div>}
+                          {d===21 && <div class="arr-month-event green">13:30 Com. Prof.</div>}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <!-- Vue ANNÉE -->
+                  <div class="arr-planning-view-pane" id="planning-view-annee" hidden>
+                    <div class="arr-year-grid">
+                      {['Jan','Fév','Mar','Avr','Mai','Juin','Juil','Aoû','Sep','Oct','Nov','Déc'].map((m, mi) => (
+                        <div class="arr-year-month">
+                          <div class="arr-year-month-label">{m}</div>
+                          <div class="arr-year-month-bars">
+                            {Array.from({length: 4}, (_, w) => (
+                              <div class={`arr-year-bar${mi===4&&w===2?' arr-year-bar--active':''}`}></div>
+                            ))}
+                          </div>
+                          {mi===4 && <div class="arr-year-count">2 sessions</div>}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <!-- Vue LISTE -->
+                  <div class="arr-planning-view-pane" id="planning-view-liste" hidden>
+                    <div class="arr-list-planning">
+                      <div class="arr-list-date-group">
+                        <div class="arr-list-date">Mardi 19 mai 2026</div>
+                        <div class="arr-list-session">
+                          <div class="arr-list-time">09:00 – 12:30</div>
+                          <div class="arr-list-content">
+                            <div class="arr-list-title blue">Stratégie marketing digital</div>
+                            <div class="arr-list-meta">Bach. Marketing Digital · Marie Dubois · Salle 204</div>
+                          </div>
+                          <span class="arr-badge ok">8/8 présents</span>
+                        </div>
+                      </div>
+                      <div class="arr-list-date-group">
+                        <div class="arr-list-date">Jeudi 21 mai 2026</div>
+                        <div class="arr-list-session">
+                          <div class="arr-list-time">13:30 – 17:00</div>
+                          <div class="arr-list-content">
+                            <div class="arr-list-title green">Communication professionnelle</div>
+                            <div class="arr-list-meta">Bach. Marketing Digital · Antoine Lefevre · Salle 118</div>
+                          </div>
+                          <span class="arr-badge warn">7/8 présents</span>
+                        </div>
+                      </div>
+                      <div class="arr-list-empty">Aucune autre session cette semaine</div>
+                    </div>
+                  </div>
+
                 </div>
               </div>
             </div>
@@ -2020,5 +2083,38 @@ import BaseLayout from '../layouts/BaseLayout.astro'
         });
       });
     });
+    // ═══════════════════════════════════════════
+    // PLANNING — vue SEMAINE / MOIS / ANNÉE / LISTE
+    // ═══════════════════════════════════════════
+    const planningViewBtns = document.getElementById('planningViewBtns');
+    const calGrid = document.querySelector('#admin-tab-planning .arr-cal-grid');
+    const weekStrip = document.querySelector('#admin-tab-planning .arr-week-strip');
+
+    const viewPanes = {
+      semaine: calGrid,
+      mois:    document.getElementById('planning-view-mois'),
+      annee:   document.getElementById('planning-view-annee'),
+      liste:   document.getElementById('planning-view-liste'),
+    };
+
+    planningViewBtns?.addEventListener('click', (e) => {
+      const btn = e.target.closest('[data-planning-view]');
+      if (!btn) return;
+      const view = btn.dataset.planningView;
+
+      // Active le bouton
+      planningViewBtns.querySelectorAll('[data-planning-view]').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      // Affiche/masque les panes
+      Object.entries(viewPanes).forEach(([key, el]) => {
+        if (!el) return;
+        el.hidden = key !== view;
+      });
+
+      // Le strip semaines n'est visible qu'en vue semaine
+      if (weekStrip) weekStrip.style.display = view === 'semaine' ? '' : 'none';
+    });
+
   </script>
 </BaseLayout>
