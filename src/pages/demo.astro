@@ -452,64 +452,178 @@ import BaseLayout from '../layouts/BaseLayout.astro'
             </div>
 
             <!-- Tab Intervenants -->
+            <!-- Tab Intervenants — fidèle au vrai Arrow (cartes avec stats) -->
             <div class="arr-tab-panel" id="admin-tab-intervenants">
-              <table class="arr-table">
-                <thead><tr><th>Intervenant</th><th>Modules</th><th>Étudiants suivis</th><th>Statut</th></tr></thead>
-                <tbody>
-                  <tr><td><strong>Sophie BERNIER</strong><div class="arr-row-meta">s.bernier@arrow.test</div></td><td>Marketing Digital · Com. digitale</td><td>45</td><td><span class="arr-badge ok">Actif</span></td></tr>
-                  <tr><td><strong>Paul LEMAIRE</strong><div class="arr-row-meta">p.lemaire@arrow.test</div></td><td>Droit du travail</td><td>22</td><td><span class="arr-badge ok">Actif</span></td></tr>
-                  <tr><td><strong>Laure ROBIN</strong><div class="arr-row-meta">l.robin@arrow.test</div></td><td>Finance d'entreprise</td><td>18</td><td><span class="arr-badge ok">Actif</span></td></tr>
-                  <tr><td><strong>Marc DURAND</strong><div class="arr-row-meta">m.durand@arrow.test</div></td><td>Stratégie de marque</td><td>26</td><td><span class="arr-badge warn">Inactif 14j+</span></td></tr>
-                </tbody>
-              </table>
+              <div class="arr-interv-grid">
+                {[
+                  {init:'AL', color:'blue',   name:'Antoine LEFEVRE', email:'teacher2@arrow.test', statut:'Salarié', sessions:0, heures:'42h', evals:0, modules:2},
+                  {init:'MD', color:'pink',   name:'Marie DUBOIS',    email:'teacher@arrow.test',  statut:'Salarié', sessions:0, heures:'42h', evals:0, modules:2},
+                ].map(i => (
+                  <div class="arr-interv-card">
+                    <div class="arr-interv-top">
+                      <div class={`arr-avatar ${i.color}`}>{i.init}</div>
+                      <div class="arr-interv-info">
+                        <div class="arr-interv-name">{i.name}</div>
+                        <div class="arr-interv-email">{i.email}</div>
+                        <span class="arr-badge ok">{i.statut}</span>
+                      </div>
+                    </div>
+                    <div class="arr-interv-stats">
+                      <div class="arr-istat"><span class="arr-istat-val">{i.sessions}</span><span class="arr-istat-label">Sessions</span></div>
+                      <div class="arr-istat"><span class="arr-istat-val">{i.heures}</span><span class="arr-istat-label">Heures</span></div>
+                      <div class="arr-istat"><span class="arr-istat-val">{i.evals}</span><span class="arr-istat-label">Évals</span></div>
+                      <div class="arr-istat"><span class="arr-istat-val">{i.modules}</span><span class="arr-istat-label">Modules</span></div>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
 
-            <!-- Tab Modules -->
+            <!-- Tab Modules — fidèle au vrai Arrow (cards avec stats détaillées) -->
             <div class="arr-tab-panel" id="admin-tab-modules">
-              <table class="arr-table">
-                <thead><tr><th>Module</th><th>Cohorte</th><th>Intervenant</th><th>Progression</th></tr></thead>
-                <tbody>
-                  <tr><td><strong>Marketing Digital</strong></td><td>BACH-MKT-2024</td><td>S. Bernier</td><td><span class="arr-badge ok">68%</span></td></tr>
-                  <tr><td><strong>Droit du travail</strong></td><td>BACH-RH-2024</td><td>P. Lemaire</td><td><span class="arr-badge info">54%</span></td></tr>
-                  <tr><td><strong>Finance d'entreprise</strong></td><td>MAST-FIN-2023</td><td>L. Robin</td><td><span class="arr-badge warn">42%</span></td></tr>
-                  <tr><td><strong>Stratégie de marque</strong></td><td>BACH-MKT-2024</td><td>M. Durand</td><td><span class="arr-badge ok">76%</span></td></tr>
-                  <tr><td><strong>Communication RH</strong></td><td>BACH-RH-2024</td><td>C. Roy</td><td><span class="arr-badge info">61%</span></td></tr>
-                </tbody>
-              </table>
+              <div class="arr-modules-stats">
+                <div class="arr-mstat"><span class="arr-mstat-val">5</span><span class="arr-mstat-label">MODULES TOTAUX</span></div>
+                <div class="arr-mstat"><span class="arr-mstat-val">210h</span><span class="arr-mstat-label">VOLUME TOTAL</span></div>
+                <div class="arr-mstat"><span class="arr-mstat-val">2</span><span class="arr-mstat-label">AVEC INTERVENANT</span></div>
+                <div class="arr-mstat"><span class="arr-mstat-val">3</span><span class="arr-mstat-label">SANS INTERVENANT</span></div>
+              </div>
+              <div class="arr-modules-search">
+                <input class="arr-search" type="text" placeholder="Rechercher un module…" readonly>
+                <div class="arr-filter-pills">
+                  <span class="arr-pill active">Tous</span>
+                  <span class="arr-pill">Avec intervenant</span>
+                  <span class="arr-pill">Sans intervenant (0)</span>
+                </div>
+              </div>
+              <div class="arr-modules-grid">
+                {[
+                  {code:'ARW-MKT-101', name:'Stratégie marketing digital',    interv:'Marie Dubois',    heures:'42h', evals:2, sessions:0, moy:'—', color:'#2563eb'},
+                  {code:'ARW-COM-102', name:'Communication professionnelle',  interv:'Antoine Lefevre', heures:'42h', evals:2, sessions:0, moy:'—', color:'#16a34a'},
+                ].map(m => (
+                  <div class="arr-module-card">
+                    <div class="arr-module-top">
+                      <div class="arr-module-dot" style={`background:${m.color}`}></div>
+                      <div>
+                        <div class="arr-module-name">{m.name}</div>
+                        <div class="arr-module-code">{m.code}</div>
+                      </div>
+                      <span class="arr-badge ok">ACTIF</span>
+                    </div>
+                    <div class="arr-module-interv">
+                      <span class="arr-istat-label">INTERVENANT</span>
+                      <span class="arr-module-interv-name">{m.interv}</span>
+                    </div>
+                    <div class="arr-interv-stats" style="grid-template-columns:repeat(4,1fr)">
+                      <div class="arr-istat"><span class="arr-istat-val">{m.sessions}</span><span class="arr-istat-label">Sessions</span></div>
+                      <div class="arr-istat"><span class="arr-istat-val">{m.evals}</span><span class="arr-istat-label">Évals</span></div>
+                      <div class="arr-istat"><span class="arr-istat-val">{m.moy}</span><span class="arr-istat-label">Moyenne</span></div>
+                      <div class="arr-istat"><span class="arr-istat-val">{m.heures}</span><span class="arr-istat-label">Volume</span></div>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
 
-            <!-- Tab Présences -->
+            <!-- Tab Présences — fidèle au vrai Arrow -->
             <div class="arr-tab-panel" id="admin-tab-presences">
-              <div class="arr-stats" style="grid-template-columns:repeat(3,1fr);">
-                <div class="arr-stat"><div class="arr-stat-label">Taux présence</div><div class="arr-stat-value green">87%</div></div>
-                <div class="arr-stat"><div class="arr-stat-label">Absences ce mois</div><div class="arr-stat-value orange">14</div></div>
-                <div class="arr-stat"><div class="arr-stat-label">Non justifiées</div><div class="arr-stat-value pink">6</div></div>
+              <div class="arr-presences-section">
+                <h3 class="arr-section-title" style="font-size:14px;margin-bottom:12px">JUSTIFICATIFS</h3>
+                <div class="arr-empty" style="padding:16px;font-size:12px">Aucun justificatif en attente de traitement.</div>
               </div>
-              <div class="arr-card">
-                <div class="arr-card-header">Top absents</div>
-                <div class="arr-row"><div><div class="arr-row-name">Thomas PETIT</div><div class="arr-row-meta">BACH-MKT-2024 · 3 abs.</div></div><span class="arr-badge err">À signaler</span></div>
-                <div class="arr-row"><div><div class="arr-row-name">Julie ROBERT</div><div class="arr-row-meta">BACH-MKT-2024 · 2 abs.</div></div><span class="arr-badge warn">À surveiller</span></div>
-                <div class="arr-row"><div><div class="arr-row-name">Marc DURAND</div><div class="arr-row-meta">BACH-RH-2024 · 2 abs.</div></div><span class="arr-badge warn">À surveiller</span></div>
+              <h3 class="arr-section-title" style="font-size:14px;margin:16px 0 12px">STATISTIQUES DE PRÉSENCE</h3>
+              <div class="arr-pres-stats">
+                <div class="arr-pres-card green"><span class="arr-pres-label">PRÉSENTS</span><span class="arr-pres-val">5</span><span class="arr-pres-pct">31% du total</span></div>
+                <div class="arr-pres-card pink"><span class="arr-pres-label">ABSENTS</span><span class="arr-pres-val">9</span><span class="arr-pres-pct">56% du total</span></div>
+                <div class="arr-pres-card orange"><span class="arr-pres-label">RETARDS</span><span class="arr-pres-val">2</span><span class="arr-pres-pct">13% du total</span></div>
+                <div class="arr-pres-card muted"><span class="arr-pres-label">EXCUSÉS</span><span class="arr-pres-val">0</span><span class="arr-pres-pct">0% du total</span></div>
+              </div>
+              <div class="arr-two-col" style="margin-top:16px">
+                <div class="arr-card">
+                  <div class="arr-card-header">RÉPARTITION GLOBALE</div>
+                  <!-- Donut chart simplifié -->
+                  <div class="arr-donut-wrap">
+                    <svg viewBox="0 0 80 80" width="80" height="80">
+                      <circle cx="40" cy="40" r="28" fill="none" stroke="#1a1f2e" stroke-width="14"/>
+                      <circle cx="40" cy="40" r="28" fill="none" stroke="#22c55e" stroke-width="14" stroke-dasharray="54 122" stroke-dashoffset="0" transform="rotate(-90 40 40)"/>
+                      <circle cx="40" cy="40" r="28" fill="none" stroke="#ff2d78" stroke-width="14" stroke-dasharray="98 78" stroke-dashoffset="-54" transform="rotate(-90 40 40)"/>
+                      <circle cx="40" cy="40" r="28" fill="none" stroke="#f59e0b" stroke-width="14" stroke-dasharray="24 152" stroke-dashoffset="-152" transform="rotate(-90 40 40)"/>
+                    </svg>
+                    <div class="arr-donut-legend">
+                      <div><span style="color:#22c55e">■</span> Présents 31%</div>
+                      <div><span style="color:#ff2d78">■</span> Absents 56%</div>
+                      <div><span style="color:#f59e0b">■</span> Retards 13%</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="arr-card">
+                  <div class="arr-card-header">ÉVOLUTION HEBDOMADAIRE</div>
+                  <!-- Barchart simplifié -->
+                  <div class="arr-barchart">
+                    {[
+                      {day:'L', h:60}, {day:'M', h:40}, {day:'M', h:80},
+                      {day:'J', h:55}, {day:'V', h:70}
+                    ].map(b => (
+                      <div class="arr-bar-col">
+                        <div class="arr-bar" style={`height:${b.h}%`}></div>
+                        <span class="arr-bar-label">{b.day}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
               </div>
             </div>
 
-            <!-- Tab Évaluations -->
+            <!-- Tab Évaluations — fidèle au vrai Arrow (ÉCHÉANCES EN RETARD) -->
             <div class="arr-tab-panel" id="admin-tab-evaluations">
-              <table class="arr-table">
-                <thead><tr><th>Évaluation</th><th>Module</th><th>Date</th><th>Statut</th></tr></thead>
-                <tbody>
-                  <tr><td><strong>Étude de cas — Marque</strong></td><td>Stratégie de marque</td><td>25/05/2026</td><td><span class="arr-badge warn">À corriger</span></td></tr>
-                  <tr><td><strong>Examen mi-parcours</strong></td><td>Droit du travail</td><td>03/06/2026</td><td><span class="arr-badge info">À venir</span></td></tr>
-                  <tr><td><strong>Rapport RH</strong></td><td>Communication RH</td><td>10/06/2026</td><td><span class="arr-badge info">À venir</span></td></tr>
-                </tbody>
-              </table>
+              <h3 class="arr-section-title" style="font-size:18px;font-weight:900;letter-spacing:.04em;margin-bottom:8px">ÉCHÉANCES</h3>
+              <div class="arr-echeances-group">
+                <div class="arr-echeances-label">EN RETARD (3)</div>
+                {[
+                  {title:'Quiz mi-semestre — fondamentaux marketing', module:'Stratégie marketing digital', date:'18/04/2026'},
+                  {title:'Évaluation contrôle continu',               module:'Communication professionnelle',  date:'03/05/2026'},
+                  {title:'Évaluation — notes Strat. Mktg',             module:'Stratégie marketing digital', date:'03/05/2026'},
+                ].map(e => (
+                  <div class="arr-echeance-row">
+                    <div class="arr-echeance-check"></div>
+                    <div class="arr-echeance-content">
+                      <div class="arr-echeance-title">{e.title}</div>
+                      <div class="arr-echeance-meta">{e.module} &nbsp;·&nbsp; {e.date}</div>
+                    </div>
+                    <span class="arr-badge err">EN RETARD</span>
+                  </div>
+                ))}
+              </div>
             </div>
 
-            <!-- Tab Exports -->
+            <!-- Tab Exports — fidèle au vrai Arrow -->
             <div class="arr-tab-panel" id="admin-tab-exports">
-              <div class="arr-empty">
-                <span class="arr-empty-icon">📤</span>
-                Préparez des exports CSV/PDF des bulletins, absences et évaluations.
+              <h3 class="arr-section-title" style="font-size:18px;font-weight:900;letter-spacing:.04em;margin-bottom:16px">EXPORTS DE DONNÉES</h3>
+              <div class="arr-export-grid">
+                {[
+                  {icon:'👥', label:'Présences',    count:'0 enregistrements', color:'#22c55e'},
+                  {icon:'📝', label:'Notes',         count:'9 notes',           color:'#a78bfa'},
+                  {icon:'📚', label:'Modules',       count:'5 modules',         color:'#f59e0b'},
+                  {icon:'📅', label:'Planning',      count:'6 sessions',        color:'#3b82f6'},
+                  {icon:'🎓', label:'Étudiants',     count:'11 étudiants',      color:'#ff2d78'},
+                  {icon:'👨‍🏫', label:'Intervenants', count:'5 intervenants',    color:'#06b6d4'},
+                ].map(ex => (
+                  <div class="arr-export-card">
+                    <div class="arr-export-icon" style={`background:${ex.color}22;color:${ex.color}`}>{ex.icon}</div>
+                    <div class="arr-export-label">{ex.label}</div>
+                    <div class="arr-export-count">{ex.count}</div>
+                  </div>
+                ))}
+              </div>
+              <h3 class="arr-section-title" style="font-size:13px;font-weight:800;letter-spacing:.06em;margin:20px 0 10px">ACTIVITÉS RÉCENTES</h3>
+              <div class="arr-activity-list">
+                <div class="arr-activity-row">
+                  <span class="arr-badge info">CALENDRIER</span>
+                  <div>
+                    <div class="arr-activity-title">Session planifiée</div>
+                    <div class="arr-activity-meta">Session · QA Bachelor · 09:00–12:00 · Salle: Validation</div>
+                  </div>
+                  <span class="arr-activity-date">13 mai</span>
+                </div>
               </div>
             </div>
           </div>
