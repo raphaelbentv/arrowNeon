@@ -19,7 +19,7 @@
     "pipeline:send-newsletter": "tsx scripts/send-newsletter.ts"
   },
   "dependencies": {
-    "@anthropic-ai/sdk": "^0.96.0",
+    "@anthropic-ai/sdk": "^0.97.1",
     "@astrojs/node": "^10.1.1",
     "@astrojs/react": "^5.0.5",
     "@astrojs/sitemap": "^3.7.2",
