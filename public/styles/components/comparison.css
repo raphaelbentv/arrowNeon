@@ -446,147 +446,188 @@
   }
 }
 
-/* --- Dashboard fidèle Arrow --- */
+/* ── Arrow Dashboard — THÈME CLAIR (fidèle arr0w.app) ─────────────────── */
 
-/* Navigation complète */
-.arrow-mini-tabs {
+/* Override fond sombre → blanc */
+.side-arrow { background: #ffffff !important; }
+
+.arrow-interface {
+  height: 100%;
   display: flex;
-  flex-wrap: wrap;
-  gap: 4px;
+  flex-direction: column;
+  background: #ffffff;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
+
+/* Nav — barre blanche avec logo bleu */
+.arrow-mini-nav {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 10px 16px;
+  background: #ffffff;
+  border-bottom: 2px solid #0088ff;
+  flex-shrink: 0;
+}
+.arrow-mini-brand { display: flex; flex-direction: column; gap: 1px; flex-shrink: 0; }
+.arrow-mini-logo {
+  font-size: 16px;
+  font-weight: 900;
+  color: #0088ff;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+.arrow-mini-badge {
+  font-size: 7px;
+  font-weight: 700;
+  background: #0088ff;
+  color: #fff;
+  padding: 1px 5px;
+  border-radius: 3px;
+  letter-spacing: 0.05em;
+  width: fit-content;
+}
+.arrow-mini-school { font-size: 8px; color: #6b7280; letter-spacing: 0.02em; }
+
+.arrow-mini-tabs { display: flex; gap: 4px; flex: 1; overflow: hidden; flex-wrap: nowrap; }
 .arrow-mini-tab {
   font-size: 9px;
   font-weight: 700;
   letter-spacing: 0.06em;
-  color: rgba(255,255,255,0.5);
-  padding: 3px 7px;
-  border-radius: 4px;
+  color: #374151;
+  padding: 4px 8px;
   white-space: nowrap;
+  border-radius: 0;
+  position: relative;
 }
-.arrow-mini-tab--active,
-.arrow-mini-tab:first-child { color: #3d9bff; }
+.arrow-mini-tab--active {
+  color: #0088ff;
+  border-bottom: 2px solid #0088ff;
+}
 
-/* School name */
-.arrow-mini-school { font-size: 9px; color: rgba(255,255,255,0.4); }
+/* Contenu page */
+.arrow-page-content {
+  flex: 1;
+  padding: 14px 16px;
+  overflow: hidden;
+  background: #f8faff;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
 
-/* Greeting */
 .arrow-greeting {
-  font-size: 18px;
-  font-weight: 700;
-  color: #fff;
-  margin: 0 0 12px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #111827;
+  margin: 0;
 }
-.arrow-greeting__name { color: #3d9bff; }
+.arrow-greeting__name { color: #0088ff; }
 
 /* Onglets dashboard */
 .arrow-dashboard-tabs {
   display: flex;
-  flex-wrap: wrap;
-  gap: 3px;
-  margin-bottom: 14px;
-  padding: 3px;
-  background: rgba(255,255,255,0.04);
-  border-radius: 8px;
-  border: 1px solid rgba(255,255,255,0.06);
+  gap: 0;
+  border-bottom: 1px solid #e5e7eb;
+  flex-wrap: nowrap;
+  overflow: hidden;
 }
 .arrow-dtab {
-  font-size: 9px;
+  font-size: 8px;
   font-weight: 700;
   letter-spacing: 0.05em;
-  color: rgba(255,255,255,0.4);
+  color: #9ca3af;
   padding: 5px 8px;
-  border-radius: 5px;
+  white-space: nowrap;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
 }
 .arrow-dtab--active {
-  background: #3d9bff;
-  color: #fff;
+  color: #0088ff;
+  border-bottom-color: #0088ff;
 }
 
-/* KPI grid — 6 cartes */
+/* KPI grid — 3 colonnes */
 .arrow-kpi-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 6px;
-  margin-bottom: 14px;
 }
 .arrow-kpi-card {
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.08);
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
   border-radius: 8px;
-  padding: 10px 10px 8px;
+  padding: 8px 10px;
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 2px;
 }
 .arrow-kpi-label {
-  font-size: 9px;
+  font-size: 8px;
   font-weight: 700;
   letter-spacing: 0.08em;
-  color: rgba(255,255,255,0.45);
+  color: #9ca3af;
   text-transform: uppercase;
 }
 .arrow-kpi-value {
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 800;
   line-height: 1;
 }
-.arrow-kpi--pink   { color: #ff3d9b; }
-.arrow-kpi--purple { color: #a855f7; }
-.arrow-kpi--cyan   { color: #06b6d4; }
-.arrow-kpi--orange { color: #f59e0b; }
-.arrow-kpi--green  { color: #22c55e; }
 
 /* Points d'attention */
 .arrow-alerts-section {
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.06);
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
   border-radius: 8px;
-  padding: 10px 12px;
-  margin-bottom: 12px;
+  padding: 8px 10px;
 }
 .arrow-alerts-title {
-  font-size: 10px;
+  font-size: 9px;
   font-weight: 800;
   letter-spacing: 0.1em;
-  color: rgba(255,255,255,0.5);
-  margin: 0 0 8px;
+  color: #111827;
+  margin: 0 0 6px;
 }
 .arrow-alert-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 7px 8px;
-  margin-bottom: 4px;
-  background: rgba(245,158,11,0.06);
-  border: 1px solid rgba(245,158,11,0.15);
-  border-radius: 6px;
+  padding: 5px 8px;
+  margin-bottom: 3px;
+  background: #fffbeb;
+  border: 1px solid #fde68a;
+  border-left: 3px solid #f59e0b;
+  border-radius: 4px;
 }
-.arrow-alert-content { display: flex; flex-direction: column; gap: 2px; }
-.arrow-alert-name { font-size: 11px; font-weight: 700; color: #fff; }
-.arrow-alert-desc { font-size: 9px; color: rgba(255,255,255,0.45); }
-.arrow-alert-count { font-size: 18px; font-weight: 800; flex-shrink: 0; }
+.arrow-alert-content { display: flex; flex-direction: column; gap: 1px; }
+.arrow-alert-name { font-size: 10px; font-weight: 700; color: #111827; }
+.arrow-alert-desc { font-size: 8px; color: #6b7280; }
+.arrow-alert-count { font-size: 16px; font-weight: 800; flex-shrink: 0; }
 
-/* CTA arrow */
-.arrow-demo-cta {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-  padding: 10px 12px;
-  background: rgba(61,155,255,0.06);
-  border: 1px solid rgba(61,155,255,0.2);
+/* Sessions récentes */
+.arrow-sessions-section {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
   border-radius: 8px;
+  padding: 8px 10px;
 }
-.arrow-demo-cta__text { font-size: 10px; color: rgba(255,255,255,0.7); line-height: 1.4; }
-.arrow-demo-cta__btn {
-  font-size: 10px;
-  font-weight: 700;
-  padding: 7px 12px;
-  background: #3d9bff;
-  color: #000;
-  border: none;
-  border-radius: 6px;
-  cursor: default;
-  white-space: nowrap;
-  flex-shrink: 0;
+.arrow-sessions-title {
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: #111827;
+  margin: 0 0 6px;
 }
+.arrow-session-row {
+  padding: 5px 8px;
+  margin-bottom: 4px;
+  background: #f9fafb;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+.arrow-session-module { font-size: 10px; font-weight: 700; color: #111827; }
+.arrow-session-cohort { font-size: 8px; color: #6b7280; }
+.arrow-session-time { font-size: 8px; color: #9ca3af; }

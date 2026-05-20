@@ -296,15 +296,16 @@ const jsonLd = {
           <div class="comparison-side side-arrow">
             <div class="arrow-interface">
 
-              <!-- Navigation fidèle au vrai Arrow -->
+              <!-- Barre de navigation Arrow — thème clair fidèle -->
               <div class="arrow-mini-nav">
                 <div class="arrow-mini-brand">
                   <span class="arrow-mini-logo">ARROW</span>
+                  <span class="arrow-mini-badge">SUPER ADMIN</span>
                   <span class="arrow-mini-school">ARROW DEMO CAMPUS</span>
                 </div>
                 <div class="arrow-mini-tabs">
                   <span class="arrow-mini-tab">MON ESPACE</span>
-                  <span class="arrow-mini-tab">PLANNING</span>
+                  <span class="arrow-mini-tab arrow-mini-tab--active">PLANNING</span>
                   <span class="arrow-mini-tab">PÉDAGOGIE</span>
                   <span class="arrow-mini-tab">UTILISATEURS</span>
                   <span class="arrow-mini-tab">COMMUNICATION</span>
@@ -313,73 +314,82 @@ const jsonLd = {
                 </div>
               </div>
 
-              <!-- Dashboard — vue Synthèse fidèle au vrai Arrow -->
+              <!-- Dashboard Arrow — thème blanc -->
               <div class="arrow-page-content">
                 <p class="arrow-greeting">Bonjour <span class="arrow-greeting__name">Admin</span></p>
 
-                <!-- Onglets dashboard -->
+                <!-- Onglets dashboard réels -->
                 <div class="arrow-dashboard-tabs">
                   <span class="arrow-dtab arrow-dtab--active">SYNTHÈSE</span>
                   <span class="arrow-dtab">PLANNING</span>
                   <span class="arrow-dtab">ÉTUDIANTS</span>
                   <span class="arrow-dtab">INTERVENANTS</span>
                   <span class="arrow-dtab">MODULES</span>
+                  <span class="arrow-dtab">PROG. PÉDA.</span>
                   <span class="arrow-dtab">PRÉSENCES</span>
                   <span class="arrow-dtab">ÉVALUATIONS</span>
-                  <span class="arrow-dtab">EXPORTS</span>
                 </div>
 
-                <!-- 6 stats clés du dashboard réel -->
+                <!-- KPIs réels (données API) -->
                 <div class="arrow-kpi-grid">
                   <div class="arrow-kpi-card">
                     <span class="arrow-kpi-label">ÉTUDIANTS</span>
-                    <span class="arrow-kpi-value arrow-kpi--pink">82</span>
+                    <span class="arrow-kpi-value" style="color:#FF2D78">11</span>
                   </div>
                   <div class="arrow-kpi-card">
                     <span class="arrow-kpi-label">INTERVENANTS</span>
-                    <span class="arrow-kpi-value arrow-kpi--purple">12</span>
+                    <span class="arrow-kpi-value" style="color:#7C3AED">5</span>
                   </div>
                   <div class="arrow-kpi-card">
                     <span class="arrow-kpi-label">COHORTES</span>
-                    <span class="arrow-kpi-value arrow-kpi--cyan">6</span>
+                    <span class="arrow-kpi-value" style="color:#1D4ED8">3</span>
                   </div>
                   <div class="arrow-kpi-card">
                     <span class="arrow-kpi-label">MODULES</span>
-                    <span class="arrow-kpi-value arrow-kpi--orange">24</span>
+                    <span class="arrow-kpi-value" style="color:#D97706">5</span>
                   </div>
                   <div class="arrow-kpi-card">
                     <span class="arrow-kpi-label">ÉVALUATIONS</span>
-                    <span class="arrow-kpi-value arrow-kpi--pink">15</span>
+                    <span class="arrow-kpi-value" style="color:#059669">6</span>
                   </div>
                   <div class="arrow-kpi-card">
                     <span class="arrow-kpi-label">MOYENNE</span>
-                    <span class="arrow-kpi-value arrow-kpi--green">13.4</span>
+                    <span class="arrow-kpi-value" style="color:#10B981">14.1</span>
                   </div>
                 </div>
 
-                <!-- Points d'attention — section clé du vrai dashboard -->
+                <!-- Points d'attention -->
                 <div class="arrow-alerts-section">
                   <p class="arrow-alerts-title">POINTS D'ATTENTION</p>
                   <div class="arrow-alert-row">
                     <div class="arrow-alert-content">
-                      <span class="arrow-alert-name">Inactifs 14j+</span>
-                      <span class="arrow-alert-desc">3 étudiant(s) sans activité depuis plus de 14 jours</span>
+                      <span class="arrow-alert-name">Sans sessions</span>
+                      <span class="arrow-alert-desc">3 module(s) non planifié(s)</span>
                     </div>
-                    <span class="arrow-alert-count arrow-kpi--orange">3</span>
+                    <span class="arrow-alert-count" style="color:#D97706">3</span>
                   </div>
                   <div class="arrow-alert-row">
                     <div class="arrow-alert-content">
-                      <span class="arrow-alert-name">Bulletins à valider</span>
-                      <span class="arrow-alert-desc">5 bulletins en attente de signature</span>
+                      <span class="arrow-alert-name">Inactifs 14j+</span>
+                      <span class="arrow-alert-desc">5 intervenant(s)</span>
                     </div>
-                    <span class="arrow-alert-count arrow-kpi--orange">5</span>
+                    <span class="arrow-alert-count" style="color:#D97706">5</span>
                   </div>
                 </div>
 
-                <!-- CTA repris du vrai Arrow -->
-                <div class="arrow-demo-cta">
-                  <span class="arrow-demo-cta__text">Vous voulez voir Arrow sur vos données réelles ?</span>
-                  <button class="arrow-demo-cta__btn">Demander une démo</button>
+                <!-- Sessions récentes -->
+                <div class="arrow-sessions-section">
+                  <p class="arrow-sessions-title">SESSIONS RÉCENTES</p>
+                  <div class="arrow-session-row" style="border-left:3px solid #16a34a">
+                    <span class="arrow-session-module">Communication professionnelle</span>
+                    <span class="arrow-session-cohort">Bachelor Marketing Digital - Démo</span>
+                    <span class="arrow-session-time">Jeu · 13:30–17:00 · Salle 118</span>
+                  </div>
+                  <div class="arrow-session-row" style="border-left:3px solid #2563eb">
+                    <span class="arrow-session-module">Stratégie marketing digital</span>
+                    <span class="arrow-session-cohort">Bachelor Marketing Digital - Démo</span>
+                    <span class="arrow-session-time">Mar · 09:00–12:30 · Salle 204</span>
+                  </div>
                 </div>
               </div>
             </div>
