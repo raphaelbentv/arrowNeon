@@ -1,52 +1,395 @@
 ---
 interface Props {
   title?: string
+  description?: string
+  ogImage?: string
+  ogType?: 'website' | 'article'
+  canonical?: string
   activePage?: string
+  noindex?: boolean
+  jsonLd?: Record<string, unknown> | Array<Record<string, unknown>>
 }
 
 const {
   title = 'Arrow — Plateforme de gestion éducative',
+  description = "Arrow aide les écoles supérieures privées à centraliser le suivi étudiant : absences, notes, bulletins, documents et preuves de suivi dans un espace plus clair.",
+  ogImage = '/og-default.svg',
+  ogType = 'website',
+  canonical,
   activePage = '',
+  noindex = false,
+  jsonLd,
 } = Astro.props
+
+const canonicalUrl = canonical ?? new URL(Astro.url.pathname, Astro.site).href
+const ogImageUrl = ogImage.startsWith('http') ? ogImage : new URL(ogImage, Astro.site).href
+const posthogKey = import.meta.env.PUBLIC_POSTHOG_KEY
+const posthogHost = import.meta.env.PUBLIC_POSTHOG_HOST ?? 'https://eu.i.posthog.com'
+const defaultJsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'Arrow',
+    url: Astro.site?.href ?? canonicalUrl,
+    email: 'hey@arr0w.app',
+    logo: new URL('/brand/arrow-logo-primary.svg', Astro.site ?? canonicalUrl).href,
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'Arrow',
+    url: Astro.site?.href ?? canonicalUrl,
+  },
+]
+const jsonLdPayload = jsonLd
+  ? [...defaultJsonLd, ...(Array.isArray(jsonLd) ? jsonLd : [jsonLd])]
+  : defaultJsonLd
 ---
 <!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script is:inline>
+    (() => {
+      try {
+        const storedTheme = window.localStorage.getItem('arrow-theme');
+        const theme = storedTheme === 'light' || storedTheme === 'dark' ? storedTheme : 'dark';
+        document.documentElement.dataset.theme = theme;
+      } catch {
+        document.documentElement.dataset.theme = 'dark';
+      }
+    })();
+  </script>
   <title>{title}</title>
+  <meta name="description" content={description}>
+  <link rel="canonical" href={canonicalUrl}>
+  {noindex && <meta name="robots" content="noindex, nofollow">}
+
+  <!-- Open Graph -->
+  <meta property="og:title" content={title}>
+  <meta property="og:description" content={description}>
+  <meta property="og:type" content={ogType}>
+  <meta property="og:url" content={canonicalUrl}>
+  <meta property="og:image" content={ogImageUrl}>
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:site_name" content="Arrow">
+  <meta property="og:locale" content="fr_FR">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content={title}>
+  <meta name="twitter:description" content={description}>
+  <meta name="twitter:image" content={ogImageUrl}>
+
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLdPayload)} />
+
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="/styles/arrow.css">
+  {posthogKey && (
+    <script
+      is:inline
+      set:html={`
+        (function() {
+          var key = ${JSON.stringify(posthogKey)};
+          var host = ${JSON.stringify(posthogHost)};
+          !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init capture register register_once unregister unregister_once identify alias set_config reset opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing startSessionRecording stopSessionRecording sessionRecordingStarted captureException onFeatureFlags onSessionId".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+          window.posthog.init(key, {
+            api_host: host,
+            capture_pageview: true,
+            capture_pageleave: true,
+            persistence: 'localStorage+cookie'
+          });
+        })();
+      `}
+    />
+  )}
   <slot name="head" />
 </head>
 <body>
   <div class="scanlines"></div>
-  <div class="geometric-bg" id="geoBg"></div>
   <div class="grid-bg" aria-hidden="true"></div>
 
   <!-- Navigation -->
   <nav class="nav-container">
     <div class="nav-wrapper">
-      <a href="/" class="nav-logo">ARROW</a>
+      <a href="https://arr0w.app/dashboard" target="_blank" rel="noopener" class="nav-logo" data-track="nav_logo_dashboard">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+            <path d="M514 203 L814 829 L673 829 L492 466 L407 466 Z"></path>
+            <path d="M391 430 L558 829 L452 829 L389 694 L325 829 L222 829 Z"></path>
+          </svg>
+        </span>
+        <span>ARR0W</span>
+      </a>
       <ul class="nav-menu" id="navMenu">
-        <li class="nav-item"><a href="/" class={`nav-link${activePage === 'accueil' ? ' active' : ''}`}>Accueil</a></li>
-        <li class="nav-item"><a href="/fonctionnalites" class={`nav-link${activePage === 'fonctionnalites' ? ' active' : ''}`}>Fonctionnalités</a></li>
-        <li class="nav-item"><a href="/pour-qui" class={`nav-link${activePage === 'pour-qui' ? ' active' : ''}`}>Pour qui ?</a></li>
-        <li class="nav-item"><a href="/tarifs" class={`nav-link${activePage === 'tarifs' ? ' active' : ''}`}>Tarifs</a></li>
-        <li class="nav-item"><a href="/a-propos" class={`nav-link${activePage === 'a-propos' ? ' active' : ''}`}>À propos</a></li>
-        <li class="nav-item"><a href="/blog" class={`nav-link${activePage === 'blog' ? ' active' : ''}`}>Blog</a></li>
-        <li class="nav-item"><a href="/contact" class={`nav-link${activePage === 'contact' ? ' active' : ''}`}>Contact</a></li>
+        <li class="nav-item"><a href="/" data-track="nav_accueil" class={`nav-link${activePage === 'accueil' ? ' active' : ''}`}>Accueil</a></li>
+        <li class="nav-item"><a href="/fonctionnalites" data-track="nav_fonctionnalites" class={`nav-link${activePage === 'fonctionnalites' ? ' active' : ''}`}>Fonctionnalités</a></li>
+        <li class="nav-item"><a href="/demo" data-track="nav_demo_interactive" class={`nav-link${activePage === 'demo' ? ' active' : ''}`}>Démo</a></li>
+        <li class="nav-item"><a href="/pour-qui" data-track="nav_pour_qui" class={`nav-link${activePage === 'pour-qui' ? ' active' : ''}`}>Pour qui ?</a></li>
+        <li class="nav-item"><a href="/tarifs" data-track="nav_beta" class={`nav-link${activePage === 'beta' ? ' active' : ''}`}>Bêta</a></li>
+        <li class="nav-item"><a href="/a-propos" data-track="nav_a_propos" class={`nav-link${activePage === 'a-propos' ? ' active' : ''}`}>À propos</a></li>
+        <li class="nav-item"><a href="/blog" data-track="nav_blog" class={`nav-link${activePage === 'blog' ? ' active' : ''}`}>Blog</a></li>
+        <li class="nav-item"><a href="https://arr0w.app/" target="_blank" rel="noopener" data-track="nav_visit_app" class="nav-link nav-external">Voir l'app <span aria-hidden="true">↗</span></a></li>
+        <li class="nav-item"><a href="/contact" data-open-modal="betaAccessModal" data-track="nav_demo" class={`nav-link nav-cta${activePage === 'contact' ? ' active' : ''}`}>Demander une démo</a></li>
       </ul>
-      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
+      <div class="nav-actions">
+        <button
+          class="nav-toggle"
+          id="navToggle"
+          type="button"
+          aria-label="Ouvrir le menu"
+          aria-controls="navMenu"
+          aria-expanded="false"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
     </div>
   </nav>
 
   <slot />
 
+  <footer class="footer">
+    <div class="footer-shell">
+      <div class="footer-wordmark" aria-hidden="true">
+        <svg class="footer-wordmark-svg" viewBox="0 0 1200 260" preserveAspectRatio="xMidYMax meet">
+          <defs>
+            <linearGradient id="footerWordmarkStroke" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#0080ff" />
+              <stop offset="48%" stop-color="#00d9ff" />
+              <stop offset="100%" stop-color="#ff00d6" />
+            </linearGradient>
+            <radialGradient id="torchGradient" gradientUnits="userSpaceOnUse" cx="-9999" cy="-9999" r="155">
+              <stop offset="0%"   stop-color="white" stop-opacity="1" />
+              <stop offset="35%"  stop-color="white" stop-opacity="1" />
+              <stop offset="62%"  stop-color="white" stop-opacity="0.55" />
+              <stop offset="82%"  stop-color="white" stop-opacity="0.12" />
+              <stop offset="100%" stop-color="white" stop-opacity="0" />
+            </radialGradient>
+            <mask id="torchMask">
+              <rect x="-6000" y="-6000" width="13200" height="12520" fill="url(#torchGradient)" />
+            </mask>
+          </defs>
+          <!-- Texte de base, toujours visible en version atténuée -->
+          <text class="footer-wordmark-text" x="600" y="220" text-anchor="middle" textLength="1120" lengthAdjust="spacingAndGlyphs">ARR0W</text>
+          <!-- Texte illuminé, révélé uniquement sous le curseur via le masque spotlight -->
+          <text class="footer-wordmark-text-lit" x="600" y="220" text-anchor="middle" textLength="1120" lengthAdjust="spacingAndGlyphs" mask="url(#torchMask)">ARR0W</text>
+        </svg>
+      </div>
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <span class="brand-mark" aria-hidden="true">
+              <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+                <path d="M514 203 L814 829 L673 829 L492 466 L407 466 Z"></path>
+                <path d="M391 430 L558 829 L452 829 L389 694 L325 829 L222 829 Z"></path>
+              </svg>
+            </span>
+            <span>ARR0W</span>
+          </div>
+          <p class="footer-summary">
+            Suivi étudiant centralisé pour écoles supérieures privées.
+          </p>
+          <a class="footer-mail" href="mailto:hey@arr0w.app" data-track="footer_email">hey@arr0w.app</a>
+          <div class="footer-socials" aria-label="Réseaux sociaux">
+            <a
+              class="footer-social-link"
+              href="https://www.linkedin.com/company/arr0w-app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn Arrow"
+              data-track="footer_linkedin"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M6.94 8.98H3.78v10.04h3.16V8.98ZM5.36 4.98a1.82 1.82 0 1 0 0 3.64 1.82 1.82 0 0 0 0-3.64ZM20.22 13.44c0-3.02-1.61-4.42-3.76-4.42a3.25 3.25 0 0 0-2.94 1.61h-.04V8.98h-3.03v10.04h3.16v-4.97c0-1.31.25-2.58 1.88-2.58 1.6 0 1.62 1.5 1.62 2.66v4.89h3.16l-.05-5.58Z"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <nav class="footer-nav" aria-label="Navigation de bas de page">
+          <p class="footer-kicker">Navigation</p>
+          <div class="footer-links">
+            <a class="footer-link" href="/fonctionnalites" data-track="footer_fonctionnalites">Fonctionnalités</a>
+            <a class="footer-link" href="/pour-qui" data-track="footer_pour_qui">Pour qui ?</a>
+            <a class="footer-link" href="/tarifs" data-track="footer_beta">Bêta</a>
+            <a class="footer-link" href="/contact" data-open-modal="betaAccessModal" data-track="footer_demo">Demander une démo</a>
+            <a class="footer-link" href="/blog" data-track="footer_blog">Blog</a>
+            <a class="footer-link footer-link--external" href="https://arr0w.app/" target="_blank" rel="noopener" data-track="footer_visit_app">Voir l'app <span aria-hidden="true">↗</span></a>
+          </div>
+        </nav>
+
+        <nav class="footer-legal" aria-label="Informations légales">
+          <p class="footer-kicker">Légal</p>
+          <div class="footer-links">
+            <a class="footer-link" href="/mentions-legales" data-track="footer_mentions_legales">Mentions légales</a>
+            <a class="footer-link" href="/confidentialite" data-track="footer_confidentialite">Confidentialité & RGPD</a>
+            <a class="footer-link" href="mailto:hey@arr0w.app" data-track="footer_donnees_personnelles">Données personnelles</a>
+          </div>
+        </nav>
+
+        <div class="footer-cta">
+          <p class="footer-kicker">Bêta</p>
+          <p class="footer-cta-copy">Voir si Arrow colle à votre suivi étudiant, avant d'aller plus loin.</p>
+          <div class="footer-actions">
+            <a href="/contact" data-open-modal="betaAccessModal" class="btn-primary" data-track="footer_demo_beta">Demander une démo</a>
+            <a href="/tarifs" class="btn-ghost" data-track="footer_beta_details">Voir les modalités</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-copy">
+        <span>Arrow.</span>
+        <button
+          class="theme-toggle theme-toggle--footer"
+          type="button"
+          data-theme-toggle
+          aria-label="Activer le mode clair"
+          aria-pressed="false"
+        >
+          <svg class="theme-toggle__icon theme-toggle__icon--sun" viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="12" r="4"></circle>
+            <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path>
+          </svg>
+          <svg class="theme-toggle__icon theme-toggle__icon--moon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M21 13.2A7.5 7.5 0 1 1 10.8 3 6 6 0 0 0 21 13.2Z"></path>
+          </svg>
+          <span class="theme-toggle__label">Mode clair / sombre</span>
+        </button>
+      </div>
+    </div>
+  </footer>
+
+  <div
+    id="betaAccessModal"
+    class="modal-overlay beta-modal-overlay"
+    style="display: none;"
+    role="dialog"
+    aria-modal="true"
+    aria-hidden="true"
+    aria-labelledby="betaAccessModalTitle"
+  >
+    <div class="beta-modal-container">
+      <button
+        class="beta-modal-close"
+        type="button"
+        data-close-modal="betaAccessModal"
+        aria-label="Fermer"
+      >×</button>
+      <div class="beta-modal-content">
+        <div class="beta-modal-copy">
+          <p class="eyebrow">Demande de démo</p>
+          <h2 id="betaAccessModalTitle">Voir si Arrow correspond à votre contexte.</h2>
+          <p>Remplissez cette fiche rapide. On revient vers vous pour cadrer une démo ou une bêta selon votre besoin.</p>
+        </div>
+
+        <form
+          class="beta-modal-form"
+          action="/api/demo-request"
+          method="POST"
+        >
+          <input type="hidden" name="_subject" value="Nouvelle demande de démo Arrow" />
+          <input type="hidden" name="_next" value="https://arr0w.app/merci-beta" data-form-next />
+          <input type="hidden" name="_template" value="table" />
+          <input type="hidden" name="Source" value="" data-form-source />
+          <input type="text" name="_honey" class="form-honeypot" tabindex="-1" autocomplete="off" />
+          <input type="hidden" name="ConsentementRGPD" value="non" />
+          <input type="hidden" name="Newsletter" value="non" />
+
+          <div class="beta-modal-grid">
+            <label class="beta-modal-field">
+              <span>Nom</span>
+              <input type="text" name="Nom" autocomplete="name" required data-modal-autofocus />
+            </label>
+
+            <label class="beta-modal-field">
+              <span>Email pro</span>
+              <input type="email" name="Email" autocomplete="email" required />
+            </label>
+
+            <label class="beta-modal-field">
+              <span>Établissement</span>
+              <input type="text" name="Etablissement" autocomplete="organization" required />
+            </label>
+
+            <label class="beta-modal-field">
+              <span>Fonction</span>
+              <input type="text" name="Fonction" placeholder="Direction, scolarité, pédagogie..." required />
+            </label>
+          </div>
+
+          <label class="beta-modal-field">
+            <span>Ce que vous voulez voir ou tester</span>
+            <textarea
+              name="Besoin"
+              rows="4"
+              placeholder="Ex: centralisation des absences, bulletins, documents et preuves de suivi..."
+              required
+            ></textarea>
+          </label>
+
+          <div class="form-consents" aria-label="Préférences et consentement">
+            <label class="form-choice form-choice--newsletter">
+              <input type="checkbox" name="Newsletter" value="oui" />
+              <span class="form-choice__box" aria-hidden="true"></span>
+              <span class="form-choice__content">
+                <strong>Recevoir la newsletter Arrow</strong>
+                <small>Conseils produit, suivi étudiant et nouvelles de la bêta. Désinscription possible à tout moment.</small>
+              </span>
+            </label>
+
+            <label class="form-choice form-choice--required">
+              <input type="checkbox" name="ConsentementRGPD" value="oui" required />
+              <span class="form-choice__box" aria-hidden="true"></span>
+              <span class="form-choice__content">
+                <strong>J'accepte le traitement de mes données</strong>
+                <small>Arrow utilise ces informations uniquement pour répondre à ma demande. Je peux exercer mes droits à hey@arr0w.app.</small>
+              </span>
+            </label>
+          </div>
+
+          <button type="submit" class="btn-primary" data-track="global_beta_request_submit">
+            Envoyer la demande
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
   <script src="/js/main.js" is:inline></script>
+
+  <script is:inline>
+    (function () {
+      var wm   = document.querySelector('.footer-wordmark');
+      var svg  = document.querySelector('.footer-wordmark-svg');
+      if (!wm || !svg) return;
+      var grad = svg.querySelector('#torchGradient');
+      if (!grad) return;
+
+      wm.addEventListener('mouseenter', function () {
+        wm.classList.add('is-torch-active');
+      });
+
+      wm.addEventListener('mousemove', function (e) {
+        var pt   = svg.createSVGPoint();
+        pt.x = e.clientX;
+        pt.y = e.clientY;
+        var svgP = pt.matrixTransform(svg.getScreenCTM().inverse());
+        grad.setAttribute('cx', svgP.x);
+        grad.setAttribute('cy', svgP.y);
+      });
+
+      wm.addEventListener('mouseleave', function () {
+        wm.classList.remove('is-torch-active');
+        grad.setAttribute('cx', -9999);
+        grad.setAttribute('cy', -9999);
+      });
+    })();
+  </script>
 </body>
 </html>
