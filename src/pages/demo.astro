@@ -283,29 +283,52 @@ import BaseLayout from '../layouts/BaseLayout.astro'
                     <span class="arr-week-month" style="right:0">DÉC</span>
                   </div>
 
-                  <!-- Grille calendrier 7 jours -->
+                  <!-- Grille calendrier 7 jours — heures 08:00–17:00, px/h = 60px -->
                   <div class="arr-cal-grid">
                     <div class="arr-cal-times">
-                      {['08:00','09:00','10:00','11:00','12:00','13:00','14:00','15:00','16:00'].map(t => (
+                      {['08:00','09:00','10:00','11:00','12:00','13:00','14:00','15:00','16:00','17:00'].map(t => (
                         <div class="arr-cal-time">{t}</div>
                       ))}
                     </div>
                     {[
-                      {day:'Lun', n:'18'},
-                      {day:'Mar', n:'19', sessions:[{h:2, title:'Stratégie marketing digital', sub:'Bach. MKT · M. Dubois · Salle 204', color:'blue'}]},
-                      {day:'Mer', n:'20'},
-                      {day:'Jeu', n:'21', sessions:[{h:5, title:'Communication professionnelle', sub:'Bach. MKT · A. Lefevre · Salle 118', color:'green'}]},
-                      {day:'Ven', n:'22'},
-                      {day:'Sam', n:'23'},
-                      {day:'Dim', n:'24'},
-                    ].map(({day, n, sessions}) => (
-                      <div class="arr-cal-col">
-                        <div class="arr-cal-head"><span class="arr-cal-day">{day}</span><span class="arr-cal-num">{n}</span></div>
+                      {day:'Lun', n:'18', today:false},
+                      {day:'Mar', n:'19', today:false, sessions:[{
+                        startH:9, durationH:3.5,
+                        title:'Stratégie marketing digital',
+                        sub:'Bach. Marketing Digital · Marie Dubois',
+                        room:'Salle 204', color:'blue'
+                      }]},
+                      {day:'Mer', n:'20', today:false},
+                      {day:'Jeu', n:'21', today:true, sessions:[{
+                        startH:13.5, durationH:3.5,
+                        title:'Communication professionnelle',
+                        sub:'Bach. Marketing Digital · Antoine Lefevre',
+                        room:'Salle 118', color:'green'
+                      }]},
+                      {day:'Ven', n:'22', today:false},
+                      {day:'Sam', n:'23', today:false},
+                      {day:'Dim', n:'24', today:false},
+                    ].map(({day, n, today, sessions}) => (
+                      <div class={`arr-cal-col${today ? ' arr-cal-col--today' : ''}`}>
+                        <div class="arr-cal-head">
+                          <span class="arr-cal-day">{day}</span>
+                          <span class={`arr-cal-num${today ? ' arr-cal-num--today' : ''}`}>{n}</span>
+                        </div>
                         <div class="arr-cal-body">
+                          {/* Lignes de grille horaires */}
+                          {[0,1,2,3,4,5,6,7,8,9].map(i => (
+                            <div class="arr-cal-gridline" style={`top:${i*60}px`}></div>
+                          ))}
+                          {/* Sessions */}
                           {sessions?.map(s => (
-                            <div class={`arr-cal-event ${s.color}`} style={`top:${(s.h-8)*56}px`}>
+                            <div
+                              class={`arr-cal-event ${s.color}`}
+                              style={`top:${(s.startH - 8) * 60}px; height:${s.durationH * 60 - 4}px`}
+                            >
+                              <div class="arr-cal-event-time">{`${Math.floor(s.startH)}:${s.startH % 1 ? '30' : '00'}–${Math.floor(s.startH + s.durationH)}:${(s.startH + s.durationH) % 1 ? '30' : '00'}`}</div>
                               <div class="arr-cal-event-title">{s.title}</div>
                               <div class="arr-cal-event-sub">{s.sub}</div>
+                              <div class="arr-cal-event-room">📍 {s.room}</div>
                             </div>
                           ))}
                         </div>
